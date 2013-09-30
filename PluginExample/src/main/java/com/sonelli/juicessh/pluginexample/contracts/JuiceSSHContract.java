@@ -21,7 +21,7 @@ public class JuiceSSHContract {
 
         public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/com.sonelli.juicessh.models.connection";
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/com.sonelli.juicessh.models.connection";
-        public static final String SORT_ORDER_DEFAULT = "address ASC";
+        public static final String SORT_ORDER_DEFAULT = "name COLLATE NOCASE ASC";
 
         public final static int TYPE_SSH = 0;
         public final static int TYPE_MOSH = 1;
@@ -29,20 +29,21 @@ public class JuiceSSHContract {
         public final static int TYPE_TELNET = 3;
 
         public static final String ID = "id";
+        public static final String _ID = "_id";
         public static final String MODIFIED = "modified";
-        public static final String NAME = "COALESCE(NULLIF(nickname,''), address)";
+        public static final String NAME = "name";
         public static final String ADDRESS = "address";
         public static final String NICKNAME = "nickname";
         public static final String TYPE = "type";
 
         public static final String[] PROJECTION = {
-                ID,
-                "rowid _id",
-                MODIFIED,
-                NAME,
-                ADDRESS,
-                NICKNAME,
-                TYPE
+            ID,
+            "rowid AS _id",
+            MODIFIED,
+            "COALESCE(NULLIF(nickname,''), address) AS name",
+            ADDRESS,
+            NICKNAME,
+            TYPE
         };
 
         public static Intent generateConnectIntent(UUID connectionId, String command, boolean runInBackground){

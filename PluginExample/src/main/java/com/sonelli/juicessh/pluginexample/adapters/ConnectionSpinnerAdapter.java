@@ -32,10 +32,12 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        if(cursor == null)
-            return;
 
-        String name = cursor.getString(cursor.getColumnIndex(JuiceSSHContract.Connections.NAME));
-        ((TextView) view).setText(name);
+        try {
+            String name = cursor.getString(cursor.getColumnIndex(JuiceSSHContract.Connections.NAME));
+            ((TextView) view).setText(name);
+        } catch (IllegalStateException e){
+            e.printStackTrace();
+        }
     }
 }

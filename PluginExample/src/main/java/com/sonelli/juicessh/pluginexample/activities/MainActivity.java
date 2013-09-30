@@ -1,4 +1,4 @@
-package com.sonelli.juicessh.pluginexample;
+package com.sonelli.juicessh.pluginexample.activities;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import com.sonelli.juicessh.pluginexample.R;
 import com.sonelli.juicessh.pluginexample.adapters.ConnectionSpinnerAdapter;
 import com.sonelli.juicessh.pluginexample.contracts.JuiceSSHContract;
 
@@ -70,7 +71,7 @@ public class MainActivity extends FragmentActivity implements LoaderManager.Load
                 JuiceSSHContract.Connections.PROJECTION,
                 null,
                 null,
-                null
+                JuiceSSHContract.Connections.SORT_ORDER_DEFAULT
         );
 
     }
