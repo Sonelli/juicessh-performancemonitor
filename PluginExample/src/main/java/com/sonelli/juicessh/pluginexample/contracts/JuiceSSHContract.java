@@ -77,6 +77,33 @@ public class JuiceSSHContract {
 
     }
 
+    /**
+     * Published API for Snippets
+     */
+    public static final class Snippets implements BaseColumns {
+
+        public final static Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/snippets");
+        public final static String PERMISSION_READ = "com.sonelli.juicessh.api.v1.permission.READ_SNIPPETS";
+        public final static String PERMISSION_WRITE = "com.sonelli.juicessh.api.v1.permission.WRITE_SNIPPETS";
+
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/com.sonelli.juicessh.models.snippet";
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/com.sonelli.juicessh.models.snippet";
+        public static final String SORT_ORDER_DEFAULT = "name COLLATE NOCASE ASC";
+
+        public static final String ID = "id";
+        public static final String _ID = "_id";
+        public static final String MODIFIED = "modified";
+        public static final String NAME = "name";
+        public static final String CONTENT = "content";
+
+        public static final String[] PROJECTION = {
+                ID,
+                "rowid AS _id",
+                MODIFIED,
+                NAME,
+                CONTENT
+        };
+
+    }
+
 }
-
-
