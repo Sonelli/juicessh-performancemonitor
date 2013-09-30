@@ -10,7 +10,6 @@ import java.util.UUID;
 public class JuiceSSHContract {
 
     public static final String AUTHORITY = "com.sonelli.juicessh.api.v1";
-    public static final String PERMISSION_READ = "com.sonelli.juicessh.api.v1.permission.READ";
 
     /**
      * Published API for Connections
@@ -18,6 +17,8 @@ public class JuiceSSHContract {
     public static final class Connections implements BaseColumns {
 
         public final static Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/connections");
+        public final static String PERMISSION_READ = "com.sonelli.juicessh.api.v1.permission.READ_CONNECTIONS";
+        public final static String PERMISSION_WRITE = "com.sonelli.juicessh.api.v1.permission.WRITE_CONNECTIONS";
 
         public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/com.sonelli.juicessh.models.connection";
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/com.sonelli.juicessh.models.connection";
@@ -37,13 +38,13 @@ public class JuiceSSHContract {
         public static final String TYPE = "type";
 
         public static final String[] PROJECTION = {
-            ID,
-            "rowid AS _id",
-            MODIFIED,
-            "COALESCE(NULLIF(nickname,''), address) AS name",
-            ADDRESS,
-            NICKNAME,
-            TYPE
+                ID,
+                "rowid AS _id",
+                MODIFIED,
+                "COALESCE(NULLIF(nickname,''), address) AS name",
+                ADDRESS,
+                NICKNAME,
+                TYPE
         };
 
         public static Intent generateConnectIntent(UUID connectionId, String command, boolean runInBackground){
@@ -77,4 +78,5 @@ public class JuiceSSHContract {
     }
 
 }
+
 
