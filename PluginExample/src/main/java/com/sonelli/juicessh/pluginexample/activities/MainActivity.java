@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -47,8 +48,10 @@ public class MainActivity extends FragmentActivity implements LoaderManager.Load
             @Override
             public void onClick(View view) {
                 UUID id = spinnerAdapter.getConnectionId(spinner.getSelectedItemPosition());
-                Intent intent = JuiceSSHContract.Connections.generateConnectIntent(id, null, runInBackground.isChecked());
-                startActivityForResult(intent, 0);
+                if(id != null){
+                    Intent intent = JuiceSSHContract.Connections.generateConnectIntent(id, null, runInBackground.isChecked());
+                    startActivityForResult(intent, 0);
+                }
             }
         });
 
@@ -64,16 +67,14 @@ public class MainActivity extends FragmentActivity implements LoaderManager.Load
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-
         return new CursorLoader(
-                this,
-                JuiceSSHContract.Connections.CONTENT_URI,
-                JuiceSSHContract.Connections.PROJECTION,
-                null,
-                null,
-                JuiceSSHContract.Connections.SORT_ORDER_DEFAULT
+            this,
+            JuiceSSHContract.Connections.CONTENT_URI,
+            JuiceSSHContract.Connections.PROJECTION,
+            null,
+            null,
+            JuiceSSHContract.Connections.SORT_ORDER_DEFAULT
         );
-
     }
 
     @Override
