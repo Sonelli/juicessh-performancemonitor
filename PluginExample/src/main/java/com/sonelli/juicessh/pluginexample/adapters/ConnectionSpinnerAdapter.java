@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class ConnectionSpinnerAdapter extends CursorAdapter {
 
-    public static final String TAG = "ConnectionSnipperAdapter";
+    public static final String TAG = "ConnectionAdapter";
 
     private LayoutInflater inflater;
 
@@ -24,14 +24,19 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
     }
 
     public UUID getConnectionId(int position) {
-        try {
+
+        UUID id = null;
+
+        if(getCursor() != null){
             getCursor().moveToPosition(position);
-            return UUID.fromString(getCursor().getString(0));
-        } catch (NullPointerException e){
-            Log.e(TAG, "Cursor is null or empty");
-            e.printStackTrace();
-            return null;
+            int idIndex = getCursor().getColumnIndex(JuiceSSHContract.Connections.ID);
+            if(idIndex > -1){
+                id = UUID.fromString(getCursor().getString(idIndex));
+            }
         }
+
+        return id;
+
     }
 
     @Override
