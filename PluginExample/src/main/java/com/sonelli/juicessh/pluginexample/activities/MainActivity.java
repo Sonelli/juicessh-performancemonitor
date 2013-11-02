@@ -1,18 +1,17 @@
 package com.sonelli.juicessh.pluginexample.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.sonelli.juicessh.pluginexample.R;
 import com.sonelli.juicessh.pluginexample.adapters.ConnectionSpinnerAdapter;
-import com.sonelli.juicessh.pluginexample.contracts.JuiceSSHContract;
 import com.sonelli.juicessh.pluginexample.loaders.ConnectionListLoader;
+import com.sonelli.juicessh.pluginlibrary.PluginClient;
+import com.sonelli.juicessh.pluginlibrary.listeners.OnClientStartedListener;
 
 import java.util.UUID;
 
@@ -20,8 +19,10 @@ public class MainActivity extends FragmentActivity {
 
     public static final String TAG = "MainActivity";
 
+    private final PluginClient client = new PluginClient();
+    private boolean isClientStarted = false;
+
     private Button connectButton;
-    private CheckBox runInBackground;
     private Spinner spinner;
     private ConnectionSpinnerAdapter spinnerAdapter;
 
@@ -31,7 +32,6 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         this.spinner = (Spinner) findViewById(R.id.connection_spinner);
-        this.runInBackground = (CheckBox) findViewById(R.id.run_in_background);
 
         this.spinnerAdapter = new ConnectionSpinnerAdapter(this);
         spinner.setAdapter(spinnerAdapter);
@@ -41,17 +41,51 @@ public class MainActivity extends FragmentActivity {
         getSupportLoaderManager().initLoader(0, null, new ConnectionListLoader(this, spinnerAdapter));
 
         this.connectButton = (Button) findViewById(R.id.connect_button);
+        connectButton.setText(getString(R.string.please_wait));
+        connectButton.setEnabled(false);
+
         connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UUID id = spinnerAdapter.getConnectionId(spinner.getSelectedItemPosition());
                 if(id != null){
-                    Intent intent = JuiceSSHContract.Connections.generateConnectIntent(id, null, runInBackground.isChecked());
-                    startActivityForResult(intent, 0);
+                    if(isClientStarted){
+                        client.ping();
+                    }
                 }
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        client.start(this, new OnClientStartedListener() {
+            @Override
+            public void onClientStarted() {
+                isClientStarted = true;
+                connectButton.setText(getString(R.string.connect));
+                connectButton.setEnabled(true);
+            }
+
+            @Override
+            public void onClientStopped() {
+                isClientStarted = false;
+                connectButton.setText(getString(R.string.please_wait));
+                connectButton.setEnabled(false);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(isClientStarted){
+            client.stop(this);
+        }
     }
 
     @Override

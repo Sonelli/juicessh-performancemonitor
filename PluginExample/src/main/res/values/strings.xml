@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="connect">Connect</string>
     <string name="run_in_background">Run in background</string>
+    <string name="please_wait">Please wait...</string>
 
 </resources>

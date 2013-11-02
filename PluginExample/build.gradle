@@ -10,6 +10,9 @@ apply plugin: 'android'
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs '../../juicessh/PluginLibrary/build/libs/'
+    }
 }
 
 android {
@@ -25,4 +28,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:18.0.0'
     compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.sonelli:PluginLibrary:+@aar'
 }

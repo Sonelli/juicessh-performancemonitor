@@ -6,6 +6,7 @@
 
     <uses-permission android:name="com.sonelli.juicessh.api.v1.permission.READ_CONNECTIONS" />
     <uses-permission android:name="com.sonelli.juicessh.api.v1.permission.WRITE_SNIPPETS" />
+    <uses-permission android:name="com.sonelli.juicessh.api.v1.permission.OPEN_SESSIONS" />
 
     <uses-sdk
         android:minSdkVersion="7"

@@ -69,8 +69,19 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 18 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="aws-android-sdk-1.4.4-ec2" level="project" />
+    <orderEntry type="library" exported="" name="ComSonelliPluginLibrary.aar" level="project" />
+    <orderEntry type="library" exported="" name="gcm" level="project" />
+    <orderEntry type="library" exported="" name="google_exec_native_ndk" level="project" />
+    <orderEntry type="library" exported="" name="scprov-jdk15on-1.47.0.2" level="project" />
+    <orderEntry type="library" exported="" name="aws-android-sdk-1.4.4-core" level="project" />
+    <orderEntry type="library" exported="" name="libGoogleAnalyticsV2" level="project" />
     <orderEntry type="library" exported="" name="support-v4-18.0.0" level="project" />
     <orderEntry type="library" exported="" name="ComAndroidSupportAppcompatV71800.aar" level="project" />
+    <orderEntry type="library" exported="" name="scpkix-jdk15on-1.47.0.2" level="project" />
+    <orderEntry type="library" exported="" name="annotations" level="project" />
+    <orderEntry type="library" exported="" name="sc-light-jdk15on-1.47.0.2" level="project" />
+    <orderEntry type="library" exported="" name="json-org" level="project" />
   </component>
 </module>
 

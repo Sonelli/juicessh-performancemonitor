@@ -8,7 +8,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 
 import com.sonelli.juicessh.pluginexample.adapters.ConnectionSpinnerAdapter;
-import com.sonelli.juicessh.pluginexample.contracts.JuiceSSHContract;
+import com.sonelli.juicessh.pluginlibrary.PluginContract;
 
 public class ConnectionListLoader implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -24,11 +24,11 @@ public class ConnectionListLoader implements LoaderManager.LoaderCallbacks<Curso
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(
                 context,
-                JuiceSSHContract.Connections.CONTENT_URI,
-                JuiceSSHContract.Connections.PROJECTION,
+                PluginContract.Connections.CONTENT_URI,
+                PluginContract.Connections.PROJECTION,
                 null,
                 null,
-                JuiceSSHContract.Connections.SORT_ORDER_DEFAULT
+                PluginContract.Connections.SORT_ORDER_DEFAULT
         );
     }
 

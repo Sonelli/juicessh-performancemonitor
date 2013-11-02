@@ -3,12 +3,12 @@ package com.sonelli.juicessh.pluginexample.adapters;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.sonelli.juicessh.pluginexample.contracts.JuiceSSHContract;
+
+import com.sonelli.juicessh.pluginlibrary.PluginContract;
 
 import java.util.UUID;
 
@@ -29,7 +29,7 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
         if(getCursor() != null){
             getCursor().moveToPosition(position);
-            int idIndex = getCursor().getColumnIndex(JuiceSSHContract.Connections.ID);
+            int idIndex = getCursor().getColumnIndex(PluginContract.Connections.ID);
             if(idIndex > -1){
                 id = UUID.fromString(getCursor().getString(idIndex));
             }
@@ -46,7 +46,7 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        int nameColumn = cursor.getColumnIndex(JuiceSSHContract.Connections.NAME);
+        int nameColumn = cursor.getColumnIndex(PluginContract.Connections.NAME);
         if(nameColumn > -1){
             String name = cursor.getString(nameColumn);
             ((TextView) view).setText(name);
