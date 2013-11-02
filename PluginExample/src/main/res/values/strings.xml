@@ -7,5 +7,6 @@
     <string name="connect">Connect</string>
     <string name="run_in_background">Run in background</string>
     <string name="please_wait">Please wait...</string>
+    <string name="disconnect">Disconnect</string>
 
 </resources>

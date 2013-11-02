@@ -32,4 +32,16 @@
         android:background="@drawable/button_solid"
         android:text="@string/connect" />
 
+    <Button
+        android:visibility="gone"
+        android:id="@+id/disconnect_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_solid"
+        android:text="@string/disconnect" />
+
 </RelativeLayout>

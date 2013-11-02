@@ -30,6 +30,7 @@ public class ConnectionListLoader implements LoaderManager.LoaderCallbacks<Curso
                 null,
                 PluginContract.Connections.SORT_ORDER_DEFAULT
         );
+
     }
 
     @Override
