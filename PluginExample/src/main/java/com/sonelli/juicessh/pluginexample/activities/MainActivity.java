@@ -2,11 +2,13 @@ package com.sonelli.juicessh.pluginexample.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sonelli.juicessh.pluginexample.R;
@@ -15,10 +17,13 @@ import com.sonelli.juicessh.pluginexample.loaders.ConnectionListLoader;
 import com.sonelli.juicessh.pluginlibrary.PluginClient;
 import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedException;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnClientStartedListener;
+import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionExecuteListener;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionFinishedListener;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionStartedListener;
 
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends FragmentActivity implements OnSessionStartedListener, OnSessionFinishedListener {
 
@@ -29,6 +34,7 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
 
     private Button connectButton;
     private Button disconnectButton;
+    private TextView loadAverageTextView;
     private Spinner spinner;
     private ConnectionSpinnerAdapter spinnerAdapter;
 
@@ -42,13 +48,6 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Restore state
-        if(savedInstanceState != null){
-            this.sessionId = savedInstanceState.getInt("sessionId");
-            this.sessionKey = savedInstanceState.getString("sessionKey");
-            this.isConnected = savedInstanceState.getBoolean("isConnected");
-        }
-
         this.spinner = (Spinner) findViewById(R.id.connection_spinner);
 
         this.spinnerAdapter = new ConnectionSpinnerAdapter(this);
@@ -60,6 +59,7 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
 
         this.connectButton = (Button) findViewById(R.id.connect_button);
         this.disconnectButton = (Button) findViewById(R.id.disconnect_button);
+        this.loadAverageTextView = (TextView) findViewById(R.id.load_average);
 
         connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,19 +115,8 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
         client.start(this, new OnClientStartedListener() {
             @Override
             public void onClientStarted() {
-
                 isClientStarted = true;
                 connectButton.setEnabled(true);
-
-                // Re-register a connection listener for disconnect events if we have any open session
-                if (sessionId > -1 && sessionKey != null) {
-                    try {
-                        client.addSessionFinishedListener(sessionId, sessionKey, MainActivity.this);
-                    } catch (ServiceNotConnectedException e) {
-                        // We know it's connected at this point
-                    }
-                }
-
             }
 
             @Override
@@ -145,14 +134,6 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
         if(isClientStarted){
             client.stop(this);
         }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("sessionId", sessionId);
-        outState.putString("sessionKey", sessionKey);
-        outState.putBoolean("isConnected", isConnected);
     }
 
     @Override
@@ -174,13 +155,52 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
     }
 
     @Override
-    public void onSessionStarted(int sessionId, String sessionKey) {
+    public void onSessionStarted(final int sessionId, final String sessionKey) {
+
         Toast.makeText(MainActivity.this, "JuiceSSH Plugin: Got session (id:" + sessionId + ")\n" + sessionKey, Toast.LENGTH_SHORT).show();
         MainActivity.this.sessionId = sessionId;
         MainActivity.this.sessionKey = sessionKey;
         MainActivity.this.isConnected = true;
         connectButton.setVisibility(View.GONE);
         disconnectButton.setVisibility(View.VISIBLE);
+
+        // Register a listener for session finish events so that we know when the session is done
+        try {
+            client.addSessionFinishedListener(sessionId, sessionKey, this);
+        } catch (ServiceNotConnectedException e){}
+
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    final Pattern loadAvgPattern = Pattern.compile("average:\\s*([0-9.]+)"); //Heavy cpu so do out of loops.
+                    client.executeCommandOnSession(sessionId, sessionKey, "uptime", new OnSessionExecuteListener() {
+                        @Override
+                        public void onCompleted(int exitCode) {
+                            //Toast.makeText(MainActivity.this, "Exit code: " + exitCode, Toast.LENGTH_SHORT).show();
+                        }
+                        @Override
+                        public void onOutputLine(String line) {
+                            Matcher loadAvgMatcher = loadAvgPattern.matcher(line);
+                            if (loadAvgMatcher.find()) {
+                                if(loadAverageTextView.getText().toString().contains("*")){
+                                    loadAverageTextView.setText(loadAvgMatcher.group(1));
+                                } else {
+                                    loadAverageTextView.setText("*" + loadAvgMatcher.group(1) + "*");
+                                }
+
+
+                            }
+                        }
+                    });
+                } catch (ServiceNotConnectedException e){}
+
+                handler.postDelayed(this, 1000L);
+            }
+        });
+
     }
 
     @Override

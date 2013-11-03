@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sonelli.juicessh.pluginexample.R;
 import com.sonelli.juicessh.pluginlibrary.PluginContract;
 
 import java.util.UUID;
@@ -41,7 +42,7 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
-        return inflater.inflate(android.R.layout.simple_spinner_item, null, false);
+        return inflater.inflate(R.layout.spinner_list_item, null, false);
     }
 
     @Override

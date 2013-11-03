@@ -8,5 +8,8 @@
     <string name="run_in_background">Run in background</string>
     <string name="please_wait">Please wait...</string>
     <string name="disconnect">Disconnect</string>
+    <string name="load_average">Load Average</string>
+    <string name="unknown">Unknown</string>
+    <string name="about">About</string>
 
 </resources>
