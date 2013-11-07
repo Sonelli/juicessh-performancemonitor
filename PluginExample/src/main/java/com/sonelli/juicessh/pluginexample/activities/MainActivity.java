@@ -3,6 +3,7 @@ package com.sonelli.juicessh.pluginexample.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.RemoteException;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
@@ -39,9 +40,9 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
     private ConnectionSpinnerAdapter spinnerAdapter;
 
     // State
-    private int sessionId;
-    private String sessionKey;
-    private boolean isConnected = false;
+    private volatile int sessionId;
+    private volatile String sessionKey;
+    private volatile boolean isConnected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +118,11 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
             public void onClientStarted() {
                 isClientStarted = true;
                 connectButton.setEnabled(true);
+
+                try {
+                    client.ping(MainActivity.this);
+                } catch (ServiceNotConnectedException e){}
+
             }
 
             @Override
@@ -157,25 +163,30 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
     @Override
     public void onSessionStarted(final int sessionId, final String sessionKey) {
 
-        Toast.makeText(MainActivity.this, "JuiceSSH Plugin: Got session (id:" + sessionId + ")\n" + sessionKey, Toast.LENGTH_SHORT).show();
         MainActivity.this.sessionId = sessionId;
         MainActivity.this.sessionKey = sessionKey;
         MainActivity.this.isConnected = true;
+
         connectButton.setVisibility(View.GONE);
         disconnectButton.setVisibility(View.VISIBLE);
 
-        // Register a listener for session finish events so that we know when the session is done
+        // Register a listener for session finish events so that we know when the session has been disconnected
         try {
             client.addSessionFinishedListener(sessionId, sessionKey, this);
         } catch (ServiceNotConnectedException e){}
 
+
+        // Execute the 'uptime' command on the server every second and parse out the load average
+        // with a regular expression. Then update the big load average TextView.
+        // Wrap the load average with *'s on every other update so that you can easily see
+        // when it updates if the load average doesn't change much.
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
 
                 try {
-                    final Pattern loadAvgPattern = Pattern.compile("average:\\s*([0-9.]+)"); //Heavy cpu so do out of loops.
+                    final Pattern loadAvgPattern = Pattern.compile("average[s]?:\\s*([0-9.]+)"); // Heavy cpu so do out of loops.
                     client.executeCommandOnSession(sessionId, sessionKey, "uptime", new OnSessionExecuteListener() {
                         @Override
                         public void onCompleted(int exitCode) {
@@ -190,14 +201,14 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
                                 } else {
                                     loadAverageTextView.setText("*" + loadAvgMatcher.group(1) + "*");
                                 }
-
-
                             }
                         }
                     });
                 } catch (ServiceNotConnectedException e){}
 
-                handler.postDelayed(this, 1000L);
+                if(isConnected){
+                    handler.postDelayed(this, 1000L);
+                }
             }
         });
 
@@ -211,12 +222,15 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
 
     @Override
     public void onSessionFinished() {
-        Toast.makeText(MainActivity.this, "JuiceSSH Plugin: Session finished (id:" + sessionId + ")", Toast.LENGTH_SHORT).show();
+
         MainActivity.this.sessionId = -1;
         MainActivity.this.sessionKey = null;
         MainActivity.this.isConnected = false;
+
+        loadAverageTextView.setText(R.string.unknown);
         disconnectButton.setVisibility(View.GONE);
         connectButton.setVisibility(View.VISIBLE);
+
     }
 
 }
