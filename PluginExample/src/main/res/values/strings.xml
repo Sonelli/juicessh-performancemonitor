@@ -11,5 +11,6 @@
     <string name="load_average">Load Average</string>
     <string name="unknown">Unknown</string>
     <string name="about">About</string>
+    <string name="error">Error</string>
 
 </resources>

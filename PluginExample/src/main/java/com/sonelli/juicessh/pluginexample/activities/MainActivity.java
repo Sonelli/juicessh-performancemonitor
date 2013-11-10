@@ -3,8 +3,8 @@ package com.sonelli.juicessh.pluginexample.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.RemoteException;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +17,7 @@ import com.sonelli.juicessh.pluginexample.adapters.ConnectionSpinnerAdapter;
 import com.sonelli.juicessh.pluginexample.loaders.ConnectionListLoader;
 import com.sonelli.juicessh.pluginlibrary.PluginClient;
 import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedException;
+import com.sonelli.juicessh.pluginlibrary.exceptions.WrongConnectionTypeException;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnClientStartedListener;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionExecuteListener;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionFinishedListener;
@@ -118,11 +119,6 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
             public void onClientStarted() {
                 isClientStarted = true;
                 connectButton.setEnabled(true);
-
-                try {
-                    client.ping(MainActivity.this);
-                } catch (ServiceNotConnectedException e){}
-
             }
 
             @Override
@@ -176,6 +172,7 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
         } catch (ServiceNotConnectedException e){}
 
 
+
         // Execute the 'uptime' command on the server every second and parse out the load average
         // with a regular expression. Then update the big load average TextView.
         // Wrap the load average with *'s on every other update so that you can easily see
@@ -190,7 +187,12 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
                     client.executeCommandOnSession(sessionId, sessionKey, "uptime", new OnSessionExecuteListener() {
                         @Override
                         public void onCompleted(int exitCode) {
-                            //Toast.makeText(MainActivity.this, "Exit code: " + exitCode, Toast.LENGTH_SHORT).show();
+                            switch(exitCode){
+                                case 127:
+                                    loadAverageTextView.setText(getString(R.string.error));
+                                    Log.d(TAG, "Tried to run a command but the command was not found on the server");
+                                    break;
+                            }
                         }
                         @Override
                         public void onOutputLine(String line) {
@@ -204,13 +206,19 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
                             }
                         }
                     });
-                } catch (ServiceNotConnectedException e){}
+                } catch (ServiceNotConnectedException e){
+                    Log.d(TAG, "Tried to execute a command but could not connect to JuiceSSH plugin service");
+                } catch (WrongConnectionTypeException e){
+                    loadAverageTextView.setText(getString(R.string.error));
+                    Log.d(TAG, "Commands can only be executed on SSH sessions (not mosh/telnet/local)");
+                }
 
                 if(isConnected){
                     handler.postDelayed(this, 1000L);
                 }
             }
         });
+
 
     }
 
