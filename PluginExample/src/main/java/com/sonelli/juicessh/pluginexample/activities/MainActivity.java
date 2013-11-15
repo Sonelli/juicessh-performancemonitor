@@ -153,8 +153,21 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
+        /**
+         * The following menu items give a good example for how to interact
+         * with the JuiceSSH database. In this example we add, update and delete
+         * some connections - however you're not limited to connections in your
+         * plugin. See our FAQ for details of what items can be modified.
+         */
         switch(item.getItemId()){
+
+            /**
+             * Insert a dummy connection and get the UUID of it.
+             * You can then use this UUID to launch a session using:
+             * PluginClient.connect()
+             */
             case R.id.action_create_test_connection:
+
                 // Insert a dummy connection
                 ContentValues values = new ContentValues();
                 values.put(PluginContract.Connections.ID, UUID.randomUUID().toString());
@@ -162,9 +175,15 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
                 values.put(PluginContract.Connections.ADDRESS, "test.connection.example.com");
                 Uri addedConnectionUri = getContentResolver().insert(PluginContract.Connections.CONTENT_URI, values);
                 UUID addedConnectionId = UUID.fromString(addedConnectionUri.getLastPathSegment());
-                Toast.makeText(this, "Created connection:\n" + addedConnectionId, Toast.LENGTH_SHORT).show();
+
+                String createdMessage =  String.format( getString(R.string.created_test_connection), addedConnectionId );
+                Toast.makeText(this, createdMessage, Toast.LENGTH_SHORT).show();
                 return true;
 
+            /**
+             * Update any previously added dummy connections.
+             * In this example we just change the nickname of the connection.
+             */
             case R.id.action_update_test_connection:
 
                 // First find any previously added dummy connections
@@ -182,21 +201,23 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
                     ContentValues updatedValues = new ContentValues();
                     updatedValues.put(PluginContract.Connections.NICKNAME, "*** Updated Test Connection ***");
                     getContentResolver().update(connectionUri, updatedValues, null, null);
-                    Toast.makeText(this, "Updated connection:\n" + connectionId, Toast.LENGTH_SHORT).show();
+
+                    String updatedMessage = String.format(getString(R.string.updated_test_connection), connectionId);
+                    Toast.makeText(this, updatedMessage, Toast.LENGTH_SHORT).show();
 
                 }
                 cursor.close();
 
                 return true;
 
+            /**
+             * Delete any previously added dummy connections
+             */
             case R.id.action_delete_test_connections:
-
-                // Delete any dummy connections
                 getContentResolver().delete(PluginContract.Connections.CONTENT_URI,
                         PluginContract.Connections.ADDRESS + " = ?",
                         new String[]{ "test.connection.example.com" });
-
-                Toast.makeText(this, "Deleted all test connections", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.deleted_all_test_connections), Toast.LENGTH_SHORT).show();
                 return true;
 
         }
