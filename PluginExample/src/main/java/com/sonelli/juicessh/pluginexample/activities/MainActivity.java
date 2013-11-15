@@ -1,11 +1,15 @@
 package com.sonelli.juicessh.pluginexample.activities;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -16,6 +20,7 @@ import com.sonelli.juicessh.pluginexample.R;
 import com.sonelli.juicessh.pluginexample.adapters.ConnectionSpinnerAdapter;
 import com.sonelli.juicessh.pluginexample.loaders.ConnectionListLoader;
 import com.sonelli.juicessh.pluginlibrary.PluginClient;
+import com.sonelli.juicessh.pluginlibrary.PluginContract;
 import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedException;
 import com.sonelli.juicessh.pluginlibrary.exceptions.WrongConnectionTypeException;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnClientStartedListener;
@@ -54,10 +59,6 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
 
         this.spinnerAdapter = new ConnectionSpinnerAdapter(this);
         spinner.setAdapter(spinnerAdapter);
-
-        // Use a Loader to load the connection list into the adapter from the JuiceSSH content provider
-        // This keeps DB activity async and off the UI thread to prevent the plugin lagging
-        getSupportLoaderManager().initLoader(0, null, new ConnectionListLoader(this, spinnerAdapter));
 
         this.connectButton = (Button) findViewById(R.id.connect_button);
         this.disconnectButton = (Button) findViewById(R.id.disconnect_button);
@@ -99,6 +100,10 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Use a Loader to load the connection list into the adapter from the JuiceSSH content provider
+        // This keeps DB activity async and off the UI thread to prevent the plugin lagging
+        getSupportLoaderManager().initLoader(0, null, new ConnectionListLoader(this, spinnerAdapter));
 
         if(this.isConnected){
             connectButton.setVisibility(View.GONE);
@@ -143,6 +148,61 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.action_create_test_connection:
+                // Insert a dummy connection
+                ContentValues values = new ContentValues();
+                values.put(PluginContract.Connections.ID, UUID.randomUUID().toString());
+                values.put(PluginContract.Connections.NICKNAME, "*** Test Connection ***");
+                values.put(PluginContract.Connections.ADDRESS, "test.connection.example.com");
+                Uri addedConnectionUri = getContentResolver().insert(PluginContract.Connections.CONTENT_URI, values);
+                UUID addedConnectionId = UUID.fromString(addedConnectionUri.getLastPathSegment());
+                Toast.makeText(this, "Created connection:\n" + addedConnectionId, Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.action_update_test_connection:
+
+                // First find any previously added dummy connections
+                Cursor cursor = getContentResolver().query(
+                        PluginContract.Connections.CONTENT_URI,
+                        new String[]{ PluginContract.Connections.ID, PluginContract.Connections.NICKNAME },
+                        PluginContract.Connections.NICKNAME + " = ?",
+                        new String[]{ "*** Test Connection ***" }, null);
+
+                while(cursor.moveToNext()){
+
+                    // Then update them
+                    String connectionId = cursor.getString(0);
+                    Uri connectionUri = Uri.withAppendedPath(PluginContract.Connections.CONTENT_URI, connectionId);
+                    ContentValues updatedValues = new ContentValues();
+                    updatedValues.put(PluginContract.Connections.NICKNAME, "*** Updated Test Connection ***");
+                    getContentResolver().update(connectionUri, updatedValues, null, null);
+                    Toast.makeText(this, "Updated connection:\n" + connectionId, Toast.LENGTH_SHORT).show();
+
+                }
+                cursor.close();
+
+                return true;
+
+            case R.id.action_delete_test_connections:
+
+                // Delete any dummy connections
+                getContentResolver().delete(PluginContract.Connections.CONTENT_URI,
+                        PluginContract.Connections.ADDRESS + " = ?",
+                        new String[]{ "test.connection.example.com" });
+
+                Toast.makeText(this, "Deleted all test connections", Toast.LENGTH_SHORT).show();
+                return true;
+
+        }
+
+        return false;
+
     }
 
     @Override

@@ -1,6 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_settings"
-        android:title="@string/about"
+
+    <item android:id="@+id/action_create_test_connection"
+        android:title="@string/create_dummy_connection"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/action_update_test_connection"
+        android:title="@string/update_dummy_connection"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/action_delete_test_connections"
+        android:title="@string/delete_dummy_connections"
         android:orderInCategory="100"
         android:showAsAction="never" />
 </menu>

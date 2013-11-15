@@ -12,5 +12,8 @@
     <string name="unknown">Unknown</string>
     <string name="about">About</string>
     <string name="error">Error</string>
+    <string name="create_dummy_connection">Create Dummy Connection</string>
+    <string name="update_dummy_connection">Update Dummy Connection</string>
+    <string name="delete_dummy_connections">Delete Dummy Connections</string>
 
 </resources>
