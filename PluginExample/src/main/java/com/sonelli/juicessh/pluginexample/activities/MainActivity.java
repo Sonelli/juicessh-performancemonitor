@@ -56,14 +56,12 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
         setContentView(R.layout.activity_main);
 
         this.spinner = (Spinner) findViewById(R.id.connection_spinner);
-
         this.spinnerAdapter = new ConnectionSpinnerAdapter(this);
         spinner.setAdapter(spinnerAdapter);
 
-        this.connectButton = (Button) findViewById(R.id.connect_button);
-        this.disconnectButton = (Button) findViewById(R.id.disconnect_button);
         this.loadAverageTextView = (TextView) findViewById(R.id.load_average);
 
+        this.connectButton = (Button) findViewById(R.id.connect_button);
         connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +78,7 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
             }
         });
 
+        this.disconnectButton = (Button) findViewById(R.id.disconnect_button);
         this.disconnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -251,8 +250,6 @@ public class MainActivity extends FragmentActivity implements OnSessionStartedLi
         try {
             client.addSessionFinishedListener(sessionId, sessionKey, this);
         } catch (ServiceNotConnectedException e){}
-
-
 
         // Execute the 'uptime' command on the server every second and parse out the load average
         // with a regular expression. Then update the big load average TextView.
