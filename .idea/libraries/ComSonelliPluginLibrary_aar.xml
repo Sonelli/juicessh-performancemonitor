@@ -1,7 +1,8 @@
 <component name="libraryTable">
   <library name="ComSonelliPluginLibrary.aar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/PluginExample/build/exploded-bundles/ComSonelliPluginLibrary.aar/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Plugin/build/exploded-bundles/ComSonelliPluginLibrary.aar/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/Plugin/build/exploded-bundles/ComSonelliPluginLibrary.aar/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

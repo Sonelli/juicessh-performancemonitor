@@ -1,4 +1,46 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
 .DS_Store
+
+# generated files
+bin/
+gen/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+# .classpath
+.project
+
+# Ormlite config
+res/raw/ormlite_config.txt
+
+# Gradle binary assets
+.gradle
+.gradle/
+
+# Crashlytics
+JuiceSSH/src/main/res/values/com_crashlytics_export_strings.xml
+
+# Android Studio
+.idea/
+.gradle
+/*/local.properties
+/*/out
+/*/*/build
+/*/*/production
+*.iml
+*.iws
+*.ipr
+*~
+*.swp

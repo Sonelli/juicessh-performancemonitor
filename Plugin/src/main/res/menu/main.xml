@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/github"
+        android:title="@string/fork_me_on_github"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+
+
+    <item android:id="@+id/action_create_test_connection"
+        android:title="@string/about"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+
+</menu>

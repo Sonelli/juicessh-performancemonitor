@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Performance Monitor</string>
+    <string name="action_settings">Settings</string>
+    <string name="connect">Connect</string>
+    <string name="please_wait">Please wait&#8230;</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="load_average">Load Average</string>
+    <string name="unknown">Unknown</string>
+    <string name="about">About</string>
+    <string name="error">Error</string>
+    <string name="cpu_usage">CPU Usage</string>
+    <string name="memory_usage">Memory Usage</string>
+    <string name="free_memory">Free RAM</string>
+    <string name="network">Network</string>
+    <string name="disk">Disk</string>
+    <string name="connecting">Connecting...</string>
+    <string name="disconnecting">Disconnecting...</string>
+    <string name="fork_me_on_github">Fork me on GitHub!</string>
+
+</resources>
