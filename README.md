@@ -13,7 +13,7 @@ For details of how the various stats are discovered check out the following clas
 
 [RAM checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/FreeRamController.java)
 
-[Load Avg checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/LoadAvgController.java)
+[Load Avg checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/LoadAverageController.java)
 
 [Network checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/NetworkUsageController.java)
 
