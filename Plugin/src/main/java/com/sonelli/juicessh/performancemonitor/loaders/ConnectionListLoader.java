@@ -26,7 +26,7 @@ public class ConnectionListLoader implements LoaderManager.LoaderCallbacks<Curso
                 context,
                 PluginContract.Connections.CONTENT_URI,
                 PluginContract.Connections.PROJECTION,
-                null,
+                PluginContract.Connections.TYPE + " = " + PluginContract.Connections.TYPE_SSH,
                 null,
                 PluginContract.Connections.SORT_ORDER_DEFAULT
         );
