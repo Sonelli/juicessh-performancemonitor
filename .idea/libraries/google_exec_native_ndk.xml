@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="google_exec_native_ndk">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/PluginExample/build/exploded-bundles/ComSonelliPluginLibrary.aar/libs/google_exec_native_ndk.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

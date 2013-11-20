@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="scpkix-jdk15on-1.47.0.2">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/PluginExample/build/exploded-bundles/ComSonelliPluginLibrary.aar/libs/scpkix-jdk15on-1.47.0.2.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

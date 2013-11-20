@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="aws-android-sdk-1.4.4-ec2">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/PluginExample/build/exploded-bundles/ComSonelliPluginLibrary.aar/libs/aws-android-sdk-1.4.4-ec2.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
