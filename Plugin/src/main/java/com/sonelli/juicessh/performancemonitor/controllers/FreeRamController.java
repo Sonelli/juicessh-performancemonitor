@@ -23,7 +23,7 @@ public class FreeRamController extends BaseController {
     public BaseController start() {
         super.start();
 
-        // Compile the regex patterns outside of the main loop (cpu heavy)
+        // Compile the regex patterns outside of the menu_main loop (cpu heavy)
         final Pattern buffersPattern = Pattern.compile("^Buffers:\\s*([0-9]+)");
         final Pattern freePattern = Pattern.compile("^MemFree:\\s*([0-9]+)");
         final Pattern cachedPattern = Pattern.compile("^Cached:\\s*([0-9]+)");
