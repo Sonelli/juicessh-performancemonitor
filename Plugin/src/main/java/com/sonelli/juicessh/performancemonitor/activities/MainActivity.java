@@ -17,11 +17,14 @@ import com.sonelli.juicessh.performancemonitor.R;
 import com.sonelli.juicessh.performancemonitor.adapters.ConnectionSpinnerAdapter;
 import com.sonelli.juicessh.performancemonitor.controllers.BaseController;
 import com.sonelli.juicessh.performancemonitor.controllers.CpuUsageController;
+import com.sonelli.juicessh.performancemonitor.controllers.DiskUsageController;
 import com.sonelli.juicessh.performancemonitor.controllers.FreeRamController;
 import com.sonelli.juicessh.performancemonitor.controllers.LoadAverageController;
+import com.sonelli.juicessh.performancemonitor.controllers.NetworkUsageController;
 import com.sonelli.juicessh.performancemonitor.loaders.ConnectionListLoader;
 import com.sonelli.juicessh.performancemonitor.views.AutoResizeTextView;
 import com.sonelli.juicessh.pluginlibrary.PluginClient;
+import com.sonelli.juicessh.pluginlibrary.PluginContract;
 import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedException;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnClientStartedListener;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionFinishedListener;
@@ -45,6 +48,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private BaseController loadAverageController;
     private BaseController freeRamController;
     private BaseController cpuUsageController;
+    private BaseController diskUsageController;
+    private BaseController networkUsageController;
 
     // Text displays
     private AutoResizeTextView loadAverageTextView;
@@ -63,7 +68,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.spinnerAdapter = new ConnectionSpinnerAdapter(this);
+        // Create an adapter for populating the actionbar spinner with connections.
+        // We're going to pass in TYPE_SSH to disable all spinner items not of this type.
+        // This is because sending of commands required to poll performance data is only
+        // possible on SSH connections.
+        this.spinnerAdapter = new ConnectionSpinnerAdapter(this, PluginContract.Connections.TYPE_SSH);
 
         getSupportActionBar().setNavigationMode(android.app.ActionBar.NAVIGATION_MODE_LIST);
         getSupportActionBar().setListNavigationCallbacks(spinnerAdapter, this);
@@ -212,11 +221,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         } catch (ServiceNotConnectedException e){}
 
 
-        // TODO: Remove these when working
-        networkUsageTextView.setText("0 Mbit/s");
-        diskUsageTextView.setText("0ms");
-
-
         this.loadAverageController = new LoadAverageController(this)
                 .setSessionId(sessionId)
                 .setSessionKey(sessionKey)
@@ -236,6 +240,20 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 .setSessionKey(sessionKey)
                 .setPluginClient(client)
                 .setTextview(cpuUsageTextView)
+                .start();
+
+        this.diskUsageController = new DiskUsageController(this)
+                .setSessionId(sessionId)
+                .setSessionKey(sessionKey)
+                .setPluginClient(client)
+                .setTextview(diskUsageTextView)
+                .start();
+
+        this.networkUsageController = new NetworkUsageController(this)
+                .setSessionId(sessionId)
+                .setSessionKey(sessionKey)
+                .setPluginClient(client)
+                .setTextview(networkUsageTextView)
                 .start();
 
     }
@@ -263,6 +281,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
         if(cpuUsageController != null){
             cpuUsageController.stop();
+        }
+
+        if(diskUsageController != null){
+            diskUsageController.stop();
+        }
+
+        if(networkUsageController != null){
+            networkUsageController.stop();
         }
 
         loadAverageTextView.setText("--");

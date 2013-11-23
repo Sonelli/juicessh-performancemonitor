@@ -15,24 +15,37 @@ public class ConnectionListLoader implements LoaderManager.LoaderCallbacks<Curso
     private Context context;
     private ConnectionSpinnerAdapter adapter;
 
+    /**
+     * Creates a {@link android.support.v4.content.Loader} to fetch all connection
+     * items from the database on a background thread (similar to an {@link android.os.AsyncTask}.
+     * Once the connections are loaded it will populate the associated listview/spinner adapter.
+     * @param context
+     * @param adapter
+     */
     public ConnectionListLoader(Context context, ConnectionSpinnerAdapter adapter) {
         this.context = context;
         this.adapter = adapter;
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+    public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         return new CursorLoader(
                 context,
                 PluginContract.Connections.CONTENT_URI,
                 PluginContract.Connections.PROJECTION,
-                PluginContract.Connections.TYPE + " = " + PluginContract.Connections.TYPE_SSH,
+                null,
                 null,
                 PluginContract.Connections.SORT_ORDER_DEFAULT
         );
 
     }
 
+    /**
+     * Swaps out the associated adapter's cursor for a populated one
+     * once the loader has fetched all of the connections from the DB
+     * @param cursorLoader
+     * @param cursor
+     */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         if(adapter != null){
@@ -40,6 +53,11 @@ public class ConnectionListLoader implements LoaderManager.LoaderCallbacks<Curso
         }
     }
 
+    /**
+     * Flip back to the original state before connections were loaded
+     * and set the associated adapter's cursor to null.
+     * @param cursorLoader
+     */
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         if(adapter != null){

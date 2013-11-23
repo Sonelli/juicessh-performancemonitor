@@ -16,7 +16,7 @@
     <string name="memory_usage">Memory Usage</string>
     <string name="free_memory">Free RAM</string>
     <string name="network">Network</string>
-    <string name="disk">Disk</string>
+    <string name="disk">Disk Usage</string>
     <string name="connecting">Connecting...</string>
     <string name="disconnecting">Disconnecting...</string>
     <string name="fork_me_on_github">Fork me on GitHub!</string>

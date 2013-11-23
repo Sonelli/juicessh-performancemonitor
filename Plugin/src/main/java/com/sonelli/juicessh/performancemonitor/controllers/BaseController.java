@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class BaseController {
 
-    public static final int INTERVAL_SECONDS = 2;
+    public static final int INTERVAL_SECONDS = 5;
 
     private int sessionId;
     private String sessionKey;
