@@ -60,21 +60,42 @@ public class FreeRamController extends BaseController {
                             if(buffersMatcher.find()){
                                 buffers = Integer.valueOf(buffersMatcher.group(1));
                                 if(buffers > -1 && free > -1 && cached > -1){
-                                    setText((free + buffers + cached) / 1024 + "MB");
+                                    long kb = free + buffers + cached;
+                                    if(kb > 1048576){
+                                        setText(kb / 1024 / 1024 + "GB");
+                                    } else if (kb > 1024){
+                                        setText(kb / 1024 + "MB");
+                                    } else {
+                                        setText(kb + "KB");
+                                    }
                                 }
                             }
 
                             if(freeMatcher.find()){
                                 free = Integer.valueOf(freeMatcher.group(1));
                                 if(buffers > -1 && free > -1 && cached > -1){
-                                    setText((free + buffers + cached) / 1024 + "MB");
+                                    long kb = free + buffers + cached;
+                                    if(kb > 1048576){
+                                        setText(kb / 1024 / 1024 + "GB");
+                                    } else if (kb > 1024){
+                                        setText(kb / 1024 + "MB");
+                                    } else {
+                                        setText(kb + "KB");
+                                    }
                                 }
                             }
 
                             if(cachedMatcher.find()){
                                 cached = Integer.valueOf(cachedMatcher.group(1));
                                 if(buffers > -1 && free > -1 && cached > -1){
-                                    setText((free + buffers + cached) / 1024 + "MB");
+                                    long kb = free + buffers + cached;
+                                    if(kb > 1048576){
+                                        setText(kb / 1024 / 1024 + "GB");
+                                    } else if (kb > 1024){
+                                        setText(kb / 1024 + "MB");
+                                    } else {
+                                        setText(kb + "KB");
+                                    }
                                 }
                             }
 
