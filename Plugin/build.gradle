@@ -6,13 +6,12 @@ buildscript {
         classpath 'com.android.tools.build:gradle:0.6.+'
     }
 }
+
 apply plugin: 'android'
 
 repositories {
     mavenCentral()
-    flatDir {
-        dirs '../../juicessh/PluginLibrary/build/libs/'
-    }
+    maven { url 'https://raw.github.com/Sonelli/maven/master' }
 }
 
 android {
@@ -27,7 +26,6 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:18.0.+'
-    compile 'com.android.support:gridlayout-v7:18.0.+'
     compile 'com.android.support:support-v4:18.0.0'
-    compile 'com.sonelli:PluginLibrary:+@aar'
+    compile 'com.sonelli:juicessh-pluginlibrary:1.0.+@aar'
 }
