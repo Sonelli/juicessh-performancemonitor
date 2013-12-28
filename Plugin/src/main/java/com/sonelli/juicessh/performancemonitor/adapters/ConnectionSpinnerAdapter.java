@@ -4,15 +4,18 @@ import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sonelli.juicessh.performancemonitor.R;
 import com.sonelli.juicessh.pluginlibrary.PluginClient;
 import com.sonelli.juicessh.pluginlibrary.PluginContract;
 
 import java.util.UUID;
+import java.util.logging.SocketHandler;
 
 /**
  * Loads JuiceSSH connections from a cursor and provides an adapter
@@ -57,7 +60,7 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
         if(getCursor() != null){
             getCursor().moveToPosition(position);
-            int idIndex = getCursor().getColumnIndex(PluginContract.Connections.ID);
+            int idIndex = getCursor().getColumnIndex(PluginContract.Connections.COLUMN_ID);
             if(idIndex > -1){
                 id = UUID.fromString(getCursor().getString(idIndex));
             }
@@ -78,10 +81,10 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
 
-        int nameColumn = cursor.getColumnIndex(PluginContract.Connections.NAME);
-        int typeColumn = cursor.getColumnIndex(PluginContract.Connections.TYPE);
+        int nameColumn = cursor.getColumnIndex(PluginContract.Connections.COLUMN_NAME);
+        int typeColumn = cursor.getColumnIndex(PluginContract.Connections.COLUMN_TYPE);
 
         if(nameColumn > -1){
 
@@ -93,21 +96,22 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
             // then disable the item in the list so that the plugin user cannot
             // select it - as sending commands to non-ssh connections is not supported.
 
-            // Oddly, we need to make setClickable(true) on the TextView & surrounding layout.
-            // This will force the TextView to take the touch input rather than the Spinner
-
             if(type != -1){
                 if(cursor.getInt(typeColumn) != type){
-                    view.setEnabled(false);
-                    view.setClickable(true);
-                    textView.setEnabled(false);
-                    textView.setClickable(true);
+
+                    View.OnTouchListener listener = new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            Toast.makeText(context, context.getString(R.string.only_ssh_connections_are_supported), Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+                    };
+
+                    textView.setOnTouchListener(listener);
                     textView.setTextColor(context.getResources().getColor(android.R.color.tab_indicator_text));
+
                 } else {
-                    view.setEnabled(true);
-                    view.setClickable(false);
-                    textView.setEnabled(true);
-                    textView.setClickable(false);
+                    textView.setOnTouchListener(null);
                     textView.setTextColor(context.getResources().getColor(android.R.color.white));
                 }
             }

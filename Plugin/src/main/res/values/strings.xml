@@ -23,5 +23,6 @@
     <string name="open_address">Open Address</string>
     <string name="rate_this_plugin">Rate this plugin</string>
     <string name="google_play_not_installed">Error: Google Play Store not installed</string>
+    <string name="only_ssh_connections_are_supported">Only SSH connections are supported</string>
 
 </resources>
