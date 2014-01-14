@@ -38,6 +38,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
     private boolean isClientStarted = false;
     private final PluginClient client = new PluginClient();
+    private final static int JUICESSH_REQUEST_CODE = 2585;
 
     private Button connectButton;
     private Button disconnectButton;
@@ -62,6 +63,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private volatile int sessionId;
     private volatile String sessionKey;
     private volatile boolean isConnected = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +93,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 if(id != null){
                     if(isClientStarted){
                        try {
-                           client.connect(MainActivity.this, id, true, MainActivity.this);
+                           client.connect(MainActivity.this, id, MainActivity.this, JUICESSH_REQUEST_CODE);
                        } catch (ServiceNotConnectedException e){
                            Toast.makeText(MainActivity.this, "Could not connect to JuiceSSH Plugin Service", Toast.LENGTH_SHORT).show();
                        }
@@ -197,8 +199,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
         // This is important if you want to be able to interact with JuiceSSH sessions that you
         // have started otherwise the plugin won't have access.
-        if(requestCode == PluginClient.JUICESSH_REQUEST){
-            client.gotActivityResult(resultCode, data);
+        if(requestCode == JUICESSH_REQUEST_CODE){
+            client.gotActivityResult(requestCode, resultCode, data);
         }
     }
 
