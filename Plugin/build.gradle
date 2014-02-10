@@ -19,13 +19,13 @@ android {
     buildToolsVersion '19.0.1'
 
     defaultConfig {
-        minSdkVersion 7
+        minSdkVersion 9
         targetSdkVersion 19
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:18.0.+'
-    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:appcompat-v7:19.0.+'
+    compile 'com.android.support:support-v4:19.0.0'
     compile 'com.sonelli:juicessh-pluginlibrary:1.0.+@aar'
 }
