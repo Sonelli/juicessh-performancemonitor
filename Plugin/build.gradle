@@ -14,7 +14,14 @@ repositories {
     maven { url 'https://raw.github.com/Sonelli/maven/master' }
 }
 
+dependencies {
+    compile 'com.android.support:appcompat-v7:19.1.+'
+    compile 'com.android.support:support-v4:19.1.0'
+    compile 'com.sonelli:juicessh-pluginlibrary:1.0.6@aar'
+}
+
 android {
+
     compileSdkVersion 19
     buildToolsVersion '19.1.0'
 
@@ -22,10 +29,31 @@ android {
         minSdkVersion 9
         targetSdkVersion 19
     }
-}
 
-dependencies {
-    compile 'com.android.support:appcompat-v7:19.1.+'
-    compile 'com.android.support:support-v4:19.1.0'
-    compile 'com.sonelli:juicessh-pluginlibrary:1.0.+@aar'
+    final Console console = System.console();
+    if (console != null) {
+        // Building from CLI: Prompt for keystore details
+        signingConfigs {
+            release {
+                storeFile file(console.readLine("Enter keystore path: "))
+                storePassword console.readLine("Enter keystore password: ")
+                keyAlias console.readLine("Enter alias key: ")
+                keyPassword console.readLine("Enter key password: ")
+            }
+        }
+    } else {
+        // Building from IDE: Don't use a signing config
+        signingConfigs {
+            release {}
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            jniDebugBuild false
+            signingConfig signingConfigs.release
+        }
+    }
+
 }
