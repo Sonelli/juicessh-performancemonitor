@@ -88,16 +88,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                connectButton.setText(R.string.connecting);
+                connectButton.setEnabled(false);
+
                 final UUID id = spinnerAdapter.getConnectionId(getSupportActionBar().getSelectedNavigationIndex());
                 if(id != null){
                     if(isClientStarted){
-                       try {
+                        try {
                            client.connect(MainActivity.this, id, MainActivity.this, JUICESSH_REQUEST_CODE);
-                       } catch (ServiceNotConnectedException e){
+                        } catch (ServiceNotConnectedException e){
                            Toast.makeText(MainActivity.this, "Could not connect to JuiceSSH Plugin Service", Toast.LENGTH_SHORT).show();
-                       }
+                        }
                     }
                 }
+
             }
         });
 
@@ -174,6 +179,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             @Override
             public void onClientStarted() {
                 isClientStarted = true;
+                connectButton.setText(R.string.connect);
                 connectButton.setEnabled(true);
             }
 
@@ -219,6 +225,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         MainActivity.this.sessionKey = sessionKey;
         MainActivity.this.isConnected = true;
 
+        connectButton.setText(R.string.connect);
         connectButton.setVisibility(View.GONE);
         connectButton.setEnabled(false);
 
@@ -311,6 +318,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         disconnectButton.setEnabled(false);
 
         connectButton.setVisibility(View.VISIBLE);
+        connectButton.setText(R.string.connect);
         connectButton.setEnabled(true);
 
     }
