@@ -4,8 +4,7 @@
     android:versionCode="3"
     android:versionName="1.0" >
 
-    <uses-permission android:name="com.sonelli.juicessh.api.v1.permission.READ_CONNECTIONS" />
-    <uses-permission android:name="com.sonelli.juicessh.api.v1.permission.WRITE_SNIPPETS" />
+    <uses-permission android:name="com.sonelli.juicessh.api.v1.permission.READ_CONNECTIONS"/>
     <uses-permission android:name="com.sonelli.juicessh.api.v1.permission.OPEN_SESSIONS" />
 
     <application
