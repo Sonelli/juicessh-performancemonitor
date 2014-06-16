@@ -75,8 +75,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         // possible on SSH connections.
         this.spinnerAdapter = new ConnectionSpinnerAdapter(this, PluginContract.Connections.TYPE_SSH);
 
-        getSupportActionBar().setNavigationMode(android.app.ActionBar.NAVIGATION_MODE_LIST);
+        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         getSupportActionBar().setListNavigationCallbacks(spinnerAdapter, this);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         this.loadAverageTextView = (AutoResizeTextView) findViewById(R.id.load_average);
         this.freeRamTextView = (AutoResizeTextView) findViewById(R.id.free_memory);

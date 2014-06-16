@@ -17,7 +17,7 @@
 */
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="fill_horizontal"
@@ -33,4 +33,4 @@
         android:layout_height="40dp"
         android:ellipsize="marquee"/><!-- From: file:/Volumes/Android/int/jb-mr2-ub-dev/frameworks/support/v7/appcompat/res/layout/support_simple_spinner_dropdown_item.xml -->
 
-</LinearLayout>
+</RelativeLayout>

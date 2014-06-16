@@ -11,11 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sonelli.juicessh.performancemonitor.R;
-import com.sonelli.juicessh.pluginlibrary.PluginClient;
 import com.sonelli.juicessh.pluginlibrary.PluginContract;
 
 import java.util.UUID;
-import java.util.logging.SocketHandler;
 
 /**
  * Loads JuiceSSH connections from a cursor and provides an adapter
@@ -78,6 +76,16 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
         return inflater.inflate(R.layout.spinner_list_item, null, false);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return 0;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 1;
     }
 
     @Override

@@ -1,19 +1,20 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compat="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/fork_on_github"
         android:title="@string/fork_me_on_github"
         android:orderInCategory="100"
-        android:showAsAction="never" />
-
+        compat:showAsAction="never" />
 
     <item android:id="@+id/rate_plugin"
         android:title="@string/rate_this_plugin"
         android:orderInCategory="100"
-        android:showAsAction="never" />
+        compat:showAsAction="never" />
 
     <item android:id="@+id/about"
         android:title="@string/about"
         android:orderInCategory="100"
-        android:showAsAction="never" />
+        compat:showAsAction="never" />
 
 </menu>
