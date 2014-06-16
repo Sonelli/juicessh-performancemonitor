@@ -9,18 +9,18 @@ buildscript {
 
 apply plugin: 'android'
 
-repositories {
-    mavenCentral()
-    maven { url 'https://raw.github.com/Sonelli/maven/master' }
-}
+    repositories {
+        mavenCentral()
+        maven { url 'https://raw.github.com/Sonelli/maven/master' }
+    }
 
-dependencies {
-    compile 'com.android.support:appcompat-v7:19.1.+'
-    compile 'com.android.support:support-v4:19.1.0'
-    compile 'com.sonelli:juicessh-pluginlibrary:1.0.6@aar'
-}
+    dependencies {
+        compile 'com.android.support:appcompat-v7:19.1.+'
+        compile 'com.android.support:support-v4:19.1.0'
+        compile 'com.sonelli:juicessh-pluginlibrary:1.0.7@aar'
+    }
 
-android {
+    android {
 
     compileSdkVersion 19
     buildToolsVersion '19.1.0'
