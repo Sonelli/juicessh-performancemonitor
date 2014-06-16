@@ -158,6 +158,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        if(this.isConnected){
+            // Disconnect when activity is paused
+            disconnectButton.performClick();
+        }
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
 
