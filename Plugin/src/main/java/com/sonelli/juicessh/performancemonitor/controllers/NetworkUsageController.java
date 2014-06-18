@@ -68,6 +68,11 @@ public class NetworkUsageController extends BaseController {
                                     // We now know we've done bytes in the last <milliseconds> ms.
                                     // Lets get that into bytes / second
                                     long seconds = milliseconds / 1000;
+
+                                    // If the last check was < 1sec ago - don't process this one
+                                    if(seconds < 1)
+                                        return;
+
                                     long bytesPerSecond = bytes / seconds;
                                     long bitsPerSecond = bytesPerSecond * 8;
 
