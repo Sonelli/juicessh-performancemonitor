@@ -49,18 +49,19 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
     /**
      * Returns the UUID connection ID for the item at a given position, or null if not available
-     * @param position
-     * @return The UUID connection ID
+     * @param position Position of the item to fetch the id of
+     * @return The UUID connection ID or null if it doesn't exist
      */
     public UUID getConnectionId(int position) {
 
         UUID id = null;
 
         if(getCursor() != null){
-            getCursor().moveToPosition(position);
-            int idIndex = getCursor().getColumnIndex(PluginContract.Connections.COLUMN_ID);
-            if(idIndex > -1){
-                id = UUID.fromString(getCursor().getString(idIndex));
+            if(getCursor().moveToPosition(position)) {
+                int idIndex = getCursor().getColumnIndex(PluginContract.Connections.COLUMN_ID);
+                if (idIndex > -1) {
+                    id = UUID.fromString(getCursor().getString(idIndex));
+                }
             }
         }
 

@@ -90,12 +90,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             @Override
             public void onClick(View view) {
 
-                connectButton.setText(R.string.connecting);
-                connectButton.setEnabled(false);
-
                 final UUID id = spinnerAdapter.getConnectionId(getSupportActionBar().getSelectedNavigationIndex());
                 if(id != null){
                     if(isClientStarted){
+
+                        connectButton.setText(R.string.connecting);
+                        connectButton.setEnabled(false);
+
                         try {
                            client.connect(MainActivity.this, id, MainActivity.this, JUICESSH_REQUEST_CODE);
                         } catch (ServiceNotConnectedException e){
@@ -362,4 +363,5 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         return false;
 
     }
+
 }
