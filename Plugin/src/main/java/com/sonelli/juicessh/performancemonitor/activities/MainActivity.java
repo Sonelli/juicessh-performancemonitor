@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.sonelli.juicessh.performancemonitor.controllers.DiskUsageController;
 import com.sonelli.juicessh.performancemonitor.controllers.FreeRamController;
 import com.sonelli.juicessh.performancemonitor.controllers.LoadAverageController;
 import com.sonelli.juicessh.performancemonitor.controllers.NetworkUsageController;
+import com.sonelli.juicessh.performancemonitor.helpers.PreferenceHelper;
 import com.sonelli.juicessh.performancemonitor.loaders.ConnectionListLoader;
 import com.sonelli.juicessh.performancemonitor.views.AutoResizeTextView;
 import com.sonelli.juicessh.pluginlibrary.PluginClient;
@@ -68,6 +70,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PreferenceHelper preferenceHelper = new PreferenceHelper(this);
+        if(preferenceHelper.getKeepScreenOnFlag()){
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
 
         // Create an adapter for populating the actionbar spinner with connections.
         // We're going to pass in TYPE_SSH to disable all spinner items not of this type.
@@ -206,6 +213,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        // assigning the keep screen on menu the value of its saved status
+        PreferenceHelper preferenceHelper = new PreferenceHelper(this);
+        menu.findItem(R.id.keep_screen_on).setChecked(preferenceHelper.getKeepScreenOnFlag());
+
         return true;
     }
 
@@ -340,6 +352,17 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 Intent urlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.app_url)));
                 urlIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
                 startActivity(Intent.createChooser(urlIntent, getString(R.string.open_address)));
+                return true;
+
+            case R.id.keep_screen_on:
+                item.setChecked(!item.isChecked());
+                PreferenceHelper preferenceHelper = new PreferenceHelper(this);
+                preferenceHelper.setKeepScreenOnFlag(item.isChecked());
+                if(item.isChecked()) {
+                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                }else{
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                }
                 return true;
 
             case R.id.rate_plugin:
