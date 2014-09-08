@@ -2,15 +2,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:compat="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/fork_on_github"
-        android:title="@string/fork_me_on_github"
-        android:orderInCategory="100"
-        compat:showAsAction="never" />
-
     <item android:id="@+id/keep_screen_on"
         android:title="@string/keep_screen_on"
         android:orderInCategory="100"
         android:checkable="true"
+        compat:showAsAction="never" />
+
+    <item android:id="@+id/fork_on_github"
+        android:title="@string/fork_me_on_github"
+        android:orderInCategory="100"
         compat:showAsAction="never" />
 
     <item android:id="@+id/rate_plugin"
