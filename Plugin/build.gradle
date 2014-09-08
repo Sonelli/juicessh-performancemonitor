@@ -3,11 +3,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.11.+'
+        classpath 'com.android.tools.build:gradle:0.12.2'
     }
 }
 
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
     repositories {
         mavenCentral()
@@ -15,9 +15,9 @@ apply plugin: 'android'
     }
 
     dependencies {
-        compile 'com.android.support:appcompat-v7:19.1.+'
-        compile 'com.android.support:support-v4:19.1.0'
-        compile 'com.sonelli:juicessh-pluginlibrary:1.0.7@aar'
+        compile 'com.android.support:appcompat-v7:20.0.0'
+        compile 'com.android.support:support-v4:20.0.0'
+        compile 'com.sonelli:juicessh-pluginlibrary:1.0.8@aar'
     }
 
     android {
