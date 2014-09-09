@@ -9,6 +9,8 @@ import com.sonelli.juicessh.pluginlibrary.PluginClient;
 import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedException;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionExecuteListener;
 
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +30,9 @@ public class CpuUsageController extends BaseController {
         final Pattern cpuOldPattern = Pattern.compile("^cpu \\s*([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+)"); // Heavy cpu so do out of loops.
         final Pattern cpuNewPattern = Pattern.compile("^cpu \\s*([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+)"); // Heavy cpu so do out of loops.
 
+        final AtomicLong previousIdle = new AtomicLong(-1);
+        final AtomicLong previousTotal = new AtomicLong(-1);
+
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -36,6 +41,7 @@ public class CpuUsageController extends BaseController {
                 try {
 
                     getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), "cat /proc/stat", new OnSessionExecuteListener() {
+
                         @Override
                         public void onCompleted(int exitCode) {
                             switch(exitCode){
@@ -71,9 +77,23 @@ public class CpuUsageController extends BaseController {
                                 }
 
                                 long total = user + nice + sys + idle + iowait + irq + softirq + steal + guest + guestnice;
-                                int free = (int)((idle * 100.0) / total + 0.5);
 
-                                setText((100 - free) + "%");
+                                // CPU counters in /proc/stat show the aggregated number of CPU ticks
+                                // spent in each CPU state since system boot.
+
+                                // We need to wait until we've done at least two readings before we
+                                // can calculate the counter delta since the last reading and show
+                                // it as a percentage.
+
+                                if(previousIdle.get() > -1 || previousTotal.get() > -1) {
+                                    long idleDelta = idle - previousIdle.get();
+                                    long totalDelta = total - previousTotal.get();
+                                    int free = (int)((idleDelta * 100.0) / totalDelta + 0.5);
+                                    setText((100 - free) + "%");
+                                }
+
+                                previousIdle.set(idle);
+                                previousTotal.set(total);
 
                             }
                         }
