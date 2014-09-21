@@ -2,6 +2,7 @@ package com.sonelli.juicessh.performancemonitor.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -159,7 +160,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
         // Use a Loader to load the connection list into the adapter from the JuiceSSH content provider
         // This keeps DB activity async and off the UI thread to prevent the plugin lagging
-        getSupportLoaderManager().initLoader(0, null, new ConnectionListLoader(this, spinnerAdapter));
+
+        if(checkCallingOrSelfPermission("com.sonelli.juicessh.api.v1.permission.READ_CONNECTIONS") == PackageManager.PERMISSION_GRANTED) {
+            getSupportLoaderManager().initLoader(0, null, new ConnectionListLoader(this, spinnerAdapter));
+        }
 
         if(this.isConnected){
             connectButton.setVisibility(View.GONE);
