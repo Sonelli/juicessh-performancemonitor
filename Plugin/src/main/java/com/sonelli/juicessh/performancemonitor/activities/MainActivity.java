@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -148,6 +149,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             }
         });
 
+        client.start(this, new OnClientStartedListener() {
+            @Override
+            public void onClientStarted() {
+                isClientStarted = true;
+                connectButton.setText(R.string.connect);
+                connectButton.setEnabled(true);
+            }
+
+            @Override
+            public void onClientStopped() {
+                isClientStarted = false;
+                connectButton.setEnabled(false);
+            }
+        });
+
     }
 
     @Override
@@ -176,40 +192,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        if(this.isConnected){
-            // Disconnect when activity is paused
-            disconnectButton.performClick();
-        }
-    }
+    protected void onDestroy() {
+        super.onDestroy();
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+        if(isClientStarted) {
 
-        client.start(this, new OnClientStartedListener() {
-            @Override
-            public void onClientStarted() {
-                isClientStarted = true;
-                connectButton.setText(R.string.connect);
-                connectButton.setEnabled(true);
-            }
+            if (isConnected){
+                try {
+                    client.disconnect(sessionId, sessionKey);
+                } catch (ServiceNotConnectedException e) {
+                    Log.e(TAG, "Failed to disconnect JuiceSSH session used performance monitor plugin");
+                }
+             }
 
-            @Override
-            public void onClientStopped() {
-                isClientStarted = false;
-                connectButton.setEnabled(false);
-            }
-        });
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if(isClientStarted){
             client.stop(this);
+
         }
     }
 

@@ -26,4 +26,5 @@
     <string name="google_play_not_installed">Error: Google Play Store not installed</string>
     <string name="only_ssh_connections_are_supported">Only SSH connections are supported</string>
     <string name="keep_screen_on">Keep screen on</string>
+
 </resources>
