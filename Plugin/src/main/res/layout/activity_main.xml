@@ -175,6 +175,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/disk_usage_container"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
