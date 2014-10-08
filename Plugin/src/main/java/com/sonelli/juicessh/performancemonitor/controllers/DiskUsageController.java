@@ -20,26 +20,24 @@ public class DiskUsageController extends BaseController {
 
     private String partition;
 
+    final Handler handler;
+
+    final Pattern diskUsagePattern = Pattern.compile("([0-9.]+%)"); // Heavy cpu so do out of loops.
+    final Pattern partitionNamePattern = Pattern.compile("(/[\\w/]*$)");
+
     public DiskUsageController(Context context) {
         super(context);
         partition = "/";
+        handler = new Handler();
     }
 
     public void choosePartition() {
         final ArrayList<String> partitions = new ArrayList<String>();
 
-        final Pattern partitionNamePattern = Pattern.compile("(/[\\w/]*$)");
-
-        final Handler handler = new Handler();
-
-        final boolean wasRunning = isRunning();
-
         handler.post(new Runnable() {
             @Override
             public void run() {
                 try {
-                    if(isRunning())
-                        stop();
 
                     getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), "df | sed '1 d'", new OnSessionExecuteListener() {
                         @Override
@@ -47,16 +45,16 @@ public class DiskUsageController extends BaseController {
                             switch(exitCode) {
                                 case 0:
                                     if(context.get() != null) {
-                                        final String[] partitionsArray = (String[]) partitions.toArray(new String[0]);
+                                        final String[] partitionsArray = new String[partitions.size()];
+                                        partitions.toArray(partitionsArray);
                                         AlertDialog.Builder builder = new AlertDialog.Builder(context.get());
-                                        builder.setTitle("Choose a partition")
+                                        builder.setTitle("Choose a partition (" + partition + ")")
                                                 .setItems(partitionsArray, new DialogInterface.OnClickListener() {
                                                     @Override
                                                     public void onClick(DialogInterface dialogInterface, int which) {
                                                         partition = partitionsArray[which];
                                                         dialogInterface.cancel();
-                                                        if(wasRunning)
-                                                            start();
+                                                        handler.post(loadUsageTask);
                                                     }
                                                 })
                                                 .show();
@@ -92,59 +90,48 @@ public class DiskUsageController extends BaseController {
     public BaseController start() {
         super.start();
 
-        // Work out the free disk space percentage on the / disk
-
-        final Pattern diskUsagePattern = Pattern.compile("([0-9.]+%)"); // Heavy cpu so do out of loops.
-
-        final Handler handler = new Handler();
-
-        final String command = "df | grep ' " + partition + "$'";
-
-        Log.d(TAG, command);
-
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-
-                try {
-
-                    getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), command, new OnSessionExecuteListener() {
-                        @Override
-                        public void onCompleted(int exitCode) {
-                            switch(exitCode){
-                                case 127:
-                                    setText(getString(R.string.error));
-                                    Log.d(TAG, "Tried to run a command but the command was not found on the server");
-                                    break;
-                            }
-                        }
-                        @Override
-                        public void onOutputLine(String line) {
-                            Matcher diskUsageMatcher = diskUsagePattern.matcher(line);
-                            if(diskUsageMatcher.find()){
-                                setText(diskUsageMatcher.group(1));
-                            }
-                        }
-
-                        @Override
-                        public void onError(int error, String reason) {
-                            toast(reason);
-                        }
-                    });
-                } catch (ServiceNotConnectedException e){
-                    Log.d(TAG, "Tried to execute a command but could not connect to JuiceSSH plugin service");
-                }
-
-                if(isRunning()){
-                    handler.postDelayed(this, INTERVAL_SECONDS * 1000L);
-                }
-            }
-
-
-        });
+        handler.post(loadUsageTask);
 
         return this;
 
     }
+
+    Runnable loadUsageTask = new Runnable() {
+        @Override
+        public void run() {
+            try {
+
+                getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), "df | grep ' " + partition + "$'", new OnSessionExecuteListener() {
+                    @Override
+                    public void onCompleted(int exitCode) {
+                        switch(exitCode){
+                            case 127:
+                                setText(getString(R.string.error));
+                                Log.d(TAG, "Tried to run a command but the command was not found on the server");
+                                break;
+                        }
+                    }
+                    @Override
+                    public void onOutputLine(String line) {
+                        Matcher diskUsageMatcher = diskUsagePattern.matcher(line);
+                        if(diskUsageMatcher.find()){
+                            setText(diskUsageMatcher.group(1));
+                        }
+                    }
+
+                    @Override
+                    public void onError(int error, String reason) {
+                        toast(reason);
+                    }
+                });
+            } catch (ServiceNotConnectedException e){
+                Log.d(TAG, "Tried to execute a command but could not connect to JuiceSSH plugin service");
+            }
+
+            if(isRunning()){
+                handler.postDelayed(this, INTERVAL_SECONDS * 1000L);
+            }
+        }
+    };
 
 }
