@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sonelli.juicessh.performancemonitor.R;
@@ -68,6 +69,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private AutoResizeTextView networkUsageTextView;
     private AutoResizeTextView diskUsageTextView;
 
+    private TextView diskUsageLabel;
+
     // State
     private volatile int sessionId;
     private volatile String sessionKey;
@@ -101,6 +104,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         this.networkUsageTextView = (AutoResizeTextView) findViewById(R.id.network_usage);
         this.diskUsageTextView = (AutoResizeTextView) findViewById(R.id.disk_usage);
 
+        this.diskUsageLabel = (TextView) findViewById(R.id.disk_usage_label);
+
         this.diskUsageContainer = (LinearLayout) findViewById(R.id.disk_usage_container);
 
         this.diskUsageContainer.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +123,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                                                 public void onClick(DialogInterface dialogInterface, int which) {
                                                     ((DiskUsageController)diskUsageController).setPartition(partitions[which]);
                                                     preferenceHelper.setDiskUsagePartition(partitions[which]);
+
+                                                    diskUsageLabel.setText(partitions[which]);
                                                     dialogInterface.cancel();
                                                 }
                                             })
@@ -179,6 +186,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                                 });
                             }
                         }).start();
+
+
                     }
                 }
             }
@@ -317,6 +326,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 .setTextview(diskUsageTextView)
                 .start();
 
+        diskUsageLabel.setText(preferenceHelper.getDiskUsagePartition());
+        diskUsageLabel.setVisibility(View.VISIBLE);
+
         this.networkUsageController = new NetworkUsageController(this)
                 .setSessionId(sessionId)
                 .setSessionKey(sessionKey)
@@ -354,6 +366,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         if(diskUsageController != null){
             diskUsageController.stop();
         }
+
+        diskUsageLabel.setVisibility(View.GONE);
 
         if(networkUsageController != null){
             networkUsageController.stop();

@@ -185,15 +185,34 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent">
 
-                <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:layout_width="match_parent"
-                    android:textSize="20sp"
-                    android:fontFamily="sans-serif"
-                    android:textColor="@android:color/white"
-                    android:text="@string/disk"
-                    android:gravity="center_horizontal|bottom" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_width="match_parent"
+                        android:textSize="20sp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@android:color/white"
+                        android:text="@string/disk"
+                        android:gravity="center_horizontal|bottom" />
+
+                    <TextView
+                        android:id="@+id/disk_usage_label"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_width="match_parent"
+                        android:textSize="20sp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@android:color/white"
+                        android:gravity="center_horizontal|top"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
 
                 <com.sonelli.juicessh.performancemonitor.views.AutoResizeTextView
                     android:layout_height="0dp"
