@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.sonelli.juicessh.performancemonitor.R;
+import com.sonelli.juicessh.performancemonitor.helpers.PreferenceHelper;
 import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedException;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionExecuteListener;
 
@@ -25,9 +26,12 @@ public class DiskUsageController extends BaseController {
     final Pattern diskUsagePattern = Pattern.compile("([0-9.]+%)"); // Heavy cpu so do out of loops.
     final Pattern partitionNamePattern = Pattern.compile("(/[\\w/]*$)");
 
+    PreferenceHelper preferenceHelper;
+
     public DiskUsageController(Context context) {
         super(context);
-        partition = "/";
+        preferenceHelper = new PreferenceHelper(context);
+        partition = preferenceHelper.getDiskUsagePartition();
         handler = new Handler();
     }
 
@@ -53,6 +57,7 @@ public class DiskUsageController extends BaseController {
                                                     @Override
                                                     public void onClick(DialogInterface dialogInterface, int which) {
                                                         partition = partitionsArray[which];
+                                                        preferenceHelper.setDiskUsagePartition(partition);
                                                         dialogInterface.cancel();
                                                         handler.post(loadUsageTask);
                                                     }
