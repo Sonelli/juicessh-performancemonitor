@@ -1,6 +1,8 @@
 package com.sonelli.juicessh.performancemonitor.activities;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -71,13 +73,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private volatile String sessionKey;
     private volatile boolean isConnected = false;
 
+    PreferenceHelper preferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PreferenceHelper preferenceHelper = new PreferenceHelper(this);
+        preferenceHelper = new PreferenceHelper(this);
         if(preferenceHelper.getKeepScreenOnFlag()){
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
@@ -104,7 +107,24 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             @Override
             public void onClick(View view) {
                 if(diskUsageController != null) {
-                    ((DiskUsageController)diskUsageController).choosePartition();
+                    ((DiskUsageController)diskUsageController).getAvailablePartitions(
+                            new DiskUsageController.OnPartitionsLoadedListener() {
+                                @Override
+                                public void onParitionsLoaded(final String[] partitions) {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                                    builder.setTitle("Choose a partition (" + ((DiskUsageController)diskUsageController).getPartition() + ")")
+                                            .setItems(partitions, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int which) {
+                                                    ((DiskUsageController)diskUsageController).setPartition(partitions[which]);
+                                                    preferenceHelper.setDiskUsagePartition(partitions[which]);
+                                                    dialogInterface.cancel();
+                                                }
+                                            })
+                                            .show();
+                                }
+                            }
+                    );
                 }
             }
         });
@@ -290,6 +310,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 .start();
 
         this.diskUsageController = new DiskUsageController(this)
+                .setPartition(preferenceHelper.getDiskUsagePartition())
                 .setSessionId(sessionId)
                 .setSessionKey(sessionKey)
                 .setPluginClient(client)

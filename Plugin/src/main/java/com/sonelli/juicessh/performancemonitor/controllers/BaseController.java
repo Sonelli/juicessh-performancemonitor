@@ -18,7 +18,7 @@ public abstract class BaseController {
     private String sessionKey;
     private PluginClient client;
     private TextView textView;
-    protected WeakReference<Context> context;
+    private WeakReference<Context> context;
 
     private AtomicBoolean isRunning = new AtomicBoolean(false);
 

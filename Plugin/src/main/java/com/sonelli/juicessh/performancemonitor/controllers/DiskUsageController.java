@@ -1,13 +1,10 @@
 package com.sonelli.juicessh.performancemonitor.controllers;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Handler;
 import android.util.Log;
 
 import com.sonelli.juicessh.performancemonitor.R;
-import com.sonelli.juicessh.performancemonitor.helpers.PreferenceHelper;
 import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedException;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionExecuteListener;
 
@@ -26,16 +23,16 @@ public class DiskUsageController extends BaseController {
     final Pattern diskUsagePattern = Pattern.compile("([0-9.]+%)"); // Heavy cpu so do out of loops.
     final Pattern partitionNamePattern = Pattern.compile("(/[\\w/]*$)");
 
-    PreferenceHelper preferenceHelper;
+    public interface OnPartitionsLoadedListener {
+        public void onParitionsLoaded(String[] partitions);
+    }
 
     public DiskUsageController(Context context) {
         super(context);
-        preferenceHelper = new PreferenceHelper(context);
-        partition = preferenceHelper.getDiskUsagePartition();
         handler = new Handler();
     }
 
-    public void choosePartition() {
+    public void getAvailablePartitions(final OnPartitionsLoadedListener listener) {
         final ArrayList<String> partitions = new ArrayList<String>();
 
         handler.post(new Runnable() {
@@ -48,22 +45,9 @@ public class DiskUsageController extends BaseController {
                         public void onCompleted(int exitCode) {
                             switch(exitCode) {
                                 case 0:
-                                    if(context.get() != null) {
-                                        final String[] partitionsArray = new String[partitions.size()];
-                                        partitions.toArray(partitionsArray);
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(context.get());
-                                        builder.setTitle("Choose a partition (" + partition + ")")
-                                                .setItems(partitionsArray, new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialogInterface, int which) {
-                                                        partition = partitionsArray[which];
-                                                        preferenceHelper.setDiskUsagePartition(partition);
-                                                        dialogInterface.cancel();
-                                                        handler.post(loadUsageTask);
-                                                    }
-                                                })
-                                                .show();
-                                    }
+                                    final String[] partitionsArray = new String[partitions.size()];
+                                    partitions.toArray(partitionsArray);
+                                    listener.onParitionsLoaded(partitionsArray);
                                     break;
                                 case 127:
                                 default:
@@ -89,6 +73,16 @@ public class DiskUsageController extends BaseController {
                 }
             }
         });
+    }
+
+    public BaseController setPartition(String partition) {
+        this.partition = partition;
+        handler.post(loadUsageTask);
+        return this;
+    }
+
+    public String getPartition() {
+        return partition;
     }
 
     @Override
