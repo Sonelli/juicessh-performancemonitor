@@ -1,6 +1,8 @@
 package com.sonelli.juicessh.performancemonitor.activities;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -13,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sonelli.juicessh.performancemonitor.R;
@@ -48,6 +52,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
     private ConnectionSpinnerAdapter spinnerAdapter;
 
+    // Containers
+    private LinearLayout diskUsageContainer;
+
     // Controllers
     private BaseController loadAverageController;
     private BaseController freeRamController;
@@ -62,18 +69,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     private AutoResizeTextView networkUsageTextView;
     private AutoResizeTextView diskUsageTextView;
 
+    private TextView diskUsageLabel;
+
     // State
     private volatile int sessionId;
     private volatile String sessionKey;
     private volatile boolean isConnected = false;
 
+    PreferenceHelper preferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PreferenceHelper preferenceHelper = new PreferenceHelper(this);
+        preferenceHelper = new PreferenceHelper(this);
         if(preferenceHelper.getKeepScreenOnFlag()){
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
@@ -93,6 +103,38 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         this.cpuUsageTextView = (AutoResizeTextView) findViewById(R.id.cpu_usage);
         this.networkUsageTextView = (AutoResizeTextView) findViewById(R.id.network_usage);
         this.diskUsageTextView = (AutoResizeTextView) findViewById(R.id.disk_usage);
+
+        this.diskUsageLabel = (TextView) findViewById(R.id.disk_usage_label);
+
+        this.diskUsageContainer = (LinearLayout) findViewById(R.id.disk_usage_container);
+
+        this.diskUsageContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(diskUsageController != null) {
+                    ((DiskUsageController)diskUsageController).getAvailablePartitions(
+                            new DiskUsageController.OnPartitionsLoadedListener() {
+                                @Override
+                                public void onParitionsLoaded(final String[] partitions) {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                                    builder.setTitle("Choose a partition (" + ((DiskUsageController)diskUsageController).getPartition() + ")")
+                                            .setItems(partitions, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int which) {
+                                                    ((DiskUsageController)diskUsageController).setPartition(partitions[which]);
+                                                    preferenceHelper.setDiskUsagePartition(partitions[which]);
+
+                                                    diskUsageLabel.setText(partitions[which]);
+                                                    dialogInterface.cancel();
+                                                }
+                                            })
+                                            .show();
+                                }
+                            }
+                    );
+                }
+            }
+        });
 
         this.connectButton = (Button) findViewById(R.id.connect_button);
         connectButton.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +186,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                                 });
                             }
                         }).start();
+
+
                     }
                 }
             }
@@ -275,11 +319,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 .start();
 
         this.diskUsageController = new DiskUsageController(this)
+                .setPartition(preferenceHelper.getDiskUsagePartition())
                 .setSessionId(sessionId)
                 .setSessionKey(sessionKey)
                 .setPluginClient(client)
                 .setTextview(diskUsageTextView)
                 .start();
+
+        diskUsageLabel.setText(preferenceHelper.getDiskUsagePartition());
+        diskUsageLabel.setVisibility(View.VISIBLE);
 
         this.networkUsageController = new NetworkUsageController(this)
                 .setSessionId(sessionId)
@@ -318,6 +366,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         if(diskUsageController != null){
             diskUsageController.stop();
         }
+
+        diskUsageLabel.setVisibility(View.GONE);
 
         if(networkUsageController != null){
             networkUsageController.stop();
