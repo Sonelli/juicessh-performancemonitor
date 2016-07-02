@@ -1,1 +1,1 @@
-include ':Plugin'
+include ':app'
