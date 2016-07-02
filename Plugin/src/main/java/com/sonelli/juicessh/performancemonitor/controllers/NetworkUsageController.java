@@ -3,11 +3,9 @@ package com.sonelli.juicessh.performancemonitor.controllers;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
-
 import com.sonelli.juicessh.performancemonitor.R;
 import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedException;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionExecuteListener;
-
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
@@ -16,7 +14,6 @@ import java.util.regex.Pattern;
 public class NetworkUsageController extends BaseController {
 
     public static final String TAG = "NetworkUsageController";
-
     public NetworkUsageController(Context context) {
         super(context);
     }
@@ -46,7 +43,7 @@ public class NetworkUsageController extends BaseController {
                     getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), "cat /proc/net/dev", new OnSessionExecuteListener() {
 
                         // Store the devices and the number of rx/tx bytes combined
-                        HashMap<String, Long> devices = new HashMap<String, Long>();
+                        HashMap<String, Long> devices = new HashMap<>();
 
                         @Override
                         public void onCompleted(int exitCode) {
@@ -69,24 +66,23 @@ public class NetworkUsageController extends BaseController {
                                     // Lets get that into bytes / second
                                     long seconds = milliseconds / 1000;
 
-                                    // If the last check was < 1sec ago - don't process this one
+                                    // If the last check was < 1 sec ago - don't process this one
                                     if(seconds < 1)
                                         return;
 
                                     long bytesPerSecond = bytes / seconds;
                                     long bitsPerSecond = bytesPerSecond * 8;
 
-                                    if(bitsPerSecond > 1048576){
-                                        setText(bitsPerSecond / 1024 / 1024 + "Mbps");
-                                    } else if(bitsPerSecond > 1024){
-                                        setText(bitsPerSecond / 1024 + "Kbps");
+                                    if(bitsPerSecond > 1048576*8){
+                                        setText(bitsPerSecond / 1024 / 1024 / 8 + " MB/s");
+                                    } else if(bitsPerSecond > 1024*8){
+                                        setText(bitsPerSecond / 1024 / 8 + " KB/s");
                                     } else {
-                                        setText("< 1Kbps");
+                                        setText("< 1 KB/s");
                                     }
 
                                     lastTotal.set(total);
                                     lastCheck.set(System.currentTimeMillis());
-
                                     break;
                                 case 127:
                                     setText(getString(R.string.error));
@@ -120,9 +116,6 @@ public class NetworkUsageController extends BaseController {
 
 
         });
-
         return this;
-
     }
-
 }

@@ -1,7 +1,6 @@
 package com.sonelli.juicessh.performancemonitor.controllers;
 
 import android.content.Context;
-import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class BaseController {
 
-    public static final int INTERVAL_SECONDS = 5;
+    public static final int INTERVAL_SECONDS = 2;
 
     private int sessionId;
     private String sessionKey;
@@ -22,10 +21,8 @@ public abstract class BaseController {
 
     private AtomicBoolean isRunning = new AtomicBoolean(false);
 
-    protected final Handler handler = new Handler();
-
     public BaseController(Context context) {
-        this.context = new WeakReference<Context>(context);
+        this.context = new WeakReference<>(context);
     }
 
     public BaseController setSessionId(int sessionId){

@@ -62,11 +62,11 @@ public class FreeRamController extends BaseController {
                                 if(buffers > -1 && free > -1 && cached > -1){
                                     long kb = free + buffers + cached;
                                     if(kb > 1048576){
-                                        setText(kb / 1024 / 1024 + "GB");
+                                        setText(kb / 1024 / 1024 + " GB");
                                     } else if (kb > 1024){
-                                        setText(kb / 1024 + "MB");
+                                        setText(kb / 1024 + " MB");
                                     } else {
-                                        setText(kb + "KB");
+                                        setText(kb + " KB");
                                     }
                                 }
                             }
@@ -76,11 +76,11 @@ public class FreeRamController extends BaseController {
                                 if(buffers > -1 && free > -1 && cached > -1){
                                     long kb = free + buffers + cached;
                                     if(kb > 1048576){
-                                        setText(kb / 1024 / 1024 + "GB");
+                                        setText(kb / 1024 / 1024 + " GB");
                                     } else if (kb > 1024){
-                                        setText(kb / 1024 + "MB");
+                                        setText(kb / 1024 + " MB");
                                     } else {
-                                        setText(kb + "KB");
+                                        setText(kb + " KB");
                                     }
                                 }
                             }
@@ -90,11 +90,11 @@ public class FreeRamController extends BaseController {
                                 if(buffers > -1 && free > -1 && cached > -1){
                                     long kb = free + buffers + cached;
                                     if(kb > 1048576){
-                                        setText(kb / 1024 / 1024 + "GB");
+                                        setText(kb / 1024 / 1024 + " GB");
                                     } else if (kb > 1024){
-                                        setText(kb / 1024 + "MB");
+                                        setText(kb / 1024 + " MB");
                                     } else {
-                                        setText(kb + "KB");
+                                        setText(kb + " KB");
                                     }
                                 }
                             }
@@ -116,9 +116,7 @@ public class FreeRamController extends BaseController {
                 }
             }
         });
-
         return this;
-
     }
 
 }

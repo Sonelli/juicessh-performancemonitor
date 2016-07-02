@@ -23,14 +23,11 @@ import java.util.UUID;
  */
 public class ConnectionSpinnerAdapter extends CursorAdapter {
 
-    public static final String TAG = "ConnectionAdapter";
-
     private LayoutInflater inflater;
     private int type;
 
     /**
      * Loads all JuiceSSH connections from a cursor ready for a ListView/Spinner
-     * @param context
      */
     public ConnectionSpinnerAdapter(Context context) {
         this(context, -1);
@@ -38,8 +35,6 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
     /**
      * Loads JuiceSSH connections of a specific type ready for a ListView/Spinner
-     * @param context
-     * @param type
      */
     public ConnectionSpinnerAdapter(Context context, int type){
         super(context, null, false);
@@ -121,7 +116,7 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
                 } else {
                     textView.setOnTouchListener(null);
-                    textView.setTextColor(context.getResources().getColor(android.R.color.white));
+                    textView.setTextColor(context.getResources().getColor(android.R.color.black));
                 }
             }
 

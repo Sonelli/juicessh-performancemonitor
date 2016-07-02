@@ -18,7 +18,7 @@ public class PreferenceHelper {
                 .getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(KEEP_SCREEN_ON_KEY, flag);
-        editor.commit();
+        editor.apply();
     }
 
     public boolean getKeepScreenOnFlag() {

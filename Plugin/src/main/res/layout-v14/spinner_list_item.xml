@@ -23,14 +23,16 @@
     android:gravity="fill_horizontal"
     android:orientation="vertical"  >
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:textSize="18sp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@android:id/text1"
         style="?attr/spinnerDropDownItemStyle"
-        android:textColor="@android:color/white"
+        android:textColor="@color/black"
         android:singleLine="true"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:ellipsize="marquee"/><!-- From: file:/Volumes/Android/int/jb-mr2-ub-dev/frameworks/support/v7/appcompat/res/layout/support_simple_spinner_dropdown_item.xml -->
 
 </RelativeLayout>

@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Performance Monitor</string>
-    <string name="title_activity_about">About</string>
-    <string name="app_about">This JuiceSSH plugin monitors performance statistics on Linux based systems.\n\nIt works by starting a background JuiceSSH session and running various commands on a periodic basis to obtain the metrics required.\n\nCurrently this plugin has been tested with Ubuntu and RedHat Enterprise Linux, however this plugin is open source and freely available on Github. If you\'d like to add support for other operating systems, please take a look at the github page and submit a pull request.\n\nhttps://github.com/sonelli/juicessh-performancemonitor</string>
-    <string name="app_url">https://github.com/Sonelli/juicessh-performancemonitor</string>
-    <string name="app_package">com.sonelli.juicessh.performancemonitor</string>
-    <string name="connect">Connect</string>
-    <string name="please_wait">Please wait…</string>
-    <string name="disconnect">Disconnect</string>
-    <string name="load_average">Load Average</string>
-    <string name="unknown">Unknown</string>
-    <string name="about">About</string>
-    <string name="error">Error</string>
-    <string name="cpu_usage">CPU Usage</string>
-    <string name="memory_usage">Memory Usage</string>
-    <string name="free_memory">Free RAM</string>
-    <string name="network">Network</string>
-    <string name="disk">Disk Usage</string>
-    <string name="connecting">Connecting...</string>
-    <string name="disconnecting">Disconnecting...</string>
+    <string name="app_name">JuiceSSH 性能监控插件</string>
+    <string name="title_activity_about">关于</string>
+    <string name="app_about">此插件是 Sonelli/juicessh-performancemonitor 的改进版，采用全新的 Material Design 设计风格，并改进些许细节以提升体验。\n\n该 JuiceSSH 插件用于监控 Linux 系统的性能数据。通过后台开启一个 SSH 会话并运行特定的命令，插件能够获取相应的参数并加以处理后显示。各项功能已经在与 RedHat 以及 Ubuntu 等系统的SSH连接中测试通过。这是一个开源软件，您可以访问 GitHub 来获取源代码并为项目做出贡献。\n\nhttps://github.com/hwding/juicessh-performancemonitor\n\nhttps://github.com/Sonelli/juicessh-performancemonitor</string>
+    <string name="app_url">https://github.com/hwding/juicessh-performancemonitor</string>
+    <string name="app_package">com.hwding.JuiceSSHPerformanceMonitor</string>
+    <string name="connect">连 接</string>
+    <string name="please_wait">请稍等…</string>
+    <string name="disconnect">断 开</string>
+    <string name="load_average">平均负载</string>
+    <string name="unknown">未知</string>
+    <string name="about">关于</string>
+    <string name="error">错误</string>
+    <string name="cpu_usage">CPU使用率</string>
+    <string name="free_memory">剩余内存</string>
+    <string name="network">网络速度</string>
+    <string name="disk">磁盘使用率</string>
+    <string name="connecting">正在连接…</string>
+    <string name="disconnecting">正在断开…</string>
     <string name="fork_me_on_github">Fork me on GitHub!</string>
-    <string name="open_address">Open Address</string>
-    <string name="rate_this_plugin">Rate this plugin</string>
-    <string name="google_play_not_installed">Error: Google Play Store not installed</string>
-    <string name="only_ssh_connections_are_supported">Only SSH connections are supported</string>
-    <string name="keep_screen_on">Keep screen on</string>
+    <string name="open_address">打开链接地址</string>
+    <string name="rate_this_plugin">给我们评分</string>
+    <string name="google_play_not_installed">错误: Google Play 商店未安装</string>
+    <string name="only_ssh_connections_are_supported">仅支持 SSH 连接</string>
+    <string name="keep_screen_on">保持屏幕常亮</string>
 
+    <!-- From juiceSSHPluginLibrary -->
+    <string name="juicessh_version">JuiceSSH 版本</string>
+    <string name="juicessh_wrong_version">此插件需要 JuiceSSH %s 以上版本. 请升级您的JuiceSSH.</string>
+    <string name="install">安装</string>
+    <string name="cancel">取消</string>
+    <string name="security_error">安全错误</string>
+    <string name="juicessh_permissions_not_granted">此插件没有获得与 JuiceSSH 交互的必需权限, 可能是您在安装本插件之后才安装了 JuiceSSH. 您需要重新安装本插件来解决这个问题.\n\n按下“好的”来启动 Play Store.</string>
+    <string name="ok">好的</string>
+    <string name="play_store_not_installed">Play Store 未安装</string>
+
+    <!-- SettingActivity Strings -->
+    <string name="appearance">外观</string>
+    <string name="display">显示</string>
+    <string name="use_dark_theme">使用暗色主题</string>
+    <string name="use_byte">使用字节作为网速基本单位</string>
 </resources>

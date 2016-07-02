@@ -3,7 +3,7 @@ JuiceSSH Plugin: Performance Monitor
 
 A JuiceSSH plugin for monitoring linux servers using the JuiceSSH Plugin SDK.
 
-![screenshot](http://i.imgur.com/c1mggsk.png?1)
+![screenshot](http://i.imgur.com/uDSJRIr.png?1)
 
 This plugin will connect to your choice of JuiceSSH connection and execute commands to monitor the performance of the server.
 
