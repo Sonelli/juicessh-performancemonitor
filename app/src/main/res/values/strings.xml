@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Performance Monitor</string>
+    <string name="title_activity_about">About</string>
+    <string name="app_about">This JuiceSSH plugin monitors performance statistics on Linux based systems.\n\nIt works by starting a background JuiceSSH session and running various commands on a periodic basis to obtain the metrics required.\n\nCurrently this plugin has been tested with Ubuntu and RedHat Enterprise Linux, however this plugin is open source and freely available on Github. If you\'d like to add support for other operating systems, please take a look at the github page and submit a pull request.\n\nhttps://github.com/Sonelli/juicessh-performancemonitor</string>
+    <string name="app_url">https://github.com/Sonelli/juicessh-performancemonitor</string>
+    <string name="app_package">com.sonelli.juicessh.performancemonitor</string>
+    <string name="connect">Connect</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="load_average">Load Average</string>
+    <string name="unknown">Unknown</string>
+    <string name="about">About</string>
+    <string name="error">Error</string>
+    <string name="cpu_usage">CPU Usage</string>
+    <string name="memory_usage">Memory Usage</string>
+    <string name="free_memory">Free RAM</string>
+    <string name="network">Network</string>
+    <string name="disk">Disk Usage</string>
+    <string name="connecting">Connecting…</string>
+    <string name="disconnecting">Disconnecting…</string>
+    <string name="fork_me_on_github">Fork me on GitHub!</string>
+    <string name="open_address">Open Address</string>
+    <string name="rate_this_plugin">Rate this plugin</string>
+    <string name="google_play_not_installed">Error: Google Play Store not installed</string>
+    <string name="only_ssh_connections_are_supported">Only SSH connections are supported</string>
+    <string name="keep_screen_on">Keep screen on</string>
+
+    <!-- From juiceSSHPluginLibrary -->
+    <string name="juicessh_version">JuiceSSH Version</string>
+    <string name="juicessh_wrong_version">This JuiceSSH plugin requires that JuiceSSH %s (or newer) be installed. Please upgrade your copy of JuiceSSH.</string>
+    <string name="install">Install</string>
+    <string name="cancel">Cancel</string>
+    <string name="security_error">Security Error</string>
+    <string name="juicessh_permissions_not_granted">This plugin does not have the necessary permissions required to interact with JuiceSSH. This can happen if JuiceSSH is installed after the plugin. To resolve this you will need to reinstall the plugin.\n\nPress OK to launch the plugin Play Store page.</string>
+    <string name="ok">OK</string>
+    <string name="play_store_not_installed">Play Store not installed</string>
+</resources>
