@@ -26,16 +26,6 @@
     <string name="only_ssh_connections_are_supported">仅支持 SSH 连接</string>
     <string name="keep_screen_on">保持屏幕常亮</string>
 
-    <!-- From juiceSSHPluginLibrary -->
-    <string name="juicessh_version">JuiceSSH 版本</string>
-    <string name="juicessh_wrong_version">此插件需要 JuiceSSH %s 以上版本. 请升级您的JuiceSSH.</string>
-    <string name="install">安装</string>
-    <string name="cancel">取消</string>
-    <string name="security_error">安全错误</string>
-    <string name="juicessh_permissions_not_granted">此插件没有获得与 JuiceSSH 交互的必需权限, 可能是您在安装本插件之后才安装了 JuiceSSH. 您需要重新安装本插件来解决这个问题.\n\n按下“好的”来启动 Play Store.</string>
-    <string name="ok">好的</string>
-    <string name="play_store_not_installed">Play Store 未安装</string>
-
     <!-- SettingActivity Strings -->
     <string name="appearance">外观</string>
     <string name="display">显示</string>
