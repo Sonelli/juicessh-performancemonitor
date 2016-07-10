@@ -3,7 +3,7 @@
 
     <string name="app_name">Performance Monitor</string>
     <string name="title_activity_about">About</string>
-    <string name="app_about">This JuiceSSH plugin monitors performance statistics on Linux based systems.\n\nIt works by starting a background JuiceSSH session and running various commands on a periodic basis to obtain the metrics required.\n\nCurrently this plugin has been tested with Ubuntu and RedHat Enterprise Linux, however this plugin is open source and freely available on Github. If you\'d like to add support for other operating systems, please take a look at the github page and submit a pull request.\n\nhttps://github.com/sonelli/juicessh-performancemonitor</string>
+    <string name="app_about">This JuiceSSH plugin monitors performance statistics on Linux based systems.\n\nIt works by starting a background JuiceSSH session and running various commands on a periodic basis to obtain the metrics required.\n\nCurrently this plugin has been tested with Ubuntu and RedHat Enterprise Linux, however this plugin is open source and freely available on Github. If you\'d like to add support for other operating systems, please take a look at the github page and submit a pull request.\n\nhttps://github.com/sonelli/juicessh-performancemonitor\n\nContributors:\n\nMany thanks to hwding for updating this plugin to it\'s new Material theme.</string>
     <string name="app_url">https://github.com/Sonelli/juicessh-performancemonitor</string>
     <string name="app_package">com.sonelli.juicessh.performancemonitor</string>
     <string name="connect">Connect</string>
@@ -14,7 +14,6 @@
     <string name="about">About</string>
     <string name="error">Error</string>
     <string name="cpu_usage">CPU Usage</string>
-    <string name="memory_usage">Memory Usage</string>
     <string name="free_memory">Free RAM</string>
     <string name="network">Network</string>
     <string name="disk">Disk Usage</string>
@@ -32,5 +31,6 @@
     <string name="display">Display</string>
     <string name="use_dark_theme">Dark Theme</string>
     <string name="use_byte">Bytes</string>
-    
+    <string name="plugin_permissions_request">This plugin requires access to list JuiceSSH connections, and to connect to them.</string>
+
 </resources>

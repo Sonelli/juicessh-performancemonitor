@@ -3,7 +3,7 @@
 
     <string name="app_name">JuiceSSH 性能监控插件</string>
     <string name="title_activity_about">关于</string>
-    <string name="app_about">此插件是 Sonelli/juicessh-performancemonitor 的改进版，采用全新的 Material Design 设计风格，并改进些许细节以提升体验。\n\n该 JuiceSSH 插件用于监控 Linux 系统的性能数据。通过后台开启一个 SSH 会话并运行特定的命令，插件能够获取相应的参数并加以处理后显示。各项功能已经在与 RedHat 以及 Ubuntu 等系统的SSH连接中测试通过。这是一个开源软件，您可以访问 GitHub 来获取源代码并为项目做出贡献。\n\nhttps://github.com/hwding/juicessh-performancemonitor\n\nhttps://github.com/Sonelli/juicessh-performancemonitor</string>
+    <string name="app_about">此插件是 Sonelli/juicessh-performancemonitor 的改进版，采用全新的 Material Design 设计风格，并改进些许细节以提升体验。\n\n该 JuiceSSH 插件用于监控 Linux 系统的性能数据。通过后台开启一个 SSH 会话并运行特定的命令，插件能够获取相应的参数并加以处理后显示。各项功能已经在与 RedHat 以及 Ubuntu 等系统的SSH连接中测试通过。这是一个开源软件，您可以访问 GitHub 来获取源代码并为项目做出贡献。\n\nhttps://github.com/hwding/juicessh-performancemonitor\n\nhttps://github.com/Sonelli/juicessh-performancemonitor\n\nContributors:\n\n感谢hwding将UI更新至Material风格</string>
     <string name="app_url">https://github.com/hwding/juicessh-performancemonitor</string>
     <string name="app_package">com.sonelli.juicessh.performancemonitor</string>
     <string name="connect">连 接</string>
