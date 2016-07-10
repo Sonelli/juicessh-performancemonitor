@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +19,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
+
 import com.sonelli.juicessh.performancemonitor.R;
 import com.sonelli.juicessh.performancemonitor.adapters.ConnectionSpinnerAdapter;
 import com.sonelli.juicessh.performancemonitor.controllers.BaseController;
@@ -32,15 +37,20 @@ import com.sonelli.juicessh.pluginlibrary.exceptions.ServiceNotConnectedExceptio
 import com.sonelli.juicessh.pluginlibrary.listeners.OnClientStartedListener;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionFinishedListener;
 import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionStartedListener;
+
 import java.util.UUID;
 
-public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener, OnSessionStartedListener, OnSessionFinishedListener {
+public class MainActivity extends AppCompatActivity implements ActionBar.OnNavigationListener, OnSessionStartedListener, OnSessionFinishedListener {
 
     public static final String TAG = "MainActivity";
 
     private boolean isClientStarted = false;
     private final PluginClient client = new PluginClient();
     private final static int JUICESSH_REQUEST_CODE = 2585;
+
+    private static final int REQUESTID_PERMISSIONS = 1388;
+    private final static String PERMISSION_READ_CONNECTIONS = "com.sonelli.juicessh.api.v1.permission.READ_CONNECTIONS";
+    private final static String PERMISSION_OPEN_SESSIONS = "com.sonelli.juicessh.api.v1.permission.OPEN_SESSIONS";
 
     private Button connectButton;
     private Button disconnectButton;
@@ -155,21 +165,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             }
         });
 
-        client.start(this, new OnClientStartedListener() {
-            @Override
-            public void onClientStarted() {
-                isClientStarted = true;
-                connectButton.setText(R.string.connect);
-                connectButton.setEnabled(true);
-            }
-
-            @Override
-            public void onClientStopped() {
-                isClientStarted = false;
-                connectButton.setEnabled(false);
-            }
-        });
-
     }
 
     @Override
@@ -179,11 +174,31 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         if(loadAverageTextView != null)
             loadAverageTextView.resizeText();
 
-        // Use a Loader to load the connection list into the adapter from the JuiceSSH content provider
-        // This keeps DB activity async and off the UI thread to prevent the plugin lagging
+        try {
 
-        if(checkCallingOrSelfPermission("com.sonelli.juicessh.api.v1.permission.READ_CONNECTIONS") == PackageManager.PERMISSION_GRANTED)
-            getSupportLoaderManager().initLoader(0, null, new ConnectionListLoader(this, spinnerAdapter));
+            if (ContextCompat.checkSelfPermission(this, PERMISSION_READ_CONNECTIONS) != PackageManager.PERMISSION_GRANTED) {
+
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, PERMISSION_READ_CONNECTIONS)) {
+                    Toast.makeText(this, R.string.plugin_permissions_request, Toast.LENGTH_LONG).show();
+                }
+
+                ActivityCompat.requestPermissions(this, new String[]{PERMISSION_READ_CONNECTIONS, PERMISSION_OPEN_SESSIONS}, REQUESTID_PERMISSIONS);
+
+            } else {
+
+                // Use a Loader to load the connection list into the adapter from the JuiceSSH content provider
+                // This keeps DB activity async and off the UI thread to prevent the plugin lagging
+                getSupportLoaderManager().initLoader(0, null, new ConnectionListLoader(this, spinnerAdapter));
+
+                if(!isClientStarted) {
+                    startPluginClient();
+                }
+
+            }
+
+        } catch (IllegalArgumentException e){
+            Log.e(TAG, "JuiceSSH is not installed. Plugin Library will prompt user to install from the Play Store.");
+        }
 
         if(this.isConnected){
             connectButton.setVisibility(View.GONE);
@@ -387,5 +402,58 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         return false;
 
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode) {
+            case REQUESTID_PERMISSIONS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 1  && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+
+                    getSupportLoaderManager().initLoader(0, null, new ConnectionListLoader(this, spinnerAdapter));
+                    if(!isClientStarted) {
+                        startPluginClient();
+                    }
+
+                } else {
+                    if(Build.VERSION.SDK_INT < 23){
+                        // We haven't been granted permission, but we're running on a version of Android
+                        // that doesn't support dynamic permissions requests. This can only happen if the
+                        // plugin was installed before JuiceSSH (so can't find the permissions).
+                        // Start the PluginClient - not because it will be able to connect, but it will
+                        // do a permission check, and prompt the user with a dialog to warn about the
+                        // installation order, and guide them to a fix.
+                        startPluginClient();
+                    }
+                }
+            }
+        }
+
+    }
+
+    public void startPluginClient(){
+
+        client.start(this, new OnClientStartedListener() {
+            @Override
+            public void onClientStarted() {
+                isClientStarted = true;
+                connectButton.setText(R.string.connect);
+                connectButton.setEnabled(true);
+            }
+
+            @Override
+            public void onClientStopped() {
+                isClientStarted = false;
+                connectButton.setEnabled(false);
+            }
+        });
+
+    }
+
+
+
+
 
 }
