@@ -118,11 +118,16 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
                     if(isClientStarted){
                         connectButton.setText(R.string.connecting);
                         connectButton.setEnabled(false);
-                        try {
-                           client.connect(MainActivity.this, id, MainActivity.this, JUICESSH_REQUEST_CODE);
-                        } catch (ServiceNotConnectedException e){
-                           Toast.makeText(MainActivity.this, "Could not connect to JuiceSSH Plugin Service", Toast.LENGTH_SHORT).show();
-                        }
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    client.connect(MainActivity.this, id, MainActivity.this, JUICESSH_REQUEST_CODE);
+                                } catch (ServiceNotConnectedException e){
+                                    Toast.makeText(MainActivity.this, "Could not connect to JuiceSSH Plugin Service", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }).start();
                     }
                 }
 
@@ -267,7 +272,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         try {
             client.addSessionFinishedListener(sessionId, sessionKey, this);
         } catch (ServiceNotConnectedException ignored){}
-
 
         this.loadAverageController = new LoadAverageController(this)
                 .setSessionId(sessionId)
