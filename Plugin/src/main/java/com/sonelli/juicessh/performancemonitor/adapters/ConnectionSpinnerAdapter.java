@@ -64,6 +64,28 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
 
     }
 
+    /**
+     * Returns the type of connection form the item at a given position, or -1 if not available
+     * @param position Position of the item to fetch the type of
+     * @return The connection type or -1 if it doesn't exist
+     */
+    public int getConnectionType(int position) {
+
+        int type = -1;
+
+        if(getCursor() != null){
+            if(getCursor().moveToPosition(position)) {
+                int typeIndex = getCursor().getColumnIndex(PluginContract.Connections.COLUMN_TYPE);
+                if (typeIndex > -1) {
+                    type = getCursor().getInt(typeIndex);
+                }
+            }
+        }
+
+        return type;
+
+    }
+
     @Override
     public boolean areAllItemsEnabled() {
         return false;
@@ -96,26 +118,10 @@ public class ConnectionSpinnerAdapter extends CursorAdapter {
             String name = cursor.getString(nameColumn);
             textView.setText(name);
 
-            // If the connection type != SSH (ie, it's a Mosh/telnet/local one)
-            // then disable the item in the list so that the plugin user cannot
-            // select it - as sending commands to non-ssh connections is not supported.
-
             if(type != -1){
                 if(cursor.getInt(typeColumn) != type){
-
-                    View.OnTouchListener listener = new View.OnTouchListener() {
-                        @Override
-                        public boolean onTouch(View view, MotionEvent motionEvent) {
-                            Toast.makeText(context, context.getString(R.string.only_ssh_connections_are_supported), Toast.LENGTH_SHORT).show();
-                            return false;
-                        }
-                    };
-
-                    textView.setOnTouchListener(listener);
                     textView.setTextColor(context.getResources().getColor(android.R.color.tab_indicator_text));
-
                 } else {
-                    textView.setOnTouchListener(null);
                     textView.setTextColor(context.getResources().getColor(android.R.color.black));
                 }
             }
