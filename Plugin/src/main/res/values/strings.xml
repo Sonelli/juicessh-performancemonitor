@@ -32,5 +32,7 @@
     <string name="use_dark_theme">Dark Theme</string>
     <string name="use_byte">Bytes</string>
     <string name="plugin_permissions_request">This plugin requires access to list JuiceSSH connections, and to connect to them.</string>
+    <string name="temperature">Temperature</string>
+    <string name="show_temperature">Show temperature</string>
 
 </resources>

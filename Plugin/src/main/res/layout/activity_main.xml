@@ -1,4 +1,5 @@
 <RelativeLayout
+    android:id="@+id/root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -123,7 +124,57 @@
                 android:clickable="true"
                 android:elevation="3dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_temperature"
+                android:visibility="visible"
+                android:id="@+id/temperatureLayout"
+                android:gravity="center" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:gravity="bottom|center_horizontal"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/temperature" />
+                    <TextView
+                        android:layout_marginStart="7dp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@android:color/white"
+                        android:layout_height="wrap_content"
+                        android:text="@string/temperature" />
+                </LinearLayout>
+
+                <com.sonelli.juicessh.performancemonitor.views.AutoResizeTextView
+                    android:layout_height="0dp"
+                    android:layout_weight="0.75"
+                    android:id="@+id/temperature"
+                    android:fontFamily="sans-serif"
+                    android:lines="1"
+                    android:layout_width="match_parent"
+                    android:textSize="36sp"
+                    android:textColor="@android:color/white"
+                    android:text="-"
+                    android:gravity="center_horizontal|top" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:clickable="true"
+                android:elevation="3dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="vertical"
                 android:layout_width="0dp"
@@ -160,7 +211,7 @@
                     android:fontFamily="sans-serif"
                     android:lines="1"
                     android:layout_width="match_parent"
-                    android:textSize="55sp"
+                    android:textSize="36sp"
                     android:textColor="@android:color/white"
                     android:text="-"
                     android:gravity="center_horizontal|top" />

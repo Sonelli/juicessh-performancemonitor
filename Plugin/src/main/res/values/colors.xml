@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dashboard_red">#ce432c</color>
+    <color name="dashboard_orange">#e64a19</color>
     <color name="dashboard_green">#FF37BAB3</color>
     <color name="dashboard_blue">#FF04B1C5</color>
     <color name="dashboard_dark_orange">#FFF2663D</color>

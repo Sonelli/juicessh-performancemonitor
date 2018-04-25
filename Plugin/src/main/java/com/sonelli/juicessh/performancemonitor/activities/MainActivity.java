@@ -13,11 +13,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.sonelli.juicessh.performancemonitor.R;
@@ -28,6 +30,7 @@ import com.sonelli.juicessh.performancemonitor.controllers.DiskUsageController;
 import com.sonelli.juicessh.performancemonitor.controllers.FreeRamController;
 import com.sonelli.juicessh.performancemonitor.controllers.LoadAverageController;
 import com.sonelli.juicessh.performancemonitor.controllers.NetworkUsageController;
+import com.sonelli.juicessh.performancemonitor.controllers.TemperatureController;
 import com.sonelli.juicessh.performancemonitor.helpers.PreferenceHelper;
 import com.sonelli.juicessh.performancemonitor.loaders.ConnectionListLoader;
 import com.sonelli.juicessh.performancemonitor.views.AutoResizeTextView;
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
     private Button connectButton;
     private Button disconnectButton;
 
+    private LinearLayout temperatureLayout;
+
     private ConnectionSpinnerAdapter spinnerAdapter;
 
     // Controllers
@@ -63,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
     private BaseController cpuUsageController;
     private BaseController diskUsageController;
     private BaseController networkUsageController;
+    private BaseController temperatureController;
 
     // Text displays
     private AutoResizeTextView loadAverageTextView;
@@ -70,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
     private AutoResizeTextView cpuUsageTextView;
     private AutoResizeTextView networkUsageTextView;
     private AutoResizeTextView diskUsageTextView;
+    private AutoResizeTextView temperatureTextView;
 
     // State
     private volatile int sessionId;
@@ -101,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         this.cpuUsageTextView = (AutoResizeTextView) findViewById(R.id.cpu_usage);
         this.networkUsageTextView = (AutoResizeTextView) findViewById(R.id.network_usage);
         this.diskUsageTextView = (AutoResizeTextView) findViewById(R.id.disk_usage);
+        this.temperatureTextView = (AutoResizeTextView) findViewById(R.id.temperature);
 
         this.connectButton = (Button) findViewById(R.id.connect_button);
         Drawable drawable = getDrawable(R.drawable.login);
@@ -108,6 +116,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
             drawable.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()*0.2),
                     (int)(drawable.getIntrinsicHeight()*0.2));
         }
+
+        this.temperatureLayout = (LinearLayout) findViewById(R.id.temperatureLayout);
+
         connectButton.setCompoundDrawables(drawable, null, null, null);
         connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +180,14 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
                 }
             }
         });
+
+        if (preferenceHelper.getShowTemperatureFlag()) {
+            loadAverageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,36);
+            temperatureLayout.setVisibility(View.VISIBLE);
+        } else {
+            loadAverageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,55);
+            temperatureLayout.setVisibility(View.GONE);
+        }
 
     }
 
@@ -239,6 +258,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         // assigning the keep screen on menu the value of its saved status
         PreferenceHelper preferenceHelper = new PreferenceHelper(this);
         menu.findItem(R.id.keep_screen_on).setChecked(preferenceHelper.getKeepScreenOnFlag());
+        menu.findItem(R.id.show_temperature).setChecked(preferenceHelper.getShowTemperatureFlag());
 
         return true;
     }
@@ -308,6 +328,13 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
                 .setTextview(networkUsageTextView)
                 .start();
 
+        this.temperatureController = new TemperatureController(this)
+                .setSessionId(sessionId)
+                .setSessionKey(sessionKey)
+                .setPluginClient(client)
+                .setTextview(temperatureTextView)
+                .start();
+
     }
 
     @Override
@@ -343,11 +370,16 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
             networkUsageController.stop();
         }
 
+        if(temperatureController != null){
+            temperatureController.stop();
+        }
+
         loadAverageTextView.setText("-");
         freeRamTextView.setText("-");
         cpuUsageTextView.setText("-");
         networkUsageTextView.setText("-");
         diskUsageTextView.setText("-");
+        temperatureTextView.setText("-");
 
         disconnectButton.setVisibility(View.GONE);
         disconnectButton.setEnabled(false);
@@ -383,6 +415,19 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 }else{
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                }
+                return true;
+
+            case R.id.show_temperature:
+                item.setChecked(!item.isChecked());
+                PreferenceHelper preferenceHelper1 = new PreferenceHelper(this);
+                preferenceHelper1.setShowTemperatureFlag(item.isChecked());
+                if (item.isChecked()) {
+                    loadAverageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,36);
+                    temperatureLayout.setVisibility(View.VISIBLE);
+                } else {
+                    loadAverageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,55);
+                    temperatureLayout.setVisibility(View.GONE);
                 }
                 return true;
 
