@@ -31,4 +31,6 @@
     <string name="display">显示</string>
     <string name="use_dark_theme">使用暗色主题</string>
     <string name="use_byte">使用字节作为网速基本单位</string>
+    <string name="temperature">" 溫度"</string>
+    <string name="plugin_permissions_request">" 此插件需要訪問列表JuiceSSH連接，並連接到它們"</string>
 </resources>
