@@ -1,0 +1,57 @@
+OLD=langtools-7
+OLD_URL=http://hg.openjdk.java.net/jdk7/jdk7/langtools/
+NEW=langtools-8u
+NEW_URL=http://hg.openjdk.java.net/jdk8u/jdk8u/langtools/
+
+# The package renames
+declare -A renames
+renames[org.eclipse.ceylon.javax.annotation.processing]=javax.annotation.processing
+renames[org.eclipse.ceylon.javax.lang.model]=javax.lang.model
+renames[org.eclipse.ceylon.javax.tools]=javax.tools
+renames[org.eclipse.ceylon.langtools.source]=com.sun.source
+renames[org.eclipse.ceylon.langtools.tools.javac]=com.sun.tools.javac
+renames[org.eclipse.ceylon.langtools.classfile]=com.sun.tools.classfile
+
+# The inverse mapping of those renames
+declare -A rev_renames
+for c in "${!renames[@]}"
+do
+  rev_renames[${renames[$c]}]=$c
+done
+
+# Refactors sources from one package name to another
+function renamePackage {
+    SRC_DIR=$1
+
+    CEYLON_PACKAGE=$2
+    JDK_PACKAGE=$3
+    declare -n mapping=$4
+    
+    CEYLON_DIR=$(echo $CEYLON_PACKAGE | sed 's#\.#/#g')
+    JDK_DIR=$(echo $JDK_PACKAGE | sed 's#\.#/#g')
+    
+    #echo $JDK_DIR 
+
+    CEYLON_PACKAGE_RE=$(echo $CEYLON_PACKAGE | sed 's#\.#\\.#g')
+    #JDK_PACKAGE_RE=$(echo $JDK_PACKAGE | sed 's#\.#\\.#g')
+
+    #echo $CEYLON_PACKAGE_RE
+
+    # Move the files
+    mkdir -p "${SRC_DIR}/$(dirname ${JDK_DIR})"
+    #cp -r ${SRC_DIR}/${CEYLON_DIR} \
+    #      ${SRC_DIR}/${JDK_DIR}
+    mv "${SRC_DIR}/${CEYLON_DIR}" "${SRC_DIR}/${JDK_DIR}"
+    # Fix the package declaration
+    #find ${SRC_DIR}/${JDK_DIR} -name '*.java' -exec sed -i -r "s/^package ${CEYLON_PACKAGE_RE}(.*);/package ${JDK_PACKAGE}\1;/" {} \;
+
+    for c in "${!mapping[@]}"
+    do
+        RE=$(echo $c | sed 's#\.#\\.#g')
+        J=${mapping[$c]}
+        #echo "s/$RE([a-zA-Z0-8_]*)/$J\1/g"
+        # Fix the imports
+        find ${SRC_DIR}/${JDK_DIR} -name '*.java' -exec sed -i -r "s/$RE([a-zA-Z0-8_]*)/$J\1/g" {} \;
+    done
+    #find ${SRC_DIR}/${JDK_DIR} -name '*.java' -exec sed -i -r 's/^import org\.eclipse\.ceylon.(.*);/import \1;/g' {} \;
+}
