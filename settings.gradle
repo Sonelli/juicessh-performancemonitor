@@ -1,1 +1,78 @@
-include ':Plugin'
+rootProject.name = 'ceylon'
+
+include 'ant-plugin'
+project(':ant-plugin').buildFileName = 'antplugin.gradle'
+
+include 'bootstrap'
+project(':bootstrap').buildFileName = 'bootstrap.gradle'
+
+include 'cli'
+project(':cli').buildFileName = 'cli.gradle'
+
+include 'cmr'
+project(':cmr').buildFileName = 'cmr.gradle'
+
+include 'cmr-aether'
+project(':cmr-aether').buildFileName = 'aether.gradle'
+
+include 'cmr-webdav'
+project(':cmr-webdav').buildFileName = 'webdav.gradle'
+
+include 'cmr-js'
+project(':cmr-js').buildFileName = 'cmrjs.gradle'
+
+include 'common'
+project(':common').buildFileName = 'common.gradle'
+
+include 'compiler-java'
+project(':compiler-java').buildFileName = 'compilerjava.gradle'
+
+include 'compiler-js'
+project(':compiler-js').buildFileName = 'compilerjs.gradle'
+
+include 'dist'
+project(':dist').buildFileName = 'dist.gradle'
+
+include 'dist:osgi'
+project(':dist:osgi').buildFileName = "osgi.gradle"
+
+include 'java-main'
+project(':java-main').buildFileName = 'javamain.gradle'
+
+include 'langtools-classfile'
+project(':langtools-classfile').buildFileName = 'langtools.gradle'
+
+include 'language'
+project(':language').buildFileName = 'language.gradle'
+
+include 'model'
+project(':model').buildFileName = 'model.gradle'
+
+include 'module-loader'
+project(':module-loader').buildFileName = 'moduleloader.gradle'
+
+include 'runtime'
+project(':runtime').buildFileName = 'runtime.gradle'
+
+include 'runtime-externals'
+project(':runtime-externals').buildFileName = 'runtime-externals.gradle'
+
+include 'tool-provider'
+project(':tool-provider').buildFileName = 'toolprovider.gradle'
+
+include 'tools'
+project(':tools').buildFileName = 'tools.gradle'
+
+include 'typechecker'
+project(':typechecker').buildFileName = 'typechecker.gradle'
+
+// ----------------------------------------------------------------------------
+// Linked projects
+// ----------------------------------------------------------------------------
+// ,'ideEclipse', 'ideIntellij'
+['sdk','formatter','toolConverterJava2ceylon','ideCommon','ideEclipse'].each { proj ->
+    String projName = "linked:${proj}"
+    include(projName)
+    project(':'+projName).projectDir = file("gradle/linked-projects")
+    project(':'+projName).buildFileName = "${proj}.gradle"
+}
