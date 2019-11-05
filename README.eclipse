@@ -1,0 +1,159 @@
+Setting up Eclipse to build the Ceylon compiler
+===============================================
+
+Global Eclipse configuration:
+
+ i.  Set your default "Text file encoding" to "UTF-8" and your default "New text file line delimiter"
+     to "Unix" in your Eclipse preferences (Window -> Preferences -> General -> Workspace). If you do
+     this you can skip Step 1 in "Post-import steps" below.
+     (N.B. these should already be the default settings on Linux.)
+
+ ii. Go to the preferences of the installed JREs (Window -> Preferences -> Java -> Installed JREs) and
+     select the active JRE and click "Edit". In the popup type "-ea" in the "Default VM arguments" field.
+     Then click "Finish" and "Ok". (Repeat this for any JREs you intend to use with Ceylon)
+
+N.B. in this file, "/path/to/ceylon" should be replaced with the full path of the directory containing
+this file.
+
+
+** Option 1: Importing the Ceylon projects directly from git:
+
+ 1. Ensure you have egit installed in Eclipse: go to Help -> About Eclipse -> Installation Details.
+
+    a) If "Eclipse Git Team Provider" is not listed, go to Help -> Install New Software, and enter
+       the following into "Work with":
+
+        http://download.eclipse.org/egit/updates
+
+    b) Select and install "Eclipse Git Team Provider", and restart Eclipse when prompted.
+
+ 2. Clone the git repo.
+ 
+    a) Select File -> Import -> Git -> Projects from Git -> Clone URI.
+
+    b) Enter into the URI field:
+
+       https://github.com/ceylon/ceylon.git
+
+    c) In the "Branch selection" dialog, click "Deselect All", then select "master".
+
+    d) Click "Next >", choose a location for the project, and click "Next >" again. The repo will be cloned.
+
+    e) Select "Wizard for project import -> Import existing Eclipse projects" and "Working Tree", then "Next >".
+
+    f) In the "Import Projects" list, deselect everything that starts with a "@" and everything that starts
+       with "ceylon-dist-osgi".
+
+    g) Click "Finish". You will see some errors on the imported projects until you complete "Initial build"
+       below.
+
+
+** Option 2: Importing the Ceylon projects from disk, after following the instructions in the README.md:
+
+ 1. Select "File -> Import..." from the main menu.
+
+ 2. In the "Import" dialog:
+
+    a) Select "General -> Existing Projects into Workspace"
+
+    c) Click "Next >"
+
+ 3. In the next page of the "Import" dialog:
+
+    a) Make sure the "Select root directory" is selected
+
+    b) Click the "Browse..." button
+
+    c) Select the "ceylon" folder that you checked out from Git when following the instructions in the README.md
+
+    d) Click "Ok"
+
+ 4. Back in the Wizard dialog:
+
+    a) In the "Options" section enable "Search for nested projects"
+
+    b) In the "Projects" list deselect everything that starts with a "@" and everything that starts with
+       "ceylon-dist-osgi"
+
+    c) Click "Finish". You will see some errors on the imported projects until you complete "Initial build"
+       below.
+
+
+** Post-import steps:
+
+ 1. If you didn't apply the settings described in "Global eclipse configuration" step "i.", you now have to
+    apply these settings in the properties for each of the imported projects:
+
+    a) Right-click on the project, select Properties then Resource
+    
+    b) Make sure the "Text file encoding" is set to "UTF-8" and
+    
+    c) The "New text file line delimiter" is set to "Unix"
+    
+    d) Click "Ok"
+
+ 2. If you see an error of the form
+
+    "Access restriction: Class is not accessible due to restriction on
+    required library"
+
+    Go into
+
+    (Project) Properties -> Java Compiler -> Errors/Warnings -> 
+
+    Locate the "Forbidden reference (access rules)" option under
+    "Deprecated and restricted API" section in the dialog box.  Set
+    this to Warning" or "Ignore".
+
+
+** Initial build:
+
+You need to build once with Ant before Eclipse can successfully build the projects.
+
+(The following assumes your version of Eclipse has Ant installed, which it should by default.)
+
+ 1. In Package Explorer, open up the tree view for the "ceylon" project, right-click on "build.xml", and
+    select "Run As -> Ant Build...".
+
+ 2. Deselect all targets except for "clean" and "dist", then click on "Order...", and make sure "clean"
+    is listed above "dist". Click "OK".
+ 
+ 3. Back in the "Run As -> Ant Build... -> Edit Configuration" dialog, click "Run".
+
+ 4. Once Ceylon has finished building, in the Package Explorer, select all projects (Ctrl+A) and then Refresh
+    (F5, or right-click -> Refresh).
+
+ 5. You should see the errors on the projects disappear.
+
+
+** The project should now be correctly set up. To test it:
+ 
+ 1. Select "Run -> Run Configurations..." from the main menu.
+
+ 2. In the "Run Configurations" dialog:
+
+    a) Right click on "JUnit" in the list on the left
+       and select "New" from the popup menu.
+ 
+    b) Change "Name" to "CeylonCompiler"
+
+    c) In the "Test" tab, select "JUnit 4" as "Test runner"
+ 
+    d) Select "Run a single test"
+    
+    e) In the "Project" line, select "Browse...":
+
+       i) Select "ceylon-compiler"
+
+       ii) Click "Ok"
+
+    f) In the "Test class" line, select "Search..." (it may take several seconds for the next dialog to pop up):
+ 
+       i) Select "ConcurrentTests"
+ 
+       ii) Click "Ok"
+ 
+    g) Click "Run"
+
+ 3. You should see some output from the Ceylon compiler in the "Console" tab at the bottom of the screen.
+    Some tests will fail but most should succeed.

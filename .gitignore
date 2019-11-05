@@ -1,2 +1,10 @@
-/build/
-.settings
+.gradle/
+build/
+**/.ant-targets-build.xml
+**/.DS_Store
+*~
+\#*\#
+.idea
+build
+builtByGradle
+gradle-app.setting

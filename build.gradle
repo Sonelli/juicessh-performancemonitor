@@ -1,23 +1,152 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import org.apache.tools.ant.filters.EscapeUnicode
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+plugins {
+    id 'com.gradle.build-scan' version '1.0'
+    id "com.admc.javaPropFile" version "1.0.0"
+    id 'de.qaware.seu.as.code.git' version '2.3.0.RC1'
+}
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+buildScan {
+    licenseAgreementUrl = 'https://gradle.com/terms-of-service';
+    licenseAgree = 'yes'
 }
 
 allprojects {
-    repositories {
-        jcenter()
+    apply from : "${rootProject.projectDir}/dependencies.gradle"
+
+    ext {
+        buildPrefix = 'build'
+        buildRelease = false
+
+        distDir =      file("${rootProject.projectDir}/${buildPrefix}/distribution")
+        repoDir =      file("${distDir}/repo")
+        samplesDir =   file("${distDir}/samples")
+        templatesDir = file("${distDir}/templates")
+        repoLibDir =   file("${distDir}/lib")
+        repoBinDir =   file("${distDir}/bin")
+        osgiDistDir =  file("${rootProject.projectDir}/${buildPrefix}/osgi-distribution")
+        osgiDistPluginsDir = file("${osgiDistDir}/plugins")
+        osgiDistFeaturesDir = file("${osgiDistDir}/features")
+        linkedProjectRootDir = file("${rootProject.projectDir}/${buildPrefix}/linked-projects")
+
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+buildDir = file("${buildPrefix}/root")
+
+subprojects {
+
+    apply plugin : CeylonCommonBuildProperties
+
+    buildDir = new File(file("${rootProject.projectDir}/${buildPrefix}"), it.path.replace(":", "_").substring(1))
+
+    version= cbp.'ceylon.version'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    afterEvaluate {
+        tasks.withType(JavaCompile) { t ->
+            t.options.compilerArgs ['-Xlint:-options']
+            t.options.encoding = 'UTF-8'
+        }
+    }
 }
+
+task dist {
+    group "publish"
+    description "Creates the Ceylon distribution"
+    dependsOn ':dist:publishInternal'
+    dependsOn ':dist:osgi:publishInternal'
+}
+
+task clean ( type : Delete ) {
+    delete buildDir
+    delete distDir
+//    delete embeddedRepoDir
+}
+
+task 'clean-all' {
+    group "ceylon cross project"
+    description "Cleans everything here and in linked projects"
+    dependsOn clean
+    dependsOn 'clean-sdk'
+    dependsOn 'clean-ide'
+}
+
+task 'clean-sdk' {
+    group "ceylon cross project"
+    description "Cleans the SDK"
+    dependsOn ':linked:sdk:clean'
+}
+
+task sdk {
+    group "ceylon cross project"
+    description 'Builds the SDK'
+    dependsOn ':linked:sdk:publishInternal'
+}
+
+task ide {
+    group "ceylon cross project"
+    description 'Builds the IDE plugins & related modules'
+    dependsOn ':linked:formatter:publishInternal'
+    dependsOn ':linked:toolConverterJava2ceylon:publishInternal'
+    dependsOn ':linked:ideCommon:publishInternal'
+    dependsOn ':linked:ideEclipse:publishInternal'
+//    dependsOn ':linked:ideIntellij:publishInternal'
+}
+
+task 'clean-ide' {
+    group "ceylon cross project"
+    description 'Cleans the IDE plugins & related modules'
+    dependsOn ':linked:formatter:clean'
+    dependsOn ':linked:toolConverterJava2ceylon:clean'
+    dependsOn ':linked:ideCommon:clean'
+//    dependsOn ':linked:ideEclipse:clean'
+//    dependsOn ':linked:ideIntellij:clean'
+}
+
+/*
+//clean-sdk - calls ant clean in the ../ceylon-sdk folder
+//    sdk - calls ant publish ide-quick in the ../ceylon-sdk folder
+//clean-ide - calls ant clean in the ../ceylon-.formatter, ../ceylon.tool.converter.java2ceylon, ../ceylon-ide-common, ../ceylon-ide-eclipse and ../ceylon-ide-intellij folders
+//    eclipse - calls ant publish ide-quick in the ../ceylon-.formatter, ../ceylon.tool.converter.java2ceylon, ../ceylon-ide-common and ../ceylon-ide-eclipse folders
+//    intellij - calls ant publish ide-quick in the ../ceylon-.formatter, ../ceylon.tool.converter.java2ceylon, ../ceylon-ide-common and ../ceylon-ide-intellij folders
+
+*/
+
+// TODO: Remove this task after migration. It is only here to compare outputs of Ant vs Gradle
+task migrationReports {
+    description "TEMPORARY: Creates comparison listings in root"
+
+    ext {
+        makeListing = { rootDir ->
+            String baseDir = file(rootDir).absolutePath
+            fileTree(rootDir).files.collect {
+                it.absolutePath.replace("${baseDir}/",'')
+            }.sort().join("\n")
+        }
+
+        makeTimeStampSanitizedListing = { rootDir ->
+            String baseDir = file(rootDir).absolutePath
+            fileTree(rootDir).files.collect {
+                it.absolutePath.replace("${baseDir}/",'').replaceAll(~/v\d{8}-\d{4}/,'vXxxxYyZz-AaBb')
+            }.sort().unique().join("\n")
+
+        }
+    }
+    doLast {
+        mkdir buildDir
+        file("${buildDir}/dist-gradle.txt").text = makeListing(distDir)
+        file("${buildDir}/dist-ant.txt").text = makeListing('dist/dist')
+        file("${buildDir}/osgi-dist-gradle.txt").text = makeTimeStampSanitizedListing(osgiDistDir)
+        file("${buildDir}/osgi-dist-ant.txt").text = makeTimeStampSanitizedListing('dist/osgi/build/dist')
+        file("${buildDir}/osgi-embeddedrepo-gradle.txt").text = makeListing("${project(':dist:osgi').buildDir}/embeddedRepository/repo")
+        file("${buildDir}/osgi-embeddedrepo-ant.txt").text = makeListing('dist/osgi/embeddedRepository/repo')
+    }
+
+    mustRunAfter sdk, ide, dist, ':dist:osgi:embeddedRepository'
+}
+

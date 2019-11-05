@@ -1,0 +1,53 @@
+ext {
+    mavenVer       = '3.3.9'
+    mavenAetherVer = '1.1.0'
+    bndVer         = '3.2.0'
+    osgiVer        = '4.3.1'
+
+    antDep                  = 'org.apache.ant:ant:1.8.2'
+    antContribDep           = 'ant-contrib:ant-contrib:1.0b3'
+    antlrDep                = 'org.antlr:antlr:3.5.2' // complete
+    apacheCommonsCodecDep   = 'commons-codec:commons-codec:1.10'
+    apacheCommonsLoggingDep = 'commons-logging:commons-logging:1.2'
+    jbossDep                = 'org.jboss.modules:jboss-modules:1.4.4.Final'
+//    jbossShrinkwrapDep      = ':1.0.0.cr-1' // api, impl-base, spi
+    // org.jboss:jandex:2.0.0.Final
+    jsonSmartDep            = 'net.minidev:json-smart:1.3.1'
+    junitDep                = 'junit:junit:4.11.0'
+    markdownPapersDep       = 'org.tautua.markdownpapers:markdownpapers-core:1.3.4'
+    mavenAetherApiDep       = "org.eclipse.aether:aether-api:${mavenAetherVer}"
+    mavenAetherConnectorDep = "org.eclipse.aether:aether-connector-basic:${mavenAetherVer}"
+    mavenAetherImplDep      = "org.eclipse.aether:aether-impl:${mavenAetherVer}"
+//    mavenAetherSpiDep       = ":${mavenAetherVer}"
+    mavenAetherTransFileDep = "org.eclipse.aether:aether-transport-file:${mavenAetherVer}"
+    mavenAetherTransHttpDep = "org.eclipse.aether:aether-transport-http:${mavenAetherVer}"
+//    mavenAetherUtilDep      = ":${mavenAetherVer\// https://mvnrepository.com/artifact/org.osgi/org.osgi.core
+    osgiCoreDep             = "org.osgi:org.osgi.core:${osgiVer}"
+    osgiBindexDep           = ":org.osgi.impl.bundle.bindex:2.2.0"
+    osgiBndDep              = "biz.aQute.bnd:biz.aQute.bnd:${bndVer}"
+    osgiBndAntDep           = "biz.aQute.bnd:org.osgi.impl.bundle.repoindex.ant:${bndVer}"
+    sardineDep              = 'com.github.lookfirst:sardine:5.1'
+    txtmarkDep              = 'com.github.rjeschke:txtmark:0.13'
+}
+
+//maven-artifact.lib=${runtime.repo.path}/org/apache/maven/maven-artifact/${maven.version}/org.apache.maven.maven-artifact-${maven.version}.jar
+//maven-model.lib=${runtime.repo.path}/org/apache/maven/maven-model/${maven.version}/org.apache.maven.maven-model-${maven.version}.jar
+//maven-model-builder.lib=${runtime.repo.path}/org/apache/maven/maven-model-builder/${maven.version}/org.apache.maven.maven-model-builder-${maven.version}.jar
+//maven-repository-metadata.lib=${runtime.repo.path}/org/apache/maven/maven-repository-metadata/${maven.version}/org.apache.maven.maven-repository-metadata-${maven.version}.jar
+//maven-builder-support.lib=${runtime.repo.path}/org/apache/maven/maven-builder-support/${maven.version}/org.apache.maven.maven-builder-support-${maven.version}.jar
+//maven-settings.lib=${runtime.repo.path}/org/apache/maven/maven-settings/${maven.version}/org.apache.maven.maven-settings-${maven.version}.jar
+//maven-settings-builder.lib=${runtime.repo.path}/org/apache/maven/maven-settings-builder/${maven.version}/org.apache.maven.maven-settings-builder-${maven.version}.jar
+//maven-aether-provider.lib=${runtime.repo.path}/org/apache/maven/maven-aether-provider/${maven.version}/org.apache.maven.maven-aether-provider-${maven.version}.jar
+//
+//plexus-interpolation.lib=${runtime.repo.path}/org/codehaus/plexus/plexus-interpolation/1.22/org.codehaus.plexus.plexus-interpolation-1.22.jar
+//plexus-utils.lib=${runtime.repo.path}/org/codehaus/plexus/plexus-utils/3.0.22/org.codehaus.plexus.plexus-utils-3.0.22.jar
+//
+//guava.lib=${runtime.repo.path}/com/google/guava/20.0/com.google.guava-20.0.jar
+//commons-lang3.lib=${runtime.repo.path}/org/apache/commons/lang3/3.6/org.apache.commons.lang3-3.6.jar
+//
+//maven-support.lib=${aether-api.lib}:${aether-spi.lib}:${aether-util.lib}:${aether-impl.lib}:\
+// ${aether-connector-basic.lib}:${aether-transport-file.lib}:${aether-transport-http.lib}:\
+// ${maven-artifact.lib}:${maven-model.lib}:${maven-model-builder.lib}:${maven-repository-metadata.lib}:${maven-builder-support.lib}:\
+// ${maven-settings.lib}:${maven-settings-builder.lib}:${maven-aether-provider.lib}:\
+// ${plexus-interpolation.lib}:${plexus-utils.lib}:\
+// ${guava.lib}:${commons-lang3.lib}

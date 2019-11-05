@@ -1,242 +1,272 @@
-<project name="Ceylon CLI tools module" default="publish" basedir=".">
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ceylon" default="help" basedir="."
+    xmlns:if="ant:if"
+>
 
-    <property file="../user-build.properties" />
-    <property file="../common-build.properties" />
-    <property file="../lib/build.properties"/>
-    <property file="build.properties" />
+    <tstamp>
+        <format property="NOW" pattern="yyyyMMddHHmm" />
+    </tstamp>
 
-    <property name="src" location="src" />
-    <property name="test.src" location="test/src" />
-    <property name="test.reports" location="${build.dir}/test-reports" />
+    <property name="ceylon.dist.dir" value="${basedir}/dist"/>
 
-    <!-- Local repository -->
-    <property name="ceylon.bootstrap.src" value="${ceylon.bootstrap.dir}/ceylon.bootstrap-${module.ceylon.bootstrap.version}.src" />
-    <property name="ceylon.bootstrap.repo" value="${ceylon.repo.dir}/${ceylon.bootstrap.dir}" />
-    <property name="ceylon.bootstrap.dist" value="${build.dist}/${ceylon.bootstrap.dir}" />
+    <target name="help">
+        <echo>Options for building a Ceylon distribution for local use:
+    ant status             - Shows the Git status of the project
+    ant update             - Updates the Git repository of the project
+    ant clean              - Cleans the project
+    ant dist               - Builds the Ceylon distrubtion for local use
 
-    <!-- Classpath for the build tools. -->
-    <path id="classpath">
-        <pathelement path="${markdownpapers.lib}" />
-        <pathelement path="${ceylon.common.lib}" />
-        <pathelement path="${ceylon.model.lib}" />
-        <pathelement path="${ceylon.module-resolver.lib}" />
-    </path>
+Some super-charged ant tasks:
+    ant status-all         - Shows the Git status of all projects related to the
+                             distribution, SDK and IDE
+    ant update-all         - Updates the Git repositories of the above projects
+    ant clean-all          - Cleans all of the above mentioned projects
 
-    <path id="test.run.classpath">
-        <path refid="classpath" />
-        <pathelement path="${build.classes}" />
-        <pathelement path="${hamcrest.lib}" />
-        <pathelement path="${junit.lib}" />
-    </path>
+    ant sdk                - Builds the SDK project
+    ant eclipse            - Builds all IDE related projects + the Eclipse plugin
+    ant intellij           - Builds all IDE related projects + the IntelliJ plugin</echo>
 
-    <!-- ################################################################## -->
-
-    <target name="clean">
-        <delete dir="${build.dir}" />
     </target>
 
-    <!-- project compilation -->
-    <target name="compile" description="compile Ceylon CLI tools">
-        <mkdir dir="${build.classes}" />
-        <javac
-            srcdir="${src}"
-            destdir="${build.classes}"
-            debug="true"
-            encoding="UTF8"
-            classpathref="classpath"
-            target="${compile.java.target}"
-            source="${compile.java.source}"
-            bootclasspath="${compile.java.bootclasspath}">
-            <include name="**/*.java" />
-        </javac>
-        <copy todir="${build.classes}">
-            <fileset dir="${src}">
-                <include name="**/*" />
-                <exclude name="**/*.java" />
-            </fileset>
-        </copy>
-    </target>
-
-    <target name="defcurrentcommit">
-        <if>
-            <available file="../.git" type="dir"/>
-            <then>
-                <exec executable="git" failonerror="yes" outputproperty="currentcommit">
-                    <arg value="rev-parse"/>
-                    <arg value="--short"/>
-                    <arg value="HEAD"/>
-                </exec>
-            </then>
-            <else>
-                <property name="currentcommit" value="${buildid}" />
-            </else>
-        </if>
-    </target>
-
-    <target name="ceylon-bootstrap.jar" depends="compile">
-        <mkdir dir="${build.dist.repo}/${ceylon.bootstrap.dir}"/>
-        <tstamp>
-            <format property="qualifier" timezone="GMT" pattern="yyyyMMdd-HHmm"/>
-        </tstamp>       
-        <jar destfile="${build.dist.repo}/${ceylon.bootstrap.jar}">
-            <fileset dir="${build.classes}">
-            </fileset>
-            <manifest>
-                <attribute name="Main-Class" value="org.eclipse.ceylon.launcher.Bootstrap"/>
-                <attribute name="Bundle-SymbolicName" value="ceylon.bootstrap"/>
-                <attribute name="Bundle-Version" value="${module.ceylon.bootstrap.osgi.version}-${qualifier}"/>
-            </manifest>
-        </jar>
-        <antcall target="sha1sum">
-            <param name="file" value="${build.dist.repo}/${ceylon.bootstrap.jar}" />
-        </antcall>
-    </target>
-
-    <target name="build" depends="ceylon-bootstrap.jar">
-    </target>
-
-    <!-- constant to declare a file binary for checksumsum -->
-    <property name="checksum.binary-prefix" value=" *" />
-    <!-- Helper target, used to create a sha1 checksum file  -->
-    <!-- Requires 'file' as a parameter. -->
-    <target name="sha1sum">
-        <fail unless="file" />
-        <fail if="filename" />
-        <fail if="value" />
-        <basename file="${file}" property="filename" />
-        <checksum file="${file}" property="value" algorithm="sha1" />
-        <echo file="${file}.sha1" message="${value}" />
-    </target>
-
-    <!-- Repository targets -->
-    <target name="init.repo" description="Init local ceylon repository and add ceylon.bootstrap">
-        <mkdir dir="${ceylon.bootstrap.repo}" />
-    </target>
-
-    <target name="clean.repo" description="Clean local ceylon repository">
-        <delete file="${ceylon.bootstrap.lib}" />
-        <delete file="${ceylon.bootstrap.lib}.sha1" />
-        <delete file="${ceylon.repo.dir}/${ceylon.bootstrap.src}" />
-        <delete file="${ceylon.repo.dir}/${ceylon.bootstrap.src}.sha1" />
-    </target>
-
-    <target name="bundle-proxy">
-        <basename file="${archivePath}" property="archiveFileName"/>
-        <property name="proxy-project" value="${eclipse.project.path}/required-bundle-proxies/${archiveFileName}"/>
-        <mkdir dir="${proxy-project}"/>
-        <delete failonerror="false" dir="${proxy-project}/META-INF"/>
-        <copy toDir="${proxy-project}" overwrite="true">
-            <zipfileset src="${archivePath}" includes="META-INF/**"/>
-            <fileset file="${archivePath}"/>
-        </copy>
-        <manifest file="${proxy-project}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Bundle-Classpath" value="${archiveFileName}"/>
-        </manifest>
-        <echo file="${proxy-project}/.project"><![CDATA[<projectDescription>
-    <name>${archiveFileName}</name>
-    <comment></comment>
-    <projects>
-    </projects>
-    <buildSpec>
-        <buildCommand>
-            <name>org.eclipse.jdt.core.javabuilder</name>
-            <arguments>
-            </arguments>
-        </buildCommand>
-        <buildCommand>
-            <name>org.eclipse.pde.ManifestBuilder</name>
-            <arguments>
-            </arguments>
-        </buildCommand>
-        <buildCommand>
-            <name>org.eclipse.pde.SchemaBuilder</name>
-            <arguments>
-            </arguments>
-        </buildCommand>
-    </buildSpec>
-    <natures>
-        <nature>org.eclipse.pde.PluginNature</nature>
-        <nature>org.eclipse.jdt.core.javanature</nature>
-    </natures>
-    <linkedResources>
-        <link>
-            <name>project</name>
-            <type>2</type>
-            <locationURI>PARENT-3-PROJECT_LOC/ceylon/cli</locationURI>
-        </link>
-    </linkedResources>
-</projectDescription>]]></echo>     
-        <echo file="${proxy-project}/.classpath"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-    <classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-    <classpathentry exported="true" kind="lib" path="${archiveFileName}" sourcepath="project"/>
-    <classpathentry kind="output" path="bin"/>
-</classpath>]]></echo>     
-        <echo file="${proxy-project}/.gitignore"><![CDATA[/META-INF
-/${archiveFileName}
-/.classpath
-/.project
-/.gitignore
-/bin/]]></echo>     
+    <!-- The following tasks all redirect to "dist/build.xml" -->
+    
+    <target name="status">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="status"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
     </target>
     
-    <target name="ide-quick-internal">
-        <antcall target="bundle-proxy">
-            <param name="archivePath" value="${ceylon.bootstrap.lib}"/>
-        </antcall>
+    <target name="update">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="update"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="clean">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="clean-projects"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="clean-packages">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="clean-packages"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="dist">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="dist"
+             inheritall="false"
+             useNativeBasedir="true">
+            <property name="buildid" value="${buildid}" />
+        </ant>
+    </target>
+    
+    <target name="package">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="package"
+             inheritall="false"
+             useNativeBasedir="true">
+            <property name="buildid" value="${buildid}" />
+        </ant>
+    </target>
+    
+    <target name="release">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="release"
+             inheritall="false"
+             useNativeBasedir="true">
+            <property name="buildid" value="${buildid}" />
+        </ant>
+    </target>
+    
+    <target name="nightly">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="nightly"
+             inheritall="false"
+             useNativeBasedir="true">
+            <property name="buildid" value="${buildid}" />
+        </ant>
     </target>
 
-    <target name="dist" depends="build">
-        <zip destfile="${build.dist.repo}/${ceylon.bootstrap.src}">
-            <fileset dir="${src}">
-                <include name="**/*.java"/>
-            </fileset>
-        </zip>
-        <antcall target="sha1sum">
-            <param name="file" value="${build.dist.repo}/${ceylon.bootstrap.src}"/>
-        </antcall>
+    <target name="test">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="test"
+             inheritall="false"
+             useNativeBasedir="true">
+            <property name="buildid" value="${buildid}" />
+            <propertyset>
+                <propertyref prefix="ceylon.tests." />
+            </propertyset>
+        </ant>
+    </target>
+    
+    <target name="test-quick">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="test-quick"
+             inheritall="false"
+             useNativeBasedir="true">
+            <property name="buildid" value="${buildid}" />
+            <propertyset>
+                <propertyref prefix="ceylon.tests." />
+            </propertyset>
+        </ant>
+    </target>
+    
+    <!-- The following tasks all redirect to "dist/sdk-build.xml" -->
+    
+    <target name="setup-sdk">
+        <ant antfile="${ceylon.dist.dir}/sdk-build.xml"
+             target="setup"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="setup-admins-sdk">
+        <ant antfile="${ceylon.dist.dir}/sdk-build.xml"
+             target="setup-admins"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="status-sdk">
+        <ant antfile="${ceylon.dist.dir}/sdk-build.xml"
+             target="status"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="update-sdk">
+        <ant antfile="${ceylon.dist.dir}/sdk-build.xml"
+             target="update"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="clean-sdk">
+        <ant antfile="${ceylon.dist.dir}/sdk-build.xml"
+             target="clean"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
     </target>
 
-    <target name="publish"
-        depends="clean.repo,init.repo,dist,publish-internal"
-        description="Publish both type checker and ceylon.language template module">
+    <target name="sdk">
+        <ant antfile="${ceylon.dist.dir}/sdk-build.xml"
+             target="sdk"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <!-- The following tasks all redirect to "dsit/ide-build.xml" -->
+    
+    <target name="setup-ide">
+        <ant antfile="${ceylon.dist.dir}/ide-build.xml"
+             target="setup"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="setup-admins-ide">
+        <ant antfile="${ceylon.dist.dir}/ide-build.xml"
+             target="setup-admins"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="status-ide">
+        <ant antfile="${ceylon.dist.dir}/ide-build.xml"
+             target="status"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="update-ide">
+        <ant antfile="${ceylon.dist.dir}/ide-build.xml"
+             target="update"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="clean-ide">
+        <ant antfile="${ceylon.dist.dir}/ide-build.xml"
+             target="clean"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="clean-projects-ide">
+        <ant antfile="${ceylon.dist.dir}/ide-build.xml"
+             target="clean-projects"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="eclipse">
+        <ant antfile="${ceylon.dist.dir}/ide-build.xml"
+             target="eclipse"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="eclipse-switch-to-last-release-updates">
+        <ant antfile="${ceylon.dist.dir}/ide-build.xml"
+             target="eclipse-switch-to-last-release-updates"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="eclipse-switch-back-to-master">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="eclipse-switch-back-to-master"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
+    </target>
+    
+    <target name="eclipse-rebuild-last-release-updates">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="eclipse-rebuild-last-release-updates"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
     </target>
 
-    <target name="publish-internal" depends="init.repo">
-        <copy todir="${ceylon.repo.dir}" overwrite="true">
-            <fileset dir="${build.dist.repo}" />
-        </copy>
+    <target name="intellij">
+        <ant antfile="${ceylon.dist.dir}/build.xml"
+             target="intellij"
+             inheritall="false"
+             useNativeBasedir="true">
+        </ant>
     </target>
+    
+    <!-- The following tasks do work on the Distribution, the SDK and the IDE -->
+    
+    <target name="status-all" depends="status,status-sdk,status-ide" />
+    <target name="update-all" depends="update,update-sdk,update-ide" />
+    <target name="clean-all" depends="clean,clean-sdk,clean-ide" />
+    <target name="do-all" depends="dist,sdk,eclipse" />
 
-    <target name="compile.tests">
-        <!-- No tests for now
-        <mkdir dir="${build.classes}" />
-        <javac
-            srcdir="${test.src}"
-            destdir="${build.classes}"
-            debug="true"
-            encoding="UTF8"
-            classpathref="test.run.classpath"
-            target="${compile.java.target}"
-            source="${compile.java.source}"
-            bootclasspath="${compile.java.bootclasspath}">
-            <include name="**/*.java" />
-        </javac>
-        <copy todir="${build.classes}">
-            <fileset dir="${test.src}">
-                <exclude name="**/*.java" />
-            </fileset>
-        </copy>
-        -->
-    </target>
-
-    <target name="test"
-        depends="publish,compile.tests,test-quick">
-    </target>
-
-    <target name="test-quick" depends="compile.tests">
-        <mkdir dir="${test.reports}" />
-        <echo>No tests (yet)</echo>
-    </target>
 </project>

@@ -1,0 +1,444 @@
+= Tracking Gradle Migration
+
+== Overall TODO for each project
+
+* ide-quick
+* bundle-proxy
+* Tests are disabled globally.
+* Jigsaw support via `-Pjigsaw=1`
+* Documentation building
+
+== Subprojects
+
+=== Ant-plugin
+
+This is the first action at restructuring the `compiler-java` build. All of the sources are still in the
+`java-compiler` source area, but the ANT plugin is now build separately with artifacts ending up in it's own
+build directory without polluting the `compiler-java` area. This has simplified the `compiler-java` build as well.
+
+=== Ceylon-bootstrap
+
+This is the second action at restructuring the `compiler-java` build. All of the sources are still in the
+`java-compiler` source area, but the bootrstao JAR is now build separately with artifacts ending up in it's own
+build directory without polluting the `compiler-java` area. This has simplified the `compiler-java` build as well.
+
+=== Cli
+
+.TODO
+* Should consider looking at `application` plugins to do a better job of bundling scripts. One task is
+  specifically called `startScripts` to mimic a similar fucntionaing task in `application` plugin. This
+  was done to deliberately break the build when the refactoring for `application` happens.
+
+=== Cmr
+
+.TODO
+* 17 tests are currently (disabled test task for moment)
+
+=== Cmr-aether
+
+Standard Ceylon Java project.
+
+=== Cmr-webdav
+
+Standard Ceylon Java project.
+
+=== Commons
+
+.From common/build.xml
+[source,xml]
+----
+<target name="publish"
+    depends="clean.repo,init.repo,dist,publish-internal" <!-- 1 --> <!-- 2 --> <!-- 3 -- >
+    description="Publish both type checker and ceylon.language template module">
+</target>
+----
+<1> `clean.repo` handled by `cleanRepo` which is a dependency of `clean`.
+<2> `init.repo`, `publish-internal` handled by `publishInternal`.
+<3> `dist` handled by Gradle dependency chain and included `assemble`, `sourceZip`, `sha1` and `jar`
+
+=== Compiler-java
+
+There is an unfortunate interdependency with `language`.
+
+*Utf8properties*: Unlike the Ant `compiler.classes` the `main` source set will include `*.utf8properties`.
+  The reason for this is that the Gradle task can take care of this in the `processResources` task via a filter,
+  whereas in Ant this hand to be handled via an extra build step.
+
+.TODO
+* Do we need to `-XDignore.symbol.file` when compiling?
+* Mismatch in `compiler-*.jar` artifacts between ANT (1789 files) and Gradle (1777 files).
+* Mismatch in `ceylon-ant.jar` artifacts between ANT (154 files) and Gradle (155 files).
+* For `bootstrap-ant.jar` need to check `MANIFEST.MF`
+
+=== Compiler-js
+
+The directory layout seems to be nearer to a Gradle/Maven convention, but the resources are still
+under `src/main/java`. For this reason there is a `sourceSets` block in the build to find the correct files.
+If those files could simply be moved to the `src/main/resources` folder the whole block can be eliminated.
+
+.TODO
+* Do we need to include test classs fo the `ceylon.language.js`?
+* Not sure about the runtime directory.
+  Should we send those artifacts to `build/libs` or `build/runtime` under Gradle?
+* `jdk5Stubs` seems to refer to an empty collection. We could get rid of it and simplify the build script.
+
+=== Dist
+
+.From dist/build.xml
+[source,xml]
+----
+<target name="install-all"
+    depends="setup-repo, install-compiler, install-js, <!-- 1 --> <!-- 2 -->
+             copy-compiler-binaries, <!-- 3 -->
+             copy-samples, copy-templates, copy-contrib, copy-licenses, <!-- 4 -->
+             copy-jvm-compiler-libraries, <!-- 5 -->
+              install-runtime, <!-- 6 -->
+             add-module-descriptors, <!-- 7 -->
+             generate-buildid"
+    description="Generates all binaries and copies them to the distribution folder">
+</target>
+----
+<1> `setup-repo` handled `:runtime:setupRepo`
+<2> `install-compiler` handled by `publishInternal` task in `common`, `cli`, `langtools-classfile`,
+  `model`, `cmr` ...
+<3> `copy-compiler-binaries` handled by `:cli:startScripts` & `:dist:copyCompilerBinaries`
+<4> `copy-licenses`, `copy-samples`, `copy-templates` & `copy-contrib` handled by `:dist:copySupportFiles`
+<5> `copy-jvm-compiler-libraries` handled by `:compiler-java:publishInternal`.
+<6> `install-runtime` handled by `:distinstallRuntime`.
+<7> `add-module-descriptors` is not handle in two ways. For Ceylon-specific artifacts this is part of the build
+  in each subproject. For external artifacts this is indirectly covered by `:runtime:setupRepo`.
+
+.TODO
+* `ceylon-completion.bash` is copied twice - once in `copyContrib` and once in `copyCompilerBinaries`
+
+== Dist-osgi
+
+* Does not wrtie anything back to source.
+** Distribution files are written to `${buildPrefix}/osgi-distribution` folder
+** Embedded Repository is in ``${buildPrefix}/dist_osgi/embeddRepository`
+* Running `dist` task from root project will also cause the full OSGI distribution
+to be built.
+
+.TODO
+* `addModule 'org.eclipse.ceylon.dist.repo', "${project.version}${versionQualifier}"` is current disabled.
+  Not sure if it is needed as the Ant build produces the same warning.
+
+
+=== Java-main
+
+.TODO
+* Do we need to set the compiler flag `-XDignore.symbol.file` ?
+
+=== Langtools-classfile
+
+This has been straight-forward to do. There are no `*.utf8properties` files in this project, but it has alerted to the
+`native2ascii` Ant task that was used. The solution (which hopefully will work) is to hook into the lifecycle
+`processResources` task, and fix the encodings on the fly using the Ant `EscapeUnicode` filter instead.
+
+We also set `ceylonPublishModuleName` as this one uses two distinctly named property names from `common-build.properties`.
+
+.TODO
+* Do we need to set `-XDignore.symbol.file`  for `JavaCompile` options?
+
+=== Language
+
+We still use the imported Ant build to get stuff done. `build.dir` is set as a property on the imported build
+and that seems to be forcing Ant to build into Gradle's `buildDir`.
+
+There is an unfortunate interdependency with `compiler-java`.
+
+.TODO
+* Fix it from going through the Ant build to building everything as part of Gradle direct.
+* Start using `generate-source.gradle` to generate source.
+* Set `generateModuleInfo` according to `jigsaw`.
+* Some copy operations in the Ant `build` task need to be investigated.
+
+=== Model
+
+Standard Ceylon Java project.
+
+=== Module-loader
+
+It needed a special configuration to pick up the `car` file from `language`.
+
+=== Runtime
+
+Needed a special `sourceSet` layout.
+
+As all of the four Ant `javac` tasks ended up in a single JAR and used the same compilation options,
+ I think putting them into a single compilation task was the way to go.
+
+* What about those `pom.xml` files that are dotted over the place?
+
+=== Runtime-external
+
+This a restructuring from `runtime` which looks after the external runtime dependencies. This just allows
+for a cleaner build.
+
+.TODO
+* Should look to see if we cannot handle the JARs via Gradle's dependency mechanism.
+
+=== Sdk-build
+
+Newly added subproject to wrap around SDK building. It used the top-level build.gradle to setup a correct environment
+for the Ant Build and uses a Git plugin for Gradle to handle updates etc. A second level build (`ant.gradle`) loads the
+Ant Build and executed it once the appropriate properties for Ant as been setup.
+
+.TODO
+* The current Git plugin that is being used does a `git pull` instead of `git pull --rebase`. Waiting on
+https://github.com/seu-as-code/seu-as-code.plugins/issues/26[seu-as-code.plugins #26] to be fixed.
+* Still uses `org.osgi.imple.bundle.bindex-2.2.0` from the `lib` folder. Need to know whether it is to be found in an
+internet repo.
+
+=== Tool-provider
+
+It needed a special configuration to pick up the `car` file from `language`.
+
+There is a `sourceSets` block in the build to find the correct resources files.
+If those files could simply be moved to the `src/main/resources` folder the whole block can be eliminated.
+
+Note that unlike the Ant build, the `*.utf8properties` are included in the block as the `processResources` task
+knows how to take care of them.
+
+.TODO
+* Do we need to set the compiler flag `-XDignore.symbol.file` ?
+
+=== Typechecker
+
+Usage of Gradle's builtin `antlr` plugin did not work due to a showstopper bug. Sticking wil the old `build.xml` is not
+ideal as automatic management of artifacts for project dependencies will be lost. Created `CeylonAntlr` plugin to solve
+the problem.
+
+The equivalent of the Ant `treegen` task has been solved by creating a sourceset called `treegen`. This automatically
+ creates a `compileTreegenJava` tasks which is then made dependent on `generateGrammarSource`.
+
+The `tree` used a class called `Generate` to create further Java files for later compilation. It was discovered that
+the `Generate` class has a hardcoded path that starts with `gensrc`.
+For this reason the generated source directory is configured in the subproject to be `gensrc`, but located under the
+build directory. The Gradle `tree` task used the build directory has working directory and references back to the
+project directory to find the `Ceylon.nodes` file. it also manually sets an output directory property so that Gradle
+can have an idea when it is up to date.
+
+Finally `compileJava` has to depend on `tree`, whereafter all of the tasks supplied via `java-for-modules.gradle`,
+starts to work.
+
+.TODO
+* The Ant `antlr.tree` deleted tokens at the end. Should we still do that?
+
+== Custom build code in buildSrc
+
+A `buildSrc` folder has been added to help with some of the delicate and less common feastures of this build.
+
+=== Checksum
+
+A checksum task type has been added as `buildSrc/src/main.groovy/CheckSum.groovy`. This task can be used in conjuction
+with any archiver tasks such as `Zip` & `Jar` to create checksums. By default a `sha1` task is added to each Java
+project. This replaces the use of the `sha1sum` tasks in the Ant build.
+
+=== Timestamp
+
+A helper class has been added as `buildSrc/src/main.groovy/TimeStamp.groovy`. It sets a singular timestamp value
+at the beginning of the build which can then be used in all builds via `TimeStamp.BUILD`. This replaces the use of
+the `TStamp` ant task.
+
+=== CeylonCommonBuildProperties
+
+This is a plugin that is applied which loads up the properties from `common-build.properties` and places it on the
+projet extension as a field called `cbp`.
+
+It also provides a `requiresCBP` method that will fail the build if a specific property has not been found in
+`common-build.properties`.
+
+=== CeylonAntlr
+
+A local plugin that mimics a number of conventions of the builtin Gradle `antlr` plugin, but is stripped down in
+functionality and covers just enough to work within the Ceylon build environment.
+
+=== CeylonBuildOsgiPLugin
+
+Activates OSGI support.
+
+* Adds a `ceylon` extension to the `jar` task.
+* Adds a method `setAsOsgiArchive()` to every `Jar` task, which can be called to invoke OSGI support on the task,
+  This means that the `ceylon` extension will become available to be used in th task configuration and that the
+  manifest will be converted an OSGI manifest.
+* OSGI-enabled `Jar` tasks will automatically configure the OSGI metadata based upon information configured in
+  the `ceylon` block.
+* Also adds a `moduleXml` task which is of type `CeylonBuildModuleXml`.
+
+=== CeylonBuildXml
+
+It's primary purpose is to copy a `module.xml` file into the build directory and perform substitutionts. Such
+a file can then be added to a JAR and/or be copied to the distribution area.
+
+=== CeylonOsgiArchiveTaskExtension
+
+Adds a number of configurations which can be used to configure the necessary OSGI metadata in way that is very
+specific to the Ceylon build. The file has been well documented and can be used as reference.
+
+=== CeylonBuildInfoPlugin
+
+Provides capability to read commit info from Git repository or via a project property or via a system property,
+
+=== CeylonBuildIdGenerator
+
+A task for generating build identifier from Git
+
+== Custom build in gradle folder
+
+A number of common functionality not suitable for buildSrc have been added as buildscript in the `gradle` folder
+
+=== java-for-modules.gradle
+
+Adds common `jar` and `publishInternal` configuration. It requires `ceylonModuleName` to be set before including it.
+If `ceylonSourceLayout` is set to `false` before inclusion it will not set up `sourceSets` to use the Ant layout.
+
+It assumes that `ceylonModuleName` is used in a consistent manner throughout a specific manner. This usually works,
+but there some exceptions i.e. `classfile` and 'langtools.classfile`. For this case a subproject can manually set
+`ceylonPublishModuleName` to the `ceylon.XXXX.dir` part.
+
+.TODO
+* Tests are disabled. Need to fix this
+
+=== use-ant-build.gradle
+
+For subprojects that have to rely on using the Ant build, applying this will set the appropriate properties and link
+Gradle lifecycle tasks to appropriate ones in the Ant build.
+
+.TODO
+* Tests are disabled. Need to fix this
+
+== Test status
+
+|===
+| `cmr-aether` | No tests
+| `cmr-js` | No tests
+| `cmd-webdav` | No tests
+| `common` | Working
+| `langtools-classfile | No tests
+| `model` | Working
+| `cmr` | Disabled (2 failing tests - 6 more is run by JDK8).
+| `cli` | Working
+| `compiler-java` | Disabled (compilation failures). Similar issue with `ant test`.
+| `compiler-js` | Disabled (Most tests fail with `LanguageModuleNotFoundException`).
+| `module-loader` | No tests
+| `runtime` | Disabled (requires updates to Gradle script)
+| `language` | Disabled (imported Ant tasks)
+| `tool-provider | Disabled (requires updates to Gradle script)
+| `typechecker` | Disabled (requires updates to Gradle script)
+|===
+
+[[OSGIheaders]]
+== Generating OSGI headers
+
+In order to deal with OSGI headers, the  GRradle `osgi` plugin is applied and a custom task extension is
+added to the 'jar` task. This is activated by applying the `CeylonBuildOsgiPlugin`. Other Jar tasks can have this
+fucntionality actived by adding `setAsOsgiExternalArchive()` (for external artifcats) or
+`setAsOsgiArchive()` (for  Ceylon-specific artifacts) to the configuration block. Both cases enable a new
+extension block called `ceylon` but the configuration options are slightly different:
+
+[cols="4*"]
+|===
+| Option
+| `setAsOsgiExternalArchive`
+| `setAsOsgiArchive`
+| Usage
+
+| `bundleSymbolicName`
+| -
+| *Y*
+| Set the symbolic name for this bundle. Affects `Bundle-SymbolicName`.
+
+| `bundleVersion`
+| -
+| *Y*
+| Sets an OSGI bundle version. If not set will use the value from `exportedBundleVersion`.
+  Affects `Bundle-Version`.
+
+| `dynamicImports`
+| -
+| *Y*
+| Provide one or more modules that will be be dynamically imported. This is done in key-value format i.e.
+  `PackagePattern : BundleVersion`.
+
+| `excludeModuleNames`
+| *Y*
+| *Y*
+| Provide one or more modules than are excluded above and beyond the standard list. Using this with the
+  assignment operator will ovveride all existing excluded modules.
+
+| `exportedBundleVersion`
+| -
+| *Y*
+| Sets the exported bundle version. Affects `Export-Package`.
+
+| `externalBundleQualifier`
+| *Y*
+| -
+| A postfix to identify external dependencies which make up parts of the Ceylon distribution.
+  Defaults to 'CEYLON-DEPENDENCIES-v0'.
+
+| `forceNewOsgiManifest`
+| *Y*
+| -
+| If set to `true`, a new OSGI manifest will be created irrespective of whether the JAR contains a
+  valid OSGI manifest. Defaults to `false.
+
+| `forceOptionalResolutionFor`
+| *Y*
+| *Y*
+| Provide one or more module names for which `resolution:=optional` will be added to
+   `Require-Bundle` attribute irrespective of whther the module is marked `optional` or not
+
+| `importJavaxModel`
+| *Y*
+| *Y*
+| Set to `true` if ``javax.lang.model.*` needs to be imported. Defaults to `false`.
+
+| `moduleLocation`
+| *Y*
+| *Y*
+| Sets the location of the `module.xml` file in a lazy-evaluatable manner as long as Gradle's
+`project.file` method can resolve it.
+
+| `seedFrom`
+| *Y*
+| -
+| Path to a JAR where to read the original manifest from.
+
+|===
+
+
+////
+yeah, understand
+in fact the OSGI support in the build is two-fold
+first we have to generate the right OSGI metadata inside the various artifacts
+this is what you have already done
+then we have to create an OSGI distribution
+which means
+a distribution of the Ceylon artifacts that might be used by OSGI provisionning tools
+such as:
+p2
+OSGI Bundle repositry (old style and R5)
+Karaf features
+The first step of this is to build a small piece of code that will provide an Osgi BundleActivator
+class that can be used by all OSGI bundles. This code is built in the ./ceylon/dist/osgi/build.xml file
+
+and the generated code is inside an additional OSGI bundle archive : org.eclipse.ceylon.dist-<version>.jar
+and the second step is to create the necessary metadata and structure for OSGI provisionning tools
+There is also another part done by this file, but not directly related to provisionning tools: the creation of a Ceylon
+repository that contains all the Ceylon distribution artifacts, plus the org.eclipse.ceylon.dist-<version>.jar
+bundle + the OSGI core bundle archive (org.osgi.core-4.3.1.jar)
+
+David Festal @davidfestal 11:28
+This Ceylon repository will also be embedded inside an additional OSGI bundle
+(org.eclipse.ceylon.dist.repo_<version>.jar), to provide an embedded Ceylon repository inside OSGI containers
+(eclipse for example)
+
+@ysb33r : to avoid bad surprises in P2 provisionning because of version ordering between - and C
+- is before C in lexical order
+
+Tako Schotanus @quintesse 09:39
+@ysb33r ah, and it seems that for OSGi the qualifier MUST be separated from the version number by a dash while all other separators must be dots. That seems to be the reason you can't just blindly add -XXX or .XXX on the end unfortunatly
+So if the version before it already contains a dash you have to use a dot, otherwise a dash
+////
