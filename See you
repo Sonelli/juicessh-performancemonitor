@@ -1,0 +1,60 @@
+.concat .concateager .merge
+public static DsAlbum AlbumDataSet() {
+  DsAlbum result = new DsAlbum();
+  result.Albums.AddAlbumsRow(1, "HQ", "Roy Harper", false, null);
+  result.Albums.AddAlbumsRow(2, "The Rough Dancer and Cyclical Night", "Astor Piazzola", false, null);
+  result.Albums.AddAlbumsRow(3, "The Black Light", "Calexico", false, null);
+  result.Albums.AddAlbumsRow(4, "Symphony No.5", "CBSO", true, "Sibelius" );
+  result.AcceptChanges();
+  return result;public PmodAlbum(DsAlbum albums) {
+    this._data = albums; 
+    _selectedAlbumNumber = 0;
+  }
+  private DsAlbum _data;
+  private int _selectedAlbumNumber;
+public String Title {
+    get {return SelectedAlbum.Title;}
+    set {SelectedAlbum.Title = value;}
+  }
+  public String Artist {
+    get {return SelectedAlbum.Artist;}
+    set {SelectedAlbum.Artist = value;}     
+  }
+  public bool IsClassical {
+    get {return SelectedAlbum.IsClassical;}
+    set {SelectedAlbum.IsClassical = value;}            
+  }
+  public String Composer {
+    get {
+      return (SelectedAlbum.IsComposerNull()) ? "" : SelectedAlbum.Composer;
+    }
+    set {
+      if (IsClassical) SelectedAlbum.Composer = value;
+    }                 
+  }
+  public DsAlbum.AlbumsRow SelectedAlbum {
+    get {return Data.Albums[SelectedAlbumNumber];}
+  }
+private void txtTitle_TextChanged(object sender, System.EventArgs e){
+    SyncWithPmod();
+  }
+private void lstAlbums_SelectedIndexChanged(object sender, System.EventArgs e){
+    if (NotLoadingView) {
+      model.SelectedAlbumNumber = lstAlbums.SelectedIndex;  
+      LoadFromPmod();
+    }
+  }
+private void btnApply_Click(object sender, System.EventArgs e)    {
+    model.Apply();
+    LoadFromPmod();
+  }
+  private void btnCancel_Click(object sender, System.EventArgs e){
+    model.Cancel();
+    LoadFromPmod();
+  }
+public void Apply ()    {
+    SelectedAlbum.AcceptChanges();
+  }
+  public void Cancel() {
+    SelectedAlbum.RejectChanges();
+  }
