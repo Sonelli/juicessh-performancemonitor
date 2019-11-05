@@ -1,25 +1,36 @@
-JuiceSSH Plugin: Performance Monitor
-===========================
+Ceylon bootstrap
+================
 
-A JuiceSSH plugin for monitoring linux servers using the JuiceSSH Plugin SDK.
+License
+-------
 
-![screenshot](http://i.imgur.com/uDSJRIr.png?1)
+The content of this repository is released under the ASL v2.0
+as provided in the LICENSE file that accompanied this code.
 
-This plugin will connect to your choice of JuiceSSH connection and execute commands to monitor the performance of the server.
+By submitting a "pull request" or otherwise contributing to this repository, you
+agree to license your contribution under the license mentioned above.
 
-For details of how the various stats are discovered check out the following classes:
+Directory structure
+-------------------
 
-[CPU checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/CpuUsageController.java)
+* `src`       - the Ceylon bootstrap module sources
+* `test-src`  - the Ceylon bootstrap module unit tests
 
-[RAM checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/FreeRamController.java)
+Build the module
+----------------
 
-[Load Avg checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/LoadAverageController.java)
+For setting up the development environment and compiling and building the distribution
+take a look at [ceylon-dist](https://github.com/ceylon/ceylon-dist#ceylon-distribution).
 
-[Network checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/NetworkUsageController.java)
+If after having built the distribution you want to build the module run
 
-[Disk checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/DiskUsageController.java)
+    ant clean publish
+    
+And to run the tests type
 
+    ant test
 
-For details of the JuiceSSH Plugin SDK, it's capabilities, security information and how to get started with writing a Plugin please check our [FAQ](http://juicessh.com/faq)
+Once built, the module lives in this jar:
 
-Feel free to fork/extend/contribute to this plugin!
+    ~/.ceylon/repo/ceylon/bootstrap/0.2/ceylon.bootstrap-0.2.jar
+

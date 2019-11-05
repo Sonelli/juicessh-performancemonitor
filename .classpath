@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ceylon-common"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ceylon-module-resolver"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ceylon-model"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ceylon-cli"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ceylon-typechecker"/>
+	<classpathentry kind="lib" path="/ceylon/lib/antlr-complete-3.5.2.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

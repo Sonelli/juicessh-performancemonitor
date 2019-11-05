@@ -1,0 +1,13 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+ext {
+    ceylonModuleName = 'bootstrap'
+    ceylonNamespace = 'ceylon'
+}
+
+apply from : "${rootProject.projectDir}/gradle/java-for-modules.gradle"
+
+dependencies {
+    compile project(':common')
+}
+
