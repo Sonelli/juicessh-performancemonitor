@@ -1,0 +1,774 @@
+dblock@localhost:~$ uname
+Linux
+dblock@localhost:~$ uname - cat
+uname: extra operand '-'
+Try 'uname --help' for more information.
+dblock@localhost:~$ char --help
+-bash: char: command not found
+dblock@localhost:~$        mkfs.btrfs - create a btrfs filesystem
+-bash: mkfs.btrfs: command not found
+dblock@localhost:~$ mkfs
+mkfs: no device specified
+Try 'mkfs --help' for more information.
+dblock@localhost:~$ mkfs 3 nexus
+mke2fs 1.45.4 (23-Sep-2019)
+mkfs.ext2: invalid blocks 'nexus' on device '3'
+dblock@localhost:~$ whois 'nexus'
+-bash: whois: command not found
+dblock@localhost:~$ whois 'nexus 3'
+-bash: whois: command not found
+dblock@localhost:~$ nexus3 ftsp
+-bash: nexus3: command not found
+dblock@localhost:~$ nexus 3 --help
+-bash: nexus: command not found
+dblock@localhost:~$ mkfs.btrfs
+-bash: mkfs.btrfs: command not found
+dblock@localhost:~$ mkfs 'nexus 3' ip address
+mke2fs 1.45.4 (23-Sep-2019)
+mkfs.ext2: invalid blocks 'ip' on device 'nexus 3'
+dblock@localhost:~$ whois 1.45.4
+-bash: whois: command not found
+dblock@localhost:~$ whois 192.168.1.101
+-bash: whois: command not found
+dblock@localhost:~$ stat -c
+stat: option requires an argument -- 'c'
+Try 'stat --help' for more information.
+dblock@localhost:~$ sudo -zcat
+/usr/local/bin/sudo: illegal option -- z
+/usr/local/bin/sudo: line 4: /dev/stderr: Permission denied
+dblock@localhost:~$ sudo --z
+/usr/local/bin/sudo: illegal option -- -
+/usr/local/bin/sudo: line 4: /dev/stderr: Permission denied
+dblock@localhost:~$ who id --dev/stderr
+who: unrecognized option '--dev/stderr'
+Try 'who --help' for more information.
+dblock@localhost:~$ who --help
+Usage: who [OPTION]... [ FILE | ARG1 ARG2 ]
+Print information about users who are currently logged in.
+
+  -a, --all         same as -b -d --login -p -r -t -T -u
+  -b, --boot        time of last system boot
+  -d, --dead        print dead processes
+  -H, --heading     print line of column headings
+      --ips         print ips instead of hostnames. with --lookup,
+                    canonicalizes based on stored IP, if available,
+                    rather than stored hostname
+  -l, --login       print system login processes
+      --lookup      attempt to canonicalize hostnames via DNS
+  -m                only hostname and user associated with stdin
+  -p, --process     print active processes spawned by init
+  -q, --count       all login names and number of users logged on
+  -r, --runlevel    print current runlevel
+  -s, --short       print only name, line, and time (default)
+  -t, --time        print last system clock change
+  -T, -w, --mesg    add user's message status as +, - or ?
+  -u, --users       list users logged in
+      --message     same as -T
+      --writable    same as -T
+      --help     display this help and exit
+      --version  output version information and exit
+
+If FILE is not specified, use /var/run/utmp.  /var/log/wtmp as FILE is common.
+If ARG1 ARG2 given, -m presumed: 'am i' or 'mom likes' are usual.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report who translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/who>
+or available locally via: info '(coreutils) who invocation'
+dblock@localhost:~$ who--ips
+-bash: who--ips: command not found
+dblock@localhost:~$ who -l
+dblock@localhost:~$ who -a
+dblock   - pts/1        Nov  9 10:01 03:35        9690 (127.0.0.1)
+dblock   - pts/0        Nov  9 09:21 05:12        6134 (127.0.0.1)
+dblock   - pts/2        Nov  9 14:31   .          7557 (127.0.0.1)
+dblock@localhost:~$ who -u
+dblock   pts/1        Nov  9 10:01 03:35        9690 (127.0.0.1)
+dblock   pts/0        Nov  9 09:21 05:12        6134 (127.0.0.1)
+dblock   pts/2        Nov  9 14:31   .          7557 (127.0.0.1)
+dblock@localhost:~$ -b
+-bash: -b: command not found
+dblock@localhost:~$ who -b
+dblock@localhost:~$ who --lookup
+dblock   pts/1        Nov  9 10:01 (127.0.0.1)
+dblock   pts/0        Nov  9 09:21 (127.0.0.1)
+dblock   pts/2        Nov  9 14:31 (127.0.0.1)
+dblock@localhost:~$ var/run/utmp
+-bash: var/run/utmp: No such file or directory
+dblock@localhost:~$ who -T
+dblock   - pts/1        Nov  9 10:01 (127.0.0.1)
+dblock   - pts/0        Nov  9 09:21 (127.0.0.1)
+dblock   - pts/2        Nov  9 14:31 (127.0.0.1)
+dblock@localhost:~$ WHO --LOGIN
+-bash: WHO: command not found
+dblock@localhost:~$ who -r
+dblock@localhost:~$ who -r var/run/utmp
+dblock@localhost:~$ info
+-bash: info: command not found
+dblock@localhost:~$ info (coreutils) who invocation
+-bash: syntax error near unexpected token `coreutils'
+dblock@localhost:~$ who 'am i'
+dblock@localhost:~$
+dblock@localhost:~$ help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ nexus 3 --suspend
+-bash: nexus: command not found
+dblock@localhost:~$ dmitry
+-bash: dmitry: command not found
+dblock@localhost:~$ nmap
+-bash: nmap: command not found
+dblock@localhost:~$ tcpdump
+-bash: tcpdump: command not found
+dblock@localhost:~$ fc [-e ename] [-inr] [first] [last] or>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ fc ename
+-bash: fc: history specification out of range
+dblock@localhost:~$ fc history
+-bash: fc: history specification out of range
+dblock@localhost:~$ history
+    1  block all other devices
+    2  curi iconfig.me
+    3  autossh
+    4  gitignore
+    5  -d
+    6  --encode data
+    7  autossh [-v][-m port[:echo_port]][-f] [ssh_options]
+    8  exit
+    9  Pothead@420
+   10  exit
+   11  gem server
+   12  <gem server/
+   13  EXIT
+   14  --- GEMSERVER
+   15  ~~DC
+   16  A~C~~B
+   17  metastat
+   18  exit
+   19  <html> <head> <link rel = "stylesheet" href = "css/theme/white.css"> </head> <body> <div class "reveal"> <div class "slides"> <section slide 1</section> <section> slide 2</section> /div> </div> <script> Reveal.initialize(): </script </body> </html>
+   20  reveal.js repository: $ git clone http:// github.com/hakimel/reveal.js.git
+   21  reveal.js
+   22  exit
+   23  .npm
+   24  .npm git
+   25  node -v
+   26  /app/index.html
+   27  exit
+   28  android info
+   29  system
+   30  --version --help
+   31  --help
+   32  uname
+   33  commands
+   34  <?xml version="1.0" encoding="UTF-8"?>
+   35  <d:devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   36  </d:devices>ip--galaxy nexus 3
+   37  whois
+   38  kill all
+   39  <d:device>
+   40  </d:device>ip address
+   41  </d:location> false
+   42  exit
+   43  SHELL_COMMAND
+   44  SHELL --commands
+   45  shell --help
+   46  ps
+   47  dpkg --ps
+   48  apt --ps
+   49  uname --ps
+   50  uname --awwwfuxx
+   51  dpkg -Dhelp
+   52  triggersstupid
+   53  apt triggersstupid
+   54  -D<octal>: triggersstupid
+   55  mkfifo
+   56  mkfifo --help
+   57  echo
+   58  echo $[ssh_client%%*]
+   59  echo ipconfig $ssh_client
+   60  return ip of galaxy 3 nexus
+   61  fifo -z
+   62  mkfifo -z
+   63  9
+   64  32
+   65  1277
+   66  id 1277
+   67  id 127
+   68  id --help
+   69  logout
+   70  logname
+   71  chcon
+   72  chcon --help
+   73  chcon -u
+   74  chcon --u
+   75  chcon -l
+   76  chcon -dir --list
+   77  chcon --version
+   78  chcon --type
+   79  dir(1)
+   80  chcon dir (1)
+   81  ls(1)
+   82  dir -ls(1)
+   83  vdir
+   84  uname
+   85  uname ls
+   86  who
+   87  cronnext
+   88  next
+   89  fg cronnext
+   90  cups-config
+   91  cups
+   92  ipptoolfile
+   93  ip location
+   94  cmp
+   95  dh
+   96  dh_systemlocal
+   97  dpkg_scansources
+   98  dpkg --scan
+   99  apt --scan
+  100  e2fsck
+  101  e2fsck -p
+  102  e2fsck -c
+  103  e2fsck -z
+  104  e2fsck -f
+  105  e2fsck -L
+  106  ethtool
+  107  mount.fuse3
+  108  h
+  109  gawk
+  110  sshfs
+  111  gcore
+  112  gcov
+  113  cpp
+  114  gcore
+  115  e2fsck gcore
+  116  e2fsck 3 nexus
+  117  e2fsck 3 nexus [-panyrcsfktvDFV]
+  118  e2fsck device
+  119  Usage: e2fsck [-panyrcdfktvDFV] [-b superblock] [-B blocksize]
+  120  git
+  121  apt git
+  122  apt locat 3 nexus
+  123  apt locate 3 nexus
+  124  git-cat-file
+  125  git-device-location
+  126  git-log
+  127  git --help
+  128  gnutls_cipher_suite_info(3)        gnutls        gnutls_cipher_suite_info(3)  129  gnutls_cipher_suite_info(3)        gnutls        gnutls_cipher_suite_info(3)gnutls_cipher_suite_info - API function<gnutls/gnutls.h>
+  130  size_t idx  index of cipher suite to get information about, starts on
+  131  gnutls_cipher_algorithm_t * cipher
+  132  debugfs - ext2/ext3/ext4 file system debugger
+  133  firejail --bandwidth={name|pid} bandwidth-command
+  134  ping 3 nexus
+  135  netstats
+  136  metastat
+  137  cpu info
+  138  gnutls_utf8_password_normalize - API function
+  139  -<gnutls/x509.h>
+  140  gnutls_x509_crt_get_authority_info_access - API function
+  141  <security/pam_misc.h>
+  142  newline <security/pam_misc.h>
+  143  int misc_conv
+  144  construct pam response
+  145  logout
+  146  pinky - lightweight finger
+  147  #include <config.h>                                                             Provides system specific information
+  148  #include <getopt.h>                                                             ...!includes auto-comment...
+  149  #include <pwd.h>                                                                ...!includes auto-comment...
+  150  #include
+  151  #include <sys/types.h>                                                          Provides system data types
+  152  #include "system.h"                                                             ...!includes auto-comment...
+  153  #include "canon-host.h"                                                         ...!includes auto-comment...
+  154  #include "die.h"                                                                ...!includes auto-comment...
+  155  #include "error.h"                                                              ...!includes auto-comment...
+  156  #include "hard-locale.h"                                                        ...!includes auto-comment...
+  157  #include "readutmp.h"                                                           ...!includes auto-comment...
+  158  /* The official name of this program (e.g., no 'g' prefix).  */             
+  159  #define PROGRAM_NAME "pinky"                                                    Line 34
+  160  #define AUTHORS \                                                               Line 36
+  161  /* If true, display the hours:minutes since each user has touched           
+  162  static bool include_idle = true;                                                Line 44
+  163  /* If true, display a line at the top describing each field. */             
+  164  static bool include_heading = true;                                             Line 47
+  165  /* if true, display the user's full name from pw_gecos. */                  
+  166  static bool include_fullname = true;                                            Line 50
+  167                                                                              
+  168  /* if true, display the user's ~/.project file when doing long format. */   
+  169  static bool include_project = true;                                             Line 53
+  170  /* if true, display the user's ~/.plan file when doing long format. */      
+  171  static bool include_plan = true;                                                Line 56
+  172                                                                              
+  173  /* if true, display the user's home directory and shell                     
+  174  static bool include_home_and_shell = true;                                      Line 60
+  175  /* if true, use the "short" output format. */                               
+  176  static bool do_short_format = true;                                             Line 63
+  177  /* if true, display the ut_host field. */                                   
+  178  #ifdef HAVE_UT_HOST                                                             Line 66
+  179  static bool include_where = true;                                               Line 67
+  180  #endif                                                                          Line 68
+  181  /* The strftime format to use for login times, and its expected             
+  182  static char const *time_format;                                                 Line 72
+  183  static int time_format_width;                                                   Line 73
+  184  static struct option const longopts[] =                                         Line 75
+  185  {                                                                                  {GETOPT_HELP_OPTION_DECL},                                                    Line 77;   {GETOPT_VERSION_OPTION_DECL},                                                 Line 78;   {NULL, 0, NULL, 0}                                                            Line 79; };                                                                              Block 1
+  186  /* Count and return the number of ampersands in STR.  */                    
+  187  static size_t _GL_ATTRIBUTE_PURE                                                Line 84
+  188  count_ampersands (const char *str)                                              Line 85
+  189  {                                                                                  size_t count = 0;                                                             Line 87;   do                                                                    
+  190  }                                                                               Block 2
+  191  /* Create a string (via xmalloc) which contains a full name by substituting 
+  192  }                                                                               Block 5
+  193  /* Display a line of information about UTMP_ENT. */                         
+  194  static void                                                                     Line 199
+  195  print_entry (const STRUCT_UTMP *utmp_ent)                                       Line 200
+  196  {                                                                                  struct stat stats;                                                            Line 202;   time_t last_change;                                                           Line 203;   char mesg;                                                                    Line 204                                                           
+  197                                                                                     char line[sizeof (utmp_ent->ut_line) + DEV_DIR_LEN + 1];                      Line 209
+  198  #ifdef HAVE_UT_HOST                                                             Line 270
+  199  "), stdout);                                                                    Line 497
+  200        fputs (_("\                                                               Line 498
+  201  idle_string() - Creates a string containing a time difference
+  202  long_pinky() - Peforms pinky with long output for a user(s) (-l option)
+  203  print_entry() - Prints entry from a utmp structure
+  204  print_heading() - Prints data headers for utmp entries
+  205  print_long_entry() - Prints a verbose entry from a utmp structure
+  206  scan_entries() - Walks through each user in utmp and prints the entry
+  207  short_pinky() - Peforms pinky with short output (-s option)
+  208  time_string() - Returns the time string from a utmp structure
+  209  /* GNU's read utmp module.
+  210     Copyright (C) 1992-2001, 2003-2006, 2009-2018 Free Software Foundation, Inc.
+  211     This program is free software: you can redistribute it and/or modify
+  212     it under the terms of the GNU General Public License as published by
+  213     the Free Software Foundation; either version 3 of the License, or
+  214     (at your option) any later version.
+  215     This program is distributed in the hope that it will be useful,
+  216     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  217     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  218     GNU General Public License for more details.
+  219     You should have received a copy of the GNU General Public License
+  220     along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+  221  /* Written by jla; revised by djm */
+  222  #include <config.h>
+  223  #include "readutmp.h"
+  224  #include <errno.h>
+  225  #include <stdio.h>
+  226  #include <sys/types.h>
+  227  #include <sys/stat.h>
+  228  #include <signal.h>
+  229  #include <stdbool.h>
+  230  #include <string.h>
+  231  #include <stdlib.h>
+  232  #include <stdint.h>
+  233  #include "xalloc.h"
+  234  #if USE_UNLOCKED_IO
+  235  # include "unlocked-io.h"
+  236  #endif
+  237  #if 8 <= __GNUC__
+  238  # pragma GCC diagnostic ignored "-Wsizeof-pointer-memaccess"
+  239  #endif
+  240  /* Copy UT->ut_name into storage obtained from malloc.  Then remove any
+  241     trailing spaces from the copy, NUL terminate it, and return the copy.  */  242  char *
+  243  extract_trimmed_name (const STRUCT_UTMP *ut)
+  244  {
+  245    char *p, *trimmed_name;
+  246    trimmed_name = xmalloc (sizeof (UT_USER (ut)) + 1);
+  247    strncpy (trimmed_name, UT_USER (ut), sizeof (UT_USER (ut)));
+  248    /* Append a trailing NUL.  Some systems pad names shorter than the
+  249       maximum with spaces, others pad with NULs.  Remove any trailing
+  250       spaces.  */
+  251    trimmed_name[sizeof (UT_USER (ut))] = '\0';
+  252    for (p = trimmed_name + strlen (trimmed_name);
+  253         trimmed_name < p && p[-1] == ' ';
+  254         *--p = '\0')
+  255      continue;
+  256    return trimmed_name;
+  257  }
+  258  /* Is the utmp entry U desired by the user who asked for OPTIONS?  */
+  259  static bool
+  260  desirable_utmp_entry (STRUCT_UTMP const *u, int options)
+  261  {
+  262    bool user_proc = IS_USER_PROCESS (u);
+  263    if ((options & READ_UTMP_USER_PROCESS) && !user_proc)
+  264      return false;
+  265    if ((options & READ_UTMP_CHECK_PIDS)
+  266        && user_proc
+  267        && 0 < UT_PID (u)
+  268        && (kill (UT_PID (u), 0) < 0 && errno == ESRCH))
+  269      return false;
+  270    return true;
+  271  }
+  272  /* Read the utmp entries corresponding to file FILE into freshly-
+  273     malloc'd storage, set *UTMP_BUF to that pointer, set *N_ENTRIES to
+  274  }
+  275  #else
+  276  int
+  277  read_utmp (char const *file, size_t *n_entries, STRUCT_UTMP **utmp_buf,
+  278  {   size_t n_read = 0;   size_t n_alloc = 0;   STRUCT_UTMP *utmp = NULL;   int saved_errno;   FILE *f = fopen (file, "r");
+  279  }
+  280  #endi
+  281  getpwnam() google
+  282  facebook
+  283  getpwnam() 3 nexus
+  284  mfsploit
+  285  msploit
+  286  <unistd.h>
+  287  src/who.c
+  288  .github/workflows/nodejs.yml
+  289  name: Node CI
+  290  on: [push]
+  291  jobs:
+  292  cancel
+  293  fts_open
+  294  arch_version
+  295  arch --version
+  296  arch --help
+  297  include <sys/utsname.h>
+  298  <sys/utsname.h>
+  299  char sysname
+  300  char --sysname
+  301  b2sum --help
+  302  b2sum -b
+  303  uname
+  304  uname - cat
+  305  char --help
+  306  mkfs
+  307  mkfs 3 nexus
+  308  whois 'nexus'
+  309  whois 'nexus 3'
+  310  nexus3 ftsp
+  311  nexus 3 --help
+  312  mkfs.btrfs
+  313  mkfs 'nexus 3' ip address
+  314  whois 1.45.4
+  315  whois 192.168.1.101
+  316  stat -c
+  317  sudo -zcat
+  318  sudo --z
+  319  who id --dev/stderr
+  320  who --help
+  321  who--ips
+  322  who -l
+  323  who -a
+  324  who -u
+  325  -b
+  326  who -b
+  327  who --lookup
+  328  var/run/utmp
+  329  who -T
+  330  WHO --LOGIN
+  331  who -r
+  332  who -r var/run/utmp
+  333  info
+  334  info (coreutils) who invocation
+  335  who 'am i'
+  336  help
+  337  nexus 3 --suspend
+  338  dmitry
+  339  nmap
+  340  tcpdump
+  341  fc [-e ename] [-inr] [first] [last] or>
+  342  history
+dblock@localhost:~$ whois xmalloc
+-bash: whois: command not found
+dblock@localhost:~$ who --xmalloc
+who: unrecognized option '--xmalloc'
+Try 'who --help' for more information.
+dblock@localhost:~$ who -watching
+who: invalid option -- 'c'
+Try 'who --help' for more information.
+dblock@localhost:~$ who --c
+dblock dblock dblock
+# users=3
+dblock@localhost:~$ ls all devices
+ls: cannot access 'all': No such file or directory
+ls: cannot access 'devices': No such file or directory
+dblock@localhost:~$ list: 'all devices'
+-bash: list:: command not found
+dblock@localhost:~$ hash
+hits    command
+   1    /usr/bin/stat
+  14    /usr/bin/who
+   3    /usr/sbin/mkfs
+   2    /usr/local/bin/sudo
+   2    /usr/bin/uname
+   1    /usr/bin/ls
+dblock@localhost:~$ hash --help
+hash: hash [-lr] [-p pathname] [-dt] [name ...]
+    Remember or display program locations.
+
+    Determine and remember the full pathname of each command NAME.  If
+    no arguments are given, information about remembered commands is displayed.
+
+    Options:
+      -d        forget the remembered location of each NAME
+      -l        display in a format that may be reused as input
+      -p pathname       use PATHNAME as the full pathname of NAME
+      -r        forget all remembered locations
+      -t        print the remembered location of each NAME, preceding
+                each location with the corresponding NAME if multiple
+                NAMEs are given
+    Arguments:
+      NAME      Each NAME is searched for in $PATH and added to the list
+                of remembered commands.
+
+    Exit Status:
+    Returns success unless NAME is not found or an invalid option is given.
+dblock@localhost:~$ -hash: /user/bin/who
+-bash: -hash:: command not found
+dblock@localhost:~$ hash/user/bin/who
+-bash: hash/user/bin/who: No such file or directory
+dblock@localhost:~$ hash -p
+-bash: hash: -p: option requires an argument
+hash: usage: hash [-lr] [-p pathname] [-dt] [name ...]
+dblock@localhost:~$ user/sbin/mkfs
+-bash: user/sbin/mkfs: No such file or directory
+dblock@localhost:~$ hash -r
+dblock@localhost:~$ hash -t
+-bash: hash: -t: option requires an argument
+dblock@localhost:~$ hash -t [method] SHA1
+-bash: hash: [method]: not found
+-bash: hash: SHA1: not found
+dblock@localhost:~$ hash -t [expr] SHA256
+-bash: hash: [expr]: not found
+-bash: hash: SHA256: not found
+dblock@localhost:~$ hash -t [NAME] $PATH
+-bash: hash: [NAME]: not found
+-bash: hash: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games: not found
+dblock@localhost:~$ HASH -P [NAME] $PATH
+-bash: HASH: command not found
+dblock@localhost:~$ hash-[lr]
+-bash: hash-[lr]: command not found
+dblock@localhost:~$ plugin
+-bash: plugin: command not found
+dblock@localhost:~$ mkfs-b
+-bash: mkfs-b: command not found
+dblock@localhost:~$ mkfs --b
+mkfs.ext2: invalid option -- '-'
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+        [-i bytes-per-inode] [-I inode-size] [-J journal-options]
+        [-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+        [-m reserved-blocks-percentage] [-o creator-os]
+        [-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+        [-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+        [-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+        [-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ mkfs --M
+mkfs.ext2: invalid option -- '-'
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+        [-i bytes-per-inode] [-I inode-size] [-J journal-options]
+        [-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+        [-m reserved-blocks-percentage] [-o creator-os]
+        [-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+        [-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+        [-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+        [-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ mkfs -E
+mkfs.ext2: option requires an argument -- 'E'
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+        [-i bytes-per-inode] [-I inode-size] [-J journal-options]
+        [-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+        [-m reserved-blocks-percentage] [-o creator-os]
+        [-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+        [-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+        [-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+        [-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ mkfs [-c]-l filename
+mke2fs 1.45.4 (23-Sep-2019)
+mkfs.ext2: invalid blocks 'filename' on device '[-c]-l'
+dblock@localhost:~$ ext2: -i
+-bash: ext2:: command not found
+dblock@localhost:~$ mkfs: epxt2: "remove blocks" 'filename'
+-bash: mkfs:: command not found
+dblock@localhost:~$ mkfs --ext2
+mkfs.ext2: invalid option -- '-'
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+        [-i bytes-per-inode] [-I inode-size] [-J journal-options]
+        [-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+        [-m reserved-blocks-percentage] [-o creator-os]
+        [-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+        [-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+        [-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+        [-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ mkfs.ext2 --z
+mkfs.ext2: invalid option -- '-'
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+        [-i bytes-per-inode] [-I inode-size] [-J journal-options]
+        [-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+        [-m reserved-blocks-percentage] [-o creator-os]
+        [-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+        [-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+        [-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+        [-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ mkfs [-N]
+mke2fs 1.45.4 (23-Sep-2019)
+The file [-N] does not exist and no size was specified.
+dblock@localhost:~$ mkfs -g
+mkfs.ext2: option requires an argument -- 'g'
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+        [-i bytes-per-inode] [-I inode-size] [-J journal-options]
+        [-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+        [-m reserved-blocks-percentage] [-o creator-os]
+        [-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+        [-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+        [-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+        [-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ mkfs -g [group size]
+mkfs.ext2: Illegal number for blocks per group
+dblock@localhost:~$ mkfs -U
+mkfs.ext2: option requires an argument -- 'U'
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+        [-i bytes-per-inode] [-I inode-size] [-J journal-options]
+        [-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+        [-m reserved-blocks-percentage] [-o creator-os]
+        [-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+        [-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+        [-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+        [-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ device=/dev/sdb,device=/dev/sdc /dev/sda /mnt
+-bash: /dev/sda: No such file or directory
+dblock@localhost:~$ mkfs -o [creator] os
+mke2fs 1.45.4 (23-Sep-2019)
+The file os does not exist and no size was specified.
+dblock@localhost:~$ Performing full device TRIM (512.00MiB) ...
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$            Label:              (null)
+-bash: syntax error near unexpected token `null'
+dblock@localhost:~$            UUID:               49fab72e-0c8b-466b-a3ca-d1bfe56475f0
+-bash: UUID:: command not found
+dblock@localhost:~$            Node size:          65536
+-bash: Node: command not found
+dblock@localhost:~$            Sector size:        4096
+-bash: Sector: command not found
+dblock@localhost:~$            Filesystem size:    512.00MiB
+-bash: Filesystem: command not found
+dblock@localhost:~$            Block group profiles:
+-bash: Block: command not found
+dblock@localhost:~$              Data:             single            8.00MiB
+-bash: Data:: command not found
+dblock@localhost:~$              Metadata:         DUP              40.00MiB
+-bash: Metadata:: command not found
+dblock@localhost:~$              System:           DUP              12.00MiB
+-bash: System:: command not found
+dblock@localhost:~$            SSD detected:       no
+-bash: SSD: command not found
+dblock@localhost:~$            Incompat features:  extref, skinny-metadata
+-bash: Incompat: command not found
+dblock@localhost:~$            Number of devices:  1
+-bash: Number: command not found
+dblock@localhost:~$            Devices:
+-bash: Devices:: command not found
+dblock@localhost:~$              ID        SIZE  PATH
+-bash: ID: command not found
+dblock@localhost:~$               1   512.00MiB  /dev/loop0
+-bash: 1: command not found
+dblock@localhost:~$
+dblock@localhost:~$            # mount /dev/loop0 /mnt/
+dblock@localhost:~$            mount: mount /dev/loop0 on /mnt failed: No space left on device
+-bash: mount:: command not found
+dblock@localhost:~$
+dblock@localhost:~$        The ENOSPC occurs during the creation of the UUID tree. This is
+-bash: The: command not found
+dblock@localhost:~$        caused by large metadata blocks and space reservation strategy that
+-bash: caused: command not found
+dblock@localhost:~$ Performing full device TRIM (512.00MiB) ...
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$ Performing full device TRIM (512.00MiB) ...null
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$ mkfs.btrfs [options] <device> [<device>...]
+-bash: device: No such file or directory
+dblock@localhost:~$ mkfs.btrfs is used to create the btrfs filesystem on a single or
+-bash: mkfs.btrfs: command not found
+dblock@localhost:~$        multiple devices. <device> is typically a block device but can be a
+-bash: device: No such file or directory
+dblock@localhost:~$        file-backed image as well. Multiple devices are grouped by UUID of
+-bash: file-backed: command not found
+dblock@localhost:~$        the filesystem.
+-bash: the: command not found
+dblock@localhost:~$
+dblock@localhost:~$        Before mounting such filesystem, the kernel module must know all the
+-bash: Before: command not found
+dblock@localhost:~$        devices either via preceding execution of btrfs device scan or using
+-bash: devices: command not found
+dblock@localhost:~$        the device mount option. See section MULTIPLE DEVICES for more
+-bash: the: command not found
+dblock@localhost:~$ mkfs.btrfs is used to create the btrfs filesystem on a single or
+-bash: mkfs.btrfs: command not found
+dblock@localhost:~$ wipefs [options] device...
+wipefs: error: [options]: probing initialization failed: No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$        wipefs [--backup] -o offset device...
+wipefs: invalid offset argument: 'offset': Invalid argument
+dblock@localhost:~$
+dblock@localhost:~$        wipefs [--backup] -a device
+wipefs: error: [--backup]: probing initialization failed: No such file or directorydblock@localhost:~$ wipefs [--ext1] -a device
+wipefs: error: [--ext1]: probing initialization failed: No such file or directory
+dblock@localhost:~$ dir -a
+.  ..  .bash_history  .bash_logout  .bashrc  .profile  popd  source  umask
+dblock@localhost:~$ wipefs [profile] -a device
+wipefs: error: [profile]: probing initialization failed: No such file or directory
+dblock@localhost:~$ wipefs [user 1] -a device
+wipefs: error: [user: probing initialization failed: No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$        dd if=~/wipefs-sdb-0x00000438.bak of=/dev/sdb seek=$((0x00000438))
+dd: failed to open '/home/dblock/wipefs-sdb-0x00000438.bak': No such file or directory
+dblock@localhost:~$        bs=1 conv=notrunc
+dblock@localhost:~$               Restores an ext2 signature from the backup file  ~/wipefs-
+-bash: Restores: command not found
+dblock@localhost:~$               sdb-0x00000438.bak.
+-bash: sdb-0x00000438.bak.: command not found
+dblock@localhost:~$ wipefs --all --backup /dev/sdb
+wipefs: error: /dev/sdb: probing initialization failed: No such file or directory
+dblock@localhost:~$               Erases all signatures from the device /dev/sdb and creates a
+-bash: Erases: command not found
+dblock@localhost:~$               signature backup file ~/wipefs-sdb-<offset>.bak for each
+-bash: offset: No such file or directory
+dblock@localhost:~$               signature.
+-bash: signature.: command not found
+dblock@localhost:~$ wipefs /dev/sda*
+wipefs: error: /dev/sda*: probing initialization failed: No such file or directory
+dblock@localhost:~$               Prints information about sda and all partitions on
+-bash: Prints: command not found
+dblock@localhost:~$

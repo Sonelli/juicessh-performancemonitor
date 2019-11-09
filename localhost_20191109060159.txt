@@ -1,0 +1,85 @@
+dblock@localhost:~$ SHELL_COMMAND
+-bash: SHELL_COMMAND: command not found
+dblock@localhost:~$ SHELL --commands
+-bash: SHELL: command not found
+dblock@localhost:~$ shell --help
+-bash: shell: command not found
+dblock@localhost:~$ ps
+-bash: ps: command not found
+dblock@localhost:~$ dpkg --ps
+dpkg: error: unknown option --ps
+
+Type dpkg --help for help about installing and deinstalling packages [*];
+Use 'apt' or 'aptitude' for user-friendly package management;
+Type dpkg -Dhelp for a list of dpkg debug flag values;
+Type dpkg --force-help for a list of forcing options;
+Type dpkg-deb --help for help about manipulating *.deb files;
+
+Options marked [*] produce a lot of output - pipe it through 'less' or 'more' !
+dblock@localhost:~$ apt --ps
+E: Command line option --ps is not understood in combination with the other optionsdblock@localhost:~$ uname --ps
+uname: unrecognized option '--ps'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --awwwfuxx
+uname: unrecognized option '--awwwfuxx'
+Try 'uname --help' for more information.
+dblock@localhost:~$ dpkg -Dhelp
+dpkg debugging option, --debug=<octal> or -D<octal>:
+
+ Number  Ref. in source   Description
+      1  general          Generally helpful progress information
+      2  scripts          Invocation and status of maintainer scripts
+     10  eachfile         Output for each file processed
+    100  eachfiledetail   Lots of output for each file processed
+     20  conff            Output for each configuration file
+    200  conffdetail      Lots of output for each configuration file
+     40  depcon           Dependencies and conflicts
+    400  depcondetail     Lots of dependencies/conflicts output
+  10000  triggers         Trigger activation and processing
+  20000  triggersdetail   Lots of output regarding triggers
+  40000  triggersstupid   Silly amounts of output regarding triggers
+   1000  veryverbose      Lots of drivel about eg the dpkg/info directory
+   2000  stupidlyverbose  Insane amounts of drivel
+
+Debugging options can be mixed using bitwise-or.
+Note that the meanings and values are subject to change.
+dblock@localhost:~$ triggersstupid
+-bash: triggersstupid: command not found
+dblock@localhost:~$ apt triggersstupid
+E: Invalid operation triggersstupid
+dblock@localhost:~$ -D<octal>: triggersstupid
+-bash: octal: No such file or directory
+dblock@localhost:~$ mkfifo
+mkfifo: missing operand
+Try 'mkfifo --help' for more information.
+dblock@localhost:~$ mkfifo --help
+Usage: mkfifo [OPTION]... NAME...
+Create named pipes (FIFOs) with the given NAMEs.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -m, --mode=MODE    set file permission bits to MODE, not a=rw - umask
+  -Z                   set the SELinux security context to default type
+      --context[=CTX]  like -Z, or if CTX is specified then set the SELinux
+                         or SMACK security context to CTX
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report mkfifo translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/mkfifo>
+or available locally via: info '(coreutils) mkfifo invocation'
+dblock@localhost:~$ echo
+
+dblock@localhost:~$ echo $[ssh_client%%*]
+-bash: ssh_client%%*: syntax error: operand expected (error token is "%*")
+dblock@localhost:~$ echo ipconfig $ssh_client
+ipconfig
+dblock@localhost:~$ return ip of galaxy 3 nexus
+-bash: return: ip: numeric argument required
+-bash: return: can only `return' from a function or sourced script
+dblock@localhost:~$ fifo -z
+-bash: fifo: command not found
+dblock@localhost:~$ mkfifo -z
+mkfifo: invalid option -- 'z'
+Try 'mkfifo --help' for more information.
+dblock@localhost:~$ 9
