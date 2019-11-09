@@ -1,0 +1,512 @@
+dblock@localhost:~$ dig
+-bash: dig: command not found
+dblock@localhost:~$ curl
+-bash: curl: command not found
+dblock@localhost:~$ ip
+-bash: ip: command not found
+dblock@localhost:~$ lsblk
+lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
+dblock@localhost:~$ lsblk: authorize acces to sysfs directory: sys/dev/run: permission granted
+-bash: lsblk:: command not found
+dblock@localhost:~$ sysfs dir
+-bash: sysfs: command not found
+dblock@localhost:~$ ' / tail - nl
+> curl ipconfig.me
+> df -k
+> netcat icanhazip.com 80 <<<$
+> netcat icanhazip.com 80 <<<$'GET/ HTTP/1.1
+-bash:  / tail - nl
+curl ipconfig.me
+df -k
+netcat icanhazip.com 80 <<<$
+netcat icanhazip.com 80 <<<$GET/: No such file or directory
+dblock@localhost:~$ /tail - nl
+-bash: /tail: No such file or directory
+dblock@localhost:~$ curl ifconfig.me
+-bash: curl: command not found
+dblock@localhost:~$ curl ipconfig.me
+-bash: curl: command not found
+dblock@localhost:~$ '/tail-nl
+> curl ipconfig.me
+> dig+short myip.opendns.com @resolver1.opendns.com
+> GET IP
+> netcat 80<<<$GET/HTTP.1.0
+> ipconfig -a
+> hciconfig -a | awk'/BD ADDRESS:/[print $3]
+-bash: /tail-nl
+curl ipconfig.me
+dig+short myip.opendns.com @resolver1.opendns.com
+GET IP
+netcat 80<<<$GET/HTTP.1.0
+ipconfig -a
+hciconfig -a | awk/BD: No such file or directory
+dblock@localhost:~$ hciconfig
+-bash: hciconfig: command not found
+dblock@localhost:~$ whois help
+-bash: whois: command not found
+dblock@localhost:~$ uptime
+-bash: uptime: command not found
+dblock@localhost:~$ opendns
+-bash: opendns: command not found
+dblock@localhost:~$ sudo
+/usr/local/bin/sudo: line 8: /dev/stderr: Permission denied
+dblock@localhost:~$ python
+-bash: python: command not found
+dblock@localhost:~$ ctrl-x e
+-bash: ctrl-x: command not found
+dblock@localhost:~$ ctrl-x
+-bash: ctrl-x: command not found
+dblock@localhost:~$ -x
+-bash: -x: command not found
+dblock@localhost:~$ mount |column
+-bash: column: command not found
+dblock@localhost:~$ bash info
+bash: info: No such file or directory
+dblock@localhost:~$ -bash
+-bash: -bash: command not found
+dblock@localhost:~$ sudo
+/usr/local/bin/sudo: line 8: /dev/stderr: Permission denied
+dblock@localhost:~$ history
+    1  block all other devices
+    2  curi iconfig.me
+    3  autossh
+    4  gitignore
+    5  -d
+    6  --encode data
+    7  autossh [-v][-m port[:echo_port]][-f] [ssh_options]
+    8  exit
+    9  Pothead@420
+   10  exit
+   11  gem server
+   12  <gem server/
+   13  EXIT
+   14  --- GEMSERVER
+   15  ~~DC
+   16  A~C~~B
+   17  metastat
+   18  exit
+   19  <html> <head> <link rel = "stylesheet" href = "css/theme/white.css"> </head> <body> <div class "reveal"> <div class "slides"> <section slide 1</section> <section> slide 2</section> /div> </div> <script> Reveal.initialize(): </script </body> </html>
+   20  reveal.js repository: $ git clone http:// github.com/hakimel/reveal.js.git
+   21  reveal.js
+   22  exit
+   23  .npm
+   24  .npm git
+   25  node -v
+   26  /app/index.html
+   27  exit
+   28  android info
+   29  system
+   30  --version --help
+   31  --help
+   32  uname
+   33  commands
+   34  <?xml version="1.0" encoding="UTF-8"?>
+   35  <d:devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   36  </d:devices>ip--galaxy nexus 3
+   37  whois
+   38  kill all
+   39  <d:device>
+   40  </d:device>ip address
+   41  </d:location> false
+   42  exit
+   43  dig
+   44  curl
+   45  ip
+   46  lsblk
+   47  lsblk: authorize acces to sysfs directory: sys/dev/run: permission granted
+   48  sysfs dir
+   49  ' / tail - nl
+curl ipconfig.me
+df -k
+netcat icanhazip.com 80 <<<$
+netcat icanhazip.com 80 <<<$'GET/ HTTP/1.1
+   50  /tail - nl
+   51  curl ifconfig.me
+   52  curl ipconfig.me
+   53  '/tail-nl
+curl ipconfig.me
+dig+short myip.opendns.com @resolver1.opendns.com
+GET IP
+netcat 80<<<$GET/HTTP.1.0
+ipconfig -a
+hciconfig -a | awk'/BD ADDRESS:/[print $3]
+   54  hciconfig
+   55  whois help
+   56  uptime
+   57  opendns
+   58  sudo
+   59  python
+   60  ctrl-x e
+   61  ctrl-x
+   62  -x
+   63  mount |column
+   64  bash info
+   65  -bash
+   66  sudo
+   67  history
+dblock@localhost:~$ <?xml version="1.0" encoding="UTF-8"?>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$    35  <d:devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-bash: d:devices: No such file or directory
+dblock@localhost:~$    36  </d:devices>ip--galaxy nexus 3
+-bash: /d:devices: No such file or directory
+dblock@localhost:~$ </d:devices>ip--galaxy nexus 3
+-bash: /d:devices: No such file or directory
+dblock@localhost:~$ get id
+-bash: get: command not found
+dblock@localhost:~$ lsof
+-bash: lsof: command not found
+dblock@localhost:~$ alias
+alias ls='ls --color=auto'
+dblock@localhost:~$
+dblock@localhost:~$ grep
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+dblock@localhost:~$ 'grep --help
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> mkpdir
+> git
+> alias
+> galaxy nexus 3
+> ipconfig
+> 'ls
+-bash: $'grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls': command not found
+dblock@localhost:~$ 'grep --help
+
+
+
+
+
+
+
+
+
+mkpdir
+git
+alias
+galaxy nexus 3
+ipconfig
+'ls
+-bash: $'grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls': command not found
+dblock@localhost:~$ sudo
+/usr/local/bin/sudo: line 8: /dev/stderr: Permission denied
+dblock@localhost:~$ 'grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls':
+-bash: grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls:: command not found
+dblock@localhost:~$ dpkg -s /usr/bin/ls
+dpkg-query: error: --status needs a valid package name but '/usr/bin/ls' is not: illegal package name in specifier '/usr/bin/ls': must start with an alphanumeric character
+
+Use --help for help about querying packages.
+dblock@localhost:~$ --help
+-bash: --help: command not found
+dblock@localhost:~$ --help dpkg query
+-bash: --help: command not found
+dblock@localhost:~$ help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ Use --help for help about querying packages
+-bash: Use: command not found
+dblock@localhost:~$ fg [job_spec]
+-bash: fg: [job_spec]: no such job
+dblock@localhost:~$ fg [warrant]
+-bash: fg: [warrant]: no such job
+dblock@localhost:~$ fg [case]
+-bash: fg: [case]: no such job
+dblock@localhost:~$ fg [rel
+-bash: fg: [rel: no such job
+dblock@localhost:~$ fg --help
+fg: fg [job_spec]
+    Move job to the foreground.
+
+    Place the job identified by JOB_SPEC in the foreground, making it the
+    current job.  If JOB_SPEC is not present, the shell's notion of the
+    current job is used.
+
+    Exit Status:
+    Status of command placed in foreground, or failure if an error occurs.
+dblock@localhost:~$ bash --help
+GNU bash, version 5.0.3(1)-release-(aarch64-unknown-linux-gnu)
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+Type `bash -c "help set"' for more information about shell options.
+Type `bash -c help' for more information about shell builtin commands.
+Use the `bashbug' command to report bugs.
+
+bash home page: <http://www.gnu.org/software/bash>
+General help using GNU software: <http://www.gnu.org/gethelp/>
+dblock@localhost:~$ bash -c help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ jobspec --help
+-bash: jobspec: command not found
+dblock@localhost:~$ -lnprs
+-bash: -lnprs: command not found
+dblock@localhost:~$ builtin [shell-builtin [arg ...]]
+-bash: builtin: [shell-builtin: not a shell builtin
+dblock@localhost:~$ abefhkmnptuvxBCHP
+-bash: abefhkmnptuvxBCHP: command not found
+dblock@localhost:~$ fg abefhkmnptuvxBCHP
+-bash: fg: abefhkmnptuvxBCHP: no such job
+dblock@localhost:~$ fg trace
+-bash: fg: trace: no such job
+dblock@localhost:~$ fg tracker
+-bash: fg: tracker: no such job
+dblock@localhost:~$ open
+-bash: open: command not found
+dblock@localhost:~$ for
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ -lr
+-bash: -lr: command not found
+dblock@localhost:~$ hash -lr
+dblock@localhost:~$ dpkg
+dpkg: error: need an action option
+
+Type dpkg --help for help about installing and deinstalling packages [*];
+Use 'apt' or 'aptitude' for user-friendly package management;
+Type dpkg -Dhelp for a list of dpkg debug flag values;
+Type dpkg --force-help for a list of forcing options;
+Type dpkg-deb --help for help about manipulating *.deb files;
+
+Options marked [*] produce a lot of output - pipe it through 'less' or 'more' !
+dblock@localhost:~$ dpkg-deb --force-help
+dpkg-deb: error: unknown option --force-help
+
+Type dpkg-deb --help for help about manipulating *.deb files;
+Type dpkg --help for help about installing and deinstalling packages.
+dblock@localhost:~$ dpkg-deb --help
+Usage: dpkg-deb [<option> ...] <command>
+
+Commands:
+  -b|--build <directory> [<deb>]   Build an archive.
+  -c|--contents <deb>              List contents.
+  -I|--info <deb> [<cfile> ...]    Show info to stdout.
+  -W|--show <deb>                  Show information on package(s)
+  -f|--field <deb> [<cfield> ...]  Show field(s) to stdout.
+  -e|--control <deb> [<directory>] Extract control info.
+  -x|--extract <deb> <directory>   Extract files.
+  -X|--vextract <deb> <directory>  Extract & list files.
+  -R|--raw-extract <deb> <directory>
+                                   Extract control info and files.
+  --ctrl-tarfile <deb>             Output control tarfile.
+  --fsys-tarfile <deb>             Output filesystem tarfile.
+
+  -?, --help                       Show this help message.
+      --version                    Show the version.
+
+<deb> is the filename of a Debian format archive.
+<cfile> is the name of an administrative file component.
+<cfield> is the name of a field in the main 'control' file.
+
+Options:
+  -v, --verbose                    Enable verbose output.
+  -D, --debug                      Enable debugging output.
+      --showformat=<format>        Use alternative format for --show.
+      --deb-format=<format>        Select archive format.
+                                     Allowed values: 0.939000, 2.0 (default).
+      --nocheck                    Suppress control file check (build bad
+                                     packages).
+      --root-owner-group           Forces the owner and groups to root.
+      --[no-]uniform-compression   Use the compression params on all members.
+  -z#                              Set the compression level when building.
+  -Z<type>                         Set the compression type used when building.
+                                     Allowed types: gzip, xz, none.
+  -S<strategy>                     Set the compression strategy when building.
+                                     Allowed values: none; extreme (xz);
+                                     filtered, huffman, rle, fixed (gzip).
+
+Format syntax:
+  A format is a string that will be output for each package. The format
+  can include the standard escape sequences \n (newline), \r (carriage
+  return) or \\ (plain backslash). Package information can be included
+  by inserting variable references to package fields using the ${var[;width]}
+  syntax. Fields will be right-aligned unless the width is negative in which
+  case left alignment will be used.
+
+Use 'dpkg' to install and remove packages from your system, or
+'apt' or 'aptitude' for user-friendly package management. Packages
+unpacked using 'dpkg-deb --extract' will be incorrectly installed !
+dblock@localhost:~$ --root-owner-group
+-bash: --root-owner-group: command not found
+dblock@localhost:~$ fg <deb>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ -x|--vextract <deb> <directory>
+-bash: syntax error near unexpected token `<'
+dblock@localhost:~$ --debug
+-bash: --debug: command not found
+dblock@localhost:~$ -c
+-bash: -c: command not found
+dblock@localhost:~$ var
+-bash: var: command not found
+dblock@localhost:~$ <strategy
+-bash: strategy: No such file or directory
+dblock@localhost:~$ -B
+-bash: -B: command not found
+dblock@localhost:~$ --I DEB
+-bash: --I: command not found
+dblock@localhost:~$ DPKG/DEB/INFO
+-bash: DPKG/DEB/INFO: No such file or directory
+dblock@localhost:~$ ROOT OWNER
+-bash: ROOT: command not found
+dblock@localhost:~$ OWNER
+-bash: OWNER: command not found
+dblock@localhost:~$ SU OWNER
+-bash: SU: command not found
+dblock@localhost:~$ apt
+apt 1.8.4 (arm64)
+Usage: apt [options] command
+
+apt is a commandline package manager and provides commands for
+searching and managing as well as querying information about packages.
+It provides the same functionality as the specialized APT tools,
+like apt-get and apt-cache, but enables options more suitable for
+interactive use by default.
+
+Most used commands:
+  list - list packages based on package names
+  search - search in package descriptions
+  show - show package details
+  install - install packages
+  reinstall - reinstall packages
+  remove - remove packages
+  autoremove - Remove automatically all unused packages
+  update - update list of available packages
+  upgrade - upgrade the system by installing/upgrading packages
+  full-upgrade - upgrade the system by removing/installing/upgrading packages
+  edit-sources - edit the source information file
+
+See apt(8) for more information about the available commands.
+Configuration options and syntax is detailed in apt.conf(5).
+Information about how to configure sources can be found in sources.list(5).
+Package and version choices can be expressed via apt_preferences(5).
+Security details are available in apt-secure(8).
+                                        This APT has Super Cow Powers.
+dblock@localhost:~$ apt-get ip
+E: Invalid operation ip
+dblock@localhost:~$ apt-get id
+E: Invalid operation id
+dblock@localhost:~$ autoremove
+-bash: autoremove: command not found
+dblock@localhost:~$ apt-autoremove
+-bash: apt-autoremove: command not found
+dblock@localhost:~$ apt-secure
+-bash: apt-secure: command not found
+dblock@localhost:~$ apt-list
+-bash: apt-list: command not found
+dblock@localhost:~$ apt-show
+-bash: apt-show: command not found
+dblock@localhost:~$

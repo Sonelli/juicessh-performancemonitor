@@ -1,0 +1,891 @@
+dblock@localhost:~$ dig
+-bash: dig: command not found
+dblock@localhost:~$ curl
+-bash: curl: command not found
+dblock@localhost:~$ ip
+-bash: ip: command not found
+dblock@localhost:~$ lsblk
+lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
+dblock@localhost:~$ lsblk: authorize acces to sysfs directory: sys/dev/run: permission granted
+-bash: lsblk:: command not found
+dblock@localhost:~$ sysfs dir
+-bash: sysfs: command not found
+dblock@localhost:~$ ' / tail - nl
+> curl ipconfig.me
+> df -k
+> netcat icanhazip.com 80 <<<$
+> netcat icanhazip.com 80 <<<$'GET/ HTTP/1.1
+-bash:  / tail - nl
+curl ipconfig.me
+df -k
+netcat icanhazip.com 80 <<<$
+netcat icanhazip.com 80 <<<$GET/: No such file or directory
+dblock@localhost:~$ /tail - nl
+-bash: /tail: No such file or directory
+dblock@localhost:~$ curl ifconfig.me
+-bash: curl: command not found
+dblock@localhost:~$ curl ipconfig.me
+-bash: curl: command not found
+dblock@localhost:~$ '/tail-nl
+> curl ipconfig.me
+> dig+short myip.opendns.com @resolver1.opendns.com
+> GET IP
+> netcat 80<<<$GET/HTTP.1.0
+> ipconfig -a
+> hciconfig -a | awk'/BD ADDRESS:/[print $3]
+-bash: /tail-nl
+curl ipconfig.me
+dig+short myip.opendns.com @resolver1.opendns.com
+GET IP
+netcat 80<<<$GET/HTTP.1.0
+ipconfig -a
+hciconfig -a | awk/BD: No such file or directory
+dblock@localhost:~$ hciconfig
+-bash: hciconfig: command not found
+dblock@localhost:~$ whois help
+-bash: whois: command not found
+dblock@localhost:~$ uptime
+-bash: uptime: command not found
+dblock@localhost:~$ opendns
+-bash: opendns: command not found
+dblock@localhost:~$ sudo
+/usr/local/bin/sudo: line 8: /dev/stderr: Permission denied
+dblock@localhost:~$ python
+-bash: python: command not found
+dblock@localhost:~$ ctrl-x e
+-bash: ctrl-x: command not found
+dblock@localhost:~$ ctrl-x
+-bash: ctrl-x: command not found
+dblock@localhost:~$ -x
+-bash: -x: command not found
+dblock@localhost:~$ mount |column
+-bash: column: command not found
+dblock@localhost:~$ bash info
+bash: info: No such file or directory
+dblock@localhost:~$ -bash
+-bash: -bash: command not found
+dblock@localhost:~$ sudo
+/usr/local/bin/sudo: line 8: /dev/stderr: Permission denied
+dblock@localhost:~$ history
+    1  block all other devices
+    2  curi iconfig.me
+    3  autossh
+    4  gitignore
+    5  -d
+    6  --encode data
+    7  autossh [-v][-m port[:echo_port]][-f] [ssh_options]
+    8  exit
+    9  Pothead@420
+   10  exit
+   11  gem server
+   12  <gem server/
+   13  EXIT
+   14  --- GEMSERVER
+   15  ~~DC
+   16  A~C~~B
+   17  metastat
+   18  exit
+   19  <html> <head> <link rel = "stylesheet" href = "css/theme/white.css"> </head> <body> <div class "reveal"> <div class "slides"> <section slide 1</section> <section> slide 2</section> /div> </div> <script> Reveal.initialize(): </script </body> </html>
+   20  reveal.js repository: $ git clone http:// github.com/hakimel/reveal.js.git
+   21  reveal.js
+   22  exit
+   23  .npm
+   24  .npm git
+   25  node -v
+   26  /app/index.html
+   27  exit
+   28  android info
+   29  system
+   30  --version --help
+   31  --help
+   32  uname
+   33  commands
+   34  <?xml version="1.0" encoding="UTF-8"?>
+   35  <d:devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   36  </d:devices>ip--galaxy nexus 3
+   37  whois
+   38  kill all
+   39  <d:device>
+   40  </d:device>ip address
+   41  </d:location> false
+   42  exit
+   43  dig
+   44  curl
+   45  ip
+   46  lsblk
+   47  lsblk: authorize acces to sysfs directory: sys/dev/run: permission granted
+   48  sysfs dir
+   49  ' / tail - nl
+curl ipconfig.me
+df -k
+netcat icanhazip.com 80 <<<$
+netcat icanhazip.com 80 <<<$'GET/ HTTP/1.1
+   50  /tail - nl
+   51  curl ifconfig.me
+   52  curl ipconfig.me
+   53  '/tail-nl
+curl ipconfig.me
+dig+short myip.opendns.com @resolver1.opendns.com
+GET IP
+netcat 80<<<$GET/HTTP.1.0
+ipconfig -a
+hciconfig -a | awk'/BD ADDRESS:/[print $3]
+   54  hciconfig
+   55  whois help
+   56  uptime
+   57  opendns
+   58  sudo
+   59  python
+   60  ctrl-x e
+   61  ctrl-x
+   62  -x
+   63  mount |column
+   64  bash info
+   65  -bash
+   66  sudo
+   67  history
+dblock@localhost:~$ <?xml version="1.0" encoding="UTF-8"?>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$    35  <d:devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-bash: d:devices: No such file or directory
+dblock@localhost:~$    36  </d:devices>ip--galaxy nexus 3
+-bash: /d:devices: No such file or directory
+dblock@localhost:~$ </d:devices>ip--galaxy nexus 3
+-bash: /d:devices: No such file or directory
+dblock@localhost:~$ get id
+-bash: get: command not found
+dblock@localhost:~$ lsof
+-bash: lsof: command not found
+dblock@localhost:~$ alias
+alias ls='ls --color=auto'
+dblock@localhost:~$
+dblock@localhost:~$ grep
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+dblock@localhost:~$ 'grep --help
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> mkpdir
+> git
+> alias
+> galaxy nexus 3
+> ipconfig
+> 'ls
+-bash: $'grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls': command not found
+dblock@localhost:~$ 'grep --help
+
+
+
+
+
+
+
+
+
+mkpdir
+git
+alias
+galaxy nexus 3
+ipconfig
+'ls
+-bash: $'grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls': command not found
+dblock@localhost:~$ sudo
+/usr/local/bin/sudo: line 8: /dev/stderr: Permission denied
+dblock@localhost:~$ 'grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls':
+-bash: grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls:: command not found
+dblock@localhost:~$ dpkg -s /usr/bin/ls
+dpkg-query: error: --status needs a valid package name but '/usr/bin/ls' is not: illegal package name in specifier '/usr/bin/ls': must start with an alphanumeric character
+
+Use --help for help about querying packages.
+dblock@localhost:~$ --help
+-bash: --help: command not found
+dblock@localhost:~$ --help dpkg query
+-bash: --help: command not found
+dblock@localhost:~$ help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ Use --help for help about querying packages
+-bash: Use: command not found
+dblock@localhost:~$ fg [job_spec]
+-bash: fg: [job_spec]: no such job
+dblock@localhost:~$ fg [warrant]
+-bash: fg: [warrant]: no such job
+dblock@localhost:~$ fg [case]
+-bash: fg: [case]: no such job
+dblock@localhost:~$ fg [rel
+-bash: fg: [rel: no such job
+dblock@localhost:~$ fg --help
+fg: fg [job_spec]
+    Move job to the foreground.
+
+    Place the job identified by JOB_SPEC in the foreground, making it the
+    current job.  If JOB_SPEC is not present, the shell's notion of the
+    current job is used.
+
+    Exit Status:
+    Status of command placed in foreground, or failure if an error occurs.
+dblock@localhost:~$ bash --help
+GNU bash, version 5.0.3(1)-release-(aarch64-unknown-linux-gnu)
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+Type `bash -c "help set"' for more information about shell options.
+Type `bash -c help' for more information about shell builtin commands.
+Use the `bashbug' command to report bugs.
+
+bash home page: <http://www.gnu.org/software/bash>
+General help using GNU software: <http://www.gnu.org/gethelp/>
+dblock@localhost:~$ bash -c help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ jobspec --help
+-bash: jobspec: command not found
+dblock@localhost:~$ -lnprs
+-bash: -lnprs: command not found
+dblock@localhost:~$ builtin [shell-builtin [arg ...]]
+-bash: builtin: [shell-builtin: not a shell builtin
+dblock@localhost:~$ abefhkmnptuvxBCHP
+-bash: abefhkmnptuvxBCHP: command not found
+dblock@localhost:~$ fg abefhkmnptuvxBCHP
+-bash: fg: abefhkmnptuvxBCHP: no such job
+dblock@localhost:~$ fg trace
+-bash: fg: trace: no such job
+dblock@localhost:~$ fg tracker
+-bash: fg: tracker: no such job
+dblock@localhost:~$ open
+-bash: open: command not found
+dblock@localhost:~$ for
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ -lr
+-bash: -lr: command not found
+dblock@localhost:~$ hash -lr
+dblock@localhost:~$ dpkg
+dpkg: error: need an action option
+
+Type dpkg --help for help about installing and deinstalling packages [*];
+Use 'apt' or 'aptitude' for user-friendly package management;
+Type dpkg -Dhelp for a list of dpkg debug flag values;
+Type dpkg --force-help for a list of forcing options;
+Type dpkg-deb --help for help about manipulating *.deb files;
+
+Options marked [*] produce a lot of output - pipe it through 'less' or 'more' !
+dblock@localhost:~$ dpkg-deb --force-help
+dpkg-deb: error: unknown option --force-help
+
+Type dpkg-deb --help for help about manipulating *.deb files;
+Type dpkg --help for help about installing and deinstalling packages.
+dblock@localhost:~$ dpkg-deb --help
+Usage: dpkg-deb [<option> ...] <command>
+
+Commands:
+  -b|--build <directory> [<deb>]   Build an archive.
+  -c|--contents <deb>              List contents.
+  -I|--info <deb> [<cfile> ...]    Show info to stdout.
+  -W|--show <deb>                  Show information on package(s)
+  -f|--field <deb> [<cfield> ...]  Show field(s) to stdout.
+  -e|--control <deb> [<directory>] Extract control info.
+  -x|--extract <deb> <directory>   Extract files.
+  -X|--vextract <deb> <directory>  Extract & list files.
+  -R|--raw-extract <deb> <directory>
+                                   Extract control info and files.
+  --ctrl-tarfile <deb>             Output control tarfile.
+  --fsys-tarfile <deb>             Output filesystem tarfile.
+
+  -?, --help                       Show this help message.
+      --version                    Show the version.
+
+<deb> is the filename of a Debian format archive.
+<cfile> is the name of an administrative file component.
+<cfield> is the name of a field in the main 'control' file.
+
+Options:
+  -v, --verbose                    Enable verbose output.
+  -D, --debug                      Enable debugging output.
+      --showformat=<format>        Use alternative format for --show.
+      --deb-format=<format>        Select archive format.
+                                     Allowed values: 0.939000, 2.0 (default).
+      --nocheck                    Suppress control file check (build bad
+                                     packages).
+      --root-owner-group           Forces the owner and groups to root.
+      --[no-]uniform-compression   Use the compression params on all members.
+  -z#                              Set the compression level when building.
+  -Z<type>                         Set the compression type used when building.
+                                     Allowed types: gzip, xz, none.
+  -S<strategy>                     Set the compression strategy when building.
+                                     Allowed values: none; extreme (xz);
+                                     filtered, huffman, rle, fixed (gzip).
+
+Format syntax:
+  A format is a string that will be output for each package. The format
+  can include the standard escape sequences \n (newline), \r (carriage
+  return) or \\ (plain backslash). Package information can be included
+  by inserting variable references to package fields using the ${var[;width]}
+  syntax. Fields will be right-aligned unless the width is negative in which
+  case left alignment will be used.
+
+Use 'dpkg' to install and remove packages from your system, or
+'apt' or 'aptitude' for user-friendly package management. Packages
+unpacked using 'dpkg-deb --extract' will be incorrectly installed !
+dblock@localhost:~$ --root-owner-group
+-bash: --root-owner-group: command not found
+dblock@localhost:~$ fg <deb>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ -x|--vextract <deb> <directory>
+-bash: syntax error near unexpected token `<'
+dblock@localhost:~$ --debug
+-bash: --debug: command not found
+dblock@localhost:~$ -c
+-bash: -c: command not found
+dblock@localhost:~$ var
+-bash: var: command not found
+dblock@localhost:~$ <strategy
+-bash: strategy: No such file or directory
+dblock@localhost:~$ -B
+-bash: -B: command not found
+dblock@localhost:~$ --I DEB
+-bash: --I: command not found
+dblock@localhost:~$ DPKG/DEB/INFO
+-bash: DPKG/DEB/INFO: No such file or directory
+dblock@localhost:~$ ROOT OWNER
+-bash: ROOT: command not found
+dblock@localhost:~$ OWNER
+-bash: OWNER: command not found
+dblock@localhost:~$ SU OWNER
+-bash: SU: command not found
+dblock@localhost:~$ apt
+apt 1.8.4 (arm64)
+Usage: apt [options] command
+
+apt is a commandline package manager and provides commands for
+searching and managing as well as querying information about packages.
+It provides the same functionality as the specialized APT tools,
+like apt-get and apt-cache, but enables options more suitable for
+interactive use by default.
+
+Most used commands:
+  list - list packages based on package names
+  search - search in package descriptions
+  show - show package details
+  install - install packages
+  reinstall - reinstall packages
+  remove - remove packages
+  autoremove - Remove automatically all unused packages
+  update - update list of available packages
+  upgrade - upgrade the system by installing/upgrading packages
+  full-upgrade - upgrade the system by removing/installing/upgrading packages
+  edit-sources - edit the source information file
+
+See apt(8) for more information about the available commands.
+Configuration options and syntax is detailed in apt.conf(5).
+Information about how to configure sources can be found in sources.list(5).
+Package and version choices can be expressed via apt_preferences(5).
+Security details are available in apt-secure(8).
+                                        This APT has Super Cow Powers.
+dblock@localhost:~$ apt-get ip
+E: Invalid operation ip
+dblock@localhost:~$ apt-get id
+E: Invalid operation id
+dblock@localhost:~$ autoremove
+-bash: autoremove: command not found
+dblock@localhost:~$ apt-autoremove
+-bash: apt-autoremove: command not found
+dblock@localhost:~$ apt-secure
+-bash: apt-secure: command not found
+dblock@localhost:~$ apt-list
+-bash: apt-list: command not found
+dblock@localhost:~$ apt-show
+-bash: apt-show: command not found
+dblock@localhost:~$ arm64
+-bash: arm64: command not found
+dblock@localhost:~$ apt(8)
+-bash: syntax error near unexpected token `8'
+dblock@localhost:~$ apt-conf
+-bash: apt-conf: command not found
+dblock@localhost:~$ configure
+-bash: configure: command not found
+dblock@localhost:~$ apt --help
+apt 1.8.4 (arm64)
+Usage: apt [options] command
+
+apt is a commandline package manager and provides commands for
+searching and managing as well as querying information about packages.
+It provides the same functionality as the specialized APT tools,
+like apt-get and apt-cache, but enables options more suitable for
+interactive use by default.
+
+Most used commands:
+  list - list packages based on package names
+  search - search in package descriptions
+  show - show package details
+  install - install packages
+  reinstall - reinstall packages
+  remove - remove packages
+  autoremove - Remove automatically all unused packages
+  update - update list of available packages
+  upgrade - upgrade the system by installing/upgrading packages
+  full-upgrade - upgrade the system by removing/installing/upgrading packages
+  edit-sources - edit the source information file
+
+See apt(8) for more information about the available commands.
+Configuration options and syntax is detailed in apt.conf(5).
+Information about how to configure sources can be found in sources.list(5).
+Package and version choices can be expressed via apt_preferences(5).
+Security details are available in apt-secure(8).
+                                        This APT has Super Cow Powers.
+dblock@localhost:~$ apt-super cow
+-bash: apt-super: command not found
+dblock@localhost:~$ apt-powers
+-bash: apt-powers: command not found
+dblock@localhost:~$ gui
+-bash: gui: command not found
+dblock@localhost:~$ util
+-bash: util: command not found
+dblock@localhost:~$ uname
+Linux
+dblock@localhost:~$ galaxy 3 nexus uname
+-bash: galaxy: command not found
+dblock@localhost:~$ uname galaxy 3 nexus
+uname: extra operand 'galaxy'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname galaxy
+uname: extra operand 'galaxy'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --help
+Usage: uname [OPTION]...
+Print certain system information.  With no OPTION, same as -s.
+
+  -a, --all                print all information, in the following order,
+                             except omit -p and -i if unknown:
+  -s, --kernel-name        print the kernel name
+  -n, --nodename           print the network node hostname
+  -r, --kernel-release     print the kernel release
+  -v, --kernel-version     print the kernel version
+  -m, --machine            print the machine hardware name
+  -p, --processor          print the processor type (non-portable)
+  -i, --hardware-platform  print the hardware platform (non-portable)
+  -o, --operating-system   print the operating system
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report uname translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/uname>
+or available locally via: info '(coreutils) uname invocation'
+dblock@localhost:~$ -s
+-bash: -s: command not found
+dblock@localhost:~$ apt-a
+-bash: apt-a: command not found
+dblock@localhost:~$ apt-s
+-bash: apt-s: command not found
+dblock@localhost:~$ uname--operating system
+-bash: uname--operating: command not found
+dblock@localhost:~$ -o --help
+-bash: -o: command not found
+dblock@localhost:~$ --all
+-bash: --all: command not found
+dblock@localhost:~$ uname --all
+Linux localhost 4.9.112-perf #1 SMP PREEMPT Fri Sep 6 10:07:05 KST 2019 aarch64 GNU/Linux
+dblock@localhost:~$ uname --machine
+aarch64
+dblock@localhost:~$ uname --processor
+unknown
+dblock@localhost:~$ uname --kernel name
+uname: option '--kernel' is ambiguous; possibilities: '--kernel-name' '--kernel-release' '--kernel-version'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --nodename
+localhost
+dblock@localhost:~$ uname --location
+uname: unrecognized option '--location'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --operating system
+uname: extra operand 'system'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --version
+uname (GNU coreutils) 8.30
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by David MacKenzie.
+dblock@localhost:~$ uname --util
+uname: unrecognized option '--util'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --help
+Usage: uname [OPTION]...
+Print certain system information.  With no OPTION, same as -s.
+
+  -a, --all                print all information, in the following order,
+                             except omit -p and -i if unknown:
+  -s, --kernel-name        print the kernel name
+  -n, --nodename           print the network node hostname
+  -r, --kernel-release     print the kernel release
+  -v, --kernel-version     print the kernel version
+  -m, --machine            print the machine hardware name
+  -p, --processor          print the processor type (non-portable)
+  -i, --hardware-platform  print the hardware platform (non-portable)
+  -o, --operating-system   print the operating system
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report uname translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/uname>
+or available locally via: info '(coreutils) uname invocation'
+dblock@localhost:~$ uname -o
+GNU/Linux
+dblock@localhost:~$ uname -i
+unknown
+dblock@localhost:~$ uname -p
+unknown
+dblock@localhost:~$ apt
+apt 1.8.4 (arm64)
+Usage: apt [options] command
+
+apt is a commandline package manager and provides commands for
+searching and managing as well as querying information about packages.
+It provides the same functionality as the specialized APT tools,
+like apt-get and apt-cache, but enables options more suitable for
+interactive use by default.
+
+Most used commands:
+  list - list packages based on package names
+  search - search in package descriptions
+  show - show package details
+  install - install packages
+  reinstall - reinstall packages
+  remove - remove packages
+  autoremove - Remove automatically all unused packages
+  update - update list of available packages
+  upgrade - upgrade the system by installing/upgrading packages
+  full-upgrade - upgrade the system by removing/installing/upgrading packages
+  edit-sources - edit the source information file
+
+See apt(8) for more information about the available commands.
+Configuration options and syntax is detailed in apt.conf(5).
+Information about how to configure sources can be found in sources.list(5).
+Package and version choices can be expressed via apt_preferences(5).
+Security details are available in apt-secure(8).
+                                        This APT has Super Cow Powers.
+dblock@localhost:~$ apt --list
+E: Command line option --list is not understood in combination with the other options
+dblock@localhost:~$ apt --show
+E: Command line option --show is not understood in combination with the other options
+dblock@localhost:~$ apt --list jobs
+E: Command line option --list is not understood in combination with the other options
+dblock@localhost:~$ fg --list
+-bash: fg: --: invalid option
+fg: usage: fg [job_spec]
+dblock@localhost:~$ dpkg --list
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                    Version            Architecture Description
++++-=======================-==================-============-========================================================================
+ii  adduser                 3.118              all          add and remove users and groups
+ii  apt                     1.8.4              arm64        commandline package manager
+ii  base-files              1:2019.4.0         arm64        Debian base system miscellaneous files
+ii  base-passwd             3.5.46             arm64        Debian base system master password and group files
+ii  bash                    5.0-4              arm64        GNU Bourne Again SHell
+ii  bsdutils                1:2.34-0.1         arm64        basic utilities from 4.4BSD-Lite
+ii  coreutils               8.30-3             arm64        GNU core utilities
+ii  dash                    0.5.10.2-6         arm64        POSIX-compliant shell
+ii  debconf                 1.5.73             all          Debian configuration management system
+ii  debian-archive-keyring  2019.1             all          GnuPG archive keys of the Debian archive
+ii  debianutils             4.9                arm64        Miscellaneous utilities specific to Debian
+ii  diffutils               1:3.7-3            arm64        File comparison utilities
+ii  dpkg                    1.19.7kali1        arm64        Debian package management system
+ii  dropbear                2019.78-2          all          lightweight SSH2 server and client - startup scripts
+ii  dropbear-bin            2019.78-2          arm64        lightweight SSH2 server and client - command line tools
+ii  e2fsprogs               1.45.4-1           arm64        ext2/ext3/ext4 file system utilities
+ii  expect                  5.45.4-2+b1        arm64        Automates interactive applications
+ii  fdisk                   2.34-0.1           arm64        collection of partitioning utilities
+ii  findutils               4.7.0-1            arm64        utilities for finding files--find, xargs
+ii  fontconfig-config       2.13.1-2           all          generic font configuration library - configuration
+ii  fonts-dejavu-core       2.37-1             all          Vera font family derivate with additional characters
+ii  gcc-9-base:arm64        9.2.1-8            arm64        GCC, the GNU Compiler Collection (base package)
+ii  gpgv                    2.2.17-3           arm64        GNU privacy guard - signature verification tool
+ii  grep                    3.3-1              arm64        GNU grep, egrep and fgrep
+ii  gzip                    1.9-3              arm64        GNU compression utilities
+ii  hostname                3.22               arm64        utility to set/show the host name or domain name
+ii  init-system-helpers     1.57+kali1         all          helper tools for all init systems
+ii  kali-archive-keyring    2018.2             all          GnuPG archive keys of the Kali archive
+ii  libacl1:arm64           2.2.53-5           arm64        access control list - shared library
+ii  libapt-pkg5.0:arm64     1.8.4              arm64        package management runtime library
+ii  libattr1:arm64          1:2.4.48-5         arm64        extended attribute handling - shared library
+ii  libaudit-common         1:2.8.5-2          all          Dynamic library for security auditing - common files
+ii  libaudit1:arm64         1:2.8.5-2          arm64        Dynamic library for security auditing
+ii  libblkid1:arm64         2.34-0.1           arm64        block device ID libraryii  libbsd0:arm64           0.10.0-1           arm64        utility functions from BSD systems - shared library
+ii  libbz2-1.0:arm64        1.0.8-2            arm64        high-quality block-sorting file compressor library - runtime
+ii  libc-bin                2.29-2             arm64        GNU C Library: Binariesii  libc6:arm64             2.29-2             arm64        GNU C Library: Shared libraries
+ii  libcap-ng0:arm64        0.7.9-2+b1         arm64        An alternate POSIX capabilities library
+ii  libcom-err2:arm64       1.45.4-1           arm64        common error description library
+ii  libdb5.3:arm64          5.3.28+dfsg1-0.6   arm64        Berkeley v5.3 Database Libraries [runtime]
+ii  libdebconfclient0:arm64 0.249              arm64        Debian Configuration Management System (C-implementation library)
+ii  libdrm-amdgpu1:arm64    2.4.99-1           arm64        Userspace interface to amdgpu-specific kernel DRM services -- runtime
+--More--
+Most commands optionally preceded by integer argument k.  Defaults in brackets.
+Star (*) indicates argument becomes new default.
+-------------------------------------------------------------------------------
+<space>                 Display next k lines of text [current screen size]
+z                       Display next k lines of text [current screen size]*
+<return>                Display next k lines of text [1]*
+d or ctrl-D             Scroll k lines [current scroll size, initially 11]*
+q or Q or <interrupt>   Exit from more
+s                       Skip forward k lines of text [1]
+f                       Skip forward k screenfuls of text [1]
+b or ctrl-B             Skip backwards k screenfuls of text [1]
+'                       Go to place where previous search started
+=                       Display current line number
+/<regular expression>   Search for kth occurrence of regular expression [1]
+n                       Search for kth occurrence of last r.e [1]
+!<cmd> or :!<cmd>       Execute <cmd> in a subshell
+v                       Start up /usr/bin/vi at current line
+ctrl-L                  Redraw screen
+:n                      Go to kth next file [1]
+:p                      Go to kth previous file [1]
+:f                      Display current file name and line number
+.                       Repeat previous command
+-------------------------------------------------------------------------------
+ii  libdrm-common           2.4.99-1           all          Userspace interface to kernel DRM services -- common files
+ii  libdrm-nouveau2:arm64   2.4.99-1           arm64        Userspace interface to nouveau-specific kernel DRM services -- runtime
+ii  libdrm-radeon1:arm64    2.4.99-1           arm64        Userspace interface to radeon-specific kernel DRM services -- runtime
+ii  libdrm2:arm64           2.4.99-1           arm64        Userspace interface to kernel DRM services -- runtime
+ii  libedit2:arm64          3.1-20190324-1     arm64        BSD editline and history libraries
+ii  libelf1:arm64           0.176-1.1          arm64        library to read and write ELF files
+ii  libexpat1:arm64         2.2.9-1            arm64        XML parsing C library - runtime library
+ii  libext2fs2:arm64        1.45.4-1           arm64        ext2/ext3/ext4 file system libraries
+ii  libfdisk1:arm64         2.34-0.1           arm64        fdisk partitioning library
+ii  libffi6:arm64           3.2.1-9            arm64        Foreign Function Interface library runtime
+ii  libfontconfig1:arm64    2.13.1-2+b1        arm64        generic font configuration library - runtime
+ii  libfontenc1:arm64       1:1.1.3-1+b2       arm64        X11 font encoding library
+ii  libfreetype6:arm64      2.10.1-2           arm64        FreeType 2 font engine, shared library files
+ii  libgcc1:arm64           1:9.2.1-8          arm64        GCC support library
+ii  libgcrypt20:arm64       1.8.5-3            arm64        LGPL Crypto library - runtime library
+ii  libgdbm-compat4:arm64   1.18.1-5           arm64        GNU dbm database routines (legacy support runtime version)
+ii  libgdbm6:arm64          1.18.1-5           arm64        GNU dbm database routines (runtime version)
+ii  libgl1:arm64            1.1.0-1+b1         arm64        Vendor neutral GL dispatch library -- legacy GL support
+ii  libgl1-mesa-dri:arm64   19.2.1-1           arm64        free implementation of the OpenGL API -- DRI modules
+ii  libgl1-mesa-glx:arm64   19.2.1-1           arm64        transitional dummy package
+ii  libglapi-mesa:arm64     19.2.1-1           arm64        free implementation of the GL API -- shared library
+ii  libglvnd0:arm64         1.1.0-1+b1         arm64        Vendor neutral GL dispatch library
+ii  libglx-mesa0:arm64      19.2.1-1           arm64        free implementation of the OpenGL API -- GLX vendor library
+ii  libglx0:arm64           1.1.0-1+b1         arm64        Vendor neutral GL dispatch library -- GLX support
+ii  libgmp10:arm64          2:6.1.2+dfsg-4     arm64        Multiprecision arithmetic library
+ii  libgnutls30:arm64       3.6.9-5            arm64        GNU TLS library - main runtime library
+ii  libgpg-error0:arm64     1.36-7             arm64        GnuPG development runtime library
+ii  libhogweed4:arm64       3.4.1-1+b1         arm64        low level cryptographic library (public-key cryptos)
+ii  libice6:arm64           2:1.0.9-2          arm64        X11 Inter-Client Exchange library
+ii  libidn2-0:arm64         2.2.0-2            arm64        Internationalized domain names (IDNA2008/TR46) library
+ii  libjpeg62-turbo:arm64   1:1.5.2-2+b1       arm64        libjpeg-turbo JPEG runtime library
+ii  libllvm9:arm64          1:9-1              arm64        Modular compiler and toolchain technologies, runtime library
+ii  liblz4-1:arm64          1.9.1-2            arm64        Fast LZ compression algorithm library - runtime
+ii  liblzma5:arm64          5.2.4-1+b1         arm64        XZ-format compression library
+ii  libmount1:arm64         2.34-0.1           arm64        device mounting libraryii  libncursesw6:arm64      6.1+20190803-1     arm64        shared libraries for terminal handling (wide character support)
+ii  libnettle6:arm64        3.4.1-1+b1         arm64        low level cryptographic library (symmetric and one-way cryptos)
+ii  libp11-kit0:arm64       0.23.17-2          arm64        library for loading and coordinating access to PKCS#11 modules - runtime
+ii  libpam-modules:arm64    1.3.1-5            arm64        Pluggable Authentication Modules for PAM
+ii  libpam-modules-bin      1.3.1-5            arm64        Pluggable Authentication Modules for PAM - helper binaries
+ii  libpam-runtime          1.3.1-5            all          Runtime support for the PAM library
+ii  libpam0g:arm64          1.3.1-5            arm64        Pluggable Authentication Modules library
+ii  libpcre2-8-0:arm64      10.32-5+b1         arm64        New Perl Compatible Regular Expression Library- 8 bit runtime files
+ii  libpcre3:arm64          2:8.39-12+b1       arm64        Old Perl 5 Compatible Regular Expression Library - runtime files
+ii  libperl5.30:arm64       5.30.0-7           arm64        shared Perl library
+ii  libpng16-16:arm64       1.6.37-1           arm64        PNG library - runtime (version 1.6)
+ii  libseccomp2:arm64       2.4.1-2            arm64        high level interface to Linux seccomp filter
+ii  libselinux1:arm64       2.9-2+b2           arm64        SELinux runtime shared libraries
+ii  libsemanage-common      2.9-3              all          Common files for SELinux policy management libraries
+ii  libsemanage1:arm64      2.9-3              arm64        SELinux policy management library
+ii  libsensors-config       1:3.5.0-3          all          lm-sensors configuration files
+ii  libsensors5:arm64       1:3.5.0-3          arm64        library to read temperature/voltage/fan sensors
+ii  libsepol1:arm64         2.9-2+b2           arm64        SELinux library for manipulating binary security policies
+ii  libsm6:arm64            2:1.2.3-1          arm64        X11 Session Management library
+ii  libsmartcols1:arm64     2.34-0.1           arm64        smart column output alignment library
+ii  libss2:arm64            1.45.4-1           arm64        command-line interface parsing library
+ii  libstdc++6:arm64        9.2.1-8            arm64        GNU Standard C++ Library v3
+ii  libsystemd0:arm64       242-7              arm64        systemd utility libraryii  libtasn1-6:arm64        4.14-3             arm64        Manage ASN.1 structures (runtime)
+ii  libtcl8.6:arm64         8.6.9+dfsg-2+b1    arm64        Tcl (the Tool Command Language) v8.6 - run-time library files
+ii  libtinfo6:arm64         6.1+20190803-1     arm64        shared low-level terminfo library for terminal handling
+ii  libtomcrypt1:arm64      1.18.2-2           arm64        public domain open source cryptographic toolkit
+ii  libtommath1:arm64       1.1.0-3            arm64        multiple-precision integer library [runtime]
+ii  libudev1:arm64          242-7              arm64        libudev shared library
+ii  libunistring2:arm64     0.9.10-2           arm64        Unicode string library for C
+ii  libutempter0:arm64      1.1.6-4            arm64        privileged helper for utmp/wtmp updates (runtime)
+ii  libuuid1:arm64          2.34-0.1           arm64        Universally Unique ID library
+ii  libx11-6:arm64          2:1.6.8-1          arm64        X11 client-side libraryii  libx11-data             2:1.6.8-1          all          X11 client-side libraryii  libx11-xcb1:arm64       2:1.6.8-1          arm64        Xlib/XCB interface library
+ii  libxau6:arm64           1:1.0.8-1+b2       arm64        X11 authorisation library
+ii  libxaw7:arm64           2:1.0.13-1+b2      arm64        X11 Athena Widget library
+ii  libxcb-dri2-0:arm64     1.13.1-2           arm64        X C Binding, dri2 extension
+ii  libxcb-dri3-0:arm64     1.13.1-2           arm64        X C Binding, dri3 extension
+ii  libxcb-glx0:arm64       1.13.1-2           arm64        X C Binding, glx extension
+ii  libxcb-present0:arm64   1.13.1-2           arm64        X C Binding, present extension
+ii  libxcb-shape0:arm64     1.13.1-2           arm64        X C Binding, shape extension
+ii  libxcb-sync1:arm64      1.13.1-2           arm64        X C Binding, sync extension
+ii  libxcb1:arm64           1.13.1-2           arm64        X C Binding
+ii  libxcomposite1:arm64    1:0.4.4-2          arm64        X11 Composite extension library
+ii  libxdamage1:arm64       1:1.1.5-1          arm64        X11 damaged region extension library
+ii  libxdmcp6:arm64         1:1.1.2-3          arm64        X11 Display Manager Control Protocol library
+ii  libxext6:arm64          2:1.3.3-1+b2       arm64        X11 miscellaneous extension library
+ii  libxfixes3:arm64        1:5.0.3-1          arm64        X11 miscellaneous 'fixes' extension library
+ii  libxft2:arm64           2.3.2-2            arm64        FreeType-based font drawing library for X
+ii  libxi6:arm64            2:1.7.9-1          arm64        X11 Input extension library
+ii  libxinerama1:arm64      2:1.1.4-2          arm64        X11 Xinerama extension library
+ii  libxmu6:arm64           2:1.1.2-2+b3       arm64        X11 miscellaneous utility library
+ii  libxmuu1:arm64          2:1.1.2-2+b3       arm64        X11 miscellaneous micro-utility library
+ii  libxpm4:arm64           1:3.5.12-1         arm64        X11 pixmap library
+ii  libxrandr2:arm64        2:1.5.1-1          arm64        X11 RandR extension library
+ii  libxrender1:arm64       1:0.9.10-1         arm64        X Rendering Extension client library
+ii  libxshmfence1:arm64     1.3-1              arm64        X shared memory fences - shared library
+ii  libxt6:arm64            1:1.1.5-1+b3       arm64        X11 toolkit intrinsics library
+ii  libxtst6:arm64          2:1.2.3-1          arm64        X11 Testing -- Record extension library
+ii  libxv1:arm64            2:1.0.11-1         arm64        X11 Video extension library
+ii  libxxf86dga1:arm64      2:1.1.4-1+b3       arm64        X11 Direct Graphics Access extension library
+ii  libxxf86vm1:arm64       1:1.1.4-1+b2       arm64        X11 XFree86 video mode extension library
+ii  libzstd1:arm64          1.4.3+dfsg-1       arm64        fast lossless compression algorithm
+ii  login                   1:4.7-2            arm64        system login tools
+ii  logsave                 1.45.4-1           arm64        save the output of a command in a log file
+ii  lsb-base                11.1.0             all          Linux Standard Base init script functionality
+ii  mawk                    1.3.3-17+b3        arm64        a pattern scanning and text processing language
+ii  menu                    2.1.47+b1          arm64        generates programs menu for all menu-aware applications
+ii  mount                   2.34-0.1           arm64        tools for mounting and manipulating filesystems
+ii  ncurses-base            6.1+20190803-1     all          basic terminal type definitions
+ii  ncurses-bin             6.1+20190803-1     arm64        terminal-related programs and man pages
+ii  passwd                  1:4.7-2            arm64        change and administer password and group data
+ii  perl                    5.30.0-7           arm64        Larry Wall's Practical Extraction and Report Language
+ii  perl-base               5.30.0-7           arm64        minimal Perl system
+ii  perl-modules-5.30       5.30.0-7           all          Core Perl modules
+ii  sed                     4.7-1              arm64        GNU stream editor for filtering/transforming text
+ii  sensible-utils          0.0.12             all          Utilities for sensible alternative selection
+ii  sudo                    1.8.27-1.1         arm64        Provide limited super user privileges to specific users
+ii  sysvinit-utils          2.96~beta-3        arm64        System-V-like utilitiesii  tar                     1.30+dfsg-6        arm64        GNU version of the tar archiving utility
+ii  tcl-expect:arm64        5.45.4-2+b1        arm64        Automates interactive applications (Tcl package)
+ii  tcl8.6                  8.6.9+dfsg-2+b1    arm64        Tcl (the Tool Command Language) v8.6 - shell
+ii  tightvncserver          1:1.3.9-9          arm64        virtual network computing server software
+ii  twm                     1:1.0.10-1         arm64        Tab window manager
+ii  tzdata                  2019c-3            all          time zone and daylight-saving time data
+ii  ucf                     3.0038+nmu1        all          Update Configuration File(s): preserve user changes to config files
+ii  util-linux              2.34-0.1           arm64        miscellaneous system utilities
+ii  x11-common              1:7.7+19           all          X Window System (X.Org) infrastructure
+ii  x11-utils               7.7+4              arm64        X11 utilities
+ii  xauth                   1:1.0.10-1         arm64        X authentication utility
+ii  xbitmaps                1.1.1-2            all          Base X bitmaps
+ii  xfonts-base             1:1.0.5            all          standard fonts for X
+ii  xfonts-encodings        1:1.0.4-2          all          Encodings for X.Org fonts
+ii  xfonts-utils            1:7.7+6            arm64        X Window System font utility programs
+ii  xterm                   349-1              arm64        X terminal emulator
+ii  zlib1g:arm64            1:1.2.11.dfsg-1+b1 arm64        compression library - runtime
+dblock@localhost:~$

@@ -1,0 +1,347 @@
+dblock@localhost:~$ logcat/cpu/usage
+-bash: logcat/cpu/usage: No such file or directory
+dblock@localhost:~$ lsblk
+lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
+dblock@localhost:~$ force lsblk
+-bash: force: command not found
+dblock@localhost:~$ lspci
+-bash: lspci: command not found
+dblock@localhost:~$ ifconfig -a
+-bash: ifconfig: command not found
+dblock@localhost:~$ help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ trap [-lp] [[arg] signal_spec ...]
+-bash: trap: [[arg]: invalid signal specification
+-bash: trap: signal_spec: invalid signal specification
+-bash: trap: ...]: invalid signal specification
+dblock@localhost:~$ history [-c] [-d offset] [n] or histo>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+[1] 7222
+dblock@localhost:~$  declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+-bash: declare: `[-aAfFgilnrtux]': not a valid identifier
+-bash: declare: `[-p]': not a valid identifier
+-bash: declare: `[name[=va': not a valid identifier
+-bash: declare: `[arguments]': not a valid identifier
+dblock@localhost:~$  dirs [-clpv] [+N] [-N]                   suspend [-f]-bash: line 9: [NAME]: command not found
+dblock@localhost:~$ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+-bash: warning: execute_coproc: coproc [7222:COPROC] still exists
+[2] 7242
+[1]   Exit 127                coproc COPROC [NAME] command [redirections] shopt [-pqsu] [-o] [optname ...]
+dblock@localhost:~$ -bash: line 11: [NAME]: command not found
+whois
+-bash: whois: command not found
+[2]+  Exit 127                coproc COPROC [NAME] command [redirections] shopt [-pqsu] [-o] [optname ...]
+dblock@localhost:~$ open port
+-bash: open: command not found
+dblock@localhost:~$ project rel
+-bash: project: command not found
+dblock@localhost:~$ rel
+-bash: rel: command not found
+dblock@localhost:~$ Rel id=1277
+-bash: Rel: command not found
+dblock@localhost:~$ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+-bash: syntax error near unexpected token `[in'
+dblock@localhost:~$  for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+-bash: syntax error near unexpected token `do'
+dblock@localhost:~$  function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+-bash: syntax error near unexpected token `or'
+dblock@localhost:~$  getopts optstring name [arg]             wait [-fn] [id ...]
+dblock@localhost:~$  hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+-bash: syntax error near unexpected token `do'
+dblock@localhost:~$  help [-dms] [pattern ...]                { COMMANDS ; }
+-bash: syntax error near unexpected token `}'
+dblock@localhost:~$ help [-dms] [pattern ...]                { COMMANDS ; }
+-bash: syntax error near unexpected token `}'
+dblock@localhost:~$  job_spec [&]                             history [-c] [-d offset] [n] or histo>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$  (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+-bash: syntax error near unexpected token `if'
+dblock@localhost:~$  . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ jobs [-lnprs] [jobspec ...] or jobs ->
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ 'info bash'
+-bash: info bash: command not found
+dblock@localhost:~$ 'man -k'
+-bash: man -k: command not found
+dblock@localhost:~$ info
+-bash: info: command not found
+dblock@localhost:~$ whois host
+-bash: whois: command not found
+dblock@localhost:~$ ipconfig
+-bash: ipconfig: command not found
+dblock@localhost:~$ metastat
+-bash: metastat: command not found
+dblock@localhost:~$ /var/log/boot.log
+-bash: /var/log/boot.log: No such file or directory
+dblock@localhost:~$ boot.log
+-bash: boot.log: command not found
+dblock@localhost:~$ /var/boot.log
+-bash: /var/boot.log: No such file or directory
+dblock@localhost:~$ help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ bg [job_spec ...]     mapfile [-d delim] [-n count] [-O ori>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$  bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+-bash: -N]: command not found
+readline: [-lpsvPSVX]: no key sequence terminator
+readline: [-m: no key sequence terminator
+readline: keymap]: no key sequence terminator
+readline: [-f: no key sequence terminator
+readline: filen: no key sequence terminator
+readline: [-n]: no key sequence terminator
+readline: [+N: no key sequence terminator
+dblock@localhost:~$ umask [-p] [-S] [mode]
+-bash: umask: `[': invalid symbolic mode operator
+dblock@localhost:~$ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]-bash: fc: history specification out of range
+dblock@localhost:~$  fg [job_spec]                            unalias [-a] name [name ...]
+-bash: fg: [job_spec]: no such job
+dblock@localhost:~$  for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+-bash: syntax error near unexpected token `[in'
+dblock@localhost:~$  for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+-bash: syntax error near unexpected token `do'
+dblock@localhost:~$  function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+-bash: syntax error near unexpected token `or'
+dblock@localhost:~$ exp1
+-bash: exp1: command not found
+dblock@localhost:~$ -f
+-bash: -f: command not found
+dblock@localhost:~$ dirs [-clpv] [+N] [-N]
+-bash: dirs: [-clpv]: invalid option
+dirs: usage: dirs [-clpv] [+N] [-N]
+dblock@localhost:~$ dirs: usage: dirs
+-bash: dirs:: command not found
+dblock@localhost:~$ commands
+-bash: commands: command not found
+dblock@localhost:~$ help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$  (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+-bash: syntax error near unexpected token `if'
+dblock@localhost:~$  . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$  :                                        kill [-s sigspec | -n signum | -sigsp>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$  [ arg... ]                               let arg [arg ...]
+-bash: [: missing `]'
+dblock@localhost:~$  [[ expression ]]                         local [option] name[=value] ...
+-bash: syntax error near unexpected token `local'
+dblock@localhost:~$  alias [-p] [name[=value] ... ]
+-bash: alias: [-p]: not found
+-bash: alias: ...: not found
+-bash: alias: ]: not found
+dblock@localhost:~$ history [-c] [-d offset] [n] or histo>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$  (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+-bash: syntax error near unexpected token `if'
+dblock@localhost:~$  . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ jobs
+dblock@localhost:~$ help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ cat
+bootlog
+bootlog
+run
+run
+dig
+dig
+cpnetwork
+cpnetwork
+disk
+disk
+
+
+
+
+
+
+
+
+^[[A^[[A^[[B
+^[dig
+ig
+exit
+exit

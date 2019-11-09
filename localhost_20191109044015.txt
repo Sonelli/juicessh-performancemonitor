@@ -1,0 +1,197 @@
+dblock@localhost:~$ dig
+-bash: dig: command not found
+dblock@localhost:~$ curl
+-bash: curl: command not found
+dblock@localhost:~$ ip
+-bash: ip: command not found
+dblock@localhost:~$ lsblk
+lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
+dblock@localhost:~$ lsblk: authorize acces to sysfs directory: sys/dev/run: permission granted
+-bash: lsblk:: command not found
+dblock@localhost:~$ sysfs dir
+-bash: sysfs: command not found
+dblock@localhost:~$ ' / tail - nl
+> curl ipconfig.me
+> df -k
+> netcat icanhazip.com 80 <<<$
+> netcat icanhazip.com 80 <<<$'GET/ HTTP/1.1
+-bash:  / tail - nl
+curl ipconfig.me
+df -k
+netcat icanhazip.com 80 <<<$
+netcat icanhazip.com 80 <<<$GET/: No such file or directory
+dblock@localhost:~$ /tail - nl
+-bash: /tail: No such file or directory
+dblock@localhost:~$ curl ifconfig.me
+-bash: curl: command not found
+dblock@localhost:~$ curl ipconfig.me
+-bash: curl: command not found
+dblock@localhost:~$ '/tail-nl
+> curl ipconfig.me
+> dig+short myip.opendns.com @resolver1.opendns.com
+> GET IP
+> netcat 80<<<$GET/HTTP.1.0
+> ipconfig -a
+> hciconfig -a | awk'/BD ADDRESS:/[print $3]
+-bash: /tail-nl
+curl ipconfig.me
+dig+short myip.opendns.com @resolver1.opendns.com
+GET IP
+netcat 80<<<$GET/HTTP.1.0
+ipconfig -a
+hciconfig -a | awk/BD: No such file or directory
+dblock@localhost:~$ hciconfig
+-bash: hciconfig: command not found
+dblock@localhost:~$ whois help
+-bash: whois: command not found
+dblock@localhost:~$ uptime
+-bash: uptime: command not found
+dblock@localhost:~$ opendns
+-bash: opendns: command not found
+dblock@localhost:~$ sudo
+/usr/local/bin/sudo: line 8: /dev/stderr: Permission denied
+dblock@localhost:~$ python
+-bash: python: command not found
+dblock@localhost:~$ ctrl-x e
+-bash: ctrl-x: command not found
+dblock@localhost:~$ ctrl-x
+-bash: ctrl-x: command not found
+dblock@localhost:~$ -x
+-bash: -x: command not found
+dblock@localhost:~$ mount |column
+-bash: column: command not found
+dblock@localhost:~$ bash info
+bash: info: No such file or directory
+dblock@localhost:~$ -bash
+-bash: -bash: command not found
+dblock@localhost:~$ sudo
+/usr/local/bin/sudo: line 8: /dev/stderr: Permission denied
+dblock@localhost:~$ history
+    1  block all other devices
+    2  curi iconfig.me
+    3  autossh
+    4  gitignore
+    5  -d
+    6  --encode data
+    7  autossh [-v][-m port[:echo_port]][-f] [ssh_options]
+    8  exit
+    9  Pothead@420
+   10  exit
+   11  gem server
+   12  <gem server/
+   13  EXIT
+   14  --- GEMSERVER
+   15  ~~DC
+   16  A~C~~B
+   17  metastat
+   18  exit
+   19  <html> <head> <link rel = "stylesheet" href = "css/theme/white.css"> </head> <body> <div class "reveal"> <div class "slides"> <section slide 1</section> <section> slide 2</section> /div> </div> <script> Reveal.initialize(): </script </body> </html>
+   20  reveal.js repository: $ git clone http:// github.com/hakimel/reveal.js.git
+   21  reveal.js
+   22  exit
+   23  .npm
+   24  .npm git
+   25  node -v
+   26  /app/index.html
+   27  exit
+   28  android info
+   29  system
+   30  --version --help
+   31  --help
+   32  uname
+   33  commands
+   34  <?xml version="1.0" encoding="UTF-8"?>
+   35  <d:devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   36  </d:devices>ip--galaxy nexus 3
+   37  whois
+   38  kill all
+   39  <d:device>
+   40  </d:device>ip address
+   41  </d:location> false
+   42  exit
+   43  dig
+   44  curl
+   45  ip
+   46  lsblk
+   47  lsblk: authorize acces to sysfs directory: sys/dev/run: permission granted
+   48  sysfs dir
+   49  ' / tail - nl
+curl ipconfig.me
+df -k
+netcat icanhazip.com 80 <<<$
+netcat icanhazip.com 80 <<<$'GET/ HTTP/1.1
+   50  /tail - nl
+   51  curl ifconfig.me
+   52  curl ipconfig.me
+   53  '/tail-nl
+curl ipconfig.me
+dig+short myip.opendns.com @resolver1.opendns.com
+GET IP
+netcat 80<<<$GET/HTTP.1.0
+ipconfig -a
+hciconfig -a | awk'/BD ADDRESS:/[print $3]
+   54  hciconfig
+   55  whois help
+   56  uptime
+   57  opendns
+   58  sudo
+   59  python
+   60  ctrl-x e
+   61  ctrl-x
+   62  -x
+   63  mount |column
+   64  bash info
+   65  -bash
+   66  sudo
+   67  history
+dblock@localhost:~$ <?xml version="1.0" encoding="UTF-8"?>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$    35  <d:devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-bash: d:devices: No such file or directory
+dblock@localhost:~$    36  </d:devices>ip--galaxy nexus 3
+-bash: /d:devices: No such file or directory
+dblock@localhost:~$ </d:devices>ip--galaxy nexus 3
+-bash: /d:devices: No such file or directory
+dblock@localhost:~$ get id
+-bash: get: command not found
+dblock@localhost:~$ lsof
+-bash: lsof: command not found
+dblock@localhost:~$ alias
+alias ls='ls --color=auto'
+dblock@localhost:~$
+dblock@localhost:~$ grep
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+dblock@localhost:~$ 'grep --help
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> mkpdir
+> git
+> alias
+> galaxy nexus 3
+> ipconfig
+> 'ls
+-bash: $'grep --help\n\n\n\n\n\n\n\n\n\nmkpdir\ngit\nalias\ngalaxy nexus 3\nipconfig \nls': command not found
+dblock@localhost:~$ 'grep --help
+
+
+
+
+
+
+
+
+
+mkpdir
+git
+alias
+galaxy nexus 3
+ipconfig
+'ls
