@@ -1,0 +1,624 @@
+Welcome to Kali in UserLAnd!
+dblock@localhost:~$ dpkg-deb   -e|--control <deb> [<directory>] Extract control info
+-bash: deb: No such file or directory
+dpkg-deb: error: --control needs a .deb filename argument
+
+Type dpkg-deb --help for help about manipulating *.deb files;
+Type dpkg --help for help about installing and deinstalling packages.
+dblock@localhost:~$ dpkg-deb --help
+Usage: dpkg-deb [<option> ...] <command>
+
+Commands:
+  -b|--build <directory> [<deb>]   Build an archive.
+  -c|--contents <deb>              List contents.
+  -I|--info <deb> [<cfile> ...]    Show info to stdout.
+  -W|--show <deb>                  Show information on package(s)
+  -f|--field <deb> [<cfield> ...]  Show field(s) to stdout.
+  -e|--control <deb> [<directory>] Extract control info.
+  -x|--extract <deb> <directory>   Extract files.
+  -X|--vextract <deb> <directory>  Extract & list files.
+  -R|--raw-extract <deb> <directory>
+                                   Extract control info and files.
+  --ctrl-tarfile <deb>             Output control tarfile.
+  --fsys-tarfile <deb>             Output filesystem tarfile.
+
+  -?, --help                       Show this help message.
+      --version                    Show the version.
+
+<deb> is the filename of a Debian format archive.
+<cfile> is the name of an administrative file component.
+<cfield> is the name of a field in the main 'control' file.
+
+Options:
+  -v, --verbose                    Enable verbose output.
+  -D, --debug                      Enable debugging output.
+      --showformat=<format>        Use alternative format for --show.
+      --deb-format=<format>        Select archive format.
+                                     Allowed values: 0.939000, 2.0 (default).
+      --nocheck                    Suppress control file check (build bad
+                                     packages).
+      --root-owner-group           Forces the owner and groups to root.
+      --[no-]uniform-compression   Use the compression params on all members.
+  -z#                              Set the compression level when building.
+  -Z<type>                         Set the compression type used when building.
+                                     Allowed types: gzip, xz, none.
+  -S<strategy>                     Set the compression strategy when building.
+                                     Allowed values: none; extreme (xz);
+                                     filtered, huffman, rle, fixed (gzip).
+
+Format syntax:
+  A format is a string that will be output for each package. The format
+  can include the standard escape sequences \n (newline), \r (carriage
+  return) or \\ (plain backslash). Package information can be included
+  by inserting variable references to package fields using the ${var[;width]}
+  syntax. Fields will be right-aligned unless the width is negative in which
+  case left alignment will be used.
+
+Use 'dpkg' to install and remove packages from your system, or
+'apt' or 'aptitude' for user-friendly package management. Packages
+unpacked using 'dpkg-deb --extract' will be incorrectly installed !
+dblock@localhost:~$ dpkg-<cfield>   -e|--control <deb> [<directory>] Extract control info
+-bash: deb: No such file or directory
+-bash: cfield: No such file or directory
+dblock@localhost:~$ dpkg-deb  -c|--contents <deb>              List contents
+-bash: deb: No such file or directory
+dpkg-deb: error: --contents takes exactly one argument
+
+Type dpkg-deb --help for help about manipulating *.deb files;
+Type dpkg --help for help about installing and deinstalling packages.
+dblock@localhost:~$ dpkg-deb --help
+Usage: dpkg-deb [<option> ...] <command>
+
+Commands:
+  -b|--build <directory> [<deb>]   Build an archive.
+  -c|--contents <deb>              List contents.
+  -I|--info <deb> [<cfile> ...]    Show info to stdout.
+  -W|--show <deb>                  Show information on package(s)
+  -f|--field <deb> [<cfield> ...]  Show field(s) to stdout.
+  -e|--control <deb> [<directory>] Extract control info.
+  -x|--extract <deb> <directory>   Extract files.
+  -X|--vextract <deb> <directory>  Extract & list files.
+  -R|--raw-extract <deb> <directory>
+                                   Extract control info and files.
+  --ctrl-tarfile <deb>             Output control tarfile.
+  --fsys-tarfile <deb>             Output filesystem tarfile.
+
+  -?, --help                       Show this help message.
+      --version                    Show the version.
+
+<deb> is the filename of a Debian format archive.
+<cfile> is the name of an administrative file component.
+<cfield> is the name of a field in the main 'control' file.
+
+Options:
+  -v, --verbose                    Enable verbose output.
+  -D, --debug                      Enable debugging output.
+      --showformat=<format>        Use alternative format for --show.
+      --deb-format=<format>        Select archive format.
+                                     Allowed values: 0.939000, 2.0 (default).
+      --nocheck                    Suppress control file check (build bad
+                                     packages).
+      --root-owner-group           Forces the owner and groups to root.
+      --[no-]uniform-compression   Use the compression params on all members.
+  -z#                              Set the compression level when building.
+  -Z<type>                         Set the compression type used when building.
+                                     Allowed types: gzip, xz, none.
+  -S<strategy>                     Set the compression strategy when building.
+                                     Allowed values: none; extreme (xz);
+                                     filtered, huffman, rle, fixed (gzip).
+
+Format syntax:
+  A format is a string that will be output for each package. The format
+  can include the standard escape sequences \n (newline), \r (carriage
+  return) or \\ (plain backslash). Package information can be included
+  by inserting variable references to package fields using the ${var[;width]}
+  syntax. Fields will be right-aligned unless the width is negative in which
+  case left alignment will be used.
+
+Use 'dpkg' to install and remove packages from your system, or
+'apt' or 'aptitude' for user-friendly package management. Packages
+unpacked using 'dpkg-deb --extract' will be incorrectly installed !
+dblock@localhost:~$ --R|--raw-extract <deb> <directory>
+-bash: syntax error near unexpected token `<'
+dblock@localhost:~$ dpkg |--raw-extract <deb> <directory>
+-bash: syntax error near unexpected token `<'
+dblock@localhost:~$ dpkg-deb [<--showformat=<format>] --CONTENTS, --INFO, --RAW
+-bash: --showformat=: No such file or directory
+dblock@localhost:~$ d:devices -a
+-bash: d:devices: command not found
+dblock@localhost:~$ <d:devices> -a (var) show all devices
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$ android sdk 8: ~ $ sudo lshhw
+-bash: android: command not found
+dblock@localhost:~$ /system
+-bash: /system: No such file or directory
+dblock@localhost:~$ utf8 -sysinfo
+-bash: utf8: command not found
+dblock@localhost:~$ -sysinfo
+-bash: -sysinfo: command not found
+dblock@localhost:~$ $ uname -v
+-bash: $: command not found
+dblock@localhost:~$ uname -v
+#1 SMP PREEMPT Fri Sep 6 10:07:05 KST 2019
+dblock@localhost:~$ uname -n
+localhost
+dblock@localhost:~$ uname --localhost
+uname: unrecognized option '--localhost'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --help
+Usage: uname [OPTION]...
+Print certain system information.  With no OPTION, same as -s.
+
+  -a, --all                print all information, in the following order,
+                             except omit -p and -i if unknown:
+  -s, --kernel-name        print the kernel name
+  -n, --nodename           print the network node hostname
+  -r, --kernel-release     print the kernel release
+  -v, --kernel-version     print the kernel version
+  -m, --machine            print the machine hardware name
+  -p, --processor          print the processor type (non-portable)
+  -i, --hardware-platform  print the hardware platform (non-portable)
+  -o, --operating-system   print the operating system
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report uname translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/uname>
+or available locally via: info '(coreutils) uname invocation'
+dblock@localhost:~$ uname -s
+Linux
+dblock@localhost:~$ uname   -a, --all                print all information, in the following order,
+uname: invalid option -- ','
+Try 'uname --help' for more information.
+dblock@localhost:~$                              except omit -p and -i if unknown:
+-bash: except: command not found
+dblock@localhost:~$   -s, --kernel-name        print the kernel name
+-bash: -s,: command not found
+dblock@localhost:~$   -n, --nodename           print the network node hostname
+-bash: -n,: command not found
+dblock@localhost:~$   -r, --kernel-release     print the kernel release
+-bash: -r,: command not found
+dblock@localhost:~$   -v, --kernel-version     print the kernel version
+-bash: -v,: command not found
+dblock@localhost:~$   -m, --machine            print the machine hardware name
+-bash: -m,: command not found
+dblock@localhost:~$   -p, --processor          print the processor type (non-portable)
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$   -i, --hardware-platform  print the hardware platform (non-portable)
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$   -o, --operating-system   print the operating system
+-bash: -o,: command not found
+dblock@localhost:~$       --help     display this help and exit
+-bash: --help: command not found
+dblock@localhost:~$       --version  output version information and exituname --all-bash: --version: command not found
+dblock@localhost:~$ uname -a
+Linux localhost 4.9.112-perf #1 SMP PREEMPT Fri Sep 6 10:07:05 KST 2019 aarch64 GNU/Linux
+dblock@localhost:~$ mfsk
+-bash: mfsk: command not found
+dblock@localhost:~$ msfk
+-bash: msfk: command not found
+dblock@localhost:~$ uname -n
+localhost
+dblock@localhost:~$ uname -s
+Linux
+dblock@localhost:~$ uname -p
+unknown
+dblock@localhost:~$ dpkg-deb [<cfile>] -I
+-bash: cfile: No such file or directory
+dblock@localhost:~$ bash --login -c
+bash: -c: option requires an argument
+dblock@localhost:~$ var] format [arguments]
+-bash: var]: command not found
+dblock@localhost:~$ var/format [arguments]
+-bash: var/format: No such file or directory
+dblock@localhost:~$ bash --login -c [NAME]
+bash: [NAME]: command not found
+dblock@localhost:~$ bash --login -c name
+bash: name: command not found
+dblock@localhost:~$ apt-get -catlog
+W: Unable to read atlog - open (2: No such file or directory)
+dblock@localhost:~$ apt-get -<d:device>
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ apt-get -users
+E: Command line option 's' [from -users] is not understood in combination with the other options.
+dblock@localhost:~$ apt-get -username
+E: Command line option 's' [from -username] is not understood in combination with the other options.
+dblock@localhost:~$ apt-get --logs
+E: Command line option --logs is not understood in combination with the other options
+dblock@localhost:~$ $ mkdir test
+-bash: $: command not found
+dblock@localhost:~$ $ cd test
+-bash: $: command not found
+dblock@localhost:~$ commands
+-bash: commands: command not found
+dblock@localhost:~$ help
+GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                             history [-c] [-d offset] [n] or histo>
+ (( expression ))                         if COMMANDS; then COMMANDS; [ elif CO>
+ . filename [arguments]                   jobs [-lnprs] [jobspec ...] or jobs ->
+ :                                        kill [-s sigspec | -n signum | -sigsp>
+ [ arg... ]                               let arg [arg ...]
+ [[ expression ]]                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]           logout [n]
+ bg [job_spec ...]                        mapfile [-d delim] [-n count] [-O ori>
+ bind [-lpsvPSVX] [-m keymap] [-f filen>  popd [-n] [+N | -N]
+ break [n]                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]        pushd [-n] [+N | -N | dir]
+ caller [expr]                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) >  read [-ers] [-a array] [-d delim] [-i>
+ cd [-L|[-P [-e]] [-@]] [dir]             readarray [-d delim] [-n count] [-O o>
+ command [-pVv] command [arg ...]         readonly [-aAf] [name[=value] ...] or>
+ compgen [-abcdefgjksuv] [-o option] [->  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] >  select NAME [in WORDS ... ;] do COMMA>
+ compopt [-o|+o option] [-DEI] [name ..>  set [-abefhkmnptuvxBCHP] [-o option-n>
+ continue [n]                             shift [n]
+ coproc [NAME] command [redirections]     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=va>  source filename [arguments]
+ dirs [-clpv] [+N] [-N]                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid .>  test [expr]
+ echo [-neE] [arg ...]                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [nam>  times
+ eval [arg ...]                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [argumen>  true
+ exit [n]                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or exp>  typeset [-aAfFgilnrtux] [-p] name[=va>
+ false                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
+ fc [-e ename] [-lnr] [first] [last] or>  umask [-p] [-S] [mode]
+ fg [job_spec]                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS>  unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMAND>  until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name (>  variables - Names and meanings of som>
+ getopts optstring name [arg]             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name .>  while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                { COMMANDS ; }
+dblock@localhost:~$ command [-pVv] command [arg ...]
+-bash: [-pVv]: command not found
+dblock@localhost:~$ list
+-bash: list: command not found
+dblock@localhost:~$ gnu-ls
+-bash: gnu-ls: command not found
+dblock@localhost:~$ info bash
+-bash: info: command not found
+dblock@localhost:~$ 'info'
+-bash: info: command not found
+dblock@localhost:~$ help name
+-bash: help: no help topics match `name'.  Try `help help' or `man -k name' or `info name'.
+dblock@localhost:~$ man -k name
+-bash: man: command not found
+dblock@localhost:~$ help help
+help: help [-dms] [pattern ...]
+    Display information about builtin commands.
+
+    Displays brief summaries of builtin commands.  If PATTERN is
+    specified, gives detailed help on all commands matching PATTERN,
+    otherwise the list of help topics is printed.
+
+    Options:
+      -d        output short description for each topic
+      -m        display usage in pseudo-manpage format
+      -s        output only a short usage synopsis for each topic matching
+                PATTERN
+
+    Arguments:
+      PATTERN   Pattern specifying a help topic
+
+    Exit Status:
+    Returns success unless PATTERN is not found or an invalid option is given.
+dblock@localhost:~$
+dblock@localhost:~$ device -d
+-bash: device: command not found
+dblock@localhost:~$ -dms -d
+-bash: -dms: command not found
+dblock@localhost:~$ help[-dms] [pattern]
+-bash: help[-dms]: command not found
+dblock@localhost:~$ help [-dms] [pattern]
+Shell commands matching keywords `[-dms], [pattern]'
+
+-bash: help: no help topics match `[pattern]'.  Try `help help' or `man -k [pattern]' or `info [pattern]'.
+dblock@localhost:~$ help [-dms] [pattern]info [pattern]
+Shell commands matching keywords `[-dms], [pattern]info, [pattern]'
+
+-bash: help: no help topics match `[pattern]'.  Try `help help' or `man -k [pattern]' or `info [pattern]'.
+dblock@localhost:~$ info [system]
+-bash: info: command not found
+dblock@localhost:~$ info command
+-bash: info: command not found
+dblock@localhost:~$ @override commands
+-bash: @override: command not found
+dblock@localhost:~$ -d
+-bash: -d: command not found
+dblock@localhost:~$ bash -d
+bash: -d: invalid option
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+dblock@localhost:~$ bash -c
+bash: -c: option requires an argument
+dblock@localhost:~$ bash -ilrsd
+bash: -d: invalid option
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+dblock@localhost:~$ bash -c (invocation only)
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$ bash -c ('invocation only')
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$ bash -c 'invocation only'
+bash: invocation: command not found
+dblock@localhost:~$ bash --login
+dblock@localhost:~$ bash --debug
+dblock@localhost:~$ bash --init
+bash: --init: invalid option
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+dblock@localhost:~$ bash --norc
+bash-5.0$ bash -noprofile
+dblock@localhost:~$ bash --posix
+bash-5.0$ bash --rcfile
+bash: rcfile: option requires an argument
+bash-5.0$ bash --restricted
+dblock@localhost:~$ bash --groups
+bash: --groups: invalid option
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+dblock@localhost:~$ date
+Sun Nov 10 03:30:20 UTC 2019
+dblock@localhost:~$ cal
+bash: cal: command not found
+dblock@localhost:~$ ls
+popd  source  umask
+dblock@localhost:~$ popd unmask
+bash: popd: unmask: invalid argument
+popd: usage: popd [-n] [+N | -N]
+dblock@localhost:~$ bash unmask popd
+bash: unmask: No such file or directory
+dblock@localhost:~$ bash popd unmask
+dblock@localhost:~$ ls
+popd  source  umask
+dblock@localhost:~$ bash ls popd unmask
+/usr/bin/ls: /usr/bin/ls: cannot execute binary file
+dblock@localhost:~$ pwd
+/home/dblock
+dblock@localhost:~$ echo $SHELL
+/bin/bash
+dblock@localhost:~$ which SHEBANG #!
+dblock@localhost:~$ which SHEBANG #! +X./
+dblock@localhost:~$ chmod +x FILENAME
+chmod: cannot access 'FILENAME': No such file or directory
+dblock@localhost:~$ chmod +x FILENAME ls
+chmod: cannot access 'FILENAME': No such file or directory
+chmod: cannot access 'ls': No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$ device.sh
+bash: device.sh: command not found
+dblock@localhost:~$ who
+dblock   pts/1        Nov  9 10:01 (127.0.0.1)
+dblock   pts/0        Nov  9 09:21 (127.0.0.1)
+dblock   pts/2        Nov  9 16:54 (127.0.0.1)
+dblock   pts/3        Nov  9 17:39 (127.0.0.1)
+dblock   pts/4        Nov  9 20:00 (127.0.0.1)
+dblock   pts/5        Nov 10 01:37 (127.0.0.1)
+dblock@localhost:~$ uname device
+uname: extra operand 'device'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --help
+Usage: uname [OPTION]...
+Print certain system information.  With no OPTION, same as -s.
+
+  -a, --all                print all information, in the following order,
+                             except omit -p and -i if unknown:
+  -s, --kernel-name        print the kernel name
+  -n, --nodename           print the network node hostname
+  -r, --kernel-release     print the kernel release
+  -v, --kernel-version     print the kernel version
+  -m, --machine            print the machine hardware name
+  -p, --processor          print the processor type (non-portable)
+  -i, --hardware-platform  print the hardware platform (non-portable)
+  -o, --operating-system   print the operating system
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report uname translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/uname>
+or available locally via: info '(coreutils) uname invocation'
+dblock@localhost:~$ uname -cat
+uname: invalid option -- 'c'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --help
+Usage: uname [OPTION]...
+Print certain system information.  With no OPTION, same as -s.
+
+  -a, --all                print all information, in the following order,
+                             except omit -p and -i if unknown:
+  -s, --kernel-name        print the kernel name
+  -n, --nodename           print the network node hostname
+  -r, --kernel-release     print the kernel release
+  -v, --kernel-version     print the kernel version
+  -m, --machine            print the machine hardware name
+  -p, --processor          print the processor type (non-portable)
+  -i, --hardware-platform  print the hardware platform (non-portable)
+  -o, --operating-system   print the operating system
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report uname translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/uname>
+or available locally via: info '(coreutils) uname invocation'
+dblock@localhost:~$ uname -i
+unknown
+dblock@localhost:~$ /level3/room1
+bash: /level3/room1: restricted: cannot specify `/' in command names
+dblock@localhost:~$ pwd/home/linuxconfig
+bash: pwd/home/linuxconfig: restricted: cannot specify `/' in command names
+dblock@localhost:~$ pwd -home -linuxconfig
+bash: pwd: -h: invalid option
+pwd: usage: pwd [-LP]
+dblock@localhost:~$ pwd [-lp]
+/home/dblock
+dblock@localhost:~$ cd /
+bash: cd: restricted
+dblock@localhost:~$ pwd /
+/home/dblock
+dblock@localhost:~$ cd home /
+bash: cd: restricted
+dblock@localhost:~$ bash force cd /
+bash: force: No such file or directory
+dblock@localhost:~$ ls
+popd  source  umask
+dblock@localhost:~$ cd .
+bash: cd: restricted
+dblock@localhost:~$ cd . unrestrict @override
+bash: cd: restricted
+dblock@localhost:~$ pwd> a.text
+bash: a.text: restricted: cannot redirect output
+dblock@localhost:~$ bash user/bin/ipaddress
+bash: user/bin/ipaddress: No such file or directory
+dblock@localhost:~$ bash user/bin/network
+bash: user/bin/network: No such file or directory
+dblock@localhost:~$ bash --network
+bash: --network: invalid option
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+dblock@localhost:~$ user=$(whoami)
+dblock@localhost:~$ input=/home/$user
+dblock@localhost:~$ output=/tmp/${user}_home_$(date +%Y-%m-%d_%H%M%S).tar.gz
+dblock@localhost:~$
+dblock@localhost:~$ # The function total_files reports a total number of files for a given directory.
+dblock@localhost:~$ function total_files {
+>         find $1 -type f | wc -l
+> }
+dblock@localhost:~$
+dblock@localhost:~$ # The function total_directories reports a total number of directories
+dblock@localhost:~$ # for a given directory.
+dblock@localhost:~$ function total_directories {
+>         find $1 -type d | wc -l
+> }
+dblock@localhost:~$
+dblock@localhost:~$ tar -czf $output $input 2> /dev/null
+bash: /dev/null: restricted: cannot redirect output
+dblock@localhost:~$
+dblock@localhost:~$ echo -n "Files to be included:"
+Files to be included:dblock@localhost:~$ total_files $input
+7
+dblock@localhost:~$ echo -n "Directories to be included:"
+Directories to be included:dblock@localhost:~$ total_directories $input
+1
+dblock@localhost:~$
+dblock@localhost:~$ echo "Backup of $input completed!"
+Backup of /home/dblock completed!
+dblock@localhost:~$
+dblock@localhost:~$ echo "Details about the output backup file:"
+Details about the output backup file:
+dblock@localhost:~$ echo "Details about the output backup file:"
+Details about the output backup file:
+dblock@localhost:~$ +x
+bash: +x: command not found
+dblock@localhost:~$
