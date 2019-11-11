@@ -1,0 +1,444 @@
+dblock@localhost:~$ -bc
+-bash: -bc: command not found
+dblock@localhost:~$ bash --login
+dblock@localhost:~$ ls --r
+ls: option '--r' is ambiguous; possibilities: '--reverse' '--recursive'
+Try 'ls --help' for more information.
+dblock@localhost:~$ ls --reverse
+umask  source  popd
+dblock@localhost:~$ ls unmask
+ls: cannot access 'unmask': No such file or directory
+dblock@localhost:~$ ls --optu
+ls: unrecognized option '--optu'
+Try 'ls --help' for more information.
+dblock@localhost:~$ ls --option
+ls: unrecognized option '--option'
+Try 'ls --help' for more information.
+dblock@localhost:~$ ls buddyinfo  fb           loadavg: 250mb     stat:access
+ls: cannot access 'buddyinfo': No such file or directory
+ls: cannot access 'fb': No such file or directory
+ls: cannot access 'loadavg:': No such file or directory
+ls: cannot access '250mb': No such file or directory
+ls: cannot access 'stat:access': No such file or directory
+dblock@localhost:~$ ls buddyinfo
+ls: cannot access 'buddyinfo': No such file or directory
+dblock@localhost:~$ ls modules
+ls: cannot access 'modules': No such file or directory
+dblock@localhost:~$ modules
+bash: modules: command not found
+dblock@localhost:~$ bash --modules
+bash: --modules: invalid option
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+dblock@localhost:~$ device-tree  keys        sched_debug    uid_io
+bash: device-tree: command not found
+dblock@localhost:~$ 12037      devices      kmsg        scsi           uid_procstatbash: 12037: command not found
+dblock@localhost:~$ 12039      diskstats    kpagecount  self           uid_time_in_state
+bash: 12039: command not found
+dblock@localhost:~$ 15164      driver       kpageflags  softirqs       uptime
+bash: 15164: command not found
+dblock@localhost:~$ asound     execdomains  lge_power   spd            version
+bash: asound: command not found
+dblock@localhost:~$ buddyinfo  fb           loadavg     stat           vmallocinfo
+bash: buddyinfo: command not found
+dblock@localhost:~$ bus        filesystems  locks       swaps          vmstat
+bash: bus: command not found
+dblock@localhost:~$ cgroups    fs           meminfo     sys            zoneinfo
+bash: cgroups: command not found
+dblock@localhost:~$ cmdline    interrupts   misc        sysrq-trigger
+bash: cmdline: command not found
+dblock@localhost:~$ config.gz  iomem        modules     thread-self
+bash: config.gz: command not found
+dblock@localhost:~$ consoles   ioports      mounts      timer_list
+bash: consoles: command not found
+dblock@localhost:~$ cpuinfo    irq          net         tty
+bash: cpuinfo: command not found
+dblock@localhost:~$ ls devices
+ls: cannot access 'devices': No such file or directory
+dblock@localhost:~$ ls hiddenmenu
+ls: cannot access 'hiddenmenu': No such file or directory
+dblock@localhost:~$ ls force
+ls: cannot access 'force': No such file or directory
+dblock@localhost:~$ ls os
+ls: cannot access 'os': No such file or directory
+dblock@localhost:~$ ls fg
+ls: cannot access 'fg': No such file or directory
+dblock@localhost:~$ ls jobs
+ls: cannot access 'jobs': No such file or directory
+dblock@localhost:~$ ls --cpuinfo
+ls: unrecognized option '--cpuinfo'
+Try 'ls --help' for more information.
+dblock@localhost:~$ ls --help
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all                  do not ignore entries starting with .
+  -A, --almost-all           do not list implied . and ..
+      --author               with -l, print the author of each file
+  -b, --escape               print C-style escapes for nongraphic characters
+      --block-size=SIZE      with -l, scale sizes by SIZE when printing them;
+                               e.g., '--block-size=M'; see SIZE format below
+  -B, --ignore-backups       do not list implied entries ending with ~
+  -c                         with -lt: sort by, and show, ctime (time of last
+                               modification of file status information);
+                               with -l: show ctime and sort by name;
+                               otherwise: sort by ctime, newest first
+  -C                         list entries by columns
+      --color[=WHEN]         colorize the output; WHEN can be 'always' (default
+                               if omitted), 'auto', or 'never'; more info below
+  -d, --directory            list directories themselves, not their contents
+  -D, --dired                generate output designed for Emacs' dired mode
+  -f                         do not sort, enable -aU, disable -ls --color
+  -F, --classify             append indicator (one of */=>@|) to entries
+      --file-type            likewise, except do not append '*'
+      --format=WORD          across -x, commas -m, horizontal -x, long -l,
+                               single-column -1, verbose -l, vertical -C
+      --full-time            like -l --time-style=full-iso
+  -g                         like -l, but do not list owner
+      --group-directories-first
+                             group directories before files;
+                               can be augmented with a --sort option, but any
+                               use of --sort=none (-U) disables grouping
+  -G, --no-group             in a long listing, don't print group names
+  -h, --human-readable       with -l and -s, print sizes like 1K 234M 2G etc.
+      --si                   likewise, but use powers of 1000 not 1024
+  -H, --dereference-command-line
+                             follow symbolic links listed on the command line
+      --dereference-command-line-symlink-to-dir
+                             follow each command line symbolic link
+                               that points to a directory
+      --hide=PATTERN         do not list implied entries matching shell PATTERN
+                               (overridden by -a or -A)
+      --hyperlink[=WHEN]     hyperlink file names; WHEN can be 'always'
+                               (default if omitted), 'auto', or 'never'
+      --indicator-style=WORD  append indicator with style WORD to entry names:
+                               none (default), slash (-p),
+                               file-type (--file-type), classify (-F)
+  -i, --inode                print the index number of each file
+  -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+  -k, --kibibytes            default to 1024-byte blocks for disk usage;
+                               used only with -s and per directory totals
+  -l                         use a long listing format
+  -L, --dereference          when showing file information for a symbolic
+                               link, show information for the file the link
+                               references rather than for the link itself
+  -m                         fill width with a comma separated list of entries
+  -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+  -N, --literal              print entry names without quoting
+  -o                         like -l, but do not list group information
+  -p, --indicator-style=slash
+                             append / indicator to directories
+  -q, --hide-control-chars   print ? instead of nongraphic characters
+      --show-control-chars   show nongraphic characters as-is (the default,
+                               unless program is 'ls' and output is a terminal)
+  -Q, --quote-name           enclose entry names in double quotes
+      --quoting-style=WORD   use quoting style WORD for entry names:
+                               literal, locale, shell, shell-always,
+                               shell-escape, shell-escape-always, c, escape
+                               (overrides QUOTING_STYLE environment variable)
+  -r, --reverse              reverse order while sorting
+  -R, --recursive            list subdirectories recursively
+  -s, --size                 print the allocated size of each file, in blocks
+  -S                         sort by file size, largest first
+      --sort=WORD            sort by WORD instead of name: none (-U), size (-S),
+                               time (-t), version (-v), extension (-X)
+      --time=WORD            with -l, show time as WORD instead of default
+                               modification time: atime or access or use (-u);
+                               ctime or status (-c); also use specified time
+                               as sort key if --sort=time (newest first)
+      --time-style=TIME_STYLE  time/date format with -l; see TIME_STYLE below
+  -t                         sort by modification time, newest first
+  -T, --tabsize=COLS         assume tab stops at each COLS instead of 8
+  -u                         with -lt: sort by, and show, access time;
+                               with -l: show access time and sort by name;
+                               otherwise: sort by access time, newest first
+  -U                         do not sort; list entries in directory order
+  -v                         natural sort of (version) numbers within text
+  -w, --width=COLS           set output width to COLS.  0 means no limit
+  -x                         list entries by lines instead of by columns
+  -X                         sort alphabetically by entry extension
+  -Z, --context              print any security context of each file
+  -1                         list one file per line.  Avoid '\n' with -q or -b
+      --help     display this help and exit
+      --version  output version information and exit
+
+The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
+Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+
+The TIME_STYLE argument can be full-iso, long-iso, iso, locale, or +FORMAT.
+FORMAT is interpreted like in date(1).  If FORMAT is FORMAT1<newline>FORMAT2,
+then FORMAT1 applies to non-recent files and FORMAT2 to recent files.
+TIME_STYLE prefixed with 'posix-' takes effect only outside the POSIX locale.
+Also the TIME_STYLE environment variable sets the default style to use.
+
+Using color to distinguish file types is disabled both by default and
+with --color=never.  With --color=auto, ls emits color codes only when
+standard output is connected to a terminal.  The LS_COLORS environment
+variable can change the settings.  Use the dircolors command to set it.
+
+Exit status:
+ 0  if OK,
+ 1  if minor problems (e.g., cannot access subdirectory),
+ 2  if serious trouble (e.g., cannot access command-line argument).
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report ls translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/ls>
+or available locally via: info '(coreutils) ls invocation'
+dblock@localhost:~$ ls -z, -- context
+ls: invalid option -- 'z'
+Try 'ls --help' for more information.
+dblock@localhost:~$ ls --context
+u:object_r:app_data_file:s0:c11,c257,c512,c768 popd
+u:object_r:app_data_file:s0:c11,c257,c512,c768 source
+u:object_r:app_data_file:s0:c11,c257,c512,c768 umask
+dblock@localhost:~$ ls -z, -- context +x
+ls: invalid option -- 'z'
+Try 'ls --help' for more information.
+dblock@localhost:~$ c257?
+bash: c257?: command not found
+dblock@localhost:~$ uname c257
+uname: extra operand 'c257'
+Try 'uname --help' for more information.
+dblock@localhost:~$ c257
+bash: c257: command not found
+dblock@localhost:~$ ls --group-directories-first
+popd  source  umask
+dblock@localhost:~$ apt unmask
+E: Invalid operation unmask
+dblock@localhost:~$ ls popd apt unmask
+ls: cannot access 'apt': No such file or directory
+ls: cannot access 'unmask': No such file or directory
+popd
+dblock@localhost:~$ popd
+bash: popd: directory stack empty
+dblock@localhost:~$ who popd
+dblock@localhost:~$ +
+bash: +: command not found
+dblock@localhost:~$ ls --locks
+ls: unrecognized option '--locks'
+Try 'ls --help' for more information.
+dblock@localhost:~$ locks
+bash: locks: command not found
+dblock@localhost:~$ ??
+bash: ??: command not found
+dblock@localhost:~$ ls so
+ls: cannot access 'so': No such file or directory
+dblock@localhost:~$ ls data
+ls: cannot access 'data': No such file or directory
+dblock@localhost:~$ ls --kibibytes
+popd  source  umask
+dblock@localhost:~$ ls source
+source
+dblock@localhost:~$ ls --author
+popd  source  umask
+dblock@localhost:~$ ls dereference-command-line
+ls: cannot access 'dereference-command-line': No such file or directory
+dblock@localhost:~$ ls --directory
+.
+dblock@localhost:~$ ls --show-control-chars
+popd  source  umask
+dblock@localhost:~$ bash -abefhkmnptuvxBCHP
+# System-wide .bashrc file for interactive bash(1) shells.
+
+# To enable the settings / commands in this file for login shells as well,
+# this file has to be sourced in /etc/profile.
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, overwrite the one in /etc/profile)
+# but only if not SUDOing and have SUDO_PS1 set; then assume smart user.
+if ! [ -n "${SUDO_USER}" -a -n "${SUDO_PS1}" ]; then
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+
+# Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
+# If this is an xterm set the title to user@host:dir
+#case "$TERM" in
+#xterm*|rxvt*)
+#    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+#    ;;
+#*)
+#    ;;
+#esac
+
+# enable bash completion in interactive shells
+#if ! shopt -oq posix; then
+#  if [ -f /usr/share/bash-completion/bash_completion ]; then
+#    . /usr/share/bash-completion/bash_completion
+#  elif [ -f /etc/bash_completion ]; then
+#    . /etc/bash_completion
+#  fi
+#fi
+
+# if the command-not-found package is installed, use it
+if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
+        function command_not_found_handle {
+                # check because c-n-f could've been removed in the meantime
+                if [ -x /usr/lib/command-not-found ]; then
+                   /usr/lib/command-not-found -- "$1"
+                   return $?
+                elif [ -x /usr/share/command-not-found/command-not-found ]; then
+                   /usr/share/command-not-found/command-not-found -- "$1"
+                   return $?
+                else
+                   printf "%s: command not found\n" "$1" >&2
+                   return 127
+                fi
+        }
+fi
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
+    else
+        color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+#alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+bash-5.0$ who fi
+who fi
+dblock@localhost:~$ whois PS1
+bash: whois: command not found
+dblock@localhost:~$ who PS1
+dblock@localhost:~$ who debian
+dblock@localhost:~$ if
+> quit
+> 0
+>
