@@ -1,0 +1,483 @@
+dblock@localhost:~$ * gitk --all: same, but display all branches
+-bash: popd: source: invalid argument
+popd: usage: popd [-n] [+N | -N]
+dblock@localhost:~$ popd -n
+-bash: popd: directory stack empty
+dblock@localhost:~$ popd +N
+-bash: popd: +N: invalid number
+popd: usage: popd [-n] [+N | -N]
+dblock@localhost:~$ popd [+N]
+-bash: popd: [+N]: invalid argument
+popd: usage: popd [-n] [+N | -N]
+dblock@localhost:~$ bash --popd +N
+bash: --popd: invalid option
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+dblock@localhost:~$   * git rebase -i master: run this from on a branch, and it gives
+-bash: popd: source: invalid argument
+popd: usage: popd [-n] [+N | -N]
+dblock@localhost:~$       you an interface with which you can reorder and modify arbitrary
+-bash: you: command not found
+dblock@localhost:~$       change sets on that branch.
+-bash: change: command not found
+dblock@localhost:~$ * gitk --all: same, but display all branches
+-bash: popd: source: invalid argument
+popd: usage: popd [-n] [+N | -N]
+dblock@localhost:~$ popd: usage: popd -N
+-bash: popd:: command not found
+dblock@localhost:~$  popd: usage: popd -n
+-bash: popd:: command not found
+dblock@localhost:~$ # Do a standard run as the current user
+dblock@localhost:~$   make -j$(nproc) coverage
+-bash: make: command not found
+dblock@localhost:~$
+dblock@localhost:~$     let c_space_errors=1
+dblock@localhost:~$     highlight RedundantSpaces ctermbg=red guibg=red
+-bash: highlight: command not found
+dblock@localhost:~$     match RedundantSpaces /\s\+$\| \+\ze\t/
+-bash: match: command not found
+dblock@localhost:~$
+dblock@localhost:~$     let c_space_errors=1
+dblock@localhost:~$     highlight RedundantSpaces ctermbg=red guibg=red
+-bash: highlight: command not found
+dblock@localhost:~$     match RedundantSpaces /\s\+$\| \+\ze\t/
+-bash: match: command not found
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$ Git can help too, by stopping you from committing any change that would
+-bash: Git: command not found
+dblock@localhost:~$ add trailing blanks.  The example pre-commit hook contains code to check
+-bash: add: command not found
+dblock@localhost:~$ for trailing whitespace and spaces before tabs; enable it by moving it
+-bash: syntax error near unexpected token `whitespace'
+dblock@localhost:~$ to the right place and making sure it is executable:
+-bash: to: command not found
+dblock@localhost:~$
+dblock@localhost:~$     mv .git/hooks/pre-commit.sample .git/hooks/pre-commit
+mv: cannot stat '.git/hooks/pre-commit.sample': No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$ With a repository created by git-1.5.6 or older, use this command:
+-bash: With: command not found
+dblock@localhost:~$
+dblock@localhost:~$     chmod +x .git/hooks/pre-commit
+chmod: cannot access '.git/hooks/pre-commit': No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$ To manually check for whitespace errors before committing, you can use
+-bash: To: command not found
+dblock@localhost:~$
+dblock@localhost:~$     git diff --check
+-bash: git: command not found
+dblock@localhost:~$ git log -p
+-bash: git: command not found
+dblock@localhost:~$ cd [-L | -P [-e]] directory
+-bash: cd: [-L: No such file or directory
+-bash: -P: command not found
+dblock@localhost:~$ cd [-A | -P [-e]] directory-
+-bash: cd: [-A: No such file or directory
+-bash: -P: command not found
+dblock@localhost:~$ chmod +x FILENAME
+chmod: cannot access 'FILENAME': No such file or directory
+dblock@localhost:~$ Lcd [-L | -P [-e]] directory
+-bash: Lcd: command not found
+-bash: -P: command not found
+dblock@localhost:~$ chmod +x .jpg
+chmod: cannot access '.jpg': No such file or directory
+dblock@localhost:~$ chmod +x --ls
+chmod: unrecognized option '--ls'
+Try 'chmod --help' for more information.
+dblock@localhost:~$ chmod --help
+Usage: chmod [OPTION]... MODE[,MODE]... FILE...
+  or:  chmod [OPTION]... OCTAL-MODE FILE...
+  or:  chmod [OPTION]... --reference=RFILE FILE...
+Change the mode of each FILE to MODE.
+With --reference, change the mode of each FILE to that of RFILE.
+
+  -c, --changes          like verbose but report only when a change is made
+  -f, --silent, --quiet  suppress most error messages
+  -v, --verbose          output a diagnostic for every file processed
+      --no-preserve-root  do not treat '/' specially (the default)
+      --preserve-root    fail to operate recursively on '/'
+      --reference=RFILE  use RFILE's mode instead of MODE values
+  -R, --recursive        change files and directories recursively
+      --help     display this help and exit
+      --version  output version information and exit
+
+Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+|[-+=][0-7]+'.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report chmod translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/chmod>
+or available locally via: info '(coreutils) chmod invocation'
+dblock@localhost:~$ chmod -c ugoa]*([-+=]([rwxXst]*|[ugo]))+|[-+=][0-7]+
+-bash: syntax error near unexpected token `('
+dblock@localhost:~$ href
+-bash: href: command not found
+dblock@localhost:~$ cd /
+dblock@localhost:/$ pwd/
+-bash: pwd/: No such file or directory
+dblock@localhost:/$ ls
+bin   data  etc   host-rootfs  media  opt   root  sbin  storage  sys  usr
+boot  dev   home  lib          mnt    proc  run   srv   support  tmp  var
+dblock@localhost:/$ data
+-bash: data: command not found
+dblock@localhost:/$ ls data
+ls: cannot open directory 'data': Permission denied
+dblock@localhost:/$ ls --host-rootfs
+ls: unrecognized option '--host-rootfs'
+Try 'ls --help' for more information.
+dblock@localhost:/$ ls help
+ls: cannot access 'help': No such file or directory
+dblock@localhost:/$ ls --help
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all                  do not ignore entries starting with .
+  -A, --almost-all           do not list implied . and ..
+      --author               with -l, print the author of each file
+  -b, --escape               print C-style escapes for nongraphic characters
+      --block-size=SIZE      with -l, scale sizes by SIZE when printing them;
+                               e.g., '--block-size=M'; see SIZE format below
+  -B, --ignore-backups       do not list implied entries ending with ~
+  -c                         with -lt: sort by, and show, ctime (time of last
+                               modification of file status information);
+                               with -l: show ctime and sort by name;
+                               otherwise: sort by ctime, newest first
+  -C                         list entries by columns
+      --color[=WHEN]         colorize the output; WHEN can be 'always' (default
+                               if omitted), 'auto', or 'never'; more info below
+  -d, --directory            list directories themselves, not their contents
+  -D, --dired                generate output designed for Emacs' dired mode
+  -f                         do not sort, enable -aU, disable -ls --color
+  -F, --classify             append indicator (one of */=>@|) to entries
+      --file-type            likewise, except do not append '*'
+      --format=WORD          across -x, commas -m, horizontal -x, long -l,
+                               single-column -1, verbose -l, vertical -C
+      --full-time            like -l --time-style=full-iso
+  -g                         like -l, but do not list owner
+      --group-directories-first
+                             group directories before files;
+                               can be augmented with a --sort option, but any
+                               use of --sort=none (-U) disables grouping
+  -G, --no-group             in a long listing, don't print group names
+  -h, --human-readable       with -l and -s, print sizes like 1K 234M 2G etc.
+      --si                   likewise, but use powers of 1000 not 1024
+  -H, --dereference-command-line
+                             follow symbolic links listed on the command line
+      --dereference-command-line-symlink-to-dir
+                             follow each command line symbolic link
+                               that points to a directory
+      --hide=PATTERN         do not list implied entries matching shell PATTERN
+                               (overridden by -a or -A)
+      --hyperlink[=WHEN]     hyperlink file names; WHEN can be 'always'
+                               (default if omitted), 'auto', or 'never'
+      --indicator-style=WORD  append indicator with style WORD to entry names:
+                               none (default), slash (-p),
+                               file-type (--file-type), classify (-F)
+  -i, --inode                print the index number of each file
+  -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+  -k, --kibibytes            default to 1024-byte blocks for disk usage;
+                               used only with -s and per directory totals
+  -l                         use a long listing format
+  -L, --dereference          when showing file information for a symbolic
+                               link, show information for the file the link
+                               references rather than for the link itself
+  -m                         fill width with a comma separated list of entries
+  -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+  -N, --literal              print entry names without quoting
+  -o                         like -l, but do not list group information
+  -p, --indicator-style=slash
+                             append / indicator to directories
+  -q, --hide-control-chars   print ? instead of nongraphic characters
+      --show-control-chars   show nongraphic characters as-is (the default,
+                               unless program is 'ls' and output is a terminal)
+  -Q, --quote-name           enclose entry names in double quotes
+      --quoting-style=WORD   use quoting style WORD for entry names:
+                               literal, locale, shell, shell-always,
+                               shell-escape, shell-escape-always, c, escape
+                               (overrides QUOTING_STYLE environment variable)
+  -r, --reverse              reverse order while sorting
+  -R, --recursive            list subdirectories recursively
+  -s, --size                 print the allocated size of each file, in blocks
+  -S                         sort by file size, largest first
+      --sort=WORD            sort by WORD instead of name: none (-U), size (-S),
+                               time (-t), version (-v), extension (-X)
+      --time=WORD            with -l, show time as WORD instead of default
+                               modification time: atime or access or use (-u);
+                               ctime or status (-c); also use specified time
+                               as sort key if --sort=time (newest first)
+      --time-style=TIME_STYLE  time/date format with -l; see TIME_STYLE below
+  -t                         sort by modification time, newest first
+  -T, --tabsize=COLS         assume tab stops at each COLS instead of 8
+  -u                         with -lt: sort by, and show, access time;
+                               with -l: show access time and sort by name;
+                               otherwise: sort by access time, newest first
+  -U                         do not sort; list entries in directory order
+  -v                         natural sort of (version) numbers within text
+  -w, --width=COLS           set output width to COLS.  0 means no limit
+  -x                         list entries by lines instead of by columns
+  -X                         sort alphabetically by entry extension
+  -Z, --context              print any security context of each file
+  -1                         list one file per line.  Avoid '\n' with -q or -b
+      --help     display this help and exit
+      --version  output version information and exit
+
+The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
+Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+
+The TIME_STYLE argument can be full-iso, long-iso, iso, locale, or +FORMAT.
+FORMAT is interpreted like in date(1).  If FORMAT is FORMAT1<newline>FORMAT2,
+then FORMAT1 applies to non-recent files and FORMAT2 to recent files.
+TIME_STYLE prefixed with 'posix-' takes effect only outside the POSIX locale.
+Also the TIME_STYLE environment variable sets the default style to use.
+
+Using color to distinguish file types is disabled both by default and
+with --color=never.  With --color=auto, ls emits color codes only when
+standard output is connected to a terminal.  The LS_COLORS environment
+variable can change the settings.  Use the dircolors command to set it.
+
+Exit status:
+ 0  if OK,
+ 1  if minor problems (e.g., cannot access subdirectory),
+ 2  if serious trouble (e.g., cannot access command-line argument).
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report ls translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/ls>
+or available locally via: info '(coreutils) ls invocation'
+dblock@localhost:/$ ls ---group-directories-first
+ls: unrecognized option '---group-directories-first'
+Try 'ls --help' for more information.
+dblock@localhost:/$                              group directories before files;
+-bash: group: command not found
+dblock@localhost:/$                                can be augmented with a --sort option, but any
+-bash: can: command not found
+dblock@localhost:/$                                use of --sort=none (-U) disables grouping
+-bash: syntax error near unexpected token `('
+dblock@localhost:/$ --group-directories-first
+-bash: --group-directories-first: command not found
+dblock@localhost:/$                              group directories before files;
+-bash: group: command not found
+dblock@localhost:/$                                can be augmented with a --sort option, but any
+-bash: can: command not found
+dblock@localhost:/$                                use of --sort=none (-U) disables grouping
+-bash: syntax error near unexpected token `('
+dblock@localhost:/$ --group-directories-first
+-bash: --group-directories-first: command not found
+dblock@localhost:/$                              group directories before files;
+-bash: group: command not found
+dblock@localhost:/$                                can be augmented with a --sort option, but any
+-bash: can: command not found
+dblock@localhost:/$                                use of --sort=none (-U) disables grouping -a
+-bash: syntax error near unexpected token `('
+dblock@localhost:/$ --groupdirectories-first: ls
+-bash: --groupdirectories-first:: command not found
+dblock@localhost:/$ uname groups
+uname: extra operand 'groups'
+Try 'uname --help' for more information.
+dblock@localhost:/$ O
+-bash: O: command not found
+dblock@localhost:/$ ls -a
+.   bin   data  etc   host-rootfs  media  opt   root  sbin  storage  sys  usr
+..  boot  dev   home  lib          mnt    proc  run   srv   support  tmp  var
+dblock@localhost:/$ ls boot
+dblock@localhost:/$ quit
+-bash: quit: command not found
+dblock@localhost:/$ ls etc
+X11                     fstab          libaudit.conf  profile        shadow-
+adduser.conf            gai.conf       localtime      profile.d      shells
+alternatives            group          login.defs     rc0.d          skel
+apt                     group-         logrotate.d    rc1.d          subgid
+bash.bashrc             gshadow        menu           rc2.d          subgid-
+bindresvport.blacklist  gshadow-       menu-methods   rc3.d          subuid
+cron.d                  host.conf      mke2fs.conf    rc4.d          subuid-
+cron.daily              hostname       motd           rc5.d          sudoers
+debconf.conf            hosts          mtab           rc6.d          sudoers.d
+debian_version          init.d         nsswitch.conf  rcS.d          systemd
+default                 issue          opt            resolv.conf    terminfo
+deluser.conf            issue.net      os-release     rmt            timezone
+dpkg                    kernel         pam.conf       security       ucf.conf
+dropbear                ld.so.cache    pam.d          selinux        update-motd.d
+e2scrub.conf            ld.so.conf     passwd         sensors.d      xattr.conf
+environment             ld.so.conf.d   passwd-        sensors3.conf
+fonts                   ld.so.preload  perl           shadow
+dblock@localhost:/$ X11 asuser.conf
+-bash: X11: command not found
+dblock@localhost:/$ ls xml
+ls: cannot access 'xml': No such file or directory
+dblock@localhost:/$ ls XML sudoers.d
+ls: cannot access 'XML': No such file or directory
+ls: cannot access 'sudoers.d': No such file or directory
+dblock@localhost:/$ ls sudoers.d
+ls: cannot access 'sudoers.d': No such file or directory
+dblock@localhost:/$ ls dropbear
+ls: cannot access 'dropbear': No such file or directory
+dblock@localhost:/$ dropbear
+dblock@localhost:/$ whatis
+-bash: whatis: command not found
+dblock@localhost:/$ uname dropbear
+uname: extra operand 'dropbear'
+Try 'uname --help' for more information.
+dblock@localhost:/$ ld.so.conf.d
+-bash: ld.so.conf.d: command not found
+dblock@localhost:/$ bash resolv.conf
+bash: resolv.conf: No such file or directory
+dblock@localhost:/$ bash hostname
+/usr/bin/hostname: /usr/bin/hostname: cannot execute binary file
+dblock@localhost:/$ ls hostname
+ls: cannot access 'hostname': No such file or directory
+dblock@localhost:/$ ls proc
+ls: cannot access 'proc/fb': Permission denied
+ls: cannot access 'proc/spd': Permission denied
+ls: cannot access 'proc/keys': Permission denied
+ls: cannot access 'proc/kmsg': Permission denied
+ls: cannot access 'proc/misc': Permission denied
+ls: cannot access 'proc/iomem': Permission denied
+ls: cannot access 'proc/locks': Permission denied
+ls: cannot access 'proc/swaps': Permission denied
+ls: cannot access 'proc/crypto': Permission denied
+ls: cannot access 'proc/vmstat': Permission denied
+ls: cannot access 'proc/cgroups': Permission denied
+ls: cannot access 'proc/cmdline': Permission denied
+ls: cannot access 'proc/devices': Permission denied
+ls: cannot access 'proc/ioports': Permission denied
+ls: cannot access 'proc/loadavg': Permission denied
+ls: cannot access 'proc/modules': Permission denied
+ls: cannot access 'proc/consoles': Permission denied
+ls: cannot access 'proc/kallsyms': Permission denied
+ls: cannot access 'proc/softirqs': Permission denied
+ls: cannot access 'proc/zoneinfo': Permission denied
+ls: cannot access 'proc/buddyinfo': Permission denied
+ls: cannot access 'proc/config.gz': Permission denied
+ls: cannot access 'proc/diskstats': Permission denied
+ls: cannot access 'proc/key-users': Permission denied
+ls: cannot access 'proc/interrupts': Permission denied
+ls: cannot access 'proc/kpagecount': Permission denied
+ls: cannot access 'proc/kpageflags': Permission denied
+ls: cannot access 'proc/partitions': Permission denied
+ls: cannot access 'proc/timer_list': Permission denied
+ls: cannot access 'proc/execdomains': Permission denied
+ls: cannot access 'proc/filesystems': Permission denied
+ls: cannot access 'proc/sched_debug': Permission denied
+ls: cannot access 'proc/vmallocinfo': Permission denied
+ls: cannot access 'proc/pagetypeinfo': Permission denied
+ls: cannot access 'proc/sysrq-trigger': Permission denied
+ls: cannot access 'proc/uid_time_in_state': Permission denied
+11909      crypto       kallsyms    pagetypeinfo   uid
+11927      debug        key-users   partitions     uid_cputime
+11934      device-tree  keys        sched_debug    uid_io
+12037      devices      kmsg        scsi           uid_procstat
+12039      diskstats    kpagecount  self           uid_time_in_state
+15164      driver       kpageflags  softirqs       uptime
+asound     execdomains  lge_power   spd            version
+buddyinfo  fb           loadavg     stat           vmallocinfo
+bus        filesystems  locks       swaps          vmstat
+cgroups    fs           meminfo     sys            zoneinfo
+cmdline    interrupts   misc        sysrq-trigger
+config.gz  iomem        modules     thread-self
+consoles   ioports      mounts      timer_list
+cpuinfo    irq          net         tty
+dblock@localhost:/$ ls config.g2
+ls: cannot access 'config.g2': No such file or directory
+dblock@localhost:/$ uname -confic.g2
+uname: invalid option -- 'c'
+Try 'uname --help' for more information.
+dblock@localhost:/$ ls buddyinfo
+ls: cannot access 'buddyinfo': No such file or directory
+dblock@localhost:/$ ls uid
+ls: cannot access 'uid': No such file or directory
+dblock@localhost:/$ apt uid
+E: Invalid operation uid
+dblock@localhost:/$ apt driver
+E: Invalid operation driver
+dblock@localhost:/$ ls driver
+ls: cannot access 'driver': No such file or directory
+dblock@localhost:/$ who -host motd
+who: invalid option -- 'h'
+Try 'who --help' for more information.
+dblock@localhost:/$ who --'hostmotd' +x
+who: unrecognized option '--hostmotd'
+Try 'who --help' for more information.
+dblock@localhost:/$ who
+dblock   pts/0        Nov 11 00:37 (127.0.0.1)
+dblock@localhost:/$ who --help
+Usage: who [OPTION]... [ FILE | ARG1 ARG2 ]
+Print information about users who are currently logged in.
+
+  -a, --all         same as -b -d --login -p -r -t -T -u
+  -b, --boot        time of last system boot
+  -d, --dead        print dead processes
+  -H, --heading     print line of column headings
+      --ips         print ips instead of hostnames. with --lookup,
+                    canonicalizes based on stored IP, if available,
+                    rather than stored hostname
+  -l, --login       print system login processes
+      --lookup      attempt to canonicalize hostnames via DNS
+  -m                only hostname and user associated with stdin
+  -p, --process     print active processes spawned by init
+  -q, --count       all login names and number of users logged on
+  -r, --runlevel    print current runlevel
+  -s, --short       print only name, line, and time (default)
+  -t, --time        print last system clock change
+  -T, -w, --mesg    add user's message status as +, - or ?
+  -u, --users       list users logged in
+      --message     same as -T
+      --writable    same as -T
+      --help     display this help and exit
+      --version  output version information and exit
+
+If FILE is not specified, use /var/run/utmp.  /var/log/wtmp as FILE is common.
+If ARG1 ARG2 given, -m presumed: 'am i' or 'mom likes' are usual.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report who translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/who>
+or available locally via: info '(coreutils) who invocation'
+dblock@localhost:/$ who -q, --count all login names and number of users logged in
+-bash: syntax error near unexpected token `in'
+dblock@localhost:/$ who --login
+dblock@localhost:/$ who --count
+dblock
+# users=1
+dblock@localhost:/$ who --users
+dblock   pts/0        Nov 11 00:37   .         12039 (127.0.0.1)
+dblock@localhost:/$ who --ips
+dblock   pts/0        Nov 11 00:37 (127.0.0.1)
+dblock@localhost:/$ who --runlevel
+dblock@localhost:/$ who -T
+dblock   - pts/0        Nov 11 00:37 (127.0.0.1)
+dblock@localhost:/$ who --mesg
+dblock   - pts/0        Nov 11 00:37 (127.0.0.1)
+dblock@localhost:/$ who -w
+dblock   - pts/0        Nov 11 00:37 (127.0.0.1)
+dblock@localhost:/$ who --lookup
+dblock   pts/0        Nov 11 00:37 (127.0.0.1)
+dblock@localhost:/$ who -all
+dblock   - pts/0        Nov 11 00:37   .         12039 (127.0.0.1)
+           pts/5        Nov 10 05:05               470 id=ts/5  term=0 exit=0
+dblock@localhost:/$ who --boot
+dblock@localhost:/$ chmod system
+chmod: missing operand after 'system'
+Try 'chmod --help' for more information.
+dblock@localhost:/$
