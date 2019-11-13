@@ -1,0 +1,9 @@
+2019-11-13T15:34:23.6762353Z ##[group]Run actions/setup-node@v1
+2019-11-13T15:34:23.6762511Z with:
+2019-11-13T15:34:23.6762613Z   node-version: 8.x
+2019-11-13T15:34:23.6762694Z   always-auth: false
+2019-11-13T15:34:23.6762794Z ##[endgroup]
+2019-11-13T15:34:24.5267779Z [command]/bin/tar xzC /home/runner/work/_temp/3fa430da-c687-4a7d-a3a9-9651544c3b3b -f /home/runner/work/_temp/08def5ff-056d-40aa-8c1a-a6d961d94339
+2019-11-13T15:34:27.1533895Z Added matchers: 'tsc'. Problem matchers scan action output for known warning or error strings and report these inline.
+2019-11-13T15:34:27.1551469Z Added matchers: 'eslint-stylish'. Problem matchers scan action output for known warning or error strings and report these inline.
+2019-11-13T15:34:27.1554466Z Added matchers: 'eslint-compact'. Problem matchers scan action output for known warning or error strings and report these inline.

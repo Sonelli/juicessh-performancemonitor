@@ -1,0 +1,5 @@
+2019-11-13T15:34:19.7689844Z Current runner version: '2.160.2'
+2019-11-13T15:34:19.7693014Z Prepare workflow directory
+2019-11-13T15:34:19.7921044Z Prepare all required actions
+2019-11-13T15:34:19.7949181Z Download action repository 'actions/checkout@v1'
+2019-11-13T15:34:21.1649904Z Download action repository 'actions/setup-node@v1'
