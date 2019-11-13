@@ -927,5 +927,4 @@ dblock@localhost:~$               /dev/disk/by-* symlinks and the "scan" method 
 -bash: /dev/disk/by-*: No such file or directory
 dblock@localhost:~$               devices from the /proc/partitions file.
 -bash: devices: command not found
-dblock@localhost:~$hash --t <NAME> 'NEXUS3' {}
-
+dblock@localhost:~$
