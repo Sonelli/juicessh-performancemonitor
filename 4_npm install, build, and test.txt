@@ -1,19 +1,19 @@
-2019-11-13T15:34:25.4474092Z ##[group]Run npm ci
-2019-11-13T15:34:25.4474505Z [36;1mnpm ci[0m
-2019-11-13T15:34:25.4474637Z [36;1mnpm run build --if-present[0m
-2019-11-13T15:34:25.4474765Z [36;1mnpm test[0m
-2019-11-13T15:34:25.4514500Z shell: /bin/bash -e {0}
-2019-11-13T15:34:25.4514684Z env:
-2019-11-13T15:34:25.4514816Z   CI: true
-2019-11-13T15:34:25.4514921Z ##[endgroup]
-2019-11-13T15:34:25.8926712Z npm ERR! code ENOENT
-2019-11-13T15:34:25.8927925Z npm ERR! syscall open
-2019-11-13T15:34:25.8929464Z npm ERR! path /home/runner/work/coreutils-8.3/coreutils-8.3/package.json
-2019-11-13T15:34:25.8930159Z npm ERR! errno -2
-2019-11-13T15:34:25.8931195Z npm ERR! enoent ENOENT: no such file or directory, open '/home/runner/work/coreutils-8.3/coreutils-8.3/package.json'
-2019-11-13T15:34:25.8931661Z npm ERR! enoent This is related to npm not being able to find a file.
-2019-11-13T15:34:25.8931842Z npm ERR! enoent 
-2019-11-13T15:34:26.0257161Z 
-2019-11-13T15:34:26.0277853Z npm ERR! A complete log of this run can be found in:
-2019-11-13T15:34:26.0281488Z npm ERR!     /home/runner/.npm/_logs/2019-11-13T15_34_25_890Z-debug.log
-2019-11-13T15:34:26.0323092Z ##[error]Process completed with exit code 254.
+2019-11-13T15:34:24.7683900Z ##[group]Run npm ci
+2019-11-13T15:34:24.7684243Z [36;1mnpm ci[0m
+2019-11-13T15:34:24.7684342Z [36;1mnpm run build --if-present[0m
+2019-11-13T15:34:24.7684423Z [36;1mnpm test[0m
+2019-11-13T15:34:24.7715486Z shell: /bin/bash -e {0}
+2019-11-13T15:34:24.7715631Z env:
+2019-11-13T15:34:24.7715725Z   CI: true
+2019-11-13T15:34:24.7715797Z ##[endgroup]
+2019-11-13T15:34:25.1766765Z npm ERR! code ENOENT
+2019-11-13T15:34:25.1767768Z npm ERR! syscall open
+2019-11-13T15:34:25.1768934Z npm ERR! path /home/runner/work/coreutils-8.3/coreutils-8.3/package.json
+2019-11-13T15:34:25.1769656Z npm ERR! errno -2
+2019-11-13T15:34:25.1775974Z npm ERR! enoent ENOENT: no such file or directory, open '/home/runner/work/coreutils-8.3/coreutils-8.3/package.json'
+2019-11-13T15:34:25.1776720Z npm ERR! enoent This is related to npm not being able to find a file.
+2019-11-13T15:34:25.1777155Z npm ERR! enoent 
+2019-11-13T15:34:25.3390853Z 
+2019-11-13T15:34:25.3395797Z npm ERR! A complete log of this run can be found in:
+2019-11-13T15:34:25.3426362Z npm ERR!     /home/runner/.npm/_logs/2019-11-13T15_34_25_178Z-debug.log
+2019-11-13T15:34:25.3434199Z ##[error]Process completed with exit code 254.
