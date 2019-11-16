@@ -1,0 +1,534 @@
+dblock@localhost:~$ su [options] [username]
+su: user [options] does not exist
+dblock@localhost:~$ mkfs
+mkfs: no device specified
+Try 'mkfs --help' for more information.
+dblock@localhost:~$ mkfs --help
+
+Usage:
+ mkfs [options] [-t <type>] [fs-options] <device> [<size>]
+
+Make a Linux filesystem.
+
+Options:
+ -t, --type=<type>  filesystem type; when unspecified, ext2 is used
+     fs-options     parameters for the real filesystem builder
+     <device>       path to the device to be used
+     <size>         number of blocks to be used on the device
+ -V, --verbose      explain what is being done;
+                      specifying -V more than once will cause a dry-run
+ -h, --help         display this help
+ -V, --version      display version
+
+For more details see mkfs(8).
+dblock@localhost:~$ mkfs --verbose
+mkfs: no device specified
+Try 'mkfs --help' for more information.
+dblock@localhost:~$ e2mksck
+-bash: e2mksck: command not found
+dblock@localhost:~$ e2mfsck
+-bash: e2mfsck: command not found
+dblock@localhost:~$ m2fsck
+-bash: m2fsck: command not found
+dblock@localhost:~$ "/bin:/usr/bin"
+-bash: /bin:/usr/bin: No such file or directory
+dblock@localhost:~$  /etc/login.defs.
+-bash: /etc/login.defs.: No such file or directory
+dblock@localhost:~$ ext2
+-bash: ext2: command not found
+dblock@localhost:~$ href
+-bash: href: command not found
+dblock@localhost:~$ --cat
+-bash: --cat: command not found
+dblock@localhost:~$ catlog
+-bash: catlog: command not found
+dblock@localhost:~$ logcat
+-bash: logcat: command not found
+dblock@localhost:~$ log
+-bash: log: command not found
+dblock@localhost:~$ --log
+-bash: --log: command not found
+dblock@localhost:~$ SYSLOG_SU_ENAB
+-bash: SYSLOG_SU_ENAB: command not found
+dblock@localhost:~$ su
+root@localhost:/home/dblock# SYSLOG_SU_ENAB
+bash: SYSLOG_SU_ENAB: command not found
+root@localhost:/home/dblock# log
+bash: log: command not found
+root@localhost:/home/dblock#
+root@localhost:/home/dblock# ls
+popd  source  umask
+root@localhost:/home/dblock# ls --help
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all                  do not ignore entries starting with .
+  -A, --almost-all           do not list implied . and ..
+      --author               with -l, print the author of each file
+  -b, --escape               print C-style escapes for nongraphic characters
+      --block-size=SIZE      with -l, scale sizes by SIZE when printing them;
+                               e.g., '--block-size=M'; see SIZE format below
+  -B, --ignore-backups       do not list implied entries ending with ~
+  -c                         with -lt: sort by, and show, ctime (time of last
+                               modification of file status information);
+                               with -l: show ctime and sort by name;
+                               otherwise: sort by ctime, newest first
+  -C                         list entries by columns
+      --color[=WHEN]         colorize the output; WHEN can be 'always' (default
+                               if omitted), 'auto', or 'never'; more info below
+  -d, --directory            list directories themselves, not their contents
+  -D, --dired                generate output designed for Emacs' dired mode
+  -f                         do not sort, enable -aU, disable -ls --color
+  -F, --classify             append indicator (one of */=>@|) to entries
+      --file-type            likewise, except do not append '*'
+      --format=WORD          across -x, commas -m, horizontal -x, long -l,
+                               single-column -1, verbose -l, vertical -C
+      --full-time            like -l --time-style=full-iso
+  -g                         like -l, but do not list owner
+      --group-directories-first
+                             group directories before files;
+                               can be augmented with a --sort option, but any
+                               use of --sort=none (-U) disables grouping
+  -G, --no-group             in a long listing, don't print group names
+  -h, --human-readable       with -l and -s, print sizes like 1K 234M 2G etc.
+      --si                   likewise, but use powers of 1000 not 1024
+  -H, --dereference-command-line
+                             follow symbolic links listed on the command line
+      --dereference-command-line-symlink-to-dir
+                             follow each command line symbolic link
+                               that points to a directory
+      --hide=PATTERN         do not list implied entries matching shell PATTERN
+                               (overridden by -a or -A)
+      --hyperlink[=WHEN]     hyperlink file names; WHEN can be 'always'
+                               (default if omitted), 'auto', or 'never'
+      --indicator-style=WORD  append indicator with style WORD to entry names:
+                               none (default), slash (-p),
+                               file-type (--file-type), classify (-F)
+  -i, --inode                print the index number of each file
+  -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+  -k, --kibibytes            default to 1024-byte blocks for disk usage;
+                               used only with -s and per directory totals
+  -l                         use a long listing format
+  -L, --dereference          when showing file information for a symbolic
+                               link, show information for the file the link
+                               references rather than for the link itself
+  -m                         fill width with a comma separated list of entries
+  -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+  -N, --literal              print entry names without quoting
+  -o                         like -l, but do not list group information
+  -p, --indicator-style=slash
+                             append / indicator to directories
+  -q, --hide-control-chars   print ? instead of nongraphic characters
+      --show-control-chars   show nongraphic characters as-is (the default,
+                               unless program is 'ls' and output is a terminal)
+  -Q, --quote-name           enclose entry names in double quotes
+      --quoting-style=WORD   use quoting style WORD for entry names:
+                               literal, locale, shell, shell-always,
+                               shell-escape, shell-escape-always, c, escape
+                               (overrides QUOTING_STYLE environment variable)
+  -r, --reverse              reverse order while sorting
+  -R, --recursive            list subdirectories recursively
+  -s, --size                 print the allocated size of each file, in blocks
+  -S                         sort by file size, largest first
+      --sort=WORD            sort by WORD instead of name: none (-U), size (-S),
+                               time (-t), version (-v), extension (-X)
+      --time=WORD            with -l, show time as WORD instead of default
+                               modification time: atime or access or use (-u);
+                               ctime or status (-c); also use specified time
+                               as sort key if --sort=time (newest first)
+      --time-style=TIME_STYLE  time/date format with -l; see TIME_STYLE below
+  -t                         sort by modification time, newest first
+  -T, --tabsize=COLS         assume tab stops at each COLS instead of 8
+  -u                         with -lt: sort by, and show, access time;
+                               with -l: show access time and sort by name;
+                               otherwise: sort by access time, newest first
+  -U                         do not sort; list entries in directory order
+  -v                         natural sort of (version) numbers within text
+  -w, --width=COLS           set output width to COLS.  0 means no limit
+  -x                         list entries by lines instead of by columns
+  -X                         sort alphabetically by entry extension
+  -Z, --context              print any security context of each file
+  -1                         list one file per line.  Avoid '\n' with -q or -b
+      --help     display this help and exit
+      --version  output version information and exit
+
+The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
+Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+
+The TIME_STYLE argument can be full-iso, long-iso, iso, locale, or +FORMAT.
+FORMAT is interpreted like in date(1).  If FORMAT is FORMAT1<newline>FORMAT2,
+then FORMAT1 applies to non-recent files and FORMAT2 to recent files.
+TIME_STYLE prefixed with 'posix-' takes effect only outside the POSIX locale.
+Also the TIME_STYLE environment variable sets the default style to use.
+
+Using color to distinguish file types is disabled both by default and
+with --color=never.  With --color=auto, ls emits color codes only when
+standard output is connected to a terminal.  The LS_COLORS environment
+variable can change the settings.  Use the dircolors command to set it.
+
+Exit status:
+ 0  if OK,
+ 1  if minor problems (e.g., cannot access subdirectory),
+ 2  if serious trouble (e.g., cannot access command-line argument).
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report ls translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/ls>
+or available locally via: info '(coreutils) ls invocation'
+root@localhost:/home/dblock# ls --context
+u:object_r:app_data_file:s0:c11,c257,c512,c768 popd
+u:object_r:app_data_file:s0:c11,c257,c512,c768 source
+u:object_r:app_data_file:s0:c11,c257,c512,c768 umask
+root@localhost:/home/dblock# author               with -l, print the author of each file
+                        do not sort, enable -aU, disable -ls --color
+  -F, --classify             append indicator (one of */=>@|) to entries
+      --file-type            likewise, except do not append '*'
+      --format=WORD          across -x, commas -m, horizontal -x, long -l,
+                               single-column -1, verbose -l, vertical -C
+      --full-time            like -l --time-style=full-iso
+  -g                         like -l, but do not list owner
+      --group-directories-first
+                             group directories before files;
+                               can be augmented with a --sort option, but any
+                               use of --sort=none (-U) disables grouping
+  -G, --no-group             in a long listing, don't print group names
+  -h, --human-readable       with -l and -s, print sizes like 1K 234M 2G etc.
+      --si                   likewise, but use powers of 1000 not 1024
+  -H, --dereference-command-line
+                             follow symbolic links listed on the command line
+      --dereference-command-line-symlink-to-dir
+                             follow each command line symbolic link
+                               that points to a directory
+      --hide=PATTERN         do not list implied entries matching shell PATTERN
+                               (overridden by -a or -A)
+      --hyperlink[=WHEN]     hyperlink file names; WHEN can be 'always'
+                               (default if omitted), 'auto', or 'never'
+      --indicator-style=WORD  append indicator with style WORD to entry names:
+                               none (default), slash (-p),
+                               file-type (--file-type), classify (-F)
+  -i, --inode                print the index number of each file
+  -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+  -k, --kibibytes            default to 1024-byte blocks for disk usage;
+                               used only with -s and per directory totals
+  -l                         use a long listing format
+  -L, --dereference          when showing file information for a symbolic
+                               link, show information for the file the link
+                               references rather than for the link itself
+  -m                         fill width with a comma separated list of entries
+  -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+  -N, --literal              print entry names without quoting
+  -o                         like -l, but do not list group information
+  -p, --indicator-style=slash
+                             append / indicator to directories
+  -q, --hide-control-chars   print ? instead of nongraphic characters
+      --show-control-chars   show nongraphic characters as-is (the default,
+                               unless program is 'ls' and output is a terminal)
+  -Q, --quote-name           enclose entry names in double quotes
+      --quoting-style=WORD   use quoting style WORD for entry names:
+                               literal, locale, shell, shell-always,
+                               shell-ebash: author: command not found
+root@localhost:/home/dblock#   -b, --escape               print C-style escapes for nongraphic characters
+bash: -b,: command not found
+root@localhost:/home/dblock#       --block-size=SIZE      with -l, scale sizes by SIZE when printing them;
+bash: --block-size=SIZE: command not found
+root@localhost:/home/dblock#                                e.g., '--block-size=M'; see SIZE format below
+bash: e.g.,: command not found
+bash: see: command not found
+root@localhost:/home/dblock#   -B, --ignore-backups       do not list implied entries ending with ~
+bash: -B,: command not found
+root@localhost:/home/dblock#   -c                         with -lt: sort by, and show, ctime (time of last
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                modification of file status information);
+bash: syntax error near unexpected token `)'
+root@localhost:/home/dblock#                                with -l: show ctime and sort by name;
+-sort=WORD            sort by WORD instead of name: none (-U), size (-S),
+                               time (-t), version (-v), extension (-bash: with: command not found
+root@localhost:/home/dblock#                                otherwise: sort by ctime, newest first
+bash: otherwise:: command not found
+root@localhost:/home/dblock#   -C                         list entries by columns
+bash: -C: command not found
+root@localhost:/home/dblock#       --color[=WHEN]         colorize the output; WHEN can be 'always' (default
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                if omitted), 'auto', or 'never'; more info below
+bash: syntax error near unexpected token `)'
+root@localhost:/home/dblock#   -d, --directory            list directories themselves, not their contents
+bash: -d,: command not found
+root@localhost:/home/dblock#   -D, --dired                generate output designed for Emacs' dired mode
+E below
+  -t                         sort by modification t>   -f                         do not sort, enable -aU, disable -ls --color
+>   -F, --classify             append indicator (one of */=>@|) to entries
+>       --file-type            likewise, except do not append '*'
+>       --format=WORD          across -x, commas -m, horizontal -x, long -l,
+>                                single-column -1, verbose -l, vertical -C
+ sort; list >       --full-time            like -l --time-style=full-iso
+>   -g                         like -l, but do not list owner
+>       --group-directories-first
+>                              group directories before files;
+>                                can be augmented with a --sort option, but any
+>                                use of --sort=none (-U) disables grouping
+>   -G, --no-group             in a long listing, don't print group names
+bash: -D,: command not found
+root@localhost:/home/dblock#   -h, --human-readable       with -l and -s, print sizes like 1K 234M 2G etc.
+bash: -h,: command not found
+root@localhost:/home/dblock#       --si                   likewise, but use powers of 1000 not 1024
+bash: --si: command not found
+root@localhost:/home/dblock#   -H, --dereference-command-line
+bash: -H,: command not found
+root@localhost:/home/dblock#                              follow symbolic links listed on the command line
+bash: follow: command not found
+root@localhost:/home/dblock#       --dereference-command-line-symlink-to-dir
+bash: --dereference-command-line-symlink-to-dir: command not found
+root@localhost:/home/dblock#                              follow each command line symbolic link
+bash: follow: command not found
+root@localhost:/home/dblock#                                that points to a directory
+bash: that: command not found
+root@localhost:/home/dblock#       --hide=PATTERN         do not list implied entries matching shell PATTERN
+bash: --hide=PATTERN: command not found
+root@localhost:/home/dblock#                                (overridden by -a or -A)
+bash: overridden: command not found
+root@localhost:/home/dblock#       --hyperlink[=WHEN]     hyperlink file names; WHEN can be 'always'
+bash: --hyperlink[=WHEN]: command not found
+bash: WHEN: command not found
+root@localhost:/home/dblock#                                (default if omitted), 'auto', or 'never'
+bash: syntax error near unexpected token `,'
+root@localhost:/home/dblock#       --indicator-style=WORD  append indicator with style WORD to entry names:
+bash: --indicator-style=WORD: command not found
+root@localhost:/home/dblock#                                none (default), slash (-p),
+bash: syntax error near unexpected token `default'
+root@localhost:/home/dblock#                                file-type (--file-type), classify (-F)
+bash: syntax error near unexpected token `--file-type'
+root@localhost:/home/dblock#   -i, --inode                print the index number of each file
+bash: -i,: command not found
+root@localhost:/home/dblock#   -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+bash: -I,: command not found
+root@localhost:/home/dblock#   -k, --kibibytes            default to 1024-byte blocks for disk usage;
+bash: -k,: command not found
+root@localhost:/home/dblock#                                used only with -s and per directory totals
+bash: used: command not found
+root@localhost:/home/dblock#   -l                         use a long listing formatbash: -l: command not found
+root@localhost:/home/dblock#   -L, --dereference          when showing file information for a symbolic
+bash: -L,: command not found
+root@localhost:/home/dblock#                                link, show information for the file the link
+bash: link,: command not found
+root@localhost:/home/dblock#                                references rather than for the link itself
+bash: references: command not found
+root@localhost:/home/dblock#   -m                         fill width with a comma separated list of entries
+bash: -m: command not found
+root@localhost:/home/dblock#   -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+bash: -n,: command not found
+root@localhost:/home/dblock#   -N, --literal              print entry names without quoting
+bash: -N,: command not found
+root@localhost:/home/dblock#   -o                         like -l, but do not list group information
+bash: -o: command not found
+root@localhost:/home/dblock#   -p, --indicator-style=slash
+bash: -p,: command not found
+root@localhost:/home/dblock#                              append / indicator to directories
+bash: append: command not found
+root@localhost:/home/dblock#   -q, --hide-control-chars   print ? instead of nongraphic characters
+bash: -q,: command not found
+root@localhost:/home/dblock#       --show-control-chars   show nongraphic characters as-is (the default,
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                unless program is 'ls' and output is a terminal)
+bash: syntax error near unexpected token `)'
+root@localhost:/home/dblock#   -Q, --quote-name           enclose entry names in double quotes
+bash: -Q,: command not found
+root@localhost:/home/dblock#       --quoting-style=WORD   use quoting style WORD for entry names:
+bash: --quoting-style=WORD: command not found
+root@localhost:/home/dblock#                                literal, locale, shell, shell-always,
+bash: literal,: command not found
+root@localhost:/home/dblock#                                shell-escape, shell-escape-always, c, escape
+bash: shell-escape,: command not found
+root@localhost:/home/dblock#                                (overrides QUOTING_STYLE environment variable)
+bash: overrides: command not found
+root@localhost:/home/dblock#   -r, --reverse              reverse order while sorting
+bash: -r,: command not found
+root@localhost:/home/dblock#   -R, --recursive            list subdirectories recursively
+bash: -R,: command not found
+root@localhost:/home/dblock#   -s, --size                 print the allocated size of each file, in blocks
+bash: -s,: command not found
+root@localhost:/home/dblock#   -S                         sort by file size, largest first
+bash: -S: command not found
+root@localhost:/home/dblock#       --sort=WORD            sort by WORD instead of name: none (-U), size (-S),
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                time (-t), version (-v), extension (-X)
+bash: syntax error near unexpected token `,'
+root@localhost:/home/dblock#       --time=WORD            with -l, show time as WORD instead of default
+bash: --time=WORD: command not found
+root@localhost:/home/dblock#                                modification time: atime or access or use (-u);
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                ctime or status (-c); also use specified time
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                as sort key if --sort=time (newest first)
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#       --time-style=TIME_STYLE  time/date format with -l; see TIME_STYLE below
+bash: --time-style=TIME_STYLE: command not found
+bash: see: command not found
+root@localhost:/home/dblock#   -t                         sort by modification time, newest first
+bash: -t: command not found
+root@localhost:/home/dblock#   -T, --tabsize=COLS         assume tab stops at each COLS instead of 8
+bash: -T,: command not found
+root@localhost:/home/dblock#   -u                         with -lt: sort by, and show, access time;
+bash: -u: command not found
+root@localhost:/home/dblock#                                with -l: show access time and sort by name;
+bash: with: command not found
+root@localhost:/home/dblock#                                otherwise: sort by access time, newest first
+bash: otherwise:: command not found
+root@localhost:/home/dblock#   -U                         do not sort; list entries in directory order
+bash: -U: command not found
+bash: list: command not found
+root@localhost:/home/dblock#   -v                         natural sort of (version) numbers within text
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#   -w, --width=COLS           set output width to COLS.  0 means no limit
+bash: -w,: command not found
+root@localhost:/home/dblock#   -x                         list entries by lines instead of by columns
+bash: -x: command not found
+root@localhost:/home/dblock#   -X                         sort alphabetically by entry extension
+bash: -X: command not found
+root@localhost:/home/dblock#   -Z, --context              print any security context of each file
+bash: -Z,: command not found
+root@localhost:/home/dblock#   -1                         list one file per line.  Avoid '\n' with -q or -b
+bash: -1: command not found
+root@localhost:/home/dblock#       --help     display this help and exit
+bash: --help: command not found
+root@localhost:/home/dblock#       --version  output version information and exit
+bash: --version: command not found
+root@localhost:/home/dblock# ls --hyperlink
+popd  source  umask
+root@localhost:/home/dblock# ls extension
+ls: cannot access 'extension': No such file or directory
+root@localhost:/home/dblock# ls --group-directories-first
+popd  source  umask
+root@localhost:/home/dblock# ls --dereference
+popd  source  umask
+root@localhost:/home/dblock# bin/bash
+bash: bin/bash: No such file or directory
+share/classes \
+  javax.lang.model \
+  org.eclipse.ceylon.javax.lang.model \
+  rev_renames
+
+renamePackage langtools/src/share/classes \
+  javax.tools \
+  org.eclipse.ceylon.javax.tools \
+  rev_renames
+
+renamePackage langtools/src/share/classes \
+  com.sun.source \
+  org.eclipse.ceylon.langtools.source \
+  rev_renames
+
+renamePackage langtools/src/share/classes \
+  com.sun.tools.javac \
+  org.eclipse.ceylon.langtools.tools.javac \
+  rev_renames
+
+cd ..
+
+cd langtools-classfile
+renamePackage ./src \
+  com.sun.tools.classfile \
+  org.eclipse.ceylon.langtools.classfile \
+  rev_renames
+
+cd ..
+
+echo "Now the tedious bit: You need to review all the rejected patches."
+echo "Look for .rej files in the source trees."
+echo "Many of these will be just imports"
+echo root@localhost:/home/dblock#
+root@localhost:/home/dblock# # jdk-diff.sh has produced two .diff files for each component, and
+root@localhost:/home/dblock# # jdk-copy.sh has copied the $NEW sources into the right source directories
+root@localhost:/home/dblock# #
+root@localhost:/home/dblock# # We now:
+root@localhost:/home/dblock# #
+root@localhost:/home/dblock# # 1. Apply the patches produced by jdk-diff.sh
+root@localhost:/home/dblock# # 2. Rename the javac packages to the ceylon package names
+root@localhost:/home/dblock#
+root@localhost:/home/dblock#
+root@localhost:/home/dblock# # source some common stuff used by this and the patch script
+root@localhost:/home/dblock# . $(dirname $0)/renames
+bash: ./renames: No such file or directory
+root@localhost:/home/dblock#
+root@localhost:/home/dblock# # Get a copy of the new tree if it doesn't exist
+root@localhost:/home/dblock# if [ ! -e "$NEW" ]; then
+>   echo "There is no $NEW, jdk-copy.sh should have created this. Something's wrong."
+>   echo "Exiting."
+>   exit 1
+> fi
+There is no , jdk-copy.sh should have created this. Something's wrong.
+Exiting.
+exit
+dblock@localhost:~$
+dblock@localhost:~$ # Apply the diff
+dblock@localhost:~$ echo "Patching compiler-java"
+Patching compiler-java
+dblock@localhost:~$ patch -p1 -d compiler-java/langtools -N < compiler-java.diff
+-bash: compiler-java.diff: No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$ echo "Patching langtools-classfile"
+Patching langtools-classfile
+dblock@localhost:~$ patch -p1 -d langtools-classfile/src -N < langtools-classfile.diff
+-bash: langtools-classfile.diff: No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$ echo "Package renaming"
+Package renaming
+dblock@localhost:~$ # Now do the reverse rename within the JDK tree
+dblock@localhost:~$ cd compiler-java
+-bash: cd: compiler-java: No such file or directory
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   javax.annotation.processing \
+>   org.eclipse.ceylon.javax.annotation.processing \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   javax.lang.model \
+>   org.eclipse.ceylon.javax.lang.model \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   javax.tools \
+>   org.eclipse.ceylon.javax.tools \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   com.sun.source \
+>   org.eclipse.ceylon.langtools.source \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   com.sun.tools.javac \
+>   org.eclipse.ceylon.langtools.tools.javac \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ cd ..
+dblock@localhost:/home$
+dblock@localhost:/home$ cd langtools-classfile
+-bash: cd: langtools-classfile: No such file or directory
+dblock@localhost:/home$ renamePackage ./src \
+>   com.sun.tools.classfile \
+>   org.eclipse.ceylon.langtools.classfile \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:/home$
+dblock@localhost:/home$ cd ..
+dblock@localhost:/$
+dblock@localhost:/$ echo "Now the tedious bit: You need to review all the rejected patches."
+Now the tedious bit: You need to review all the rejected patches.
+dblock@localhost:/$ echo "Look for .rej files in the source trees."
+Look for .rej files in the source trees.
+dblock@localhost:/$ echo "Many of these will be just imports"
+Many of these will be just imports
+dblock@localhost:/$ echo
+
+dblock@localhost:/$ echo
+
+dblock@localhost:/$ imported file
+-bash: imported: command not found
+dblock@localhost:/$

@@ -1,0 +1,904 @@
+dblock@localhost:~$ su [options] [username]
+su: user [options] does not exist
+dblock@localhost:~$ mkfs
+mkfs: no device specified
+Try 'mkfs --help' for more information.
+dblock@localhost:~$ mkfs --help
+
+Usage:
+ mkfs [options] [-t <type>] [fs-options] <device> [<size>]
+
+Make a Linux filesystem.
+
+Options:
+ -t, --type=<type>  filesystem type; when unspecified, ext2 is used
+     fs-options     parameters for the real filesystem builder
+     <device>       path to the device to be used
+     <size>         number of blocks to be used on the device
+ -V, --verbose      explain what is being done;
+                      specifying -V more than once will cause a dry-run
+ -h, --help         display this help
+ -V, --version      display version
+
+For more details see mkfs(8).
+dblock@localhost:~$ mkfs --verbose
+mkfs: no device specified
+Try 'mkfs --help' for more information.
+dblock@localhost:~$ e2mksck
+-bash: e2mksck: command not found
+dblock@localhost:~$ e2mfsck
+-bash: e2mfsck: command not found
+dblock@localhost:~$ m2fsck
+-bash: m2fsck: command not found
+dblock@localhost:~$ "/bin:/usr/bin"
+-bash: /bin:/usr/bin: No such file or directory
+dblock@localhost:~$  /etc/login.defs.
+-bash: /etc/login.defs.: No such file or directory
+dblock@localhost:~$ ext2
+-bash: ext2: command not found
+dblock@localhost:~$ href
+-bash: href: command not found
+dblock@localhost:~$ --cat
+-bash: --cat: command not found
+dblock@localhost:~$ catlog
+-bash: catlog: command not found
+dblock@localhost:~$ logcat
+-bash: logcat: command not found
+dblock@localhost:~$ log
+-bash: log: command not found
+dblock@localhost:~$ --log
+-bash: --log: command not found
+dblock@localhost:~$ SYSLOG_SU_ENAB
+-bash: SYSLOG_SU_ENAB: command not found
+dblock@localhost:~$ su
+root@localhost:/home/dblock# SYSLOG_SU_ENAB
+bash: SYSLOG_SU_ENAB: command not found
+root@localhost:/home/dblock# log
+bash: log: command not found
+root@localhost:/home/dblock#
+root@localhost:/home/dblock# ls
+popd  source  umask
+root@localhost:/home/dblock# ls --help
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all                  do not ignore entries starting with .
+  -A, --almost-all           do not list implied . and ..
+      --author               with -l, print the author of each file
+  -b, --escape               print C-style escapes for nongraphic characters
+      --block-size=SIZE      with -l, scale sizes by SIZE when printing them;
+                               e.g., '--block-size=M'; see SIZE format below
+  -B, --ignore-backups       do not list implied entries ending with ~
+  -c                         with -lt: sort by, and show, ctime (time of last
+                               modification of file status information);
+                               with -l: show ctime and sort by name;
+                               otherwise: sort by ctime, newest first
+  -C                         list entries by columns
+      --color[=WHEN]         colorize the output; WHEN can be 'always' (default
+                               if omitted), 'auto', or 'never'; more info below
+  -d, --directory            list directories themselves, not their contents
+  -D, --dired                generate output designed for Emacs' dired mode
+  -f                         do not sort, enable -aU, disable -ls --color
+  -F, --classify             append indicator (one of */=>@|) to entries
+      --file-type            likewise, except do not append '*'
+      --format=WORD          across -x, commas -m, horizontal -x, long -l,
+                               single-column -1, verbose -l, vertical -C
+      --full-time            like -l --time-style=full-iso
+  -g                         like -l, but do not list owner
+      --group-directories-first
+                             group directories before files;
+                               can be augmented with a --sort option, but any
+                               use of --sort=none (-U) disables grouping
+  -G, --no-group             in a long listing, don't print group names
+  -h, --human-readable       with -l and -s, print sizes like 1K 234M 2G etc.
+      --si                   likewise, but use powers of 1000 not 1024
+  -H, --dereference-command-line
+                             follow symbolic links listed on the command line
+      --dereference-command-line-symlink-to-dir
+                             follow each command line symbolic link
+                               that points to a directory
+      --hide=PATTERN         do not list implied entries matching shell PATTERN
+                               (overridden by -a or -A)
+      --hyperlink[=WHEN]     hyperlink file names; WHEN can be 'always'
+                               (default if omitted), 'auto', or 'never'
+      --indicator-style=WORD  append indicator with style WORD to entry names:
+                               none (default), slash (-p),
+                               file-type (--file-type), classify (-F)
+  -i, --inode                print the index number of each file
+  -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+  -k, --kibibytes            default to 1024-byte blocks for disk usage;
+                               used only with -s and per directory totals
+  -l                         use a long listing format
+  -L, --dereference          when showing file information for a symbolic
+                               link, show information for the file the link
+                               references rather than for the link itself
+  -m                         fill width with a comma separated list of entries
+  -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+  -N, --literal              print entry names without quoting
+  -o                         like -l, but do not list group information
+  -p, --indicator-style=slash
+                             append / indicator to directories
+  -q, --hide-control-chars   print ? instead of nongraphic characters
+      --show-control-chars   show nongraphic characters as-is (the default,
+                               unless program is 'ls' and output is a terminal)
+  -Q, --quote-name           enclose entry names in double quotes
+      --quoting-style=WORD   use quoting style WORD for entry names:
+                               literal, locale, shell, shell-always,
+                               shell-escape, shell-escape-always, c, escape
+                               (overrides QUOTING_STYLE environment variable)
+  -r, --reverse              reverse order while sorting
+  -R, --recursive            list subdirectories recursively
+  -s, --size                 print the allocated size of each file, in blocks
+  -S                         sort by file size, largest first
+      --sort=WORD            sort by WORD instead of name: none (-U), size (-S),
+                               time (-t), version (-v), extension (-X)
+      --time=WORD            with -l, show time as WORD instead of default
+                               modification time: atime or access or use (-u);
+                               ctime or status (-c); also use specified time
+                               as sort key if --sort=time (newest first)
+      --time-style=TIME_STYLE  time/date format with -l; see TIME_STYLE below
+  -t                         sort by modification time, newest first
+  -T, --tabsize=COLS         assume tab stops at each COLS instead of 8
+  -u                         with -lt: sort by, and show, access time;
+                               with -l: show access time and sort by name;
+                               otherwise: sort by access time, newest first
+  -U                         do not sort; list entries in directory order
+  -v                         natural sort of (version) numbers within text
+  -w, --width=COLS           set output width to COLS.  0 means no limit
+  -x                         list entries by lines instead of by columns
+  -X                         sort alphabetically by entry extension
+  -Z, --context              print any security context of each file
+  -1                         list one file per line.  Avoid '\n' with -q or -b
+      --help     display this help and exit
+      --version  output version information and exit
+
+The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
+Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+
+The TIME_STYLE argument can be full-iso, long-iso, iso, locale, or +FORMAT.
+FORMAT is interpreted like in date(1).  If FORMAT is FORMAT1<newline>FORMAT2,
+then FORMAT1 applies to non-recent files and FORMAT2 to recent files.
+TIME_STYLE prefixed with 'posix-' takes effect only outside the POSIX locale.
+Also the TIME_STYLE environment variable sets the default style to use.
+
+Using color to distinguish file types is disabled both by default and
+with --color=never.  With --color=auto, ls emits color codes only when
+standard output is connected to a terminal.  The LS_COLORS environment
+variable can change the settings.  Use the dircolors command to set it.
+
+Exit status:
+ 0  if OK,
+ 1  if minor problems (e.g., cannot access subdirectory),
+ 2  if serious trouble (e.g., cannot access command-line argument).
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report ls translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/ls>
+or available locally via: info '(coreutils) ls invocation'
+root@localhost:/home/dblock# ls --context
+u:object_r:app_data_file:s0:c11,c257,c512,c768 popd
+u:object_r:app_data_file:s0:c11,c257,c512,c768 source
+u:object_r:app_data_file:s0:c11,c257,c512,c768 umask
+root@localhost:/home/dblock# author               with -l, print the author of each file
+                        do not sort, enable -aU, disable -ls --color
+  -F, --classify             append indicator (one of */=>@|) to entries
+      --file-type            likewise, except do not append '*'
+      --format=WORD          across -x, commas -m, horizontal -x, long -l,
+                               single-column -1, verbose -l, vertical -C
+      --full-time            like -l --time-style=full-iso
+  -g                         like -l, but do not list owner
+      --group-directories-first
+                             group directories before files;
+                               can be augmented with a --sort option, but any
+                               use of --sort=none (-U) disables grouping
+  -G, --no-group             in a long listing, don't print group names
+  -h, --human-readable       with -l and -s, print sizes like 1K 234M 2G etc.
+      --si                   likewise, but use powers of 1000 not 1024
+  -H, --dereference-command-line
+                             follow symbolic links listed on the command line
+      --dereference-command-line-symlink-to-dir
+                             follow each command line symbolic link
+                               that points to a directory
+      --hide=PATTERN         do not list implied entries matching shell PATTERN
+                               (overridden by -a or -A)
+      --hyperlink[=WHEN]     hyperlink file names; WHEN can be 'always'
+                               (default if omitted), 'auto', or 'never'
+      --indicator-style=WORD  append indicator with style WORD to entry names:
+                               none (default), slash (-p),
+                               file-type (--file-type), classify (-F)
+  -i, --inode                print the index number of each file
+  -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+  -k, --kibibytes            default to 1024-byte blocks for disk usage;
+                               used only with -s and per directory totals
+  -l                         use a long listing format
+  -L, --dereference          when showing file information for a symbolic
+                               link, show information for the file the link
+                               references rather than for the link itself
+  -m                         fill width with a comma separated list of entries
+  -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+  -N, --literal              print entry names without quoting
+  -o                         like -l, but do not list group information
+  -p, --indicator-style=slash
+                             append / indicator to directories
+  -q, --hide-control-chars   print ? instead of nongraphic characters
+      --show-control-chars   show nongraphic characters as-is (the default,
+                               unless program is 'ls' and output is a terminal)
+  -Q, --quote-name           enclose entry names in double quotes
+      --quoting-style=WORD   use quoting style WORD for entry names:
+                               literal, locale, shell, shell-always,
+                               shell-ebash: author: command not found
+root@localhost:/home/dblock#   -b, --escape               print C-style escapes for nongraphic characters
+bash: -b,: command not found
+root@localhost:/home/dblock#       --block-size=SIZE      with -l, scale sizes by SIZE when printing them;
+bash: --block-size=SIZE: command not found
+root@localhost:/home/dblock#                                e.g., '--block-size=M'; see SIZE format below
+bash: e.g.,: command not found
+bash: see: command not found
+root@localhost:/home/dblock#   -B, --ignore-backups       do not list implied entries ending with ~
+bash: -B,: command not found
+root@localhost:/home/dblock#   -c                         with -lt: sort by, and show, ctime (time of last
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                modification of file status information);
+bash: syntax error near unexpected token `)'
+root@localhost:/home/dblock#                                with -l: show ctime and sort by name;
+-sort=WORD            sort by WORD instead of name: none (-U), size (-S),
+                               time (-t), version (-v), extension (-bash: with: command not found
+root@localhost:/home/dblock#                                otherwise: sort by ctime, newest first
+bash: otherwise:: command not found
+root@localhost:/home/dblock#   -C                         list entries by columns
+bash: -C: command not found
+root@localhost:/home/dblock#       --color[=WHEN]         colorize the output; WHEN can be 'always' (default
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                if omitted), 'auto', or 'never'; more info below
+bash: syntax error near unexpected token `)'
+root@localhost:/home/dblock#   -d, --directory            list directories themselves, not their contents
+bash: -d,: command not found
+root@localhost:/home/dblock#   -D, --dired                generate output designed for Emacs' dired mode
+E below
+  -t                         sort by modification t>   -f                         do not sort, enable -aU, disable -ls --color
+>   -F, --classify             append indicator (one of */=>@|) to entries
+>       --file-type            likewise, except do not append '*'
+>       --format=WORD          across -x, commas -m, horizontal -x, long -l,
+>                                single-column -1, verbose -l, vertical -C
+ sort; list >       --full-time            like -l --time-style=full-iso
+>   -g                         like -l, but do not list owner
+>       --group-directories-first
+>                              group directories before files;
+>                                can be augmented with a --sort option, but any
+>                                use of --sort=none (-U) disables grouping
+>   -G, --no-group             in a long listing, don't print group names
+bash: -D,: command not found
+root@localhost:/home/dblock#   -h, --human-readable       with -l and -s, print sizes like 1K 234M 2G etc.
+bash: -h,: command not found
+root@localhost:/home/dblock#       --si                   likewise, but use powers of 1000 not 1024
+bash: --si: command not found
+root@localhost:/home/dblock#   -H, --dereference-command-line
+bash: -H,: command not found
+root@localhost:/home/dblock#                              follow symbolic links listed on the command line
+bash: follow: command not found
+root@localhost:/home/dblock#       --dereference-command-line-symlink-to-dir
+bash: --dereference-command-line-symlink-to-dir: command not found
+root@localhost:/home/dblock#                              follow each command line symbolic link
+bash: follow: command not found
+root@localhost:/home/dblock#                                that points to a directory
+bash: that: command not found
+root@localhost:/home/dblock#       --hide=PATTERN         do not list implied entries matching shell PATTERN
+bash: --hide=PATTERN: command not found
+root@localhost:/home/dblock#                                (overridden by -a or -A)
+bash: overridden: command not found
+root@localhost:/home/dblock#       --hyperlink[=WHEN]     hyperlink file names; WHEN can be 'always'
+bash: --hyperlink[=WHEN]: command not found
+bash: WHEN: command not found
+root@localhost:/home/dblock#                                (default if omitted), 'auto', or 'never'
+bash: syntax error near unexpected token `,'
+root@localhost:/home/dblock#       --indicator-style=WORD  append indicator with style WORD to entry names:
+bash: --indicator-style=WORD: command not found
+root@localhost:/home/dblock#                                none (default), slash (-p),
+bash: syntax error near unexpected token `default'
+root@localhost:/home/dblock#                                file-type (--file-type), classify (-F)
+bash: syntax error near unexpected token `--file-type'
+root@localhost:/home/dblock#   -i, --inode                print the index number of each file
+bash: -i,: command not found
+root@localhost:/home/dblock#   -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+bash: -I,: command not found
+root@localhost:/home/dblock#   -k, --kibibytes            default to 1024-byte blocks for disk usage;
+bash: -k,: command not found
+root@localhost:/home/dblock#                                used only with -s and per directory totals
+bash: used: command not found
+root@localhost:/home/dblock#   -l                         use a long listing formatbash: -l: command not found
+root@localhost:/home/dblock#   -L, --dereference          when showing file information for a symbolic
+bash: -L,: command not found
+root@localhost:/home/dblock#                                link, show information for the file the link
+bash: link,: command not found
+root@localhost:/home/dblock#                                references rather than for the link itself
+bash: references: command not found
+root@localhost:/home/dblock#   -m                         fill width with a comma separated list of entries
+bash: -m: command not found
+root@localhost:/home/dblock#   -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+bash: -n,: command not found
+root@localhost:/home/dblock#   -N, --literal              print entry names without quoting
+bash: -N,: command not found
+root@localhost:/home/dblock#   -o                         like -l, but do not list group information
+bash: -o: command not found
+root@localhost:/home/dblock#   -p, --indicator-style=slash
+bash: -p,: command not found
+root@localhost:/home/dblock#                              append / indicator to directories
+bash: append: command not found
+root@localhost:/home/dblock#   -q, --hide-control-chars   print ? instead of nongraphic characters
+bash: -q,: command not found
+root@localhost:/home/dblock#       --show-control-chars   show nongraphic characters as-is (the default,
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                unless program is 'ls' and output is a terminal)
+bash: syntax error near unexpected token `)'
+root@localhost:/home/dblock#   -Q, --quote-name           enclose entry names in double quotes
+bash: -Q,: command not found
+root@localhost:/home/dblock#       --quoting-style=WORD   use quoting style WORD for entry names:
+bash: --quoting-style=WORD: command not found
+root@localhost:/home/dblock#                                literal, locale, shell, shell-always,
+bash: literal,: command not found
+root@localhost:/home/dblock#                                shell-escape, shell-escape-always, c, escape
+bash: shell-escape,: command not found
+root@localhost:/home/dblock#                                (overrides QUOTING_STYLE environment variable)
+bash: overrides: command not found
+root@localhost:/home/dblock#   -r, --reverse              reverse order while sorting
+bash: -r,: command not found
+root@localhost:/home/dblock#   -R, --recursive            list subdirectories recursively
+bash: -R,: command not found
+root@localhost:/home/dblock#   -s, --size                 print the allocated size of each file, in blocks
+bash: -s,: command not found
+root@localhost:/home/dblock#   -S                         sort by file size, largest first
+bash: -S: command not found
+root@localhost:/home/dblock#       --sort=WORD            sort by WORD instead of name: none (-U), size (-S),
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                time (-t), version (-v), extension (-X)
+bash: syntax error near unexpected token `,'
+root@localhost:/home/dblock#       --time=WORD            with -l, show time as WORD instead of default
+bash: --time=WORD: command not found
+root@localhost:/home/dblock#                                modification time: atime or access or use (-u);
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                ctime or status (-c); also use specified time
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#                                as sort key if --sort=time (newest first)
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#       --time-style=TIME_STYLE  time/date format with -l; see TIME_STYLE below
+bash: --time-style=TIME_STYLE: command not found
+bash: see: command not found
+root@localhost:/home/dblock#   -t                         sort by modification time, newest first
+bash: -t: command not found
+root@localhost:/home/dblock#   -T, --tabsize=COLS         assume tab stops at each COLS instead of 8
+bash: -T,: command not found
+root@localhost:/home/dblock#   -u                         with -lt: sort by, and show, access time;
+bash: -u: command not found
+root@localhost:/home/dblock#                                with -l: show access time and sort by name;
+bash: with: command not found
+root@localhost:/home/dblock#                                otherwise: sort by access time, newest first
+bash: otherwise:: command not found
+root@localhost:/home/dblock#   -U                         do not sort; list entries in directory order
+bash: -U: command not found
+bash: list: command not found
+root@localhost:/home/dblock#   -v                         natural sort of (version) numbers within text
+bash: syntax error near unexpected token `('
+root@localhost:/home/dblock#   -w, --width=COLS           set output width to COLS.  0 means no limit
+bash: -w,: command not found
+root@localhost:/home/dblock#   -x                         list entries by lines instead of by columns
+bash: -x: command not found
+root@localhost:/home/dblock#   -X                         sort alphabetically by entry extension
+bash: -X: command not found
+root@localhost:/home/dblock#   -Z, --context              print any security context of each file
+bash: -Z,: command not found
+root@localhost:/home/dblock#   -1                         list one file per line.  Avoid '\n' with -q or -b
+bash: -1: command not found
+root@localhost:/home/dblock#       --help     display this help and exit
+bash: --help: command not found
+root@localhost:/home/dblock#       --version  output version information and exit
+bash: --version: command not found
+root@localhost:/home/dblock# ls --hyperlink
+popd  source  umask
+root@localhost:/home/dblock# ls extension
+ls: cannot access 'extension': No such file or directory
+root@localhost:/home/dblock# ls --group-directories-first
+popd  source  umask
+root@localhost:/home/dblock# ls --dereference
+popd  source  umask
+root@localhost:/home/dblock# bin/bash
+bash: bin/bash: No such file or directory
+share/classes \
+  javax.lang.model \
+  org.eclipse.ceylon.javax.lang.model \
+  rev_renames
+
+renamePackage langtools/src/share/classes \
+  javax.tools \
+  org.eclipse.ceylon.javax.tools \
+  rev_renames
+
+renamePackage langtools/src/share/classes \
+  com.sun.source \
+  org.eclipse.ceylon.langtools.source \
+  rev_renames
+
+renamePackage langtools/src/share/classes \
+  com.sun.tools.javac \
+  org.eclipse.ceylon.langtools.tools.javac \
+  rev_renames
+
+cd ..
+
+cd langtools-classfile
+renamePackage ./src \
+  com.sun.tools.classfile \
+  org.eclipse.ceylon.langtools.classfile \
+  rev_renames
+
+cd ..
+
+echo "Now the tedious bit: You need to review all the rejected patches."
+echo "Look for .rej files in the source trees."
+echo "Many of these will be just imports"
+echo root@localhost:/home/dblock#
+root@localhost:/home/dblock# # jdk-diff.sh has produced two .diff files for each component, and
+root@localhost:/home/dblock# # jdk-copy.sh has copied the $NEW sources into the right source directories
+root@localhost:/home/dblock# #
+root@localhost:/home/dblock# # We now:
+root@localhost:/home/dblock# #
+root@localhost:/home/dblock# # 1. Apply the patches produced by jdk-diff.sh
+root@localhost:/home/dblock# # 2. Rename the javac packages to the ceylon package names
+root@localhost:/home/dblock#
+root@localhost:/home/dblock#
+root@localhost:/home/dblock# # source some common stuff used by this and the patch script
+root@localhost:/home/dblock# . $(dirname $0)/renames
+bash: ./renames: No such file or directory
+root@localhost:/home/dblock#
+root@localhost:/home/dblock# # Get a copy of the new tree if it doesn't exist
+root@localhost:/home/dblock# if [ ! -e "$NEW" ]; then
+>   echo "There is no $NEW, jdk-copy.sh should have created this. Something's wrong."
+>   echo "Exiting."
+>   exit 1
+> fi
+There is no , jdk-copy.sh should have created this. Something's wrong.
+Exiting.
+exit
+dblock@localhost:~$
+dblock@localhost:~$ # Apply the diff
+dblock@localhost:~$ echo "Patching compiler-java"
+Patching compiler-java
+dblock@localhost:~$ patch -p1 -d compiler-java/langtools -N < compiler-java.diff
+-bash: compiler-java.diff: No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$ echo "Patching langtools-classfile"
+Patching langtools-classfile
+dblock@localhost:~$ patch -p1 -d langtools-classfile/src -N < langtools-classfile.diff
+-bash: langtools-classfile.diff: No such file or directory
+dblock@localhost:~$
+dblock@localhost:~$ echo "Package renaming"
+Package renaming
+dblock@localhost:~$ # Now do the reverse rename within the JDK tree
+dblock@localhost:~$ cd compiler-java
+-bash: cd: compiler-java: No such file or directory
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   javax.annotation.processing \
+>   org.eclipse.ceylon.javax.annotation.processing \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   javax.lang.model \
+>   org.eclipse.ceylon.javax.lang.model \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   javax.tools \
+>   org.eclipse.ceylon.javax.tools \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   com.sun.source \
+>   org.eclipse.ceylon.langtools.source \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ renamePackage langtools/src/share/classes \
+>   com.sun.tools.javac \
+>   org.eclipse.ceylon.langtools.tools.javac \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:~$
+dblock@localhost:~$ cd ..
+dblock@localhost:/home$
+dblock@localhost:/home$ cd langtools-classfile
+-bash: cd: langtools-classfile: No such file or directory
+dblock@localhost:/home$ renamePackage ./src \
+>   com.sun.tools.classfile \
+>   org.eclipse.ceylon.langtools.classfile \
+>   rev_renames
+-bash: renamePackage: command not found
+dblock@localhost:/home$
+dblock@localhost:/home$ cd ..
+dblock@localhost:/$
+dblock@localhost:/$ echo "Now the tedious bit: You need to review all the rejected patches."
+Now the tedious bit: You need to review all the rejected patches.
+dblock@localhost:/$ echo "Look for .rej files in the source trees."
+Look for .rej files in the source trees.
+dblock@localhost:/$ echo "Many of these will be just imports"
+Many of these will be just imports
+dblock@localhost:/$ echo
+
+dblock@localhost:/$ echo
+
+dblock@localhost:/$ imported file
+-bash: imported: command not found
+dblock@localhost:/$ ls --gshadow
+ls: unrecognized option '--gshadow'
+Try 'ls --help' for more information.
+dblock@localhost:/$ ls --boot
+ls: unrecognized option '--boot'
+Try 'ls --help' for more information.
+dblock@localhost:/$ ls --proc
+ls: unrecognized option '--proc'
+Try 'ls --help' for more information.
+dblock@localhost:/$ ls proc
+ls: cannot access 'proc/fb': Permission denied
+ls: cannot access 'proc/spd': Permission denied
+ls: cannot access 'proc/keys': Permission denied
+ls: cannot access 'proc/kmsg': Permission denied
+ls: cannot access 'proc/misc': Permission denied
+ls: cannot access 'proc/iomem': Permission denied
+ls: cannot access 'proc/locks': Permission denied
+ls: cannot access 'proc/swaps': Permission denied
+ls: cannot access 'proc/crypto': Permission denied
+ls: cannot access 'proc/vmstat': Permission denied
+ls: cannot access 'proc/cgroups': Permission denied
+ls: cannot access 'proc/cmdline': Permission denied
+ls: cannot access 'proc/devices': Permission denied
+ls: cannot access 'proc/ioports': Permission denied
+ls: cannot access 'proc/loadavg': Permission denied
+ls: cannot access 'proc/modules': Permission denied
+ls: cannot access 'proc/consoles': Permission denied
+ls: cannot access 'proc/kallsyms': Permission denied
+ls: cannot access 'proc/softirqs': Permission denied
+ls: cannot access 'proc/zoneinfo': Permission denied
+ls: cannot access 'proc/buddyinfo': Permission denied
+ls: cannot access 'proc/config.gz': Permission denied
+ls: cannot access 'proc/diskstats': Permission denied
+ls: cannot access 'proc/key-users': Permission denied
+ls: cannot access 'proc/interrupts': Permission denied
+ls: cannot access 'proc/kpagecount': Permission denied
+ls: cannot access 'proc/kpageflags': Permission denied
+ls: cannot access 'proc/partitions': Permission denied
+ls: cannot access 'proc/timer_list': Permission denied
+ls: cannot access 'proc/execdomains': Permission denied
+ls: cannot access 'proc/filesystems': Permission denied
+ls: cannot access 'proc/sched_debug': Permission denied
+ls: cannot access 'proc/vmallocinfo': Permission denied
+ls: cannot access 'proc/pagetypeinfo': Permission denied
+ls: cannot access 'proc/sysrq-trigger': Permission denied
+ls: cannot access 'proc/uid_time_in_state': Permission denied
+18482      crypto       kallsyms    pagetypeinfo   uid
+18501      debug        key-users   partitions     uid_cputime
+18508      device-tree  keys        sched_debug    uid_io
+18613      devices      kmsg        scsi           uid_procstat
+18615      diskstats    kpagecount  self           uid_time_in_state
+19980      driver       kpageflags  softirqs       uptime
+asound     execdomains  lge_power   spd            version
+buddyinfo  fb           loadavg     stat           vmallocinfo
+bus        filesystems  locks       swaps          vmstat
+cgroups    fs           meminfo     sys            zoneinfo
+cmdline    interrupts   misc        sysrq-trigger
+config.gz  iomem        modules     thread-self
+consoles   ioports      mounts      timer_list
+cpuinfo    irq          net         tty
+dblock@localhost:/$ ls config.g2
+ls: cannot access 'config.g2': No such file or directory
+dblock@localhost:/$ ls devices
+ls: cannot access 'devices': No such file or directory
+dblock@localhost:/$ ls crypto
+ls: cannot access 'crypto': No such file or directory
+dblock@localhost:/$ ls cgroups
+ls: cannot access 'cgroups': No such file or directory
+dblock@localhost:/$ ls 18508
+ls: cannot access '18508': No such file or directory
+dblock@localhost:/$ ls vmstat
+ls: cannot access 'vmstat': No such file or directory
+dblock@localhost:/$ ls driver
+ls: cannot access 'driver': No such file or directory
+dblock@localhost:/$ who help
+dblock@localhost:/$ who --help
+Usage: who [OPTION]... [ FILE | ARG1 ARG2 ]
+Print information about users who are currently logged in.
+
+  -a, --all         same as -b -d --login -p -r -t -T -u
+  -b, --boot        time of last system boot
+  -d, --dead        print dead processes
+  -H, --heading     print line of column headings
+      --ips         print ips instead of hostnames. with --lookup,
+                    canonicalizes based on stored IP, if available,
+                    rather than stored hostname
+  -l, --login       print system login processes
+      --lookup      attempt to canonicalize hostnames via DNS
+  -m                only hostname and user associated with stdin
+  -p, --process     print active processes spawned by init
+  -q, --count       all login names and number of users logged on
+  -r, --runlevel    print current runlevel
+  -s, --short       print only name, line, and time (default)
+  -t, --time        print last system clock change
+  -T, -w, --mesg    add user's message status as +, - or ?
+  -u, --users       list users logged in
+      --message     same as -T
+      --writable    same as -T
+      --help     display this help and exit
+      --version  output version information and exit
+
+If FILE is not specified, use /var/run/utmp.  /var/log/wtmp as FILE is common.
+If ARG1 ARG2 given, -m presumed: 'am i' or 'mom likes' are usual.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report who translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/who>
+or available locally via: info '(coreutils) who invocation'
+dblock@localhost:/$ who --dead
+         pts/1        Nov 11 21:03             13032 id=ts/1  term=0 exit=0
+         pts/2        Nov 11 22:52             14172 id=ts/2  term=0 exit=0
+         pts/5        Nov 10 05:05               470 id=ts/5  term=0 exit=0
+dblock@localhost:/$ who --users
+dblock   pts/0        Nov 16 08:20   .         18615 (127.0.0.1)
+dblock@localhost:/$ who --count
+dblock
+# users=1
+dblock@localhost:/$ who --ips
+dblock   pts/0        Nov 16 08:20 (127.0.0.1)
+dblock@localhost:/$ who --short
+dblock   pts/0        Nov 16 08:20 (127.0.0.1)
+dblock@localhost:/$ who lookup
+dblock@localhost:/$ usr1
+-bash: usr1: command not found
+dblock@localhost:/$ who --lookup
+dblock   pts/0        Nov 16 08:20 (127.0.0.1)
+dblock@localhost:/$ chmod system information
+chmod: invalid mode: 'system'
+Try 'chmod --help' for more information.
+dblock@localhost:/$ chmod --help
+Usage: chmod [OPTION]... MODE[,MODE]... FILE...
+  or:  chmod [OPTION]... OCTAL-MODE FILE...
+  or:  chmod [OPTION]... --reference=RFILE FILE...
+Change the mode of each FILE to MODE.
+With --reference, change the mode of each FILE to that of RFILE.
+
+  -c, --changes          like verbose but report only when a change is made
+  -f, --silent, --quiet  suppress most error messages
+  -v, --verbose          output a diagnostic for every file processed
+      --no-preserve-root  do not treat '/' specially (the default)
+      --preserve-root    fail to operate recursively on '/'
+      --reference=RFILE  use RFILE's mode instead of MODE values
+  -R, --recursive        change files and directories recursively
+      --help     display this help and exit
+      --version  output version information and exit
+
+Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+|[-+=][0-7]+'.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report chmod translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/chmod>
+or available locally via: info '(coreutils) chmod invocation'
+dblock@localhost:/$ ugoa --help
+-bash: ugoa: command not found
+dblock@localhost:/$ # System-wide .bashrc file for interactive bash(1) shells.
+dblock@localhost:/$
+dblock@localhost:/$ # To enable the settings / commands in this file for login shells as well,
+dblock@localhost:/$ # this file has to be sourced in /etc/profile.
+dblock@localhost:/$
+dblock@localhost:/$ # If not running interactively, don't do anything
+dblock@localhost:/$ [ -z "$PS1" ] && return
+dblock@localhost:/$
+dblock@localhost:/$ # check the window size after each command and, if necessary,
+dblock@localhost:/$ # update the values of LINES and COLUMNS.
+dblock@localhost:/$ shopt -s checkwinsize
+dblock@localhost:/$
+dblock@localhost:/$ # set variable identifying the chroot you work in (used in the prompt below)
+dblock@localhost:/$ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+>     debian_chroot=$(cat /etc/debian_chroot)
+> fi
+dblock@localhost:/$
+dblock@localhost:/$ # set a fancy prompt (non-color, overwrite the one in /etc/profile)
+dblock@localhost:/$ # but only if not SUDOing and have SUDO_PS1 set; then assume smart user.
+dblock@localhost:/$ if ! [ -n "${SUDO_USER}" -a -n "${SUDO_PS1}" ]; then
+>   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+> fi
+dblock@localhost:/$
+dblock@localhost:/$ # Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
+dblock@localhost:/$ # If this is an xterm set the title to user@host:dir
+dblock@localhost:/$ #case "$TERM" in
+dblock@localhost:/$ #xterm*|rxvt*)
+dblock@localhost:/$ #    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+dblock@localhost:/$ #    ;;
+dblock@localhost:/$ #*)
+dblock@localhost:/$ #    ;;
+dblock@localhost:/$ #esac
+dblock@localhost:/$
+dblock@localhost:/$ # enable bash completion in interactive shells
+dblock@localhost:/$ #if ! shopt -oq posix; then
+dblock@localhost:/$ #  if [ -f /usr/share/bash-completion/bash_completion ]; then
+dblock@localhost:/$ #    . /usr/share/bash-completion/bash_completion
+dblock@localhost:/$ #  elif [ -f /etc/bash_completion ]; then
+dblock@localhost:/$ #    . /etc/bash_completion
+dblock@localhost:/$ #  fi
+dblock@localhost:/$ #fi
+dblock@localhost:/$
+dblock@localhost:/$ # if the command-not-found package is installed, use it
+dblock@localhost:/$ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
+>         function command_not_found_handle {
+>                 # check because c-n-f could've been removed in the meantime
+>                 if [ -x /usr/lib/command-not-found ]; then
+>                    /usr/lib/command-not-found -- "$1"
+>                    return $?
+>                 elif [ -x /usr/share/command-not-found/command-not-found ]; then
+>                    /usr/share/command-not-found/command-not-found -- "$1"
+>                    return $?
+>                 else
+>                    printf "%s: command not found\n" "$1" >&2
+>                    return 127
+>                 fi
+>         }
+> fi
+dblock@localhost:/$ # ~/.bashrc: executed by bash(1) for non-login shells.
+dblock@localhost:/$ # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+dblock@localhost:/$ # for examples
+dblock@localhost:/$
+dblock@localhost:/$ # If not running interactively, don't do anything
+dblock@localhost:/$ case $- in
+>     *i*) ;;
+>       *) return;;don't put duplicate lines or lines starting with space in the history.
+> # See bash(1) for more options
+  ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+#alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profil> HISTCONTROL=ignoreboth
+>
+> # append to the history file, don't overwrite it
+-bash: syntax error near unexpected token `overwrite'
+dblock@localhost:/$ shopt -s histappend
+dblock@localhost:/$
+dblock@localhost:/$ # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+dblock@localhost:/$ HISTSIZE=1000
+e
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+bash-5.0$ who fi
+who fidblock@localhost:/$ HISTFILESIZE=2000
+dblock@localhost:/$
+dblock@localhost:/$ # check the window size after each command and, if necessary,
+dblock@localhost:/$ # update the values of LINES and COLUMNS.
+dblock@localhost:/$ shopt -s checkwinsize
+dblock@localhost:/$
+dblock@localhost:/$ # If set, the pattern "**" used in a pathname expansion context will
+dblock@localhost:/$ # match all files and zero or more directories and subdirectories.
+dblock@localhost:/$ #shopt -s globstar
+dblock@localhost:/$
+dblock@localhost:/$ # make less more friendly for non-text input files, see lesspipe(1)
+dblock@localhost:/$ #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+dblock@localhost:/$
+dblock@localhost:/$ # set variable identifying the chroot you work in (used in the prompt below)
+dblock@localhost:/$ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+>     debian_chroot=$(cat /etc/debian_chroot)
+> fi
+dblock@localhost:/$
+dblock@localhost:/$ # set a fancy prompt (non-color, unless we know we "want" color)
+dblock@localhost:/$ case "$TERM" in
+>     xterm-color|*-256color) color_prompt=yes;;
+> esac
+dblock@localhost:/$
+dblock@localhost:/$ # uncomment for a colored prompt, if the terminal has the capability; turned
+dblock@localhost:/$ # off by default to not distract the user: the focus in a terminal window
+dblock@localhost:/$ # should be on the output of commands, not on the prompt
+dblock@localhost:/$ #force_color_prompt=yes
+dblock@localhost:/$
+dblock@localhost:/$ if [ -n "$force_color_prompt" ]; then
+>     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+>         # We have color support; assume it's compliant with Ecma-48
+>         # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+>         # a case would tend to support setf rather than setaf.)
+>         color_prompt=yes
+>     else
+>         color_prompt=
+>     fi
+> fi
+dblock@localhost:/$
+dblock@localhost:/$ if [ "$color_prompt" = yes ]; then
+>     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+> else
+>     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+> fi
+dblock@localhost:/$ unset color_prompt force_color_prompt
+dblock@localhost:/$
+dblock@localhost:/$ # If this is an xterm set the title to user@host:dir
+dblock@localhost:/$ case "$TERM" in
+> xterm*|rxvt*)
+>     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+>     ;;
+> *)
+>     ;;
+> esac
+dblock@localhost:/$
+dblock@localhost:/$ # enable color support of ls and also add handy aliases
+dblock@localhost:/$ if [ -x /usr/bin/dircolors ]; then
+>     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+>     alias ls='ls --color=auto'
+>     #alias dir='dir --color=auto'
+>     #alias vdir='vdir --color=auto'
+>
+>     #alias grep='grep --color=auto'
+>     #alias fgrep='fgrep --color=auto'
+>     #alias egrep='egrep --color=auto'
+> fi
+dblock@localhost:/$
+dblock@localhost:/$ # colored GCC warnings and errors
+dblock@localhost:/$ #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+dblock@localhost:/$
+dblock@localhost:/$ # some more ls aliases
+dblock@localhost:/$ #alias ll='ls -l'
+dblock@localhost:/$ #alias la='ls -A'
+dblock@localhost:/$ #alias l='ls -CF'
+dblock@localhost:/$
+dblock@localhost:/$ # Alias definitions.
+dblock@localhost:/$ # You may want to put all your additions into a separate file like
+dblock@localhost:/$ # ~/.bash_aliases, instead of adding them here directly.
+dblock@localhost:/$ # See /usr/share/doc/bash-doc/examples in the bash-doc package.dblock@localhost:/$
+dblock@localhost:/$ if [ -f ~/.bash_aliases ]; then
+>     . ~/.bash_aliases
+> fi
+dblock@localhost:/$
+dblock@localhost:/$ # enable programmable completion features (you don't need to enable
+dblock@localhost:/$ # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+dblock@localhost:/$ # sources /etc/bash.bashrc).
+dblock@localhost:/$ if ! shopt -oq posix; then
+>   if [ -f /usr/share/bash-completion/bash_completion ]; then
+>     . /usr/share/bash-completion/bash_completion
+>   elif [ -f /etc/bash_completion ]; then
+>     . /etc/bash_completion
+>   fi
+> fi
+dblock@localhost:/$ bash-5.0$ who fi
+-bash: bash-5.0$: command not found
+dblock@localhost:/$ who fi
+dblock@localhost:/$
