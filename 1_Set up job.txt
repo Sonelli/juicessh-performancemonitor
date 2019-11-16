@@ -1,5 +1,5 @@
-2019-11-13T15:34:19.1788998Z Current runner version: '2.160.2'
-2019-11-13T15:34:19.1790576Z Prepare workflow directory
-2019-11-13T15:34:19.2003983Z Prepare all required actions
-2019-11-13T15:34:19.2026185Z Download action repository 'actions/checkout@v1'
-2019-11-13T15:34:19.7852712Z Download action repository 'actions/setup-node@v1'
+2019-11-13T15:34:18.6697532Z Current runner version: '2.160.2'
+2019-11-13T15:34:18.6699689Z Prepare workflow directory
+2019-11-13T15:34:18.6937066Z Prepare all required actions
+2019-11-13T15:34:18.6965422Z Download action repository 'actions/checkout@v1'
+2019-11-13T15:34:20.0018787Z Download action repository 'actions/setup-node@v1'
