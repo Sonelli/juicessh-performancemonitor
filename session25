@@ -1,0 +1,43 @@
+SSH Session Transcript
+
+Host: localhost
+Date: Saturday, November 16, 2019
+---------------------------------
+dblock@localhost:~$ mkfs zmoto
+mke2fs 1.45.4 (23-Sep-2019)
+The file zmoto does not exist and no size was specified.
+dblock@localhost:~$ mkfs ZTE Z833 8621470301077 10*1024 erase all recovery logs
+mke2fs 1.45.4 (23-Sep-2019)
+mkfs.ext2: invalid blocks 'Z833' on device 'ZTE'
+dblock@localhost:~$ Android Recovery ZTE/P817T06_MPCS/camelia @OVERRIDE change ID ZTE/P817T06_MPCS/DevInternal
+-bash: Android: command not found
+dblock@localhost:~$ Z833 info
+-bash: Z833: command not found
+dblock@localhost:~$ tar list
+tar: Refusing to read archive contents from terminal (missing -f option?)
+tar: Error is not recoverable: exiting now
+dblock@localhost:~$ mkfs ZTE 8621470301077 10*1024 driver msm disable @OVERRIDE ]PMIC@SID2 delete backup 115274 bytes- DELETE
+mke2fs 1.45.4 (23-Sep-2019)
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+[-i bytes-per-inode] [-I inode-size] [-J journal-options]
+[-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+[-m reserved-blocks-percentage] [-o creator-os]
+[-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+[-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+[-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+[-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ mkfs.ext2 -z undo_file
+Usage: mkfs.ext2 [-c|-l filename] [-b block-size] [-C cluster-size]
+[-i bytes-per-inode] [-I inode-size] [-J journal-options]
+[-G flex-group-size] [-N number-of-inodes] [-d root-directory]
+[-m reserved-blocks-percentage] [-o creator-os]
+[-g blocks-per-group] [-L volume-label] [-M last-mounted-directory]
+[-O feature[,...]] [-r fs-revision] [-E extended-option[,...]]
+[-t fs-type] [-T usage-type ] [-U UUID] [-e errors_behavior][-z undo_file]
+[-jnqvDFSV] device [blocks-count]
+dblock@localhost:~$ exit
+logout
+---------------------------------
+
+This transcript has been sent from my Android device with JuiceSSH
+
