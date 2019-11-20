@@ -1,0 +1,45 @@
+dblock@localhost:~$ chkconfig
+-bash: chkconfig: command not found
+dblock@localhost:~$ chksum
+-bash: chksum: command not found
+dblock@localhost:~$ cfdisk
+cfdisk: cannot open /dev/sda: No such file or directory
+dblock@localhost:~$ cksum
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

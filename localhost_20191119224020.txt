@@ -1,0 +1,114 @@
+dblock@localhost:~$ mount --help
+
+Usage:
+ mount [-lhV]
+ mount -a [options]
+ mount [options] [--source] <source> | [--target] <directory>
+ mount [options] <source> <directory>
+ mount <operation> <mountpoint> [<target>]
+
+Mount a filesystem.
+
+Options:
+ -a, --all               mount all filesystems mentioned in fstab
+ -c, --no-canonicalize   don't canonicalize paths
+ -f, --fake              dry run; skip the mount(2) syscall
+ -F, --fork              fork off for each device (use with -a)
+ -T, --fstab <path>      alternative file to /etc/fstab
+ -i, --internal-only     don't call the mount.<type> helpers
+ -l, --show-labels       show also filesystem labels
+ -n, --no-mtab           don't write to /etc/mtab
+     --options-mode <mode>
+                         what to do with options loaded from fstab
+     --options-source <source>
+                         mount options source
+     --options-source-force
+                         force use of options from fstab/mtab
+ -o, --options <list>    comma-separated list of mount options
+ -O, --test-opts <list>  limit the set of filesystems (use with -a)
+ -r, --read-only         mount the filesystem read-only (same as -o ro)
+ -t, --types <list>      limit the set of filesystem types
+     --source <src>      explicitly specifies source (path, label, uuid)
+     --target <target>   explicitly specifies mountpoint
+ -v, --verbose           say what is being done
+ -w, --rw, --read-write  mount the filesystem read-write (default)
+ -N, --namespace <ns>    perform mount in another namespace
+
+ -h, --help              display this help
+ -V, --version           display version
+
+Source:
+ -L, --label <label>     synonym for LABEL=<label>
+ -U, --uuid <uuid>       synonym for UUID=<uuid>
+ LABEL=<label>           specifies device by filesystem label
+ UUID=<uuid>             specifies device by filesystem UUID
+ PARTLABEL=<label>       specifies device by partition label
+ PARTUUID=<uuid>         specifies device by partition UUID
+ <device>                specifies device by path
+ <directory>             mountpoint for bind mounts (see --bind/rbind)
+ <file>                  regular file for loopdev setup
+
+Operations:
+ -B, --bind              mount a subtree somewhere else (same as -o bind)
+ -M, --move              move a subtree to some other place
+ -R, --rbind             mount a subtree and all submounts somewhere else
+ --make-shared           mark a subtree as shared
+ --make-slave            mark a subtree as slave
+ --make-private          mark a subtree as private
+ --make-unbindable       mark a subtree as unbindable
+ --make-rshared          recursively mark a whole subtree as shared
+ --make-rslave           recursively mark a whole subtree as slave
+ --make-rprivate         recursively mark a whole subtree as private
+ --make-runbindable      recursively mark a whole subtree as unbindable
+
+For more details see mount(8).
+dblock@localhost:~$ mount --fake
+/dev/root on / type ext4 (ro,relatime,seclabel,block_validity,delalloc,barrier,user_xattr)
+tmpfs on /dev type tmpfs (rw,nosuid,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755)
+devpts on /dev/pts type devpts (rw,relatime,seclabel,mode=600,ptmxmode=000)
+none on /dev/stune type cgroup (rw,nosuid,nodev,noexec,relatime,schedtune)
+none on /dev/cpuctl type cgroup (rw,nosuid,nodev,noexec,relatime,cpu)
+none on /dev/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset,noprefix,release_agent=/sbin/cpuset_release_agent)
+cg2_bpf on /dev/cg2_bpf type cgroup2 (rw,nosuid,nodev,noexec,relatime)
+adb on /dev/usb-ffs/adb type functionfs (rw,relatime)
+proc on /proc type proc (rw,relatime,gid=3009,hidepid=2)
+sysfs on /sys type sysfs (rw,relatime,seclabel)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,relatime,seclabel)
+tracefs on /sys/kernel/debug/tracing type tracefs (rw,relatime,seclabel)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime,seclabel)
+tmpfs on /mnt type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+/dev/block/bootdevice/by-name/persist on /mnt/vendor/persist type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/drm on /mnt/vendor/persist-lg type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/sns on /mnt/vendor/sns type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/power on /mnt/vendor/power type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/fota on /mnt/product/fota type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/p_persist_lg on /mnt/product/persist-lg type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/mpt on /mnt/product/mpt type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/srtc on /mnt/product/srtc type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/els on /mnt/product/els type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/carrier on /mnt/product/carrier type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/operatorlogging on /mnt/product/quality type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/eri on /mnt/product/eri type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/data/media on /mnt/runtime/default/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal)
+/data/media on /mnt/runtime/read/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=23,derive_gid,default_normal)
+/data/media on /mnt/runtime/write/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal)
+/dev/block/dm-1 on /product type ext4 (ro,relatime,seclabel,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/dm-3 on /product/OP type ext4 (ro,nosuid,nodev,noatime,context=u:object_r:system_file:s0,noauto_da_alloc,data=ordered)
+/dev/block/dm-2 on /vendor type ext4 (ro,relatime,seclabel,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/bootdevice/by-name/dsp_b on /vendor/dsp type ext4 (ro,nosuid,nodev,relatime,seclabel,data=ordered)
+/dev/block/bootdevice/by-name/modem_b on /vendor/firmware_mnt type vfat (ro,relatime,context=u:object_r:firmware_file:s0,gid=1000,fmask=0337,dmask=0227,codepage=437,iocharset=iso8859-1,shortname=lower,errors=remount-ro)
+none on /acct type cgroup (rw,nosuid,nodev,noexec,relatime,cpuacct)
+none on /config type configfs (rw,nosuid,nodev,noexec,relatime)
+/dev/block/bootdevice/by-name/userdata on /data type ext4 (rw,nosuid,nodev,noatime,seclabel,discard,noauto_da_alloc,resgid=1065,data=ordered)
+tmpfs on /storage type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+/data/media on /storage/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal)
+tmpfs on /storage/self type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+dblock@localhost:~$ mount --target
+mount: option '--target' requires an argument
+Try 'mount --help' for more information.
+dblock@localhost:~$ mount --target [-explicitly specifies mount point]
+mount: bad usage
+Try 'mount --help' for more information.
+dblock@localhost:~$

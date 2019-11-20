@@ -1,0 +1,479 @@
+dblock@localhost:~$ mount --help
+
+Usage:
+ mount [-lhV]
+ mount -a [options]
+ mount [options] [--source] <source> | [--target] <directory>
+ mount [options] <source> <directory>
+ mount <operation> <mountpoint> [<target>]
+
+Mount a filesystem.
+
+Options:
+ -a, --all               mount all filesystems mentioned in fstab
+ -c, --no-canonicalize   don't canonicalize paths
+ -f, --fake              dry run; skip the mount(2) syscall
+ -F, --fork              fork off for each device (use with -a)
+ -T, --fstab <path>      alternative file to /etc/fstab
+ -i, --internal-only     don't call the mount.<type> helpers
+ -l, --show-labels       show also filesystem labels
+ -n, --no-mtab           don't write to /etc/mtab
+     --options-mode <mode>
+                         what to do with options loaded from fstab
+     --options-source <source>
+                         mount options source
+     --options-source-force
+                         force use of options from fstab/mtab
+ -o, --options <list>    comma-separated list of mount options
+ -O, --test-opts <list>  limit the set of filesystems (use with -a)
+ -r, --read-only         mount the filesystem read-only (same as -o ro)
+ -t, --types <list>      limit the set of filesystem types
+     --source <src>      explicitly specifies source (path, label, uuid)
+     --target <target>   explicitly specifies mountpoint
+ -v, --verbose           say what is being done
+ -w, --rw, --read-write  mount the filesystem read-write (default)
+ -N, --namespace <ns>    perform mount in another namespace
+
+ -h, --help              display this help
+ -V, --version           display version
+
+Source:
+ -L, --label <label>     synonym for LABEL=<label>
+ -U, --uuid <uuid>       synonym for UUID=<uuid>
+ LABEL=<label>           specifies device by filesystem label
+ UUID=<uuid>             specifies device by filesystem UUID
+ PARTLABEL=<label>       specifies device by partition label
+ PARTUUID=<uuid>         specifies device by partition UUID
+ <device>                specifies device by path
+ <directory>             mountpoint for bind mounts (see --bind/rbind)
+ <file>                  regular file for loopdev setup
+
+Operations:
+ -B, --bind              mount a subtree somewhere else (same as -o bind)
+ -M, --move              move a subtree to some other place
+ -R, --rbind             mount a subtree and all submounts somewhere else
+ --make-shared           mark a subtree as shared
+ --make-slave            mark a subtree as slave
+ --make-private          mark a subtree as private
+ --make-unbindable       mark a subtree as unbindable
+ --make-rshared          recursively mark a whole subtree as shared
+ --make-rslave           recursively mark a whole subtree as slave
+ --make-rprivate         recursively mark a whole subtree as private
+ --make-runbindable      recursively mark a whole subtree as unbindable
+
+For more details see mount(8).
+dblock@localhost:~$ mount --fake
+/dev/root on / type ext4 (ro,relatime,seclabel,block_validity,delalloc,barrier,user_xattr)
+tmpfs on /dev type tmpfs (rw,nosuid,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755)
+devpts on /dev/pts type devpts (rw,relatime,seclabel,mode=600,ptmxmode=000)
+none on /dev/stune type cgroup (rw,nosuid,nodev,noexec,relatime,schedtune)
+none on /dev/cpuctl type cgroup (rw,nosuid,nodev,noexec,relatime,cpu)
+none on /dev/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset,noprefix,release_agent=/sbin/cpuset_release_agent)
+cg2_bpf on /dev/cg2_bpf type cgroup2 (rw,nosuid,nodev,noexec,relatime)
+adb on /dev/usb-ffs/adb type functionfs (rw,relatime)
+proc on /proc type proc (rw,relatime,gid=3009,hidepid=2)
+sysfs on /sys type sysfs (rw,relatime,seclabel)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,relatime,seclabel)
+tracefs on /sys/kernel/debug/tracing type tracefs (rw,relatime,seclabel)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime,seclabel)
+tmpfs on /mnt type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+/dev/block/bootdevice/by-name/persist on /mnt/vendor/persist type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/drm on /mnt/vendor/persist-lg type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/sns on /mnt/vendor/sns type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/power on /mnt/vendor/power type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/fota on /mnt/product/fota type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/p_persist_lg on /mnt/product/persist-lg type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/mpt on /mnt/product/mpt type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/srtc on /mnt/product/srtc type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/els on /mnt/product/els type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/carrier on /mnt/product/carrier type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/operatorlogging on /mnt/product/quality type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/eri on /mnt/product/eri type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/data/media on /mnt/runtime/default/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal)
+/data/media on /mnt/runtime/read/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=23,derive_gid,default_normal)
+/data/media on /mnt/runtime/write/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal)
+/dev/block/dm-1 on /product type ext4 (ro,relatime,seclabel,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/dm-3 on /product/OP type ext4 (ro,nosuid,nodev,noatime,context=u:object_r:system_file:s0,noauto_da_alloc,data=ordered)
+/dev/block/dm-2 on /vendor type ext4 (ro,relatime,seclabel,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/bootdevice/by-name/dsp_b on /vendor/dsp type ext4 (ro,nosuid,nodev,relatime,seclabel,data=ordered)
+/dev/block/bootdevice/by-name/modem_b on /vendor/firmware_mnt type vfat (ro,relatime,context=u:object_r:firmware_file:s0,gid=1000,fmask=0337,dmask=0227,codepage=437,iocharset=iso8859-1,shortname=lower,errors=remount-ro)
+none on /acct type cgroup (rw,nosuid,nodev,noexec,relatime,cpuacct)
+none on /config type configfs (rw,nosuid,nodev,noexec,relatime)
+/dev/block/bootdevice/by-name/userdata on /data type ext4 (rw,nosuid,nodev,noatime,seclabel,discard,noauto_da_alloc,resgid=1065,data=ordered)
+tmpfs on /storage type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+/data/media on /storage/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal)
+tmpfs on /storage/self type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+dblock@localhost:~$ mount --target
+mount: option '--target' requires an argument
+Try 'mount --help' for more information.
+dblock@localhost:~$ mount --target [-explicitly specifies mount point]
+mount: bad usage
+Try 'mount --help' for more information.
+dblock@localhost:~$ mount --rw
+mount: bad usage
+Try 'mount --help' for more information.
+dblock@localhost:~$ mount --options-source
+mount: option '--options-source' requires an argument
+Try 'mount --help' for more information.
+dblock@localhost:~$ du --help
+Usage: du [OPTION]... [FILE]...
+  or:  du [OPTION]... --files0-from=F
+Summarize disk usage of the set of FILEs, recursively for directories.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -0, --null            end each output line with NUL, not newline
+  -a, --all             write counts for all files, not just directories
+      --apparent-size   print apparent sizes, rather than disk usage; although
+                          the apparent size is usually smaller, it may be
+                          larger due to holes in ('sparse') files, internal
+                          fragmentation, indirect blocks, and the like
+  -B, --block-size=SIZE  scale sizes by SIZE before printing them; e.g.,
+                           '-BM' prints sizes in units of 1,048,576 bytes;
+                           see SIZE format below
+  -b, --bytes           equivalent to '--apparent-size --block-size=1'
+  -c, --total           produce a grand total
+  -D, --dereference-args  dereference only symlinks that are listed on the
+                          command line
+  -d, --max-depth=N     print the total for a directory (or file, with --all)
+                          only if it is N or fewer levels below the command
+                          line argument;  --max-depth=0 is the same as
+                          --summarize
+      --files0-from=F   summarize disk usage of the
+                          NUL-terminated file names specified in file F;
+                          if F is -, then read names from standard input
+  -H                    equivalent to --dereference-args (-D)
+  -h, --human-readable  print sizes in human readable format (e.g., 1K 234M 2G)
+      --inodes          list inode usage information instead of block usage
+  -k                    like --block-size=1K
+  -L, --dereference     dereference all symbolic links
+  -l, --count-links     count sizes many times if hard linked
+  -m                    like --block-size=1M
+  -P, --no-dereference  don't follow any symbolic links (this is the default)
+  -S, --separate-dirs   for directories do not include size of subdirectories
+      --si              like -h, but use powers of 1000 not 1024
+  -s, --summarize       display only a total for each argument
+  -t, --threshold=SIZE  exclude entries smaller than SIZE if positive,
+                          or entries greater than SIZE if negative
+      --time            show time of the last modification of any file in the
+                          directory, or any of its subdirectories
+      --time=WORD       show time as WORD instead of modification time:
+                          atime, access, use, ctime or status
+      --time-style=STYLE  show times using STYLE, which can be:
+                            full-iso, long-iso, iso, or +FORMAT;
+                            FORMAT is interpreted like in 'date'
+  -X, --exclude-from=FILE  exclude files that match any pattern in FILE
+      --exclude=PATTERN    exclude files that match PATTERN
+  -x, --one-file-system    skip directories on different file systems
+      --help     display this help and exit
+      --version  output version information and exit
+
+Display values are in units of the first available SIZE from --block-size,
+and the DU_BLOCK_SIZE, BLOCK_SIZE and BLOCKSIZE environment variables.
+Otherwise, units default to 1024 bytes (or 512 if POSIXLY_CORRECT is set).
+
+The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
+Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report du translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/du>
+or available locally via: info '(coreutils) du invocation'
+dblock@localhost:~$ du
+48      .
+dblock@localhost:~$ du -k
+48      .
+dblock@localhost:~$ du --inodes
+10      .
+dblock@localhost:~$ du --max-depth
+du: option '--max-depth' requires an argument
+Try 'du --help' for more information.
+dblock@localhost:~$ du --exclude-pattern
+du: unrecognized option '--exclude-pattern'
+Try 'du --help' for more information.
+dblock@localhost:~$ du --help
+Usage: du [OPTION]... [FILE]...
+  or:  du [OPTION]... --files0-from=F
+Summarize disk usage of the set of FILEs, recursively for directories.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -0, --null            end each output line with NUL, not newline
+  -a, --all             write counts for all files, not just directories
+      --apparent-size   print apparent sizes, rather than disk usage; although
+                          the apparent size is usually smaller, it may be
+                          larger due to holes in ('sparse') files, internal
+                          fragmentation, indirect blocks, and the like
+  -B, --block-size=SIZE  scale sizes by SIZE before printing them; e.g.,
+                           '-BM' prints sizes in units of 1,048,576 bytes;
+                           see SIZE format below
+  -b, --bytes           equivalent to '--apparent-size --block-size=1'
+  -c, --total           produce a grand total
+  -D, --dereference-args  dereference only symlinks that are listed on the
+                          command line
+  -d, --max-depth=N     print the total for a directory (or file, with --all)
+                          only if it is N or fewer levels below the command
+                          line argument;  --max-depth=0 is the same as
+                          --summarize
+      --files0-from=F   summarize disk usage of the
+                          NUL-terminated file names specified in file F;
+                          if F is -, then read names from standard input
+  -H                    equivalent to --dereference-args (-D)
+  -h, --human-readable  print sizes in human readable format (e.g., 1K 234M 2G)
+      --inodes          list inode usage information instead of block usage
+  -k                    like --block-size=1K
+  -L, --dereference     dereference all symbolic links
+  -l, --count-links     count sizes many times if hard linked
+  -m                    like --block-size=1M
+  -P, --no-dereference  don't follow any symbolic links (this is the default)
+  -S, --separate-dirs   for directories do not include size of subdirectories
+      --si              like -h, but use powers of 1000 not 1024
+  -s, --summarize       display only a total for each argument
+  -t, --threshold=SIZE  exclude entries smaller than SIZE if positive,
+                          or entries greater than SIZE if negative
+      --time            show time of the last modification of any file in the
+                          directory, or any of its subdirectories
+      --time=WORD       show time as WORD instead of modification time:
+                          atime, access, use, ctime or status
+      --time-style=STYLE  show times using STYLE, which can be:
+                            full-iso, long-iso, iso, or +FORMAT;
+                            FORMAT is interpreted like in 'date'
+  -X, --exclude-from=FILE  exclude files that match any pattern in FILE
+      --exclude=PATTERN    exclude files that match PATTERN
+  -x, --one-file-system    skip directories on different file systems
+      --help     display this help and exit
+      --version  output version information and exit
+
+Display values are in units of the first available SIZE from --block-size,
+and the DU_BLOCK_SIZE, BLOCK_SIZE and BLOCKSIZE environment variables.
+Otherwise, units default to 1024 bytes (or 512 if POSIXLY_CORRECT is set).
+
+The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
+Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report du translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/du>
+or available locally via: info '(coreutils) du invocation'
+dblock@localhost:~$ du --total
+48      .
+48      total
+dblock@localhost:~$ du --files0-from=F
+du: cannot open 'F' for reading: No such file or directory
+dblock@localhost:~$ du --count-links
+48      .
+dblock@localhost:~$ du --dereference
+48      .
+dblock@localhost:~$ du --si 20000
+du: cannot access '20000': No such file or directory
+dblock@localhost:~$ du -BM
+1M      .
+dblock@localhost:~$ du --time
+48      2019-11-20 04:37        .
+dblock@localhost:~$ du --time-style=STYLE
+48      .
+dblock@localhost:~$ du --summarize
+48      .
+dblock@localhost:~$ cut --help
+Usage: cut OPTION... [FILE]...
+Print selected parts of lines from each FILE to standard output.
+
+With no FILE, or when FILE is -, read standard input.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -b, --bytes=LIST        select only these bytes
+  -c, --characters=LIST   select only these characters
+  -d, --delimiter=DELIM   use DELIM instead of TAB for field delimiter
+  -f, --fields=LIST       select only these fields;  also print any line
+                            that contains no delimiter character, unless
+                            the -s option is specified
+  -n                      (ignored)
+      --complement        complement the set of selected bytes, characters
+                            or fields
+  -s, --only-delimited    do not print lines not containing delimiters
+      --output-delimiter=STRING  use STRING as the output delimiter
+                            the default is to use the input delimiter
+  -z, --zero-terminated    line delimiter is NUL, not newline
+      --help     display this help and exit
+      --version  output version information and exit
+
+Use one, and only one of -b, -c or -f.  Each LIST is made up of one
+range, or many ranges separated by commas.  Selected input is written
+in the same order that it is read, and is written exactly once.
+Each range is one of:
+
+  N     N'th byte, character or field, counted from 1
+  N-    from N'th byte, character or field, to end of line
+  N-M   from N'th to M'th (included) byte, character or field
+  -M    from first to M'th (included) byte, character or field
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report cut translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/cut>
+or available locally via: info '(coreutils) cut invocation'
+dblock@localhost:~$ head --help
+Usage: head [OPTION]... [FILE]...
+Print the first 10 lines of each FILE to standard output.
+With more than one FILE, precede each with a header giving the file name.
+
+With no FILE, or when FILE is -, read standard input.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -c, --bytes=[-]NUM       print the first NUM bytes of each file;
+                             with the leading '-', print all but the last
+                             NUM bytes of each file
+  -n, --lines=[-]NUM       print the first NUM lines instead of the first 10;
+                             with the leading '-', print all but the last
+                             NUM lines of each file
+  -q, --quiet, --silent    never print headers giving file names
+  -v, --verbose            always print headers giving file names
+  -z, --zero-terminated    line delimiter is NUL, not newline
+      --help     display this help and exit
+      --version  output version information and exit
+
+NUM may have a multiplier suffix:
+b 512, kB 1000, K 1024, MB 1000*1000, M 1024*1024,
+GB 1000*1000*1000, G 1024*1024*1024, and so on for T, P, E, Z, Y.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report head translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/head>
+or available locally via: info '(coreutils) head invocation'
+dblock@localhost:~$ head
+bytes
+bytes
+lines
+lines
+^[[6~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$ head --lines
+head: option '--lines' requires an argument
+Try 'head --help' for more information.
+dblock@localhost:~$ grep --help
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Search for PATTERNS in each FILE.
+Example: grep -i 'hello world' menu.h main.c
+PATTERNS can contain multiple patterns separated by newlines.
+
+Pattern selection and interpretation:
+  -E, --extended-regexp     PATTERNS are extended regular expressions
+  -F, --fixed-strings       PATTERNS are strings
+  -G, --basic-regexp        PATTERNS are basic regular expressions
+  -P, --perl-regexp         PATTERNS are Perl regular expressions
+  -e, --regexp=PATTERNS     use PATTERNS for matching
+  -f, --file=FILE           take PATTERNS from FILE
+  -i, --ignore-case         ignore case distinctions
+  -w, --word-regexp         match only whole words
+  -x, --line-regexp         match only whole lines
+  -z, --null-data           a data line ends in 0 byte, not newline
+
+Miscellaneous:
+  -s, --no-messages         suppress error messages
+  -v, --invert-match        select non-matching lines
+  -V, --version             display version information and exit
+      --help                display this help text and exit
+
+Output control:
+  -m, --max-count=NUM       stop after NUM selected lines
+  -b, --byte-offset         print the byte offset with output lines
+  -n, --line-number         print line number with output lines
+      --line-buffered       flush output on every line
+  -H, --with-filename       print file name with output lines
+  -h, --no-filename         suppress the file name prefix on output
+      --label=LABEL         use LABEL as the standard input file name prefix
+  -o, --only-matching       show only nonempty parts of lines that match
+  -q, --quiet, --silent     suppress all normal output
+      --binary-files=TYPE   assume that binary files are TYPE;
+                            TYPE is 'binary', 'text', or 'without-match'
+  -a, --text                equivalent to --binary-files=text
+  -I                        equivalent to --binary-files=without-match
+  -d, --directories=ACTION  how to handle directories;
+                            ACTION is 'read', 'recurse', or 'skip'
+  -D, --devices=ACTION      how to handle devices, FIFOs and sockets;
+                            ACTION is 'read' or 'skip'
+  -r, --recursive           like --directories=recurse
+  -R, --dereference-recursive  likewise, but follow all symlinks
+      --include=GLOB        search only files that match GLOB (a file pattern)
+      --exclude=GLOB        skip files and directories matching GLOB
+      --exclude-from=FILE   skip files matching any file pattern from FILE
+      --exclude-dir=GLOB    skip directories that match GLOB
+  -L, --files-without-match  print only names of FILEs with no selected lines
+  -l, --files-with-matches  print only names of FILEs with selected lines
+  -c, --count               print only a count of selected lines per FILE
+  -T, --initial-tab         make tabs line up (if needed)
+  -Z, --null                print 0 byte after FILE name
+
+Context control:
+  -B, --before-context=NUM  print NUM lines of leading context
+  -A, --after-context=NUM   print NUM lines of trailing context
+  -C, --context=NUM         print NUM lines of output context
+  -NUM                      same as --context=NUM
+      --color[=WHEN],
+      --colour[=WHEN]       use markers to highlight the matching strings;
+                            WHEN is 'always', 'never', or 'auto'
+  -U, --binary              do not strip CR characters at EOL (MSDOS/Windows)
+
+When FILE is '-', read standard input.  With no FILE, read '.' if
+recursive, '-' otherwise.  With fewer than two FILEs, assume -h.
+Exit status is 0 if any line (or file if -L) is selected, 1 otherwise;
+if any error occurs and -q is not given, the exit status is 2.
+
+Report bugs to: bug-grep@gnu.org
+GNU grep home page: <http://www.gnu.org/software/grep/>
+General help using GNU software: <https://www.gnu.org/gethelp/>
+dblock@localhost:~$ grep --null-data
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+dblock@localhost:~$ grep --all
+grep: unrecognized option '--all'
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+dblock@localhost:~$ grep
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+dblock@localhost:~$ wc --help
+Usage: wc [OPTION]... [FILE]...
+  or:  wc [OPTION]... --files0-from=F
+Print newline, word, and byte counts for each FILE, and a total line if
+more than one FILE is specified.  A word is a non-zero-length sequence of
+characters delimited by white space.
+
+With no FILE, or when FILE is -, read standard input.
+
+The options below may be used to select which counts are printed, always in
+the following order: newline, word, character, byte, maximum line length.
+  -c, --bytes            print the byte counts
+  -m, --chars            print the character counts
+  -l, --lines            print the newline counts
+      --files0-from=F    read input from the files specified by
+                           NUL-terminated names in file F;
+                           If F is - then read names from standard input
+  -L, --max-line-length  print the maximum display width
+  -w, --words            print the word counts
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report wc translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/wc>
+or available locally via: info '(coreutils) wc invocation'
+dblock@localhost:~$ wc --bytes

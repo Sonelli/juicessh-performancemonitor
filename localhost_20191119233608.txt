@@ -1,0 +1,182 @@
+dblock@localhost:~$ ddrescue
+-bash: ddrescue: command not found
+dblock@localhost:~$ df
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/root       17196924 14343340   2706128  85% /
+tmpfs            1429140     1748   1427392   1% /dev
+tmpfs            1429140        0   1429140   0% /mnt
+dblock@localhost:~$ dir
+popd  source  umask  xml
+dblock@localhost:~$ diff3
+diff3: missing operand after 'diff3'
+diff3: Try 'diff3 --help' for more information.
+dblock@localhost:~$ dig
+-bash: dig: command not found
+dblock@localhost:~$ dirs
+~
+dblock@localhost:~$ dmesg
+dmesg: read kernel buffer failed: Function not implemented
+dblock@localhost:~$ fdisk
+fdisk: bad usage
+Try 'fdisk --help' for more information.
+dblock@localhost:~$ fdisk --help
+
+Usage:
+ fdisk [options] <disk>      change partition table
+ fdisk [options] -l [<disk>] list partition table(s)
+
+Display or manipulate a disk partition table.
+
+Options:
+ -b, --sector-size <size>      physical and logical sector size
+ -B, --protect-boot            don't erase bootbits when creating a new label
+ -c, --compatibility[=<mode>]  mode is 'dos' or 'nondos' (default)
+ -L, --color[=<when>]          colorize output (auto, always or never)
+                                 colors are enabled by default
+ -l, --list                    display partitions and exit
+ -o, --output <list>           output columns
+ -t, --type <type>             recognize specified partition table type only
+ -u, --units[=<unit>]          display units: 'cylinders' or 'sectors' (default)
+ -s, --getsz                   display device size in 512-byte sectors [DEPRECATED]     --bytes                   print SIZE in bytes rather than in human readable format
+ -w, --wipe <mode>             wipe signatures (auto, always or never)
+ -W, --wipe-partitions <mode>  wipe signatures from new partitions (auto, always or never)
+
+ -C, --cylinders <number>      specify the number of cylinders
+ -H, --heads <number>          specify the number of heads
+ -S, --sectors <number>        specify the number of sectors per track
+
+ -h, --help                    display this help
+ -V, --version                 display version
+
+Available output columns:
+ gpt: Device Start End Sectors Size Type Type-UUID Attrs Name UUID
+ dos: Device Start End Sectors Cylinders Size Type Id Attrs Boot End-C/H/S
+      Start-C/H/S
+ bsd: Slice Start End Sectors Cylinders Size Type Bsize Cpg Fsize
+ sgi: Device Start End Sectors Cylinders Size Type Id Attrs
+ sun: Device Start End Sectors Cylinders Size Type Id Flags
+
+For more details see fdisk(8).
+dblock@localhost:~$ fdisk --wipe
+fdisk: option '--wipe' requires an argument
+Try 'fdisk --help' for more information.
+dblock@localhost:~$ fdisk --wipe [-wipe signatures]
+fdisk: unsupported wipe mode
+dblock@localhost:~$ fdisk --list
+fdisk: cannot open /proc/partitions: Permission denied
+dblock@localhost:~$ fdisk --output
+fdisk: bad usage
+Try 'fdisk --help' for more information.
+dblock@localhost:~$ fsck
+fsck from util-linux 2.34
+dblock@localhost:~$ function
+-bash: syntax error near unexpected token `newline'
+dblock@localhost:~$ groups
+dblock
+dblock@localhost:~$ uname --runner
+uname: unrecognized option '--runner'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname -runner
+uname: invalid option -- 'u'
+Try 'uname --help' for more information.
+dblock@localhost:~$ uname --u
+uname: unrecognized option '--u'
+Try 'uname --help' for more information.
+dblock@localhost:~$ whois -runner
+-bash: whois: command not found
+dblock@localhost:~$ who -runner
+who: invalid option -- 'n'
+Try 'who --help' for more information.
+dblock@localhost:~$ id
+uid=2000(dblock) gid=2000(dblock) groups=2000(dblock)
+dblock@localhost:~$ jobs
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$
+dblock@localhost:~$ logname
+dblock
+dblock@localhost:~$ lpc
+-bash: lpc: command not found
+dblock@localhost:~$ lsof
+-bash: lsof: command not found
+dblock@localhost:~$ man
+-bash: man: command not found
+dblock@localhost:~$ more
+more: bad usage
+Try 'more --help' for more information.
+dblock@localhost:~$ more --help
+
+Usage:
+ more [options] <file>...
+
+A file perusal filter for CRT viewing.
+
+Options:
+ -d          display help instead of ringing bell
+ -f          count logical rather than screen lines
+ -l          suppress pause after form feed
+ -c          do not scroll, display text and clean line ends
+ -p          do not scroll, clean screen and display text
+ -s          squeeze multiple blank lines into one
+ -u          suppress underlining
+ -<number>   the number of lines per screenful
+ +<number>   display file beginning from line number
+ +/<string>  display file beginning from search string match
+
+     --help     display this help
+ -V, --version  display version
+
+For more details see more(1).
+dblock@localhost:~$ more -d
+more: bad usage
+Try 'more --help' for more information.
+dblock@localhost:~$ mtr
+-bash: mtr: command not found
+dblock@localhost:~$ netstat
+-bash: netstat: command not found
+dblock@localhost:~$ -netstat
+-bash: -netstat: command not found
+dblock@localhost:~$ bash --netstat
+bash: --netstat: invalid option
+Usage:  bash [GNU long option] [option] ...
+        bash [GNU long option] [option] script-file ...
+GNU long options:
+        --debug
+        --debugger
+        --dump-po-strings
+        --dump-strings
+        --help
+        --init-file
+        --login
+        --noediting
+        --noprofile
+        --norc
+        --posix
+        --pretty-print
+        --rcfile
+        --restricted
+        --verbose
+        --version
+Shell options:
+        -ilrsD or -c command or -O shopt_option         (invocation only)
+        -abefhkmnptuvxBCHP or -o option
+dblock@localhost:~$ nslookup
+-bash: nslookup: command not found
+dblock@localhost:~$ op
+-bash: op: command not found
+dblock@localhost:~$ operator
+-bash: operator: command not found
+dblock@localhost:~$ ping
+-bash: ping: command not found
+dblock@localhost:~$ popd
+-bash: popd: directory stack empty
+dblock@localhost:~$ printf
+printf: usage: printf [-v var] format [arguments]
+dblock@localhost:~$ printf -v
+-bash: printf: -v: option requires an argument
+printf: usage: printf [-v var] format [arguments]
+dblock@localhost:~$
