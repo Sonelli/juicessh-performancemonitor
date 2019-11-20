@@ -1,0 +1,223 @@
+dblock@localhost:~$ ftinger
+-bash: ftinger: command not found
+dblock@localhost:~$ getent
+getent: wrong number of arguments
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ getent --help
+Usage: getent [OPTION...] database [key ...]
+Get entries from administrative database.
+
+  -i, --no-idn               disable IDN encoding
+  -s, --service=CONFIG       Service configuration to be used
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+
+Mandatory or optional arguments to long options are also mandatory or optional
+for any corresponding short options.
+
+Supported databases:
+ahosts ahostsv4 ahostsv6 aliases ethers group gshadow hosts initgroups
+netgroup networks passwd protocols rpc services shadow
+
+For bug reporting instructions, please see:
+<http://www.debian.org/Bugs/>.
+dblock@localhost:~$ getent --service=CONFIG
+getent: wrong number of arguments
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ getent --usage
+Usage: getent [-i?V] [-s CONFIG] [--no-idn] [--service=CONFIG] [--help]
+            [--usage] [--version] database [key ...]
+dblock@localhost:~$ getent -s
+getent: option requires an argument -- 's'
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ arguments
+-bash: arguments: command not found
+dblock@localhost:~$ getent passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+dblock:x:2000:2000::/home/dblock:/bin/bash
+systemd-timesync:x:101:103:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:104:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:105:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:106::/nonexistent:/usr/sbin/nologin
+usbmux:x:105:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+rtkit:x:106:110:RealtimeKit,,,:/proc:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+pulse:x:108:112:PulseAudio daemon,,,:/var/run/pulse:/usr/sbin/nologin
+avahi:x:109:114:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/usr/sbin/nologin
+geoclue:x:110:115::/var/lib/geoclue:/usr/sbin/nologin
+lightdm:x:111:116:Light Display Manager:/var/lib/lightdm:/bin/false
+dblock@localhost:~$ finger [user]
+-bash: finger: command not found
+dblock@localhost:~$ man ascii
+No manual entry for ascii
+dblock@localhost:~$ mount | column -t
+/dev/root                                      on  /                              type  ext4        (ro,relatime,seclabel,block_validity,delalloc,barrier,user_xattr)
+tmpfs                                          on  /dev                           type  tmpfs       (rw,nosuid,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755)
+devpts                                         on  /dev/pts                       type  devpts      (rw,relatime,seclabel,mode=600,ptmxmode=000)
+none                                           on  /dev/stune                     type  cgroup      (rw,nosuid,nodev,noexec,relatime,schedtune)
+none                                           on  /dev/cpuctl                    type  cgroup      (rw,nosuid,nodev,noexec,relatime,cpu)
+none                                           on  /dev/cpuset                    type  cgroup      (rw,nosuid,nodev,noexec,relatime,cpuset,noprefix,release_agent=/sbin/cpuset_release_agent)
+cg2_bpf                                        on  /dev/cg2_bpf                   type  cgroup2     (rw,nosuid,nodev,noexec,relatime)
+adb                                            on  /dev/usb-ffs/adb               type  functionfs  (rw,relatime)
+proc                                           on  /proc                          type  proc        (rw,relatime,gid=3009,hidepid=2)
+sysfs                                          on  /sys                           type  sysfs       (rw,relatime,seclabel)
+selinuxfs                                      on  /sys/fs/selinux                type  selinuxfs   (rw,relatime)
+debugfs                                        on  /sys/kernel/debug              type  debugfs     (rw,relatime,seclabel)
+tracefs                                        on  /sys/kernel/debug/tracing      type  tracefs     (rw,relatime,seclabel)
+bpf                                            on  /sys/fs/bpf                    type  bpf         (rw,nosuid,nodev,noexec,relatime)
+pstore                                         on  /sys/fs/pstore                 type  pstore      (rw,nosuid,nodev,noexec,relatime,seclabel)
+tmpfs                                          on  /mnt                           type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+/dev/block/bootdevice/by-name/persist          on  /mnt/vendor/persist            type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/drm              on  /mnt/vendor/persist-lg         type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/sns              on  /mnt/vendor/sns                type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/power            on  /mnt/vendor/power              type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/fota             on  /mnt/product/fota              type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/p_persist_lg     on  /mnt/product/persist-lg        type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/mpt              on  /mnt/product/mpt               type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/srtc             on  /mnt/product/srtc              type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/els              on  /mnt/product/els               type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/carrier          on  /mnt/product/carrier           type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/operatorlogging  on  /mnt/product/quality           type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/eri              on  /mnt/product/eri               type  ext4        (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/data/media                                    on  /mnt/runtime/default/emulated  type  sdcardfs    (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal)
+/data/media                                    on  /mnt/runtime/read/emulated     type  sdcardfs    (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=23,derive_gid,default_normal)
+/data/media                                    on  /mnt/runtime/write/emulated    type  sdcardfs    (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal)
+/dev/block/dm-1                                on  /product                       type  ext4        (ro,relatime,seclabel,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/dm-3                                on  /product/OP                    type  ext4        (ro,nosuid,nodev,noatime,context=u:object_r:system_file:s0,noauto_da_alloc,data=ordered)
+/dev/block/dm-2                                on  /vendor                        type  ext4        (ro,relatime,seclabel,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/bootdevice/by-name/dsp_b            on  /vendor/dsp                    type  ext4        (ro,nosuid,nodev,relatime,seclabel,data=ordered)
+/dev/block/bootdevice/by-name/modem_b          on  /vendor/firmware_mnt           type  vfat        (ro,relatime,context=u:object_r:firmware_file:s0,gid=1000,fmask=0337,dmask=0227,codepage=437,iocharset=iso8859-1,shortname=lower,errors=remount-ro)
+none                                           on  /acct                          type  cgroup      (rw,nosuid,nodev,noexec,relatime,cpuacct)
+none                                           on  /config                        type  configfs    (rw,nosuid,nodev,noexec,relatime)
+/dev/block/bootdevice/by-name/userdata         on  /data                          type  ext4        (rw,nosuid,nodev,noatime,seclabel,discard,noauto_da_alloc,resgid=1065,data=ordered)
+tmpfs                                          on  /storage                       type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+/data/media                                    on  /storage/emulated              type  sdcardfs    (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal)
+tmpfs                                          on  /storage/self                  type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+dblock@localhost:~$ lsof -i
+COMMAND    PID   USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+dropbear  6725 dblock    5u  IPv4 1127856      0t0  TCP localhost:2022->localhost:40732 (ESTABLISHED)
+dropbear 26489 dblock    3u  IPv4  478796      0t0  TCP *:2022 (LISTEN)
+dropbear 26489 dblock    4u  IPv6  460732      0t0  TCP *:2022 (LISTEN)
+dblock@localhost:~$ who -dropbear
+who: invalid option -- 'o'
+Try 'who --help' for more information.
+dblock@localhost:~$ dropbear --help
+Invalid option --
+Dropbear server v2019.78 https://matt.ucc.asn.au/dropbear/dropbear.html
+Usage: dropbear [options]
+-b bannerfile   Display the contents of bannerfile before user login
+                (default: none)
+-r keyfile  Specify hostkeys (repeatable)
+                defaults:
+                dss /etc/dropbear/dropbear_dss_host_key
+                rsa /etc/dropbear/dropbear_rsa_host_key
+                ecdsa /etc/dropbear/dropbear_ecdsa_host_key
+-R              Create hostkeys as required
+-F              Don't fork into background
+-E              Log to stderr rather than syslog
+-w              Disallow root logins
+-G              Restrict logins to members of specified group
+-s              Disable password logins
+-g              Disable password logins for root
+-B              Allow blank password logins
+-T              Maximum authentication tries (default 10)
+-j              Disable local port forwarding
+-k              Disable remote port forwarding
+-a              Allow connections to forwarded ports from any host
+-c command      Force executed command
+-p [address:]port
+                Listen on specified tcp port (and optionally address),
+                up to 10 can be specified
+                (default port is 22 if none specified)
+-P PidFile      Create pid file PidFile
+                (default /var/run/dropbear.pid)
+-i              Start for inetd
+-W <receive_window_buffer> (default 24576, larger may be faster, max 1MB)
+-K <keepalive>  (0 is never, default 0, in seconds)
+-I <idle_timeout>  (0 is never, default 0, in seconds)
+-V    Version
+dblock@localhost:~$ mount 'dropbear server' v2019.78
+mount: v2019.78: mount failed: Operation not permitted.
+dblock@localhost:~$ dropbear --kill
+Invalid option --
+Dropbear server v2019.78 https://matt.ucc.asn.au/dropbear/dropbear.html
+Usage: dropbear [options]
+-b bannerfile   Display the contents of bannerfile before user login
+                (default: none)
+-r keyfile  Specify hostkeys (repeatable)
+                defaults:
+                dss /etc/dropbear/dropbear_dss_host_key
+                rsa /etc/dropbear/dropbear_rsa_host_key
+                ecdsa /etc/dropbear/dropbear_ecdsa_host_key
+-R              Create hostkeys as required
+-F              Don't fork into background
+-E              Log to stderr rather than syslog
+-w              Disallow root logins
+-G              Restrict logins to members of specified group
+-s              Disable password logins
+-g              Disable password logins for root
+-B              Allow blank password logins
+-T              Maximum authentication tries (default 10)
+-j              Disable local port forwarding
+-k              Disable remote port forwarding
+-a              Allow connections to forwarded ports from any host
+-c command      Force executed command
+-p [address:]port
+                Listen on specified tcp port (and optionally address),
+                up to 10 can be specified
+                (default port is 22 if none specified)
+-P PidFile      Create pid file PidFile
+                (default /var/run/dropbear.pid)
+-i              Start for inetd
+-W <receive_window_buffer> (default 24576, larger may be faster, max 1MB)
+-K <keepalive>  (0 is never, default 0, in seconds)
+-I <idle_timeout>  (0 is never, default 0, in seconds)
+-V    Version
+dblock@localhost:~$ who matt
+dblock@localhost:~$ whois matt
+-bash: whois: command not found
+dblock@localhost:~$ chgroup dropbear
+-bash: chgroup: command not found
+dblock@localhost:~$ dropbear [options]
+dblock@localhost:~$ dropbear -p 2200
+dblock@localhost:~$ dropbear -k
+dblock@localhost:~$ dropbear -j
+dblock@localhost:~$ #wget-q0 -http://infiltrated.net/blacklisted|awk '!/#|[a-z]/   dblock@localhost:~$ wget -q0 -http://
+bin/         etc/         media/       root/        storage/     usr/
+boot/        home/        mnt/         run/         support/     var/
+data/        host-rootfs/ opt/         sbin/        sys/
+dev/         lib/         proc/        srv/         tmp/
+dblock@localhost:~$ wget -q0 -http://infiltrated.net/blacklisted|awk '!/#|[a-z]/&&/./{print "iptables -A INPUT -s "$1" -j DROP"}'
+-bash: wget: command not found
+dblock@localhost:~$ wget --help
+-bash: wget: command not found
+dblock@localhost:~$ git  -q0 -http://infiltrated.net/blacklisted|awk '!/#|[a-z]/&&/./{print "iptables -A INPUT -s "$1" -j DROP"}'
+unknown option: -q0
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+dblock@localhost:~$ apt-get  -q0 -http://infiltrated.net/blacklisted|awk '!/#|[a-z]/&&/./{print "iptables -A INPUT -s "$1" -j DROP"}'
+dblock@localhost:~$ echo ${SSH_CLIENT%%*}
+
+dblock@localhost:~$
