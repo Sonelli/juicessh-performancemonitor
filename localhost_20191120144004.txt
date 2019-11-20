@@ -1,0 +1,893 @@
+dblock@localhost:~$ apt-get install usbdeath
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package usbdeath
+dblock@localhost:~$ getent --help
+Usage: getent [OPTION...] database [key ...]
+Get entries from administrative database.
+
+  -i, --no-idn               disable IDN encoding
+  -s, --service=CONFIG       Service configuration to be used
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+
+Mandatory or optional arguments to long options are also mandatory or optional
+for any corresponding short options.
+
+Supported databases:
+ahosts ahostsv4 ahostsv6 aliases ethers group gshadow hosts initgroups
+netgroup networks passwd protocols rpc services shadow
+
+For bug reporting instructions, please see:
+<http://www.debian.org/Bugs/>.
+dblock@localhost:~$ getent --getent-idn [-disable IDN encoding]
+getent: unrecognized option '--getent-idn'
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ getent --no-idn [-disable IDN encoding]
+Unknown database: [-disable
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ getent --no-idn
+getent: wrong number of arguments
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ userdel --ethers group
+userdel: unrecognized option '--ethers'
+Usage: userdel [options] LOGIN
+
+Options:
+  -f, --force                   force removal of files,
+                                even if not owned by user
+  -h, --help                    display this help message and exit
+  -r, --remove                  remove home directory and mail spool
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files  -Z, --selinux-user            remove any SELinux user mapping for the user
+
+dblock@localhost:~$ userdel --gshadow
+userdel: unrecognized option '--gshadow'
+Usage: userdel [options] LOGIN
+
+Options:
+  -f, --force                   force removal of files,
+                                even if not owned by user
+  -h, --help                    display this help message and exit
+  -r, --remove                  remove home directory and mail spool
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files  -Z, --selinux-user            remove any SELinux user mapping for the user
+
+dblock@localhost:~$ --groups -hidden
+-bash: --groups: command not found
+dblock@localhost:~$ groupsp --hidden
+-bash: groupsp: command not found
+dblock@localhost:~$ groups --hidden
+groups: unrecognized option '--hidden'
+Try 'groups --help' for more information.
+dblock@localhost:~$ groups
+dblock
+dblock@localhost:~$ hidden --help
+-bash: hidden: command not found
+dblock@localhost:~$ dellaloc --help
+-bash: dellaloc: command not found
+dblock@localhost:~$ uname dellaloc
+uname: extra operand 'dellaloc'
+Try 'uname --help' for more information.
+dblock@localhost:~$ userdel --cgroup
+userdel: unrecognized option '--cgroup'
+Usage: userdel [options] LOGIN
+
+Options:
+  -f, --force                   force removal of files,
+                                even if not owned by user
+  -h, --help                    display this help message and exit
+  -r, --remove                  remove home directory and mail spool
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files  -Z, --selinux-user            remove any SELinux user mapping for the user
+
+dblock@localhost:~$ cgroup
+-bash: cgroup: command not found
+dblock@localhost:~$ group 'cgroup' -rmv
+-bash: group: command not found
+dblock@localhost:~$ dropbear -b
+dblock@localhost:~$ dropbear -r
+dblock@localhost:~$ chown --help
+Usage: chown [OPTION]... [OWNER][:[GROUP]] FILE...
+  or:  chown [OPTION]... --reference=RFILE FILE...
+Change the owner and/or group of each FILE to OWNER and/or GROUP.
+With --reference, change the owner and group of each FILE to those of RFILE.
+
+  -c, --changes          like verbose but report only when a change is made
+  -f, --silent, --quiet  suppress most error messages
+  -v, --verbose          output a diagnostic for every file processed
+      --dereference      affect the referent of each symbolic link (this is
+                         the default), rather than the symbolic link itself
+  -h, --no-dereference   affect symbolic links instead of any referenced file
+                         (useful only on systems that can change the
+                         ownership of a symlink)
+      --from=CURRENT_OWNER:CURRENT_GROUP
+                         change the owner and/or group of each file only if
+                         its current owner and/or group match those specified
+                         here.  Either may be omitted, in which case a match
+                         is not required for the omitted attribute
+      --no-preserve-root  do not treat '/' specially (the default)
+      --preserve-root    fail to operate recursively on '/'
+      --reference=RFILE  use RFILE's owner and group rather than
+                         specifying OWNER:GROUP values
+  -R, --recursive        operate on files and directories recursively
+
+The following options modify how a hierarchy is traversed when the -R
+option is also specified.  If more than one is specified, only the final
+one takes effect.
+
+  -H                     if a command line argument is a symbolic link
+                         to a directory, traverse it
+  -L                     traverse every symbolic link to a directory
+                         encountered
+  -P                     do not traverse any symbolic links (default)
+
+      --help     display this help and exit
+      --version  output version information and exit
+
+Owner is unchanged if missing.  Group is unchanged if missing, but changed
+to login group if implied by a ':' following a symbolic OWNER.
+OWNER and GROUP may be numeric as well as symbolic.
+
+Examples:
+  chown root /u        Change the owner of /u to "root".
+  chown root:staff /u  Likewise, but also change its group to "staff".
+  chown -hR root /u    Change the owner of /u and subfiles to "root".
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report chown translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/chown>
+or available locally via: info '(coreutils) chown invocation'
+dblock@localhost:~$ chown --verbose
+chown: missing operand
+Try 'chown --help' for more information.
+dblock@localhost:~$ gnats --help
+-bash: gnats: command not found
+dblock@localhost:~$ systemd --help
+systemd [OPTIONS...]
+
+Starts up and maintains the system or user services.
+
+  -h --help                      Show this help
+     --version                   Show version
+     --test                      Determine initial transaction, dump it and exit
+     --system                    In combination with --test: operate as system ser>     --user                      In combination with --test: operate as per-user s>     --no-pager                  Do not pipe output into a pager
+     --dump-configuration-items  Dump understood unit configuration items
+     --dump-bus-properties       Dump exposed bus properties
+     --unit=UNIT                 Set default unit
+     --dump-core[=BOOL]          Dump core on crash
+     --crash-vt=NR               Change to specified VT on crash
+     --crash-reboot[=BOOL]       Reboot on crash
+     --crash-shell[=BOOL]        Run shell on crash
+     --confirm-spawn[=BOOL]      Ask for confirmation when spawning processes
+     --show-status[=BOOL]        Show status updates on the console during bootup
+     --log-target=TARGET         Set log target (console, journal, kmsg, journal-o>     --log-level=LEVEL           Set log level (debug, info, notice, warning, err,>     --log-color[=BOOL]          Highlight important log messages
+     --log-location[=BOOL]       Include code location in log messages
+     --default-standard-output=  Set default standard output for services
+     --default-standard-error=   Set default standard error output for services
+
+See the systemd(1) man page for details.
+...skipping...
+systemd [OPTIONS...]
+
+Starts up and maintains the system or user services.
+
+  -h --help                      Show this help
+     --version                   Show version
+     --test                      Determine initial transaction, dump it and exit
+     --system                    In combination with --test: operate as system ser>     --user                      In combination with --test: operate as per-user s>     --no-pager                  Do not pipe output into a pager
+     --dump-configuration-items  Dump understood unit configuration items
+     --dump-bus-properties       Dump exposed bus properties
+     --unit=UNIT                 Set default unit
+     --dump-core[=BOOL]          Dump core on crash
+     --crash-vt=NR               Change to specified VT on crash                        --crash-reboot[=BOOL]       Reboot on crash                                        --crash-shell[=BOOL]        Run shell on crash
+     --confirm-spawn[=BOOL]      Ask for confirmation when spawning processes
+     --show-status[=BOOL]        Show status updates on the console during bootup
+     --log-target=TARGET         Set log target (console, journal, kmsg, journal-o>     --log-level=LEVEL           Set log level (debug, info, notice, warning, err,>     --log-color[=BOOL]          Highlight important log messages
+     --log-location[=BOOL]       Include code location in log messages
+     --default-standard-output=  Set default standard output for services
+     --default-standard-error=   Set default standard error output for services
+
+See the systemd(1) man page for details.                                           ~                                                                                  ~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+set mark: ...skipping...
+systemd [OPTIONS...]
+
+Starts up and maintains the system or user services.
+
+  -h --help                      Show this help
+     --version                   Show version
+     --test                      Determine initial transaction, dump it and exit
+     --system                    In combination with --test: operate as system ser>     --user                      In combination with --test: operate as per-user s>     --no-pager                  Do not pipe output into a pager
+     --dump-configuration-items  Dump understood unit configuration items
+     --dump-bus-properties       Dump exposed bus properties
+     --unit=UNIT                 Set default unit
+     --dump-core[=BOOL]          Dump core on crash
+     --crash-vt=NR               Change to specified VT on crash
+     --crash-reboot[=BOOL]       Reboot on crash
+     --crash-shell[=BOOL]        Run shell on crash
+     --confirm-spawn[=BOOL]      Ask for confirmation when spawning processes
+     --show-status[=BOOL]        Show status updates on the console during bootup
+     --log-target=TARGET         Set log target (console, journal, kmsg, journal-o>     --log-level=LEVEL           Set log level (debug, info, notice, warning, err,>     --log-color[=BOOL]          Highlight important log messages
+     --log-location[=BOOL]       Include code location in log messages
+     --default-standard-output=  Set default standard output for services
+     --default-standard-error=   Set default standard error output for services
+
+See the systemd(1) man page for details.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+...skipping...
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MOVING
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Right one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SEARCHING
+
+  /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+  n                 *  Repeat previous search (for N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  ESC-n             *  Repeat previous search, spanning files.
+  ESC-N             *  Repeat previous search, reverse dir. & spanning files.
+  ESC-u                Undo (toggle) search highlighting.
+  &pattern          *  Display only matching lines
+        ---------------------------------------------------
+        A search pattern may begin with one or more of:
+        ^N or !  Search for NON-matching lines.
+        ^E or *  Search multiple files (pass thru END OF FILE).
+        ^F or @  Start search at FIRST file (for /) or last file (for ?).
+        ^K       Highlight matches, but don't move (KEEP position).
+        ^R       Don't use REGULAR EXPRESSIONS.
+ ---------------------------------------------------------------------------
+
+                           JUMPING
+
+  g  <  ESC-<       *  Go to first line in file (or line N).
+  G  >  ESC->       *  Go to last line in file (or line N).
+  p  %              *  Go to beginning of file (or N percent into file).
+  t                 *  Go to the (N-th) next tag.
+  T                 *  Go to the (N-th) previous tag.
+  {  (  [           *  Find close bracket } ) ].
+  }  )  ]           *  Find open bracket { ( [.
+  ESC-^F <c1> <c2>  *  Find close bracket <c2>.
+  ESC-^B <c1> <c2>  *  Find open bracket <c1>
+        ---------------------------------------------------
+        Each "find close bracket" command goes forward to the close bracket
+          matching the (N-th) open bracket in the top line.
+        Each "find open bracket" command goes backward to the open bracket
+          matching the (N-th) close bracket in the bottom line.
+
+  m<letter>            Mark the current top line with <letter>.
+  M<letter>            Mark the current bottom line with <letter>.
+  '<letter>            Go to a previously marked position.
+  ''                   Go to the previous position.
+  ^X^X                 Same as '.
+  ESC-M<letter>        Clear a mark.
+        ---------------------------------------------------
+        A mark is any upper-case or lower-case letter.
+        Certain marks are predefined:
+             ^  means  beginning of the file
+             $  means  end of the file
+ ---------------------------------------------------------------------------
+
+                        CHANGING FILES
+
+  :e [file]            Examine a new file.
+  ^X^V                 Same as :e.
+  :n                *  Examine the (N-th) next file from the command line.
+  :p                *  Examine the (N-th) previous file from the command line.
+  :x                *  Examine the first (or N-th) file from the command line.
+  :d                   Delete the current file from the command line list.
+  =  ^G  :f            Print current file name.
+ ---------------------------------------------------------------------------
+
+                    MISCELLANEOUS COMMANDS
+
+  -<flag>              Toggle a command line option [see OPTIONS below].
+  --<name>             Toggle a command line option, by name.
+  _<flag>              Display the setting of a command line option.
+  __<name>             Display the setting of an option, by name.
+  +cmd                 Execute the less cmd each time a new file is examined.
+
+  !command             Execute the shell command with $SHELL.
+  |Xcommand            Pipe file between current pos & mark X to shell command.
+  s file               Save input to a file.
+  v                    Edit the current file with $VISUAL or $EDITOR.
+  V                    Print version number of "less".
+ ---------------------------------------------------------------------------
+
+                           OPTIONS
+
+        Most options may be changed either on the command line,
+        or from within less by using the - or -- command.
+        Options may be given in one of two forms: either a single
+        character preceded by a -, or a name preceded by --.
+
+  -?  ........  --help
+                  Display help (from command line).
+  -a  ........  --search-skip-screen
+                  Search skips current screen.
+  -A  ........  --SEARCH-SKIP-SCREEN
+                  Search starts just after target line.
+  -b [N]  ....  --buffers=[N]
+                  Number of buffers.
+  -B  ........  --auto-buffers
+                  Don't automatically allocate buffers for pipes.
+  -c  ........  --clear-screen
+                  Repaint by clearing rather than scrolling.
+  -d  ........  --dumb
+                  Dumb terminal.
+  -D [xn.n]  .  --color=xn.n
+                  Set screen colors. (MS-DOS only)
+  -e  -E  ....  --quit-at-eof  --QUIT-AT-EOF
+                  Quit at end of file.
+  -f  ........  --force
+                  Force open non-regular files.
+  -F  ........  --quit-if-one-screen
+                  Quit if entire file fits on first screen.
+  -g  ........  --hilite-search
+                  Highlight only last match for searches.
+  -G  ........  --HILITE-SEARCH
+                  Don't highlight any matches for searches.
+  -h [N]  ....  --max-back-scroll=[N]
+                  Backward scroll limit.
+  -i  ........  --ignore-case
+                  Ignore case in searches that do not contain uppercase.
+  -I  ........  --IGNORE-CASE
+                  Ignore case in all searches.
+  -j [N]  ....  --jump-target=[N]
+                  Screen position of target lines.
+  -J  ........  --status-column
+                  Display a status column at left edge of screen.
+  -k [file]  .  --lesskey-file=[file]
+                  Use a lesskey file.
+  -K  ........  --quit-on-intr
+                  Exit less in response to ctrl-C.
+  -L  ........  --no-lessopen
+                  Ignore the LESSOPEN environment variable.
+  -m  -M  ....  --long-prompt  --LONG-PROMPT
+                  Set prompt style.
+  -n  -N  ....  --line-numbers  --LINE-NUMBERS
+                  Don't use line numbers.
+  -o [file]  .  --log-file=[file]
+                  Copy to log file (standard input only).
+  -O [file]  .  --LOG-FILE=[file]
+                  Copy to log file (unconditionally overwrite).
+  -p [pattern]  --pattern=[pattern]
+                  Start at pattern (from command line).
+  -P [prompt]   --prompt=[prompt]
+                  Define new prompt.
+  -q  -Q  ....  --quiet  --QUIET  --silent --SILENT
+                  Quiet the terminal bell.
+  -r  -R  ....  --raw-control-chars  --RAW-CONTROL-CHARS
+                  Output "raw" control characters.
+  -s  ........  --squeeze-blank-lines
+                  Squeeze multiple blank lines.
+  -S  ........  --chop-long-lines
+                  Chop (truncate) long lines rather than wrapping.
+  -t [tag]  ..  --tag=[tag]
+                  Find a tag.
+  -T [tagsfile] --tag-file=[tagsfile]
+                  Use an alternate tags file.
+  -u  -U  ....  --underline-special  --UNDERLINE-SPECIAL
+                  Change handling of backspaces.
+  -V  ........  --version
+                  Display the version number of "less".
+  -w  ........  --hilite-unread
+                  Highlight first new line after forward-screen.
+  -W  ........  --HILITE-UNREAD
+                  Highlight first new line after any forward movement.
+  -x [N[,...]]  --tabs=[N[,...]]
+                  Set tab stops.
+  -X  ........  --no-init
+                  Don't use termcap init/deinit strings.
+  -y [N]  ....  --max-forw-scroll=[N]
+                  Forward scroll limit.
+  -z [N]  ....  --window=[N]
+                  Set size of window.
+  -" [c[c]]  .  --quotes=[c[c]]
+                  Set shell quote characters.
+  -~  ........  --tilde
+                  Don't display tildes after end of file.
+  -# [N]  ....  --shift=[N]
+                  Horizontal scroll amount (0 = one half screen width)
+                --follow-name
+                  The F command changes files if the input file is renamed.
+                --mouse
+                  Enable mouse input.
+                --no-keypad
+
+                   SUMMARY OF LESS COMMANDS
+
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MOVING
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Right one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MOVING
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Right one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SEARCHING
+
+  /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+  n                 *  Repeat previous search (for N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  ESC-n             *  Repeat previous search, spanning files.
+  ESC-N             *  Repeat previous search, reverse dir. & spanning files.
+  ESC-u                Undo (toggle) search highlighting.
+  &pattern          *  Display only matching lines
+        ---------------------------------------------------
+        A search pattern may begin with one or more of:
+        ^N or !  Search for NON-matching lines.
+        ^E or *  Search multiple files (pass thru END OF FILE).
+        ^F or @  Start search at FIRST file (for /) or last file (for ?).
+        ^K       Highlight matches, but don't move (KEEP position).
+        ^R       Don't use REGULAR EXPRESSIONS.
+ ---------------------------------------------------------------------------
+
+                           JUMPING
+
+  g  <  ESC-<       *  Go to first line in file (or line N).
+  G  >  ESC->       *  Go to last line in file (or line N).
+  p  %              *  Go to beginning of file (or N percent into file).
+  t                 *  Go to the (N-th) next tag.
+  T                 *  Go to the (N-th) previous tag.
+  {  (  [           *  Find close bracket } ) ].
+  }  )  ]           *  Find open bracket { ( [.
+  ESC-^F <c1> <c2>  *  Find close bracket <c2>.
+  ESC-^B <c1> <c2>  *  Find open bracket <c1>
+        ---------------------------------------------------
+        Each "find close bracket" command goes forward to the close bracket
+          matching the (N-th) open bracket in the top line.
+        Each "find open bracket" command goes backward to the open bracket
+          matching the (N-th) close bracket in the bottom line.
+
+  m<letter>            Mark the current top line with <letter>.
+  M<letter>            Mark the current bottom line with <letter>.
+  '<letter>            Go to a previously marked position.
+  ''                   Go to the previous position.
+  ^X^X                 Same as '.
+  ESC-M<letter>        Clear a mark.
+        ---------------------------------------------------
+        A mark is any upper-case or lower-case letter.
+        Certain marks are predefined:
+             ^  means  beginning of the file
+             $  means  end of the file
+ ---------------------------------------------------------------------------
+
+                        CHANGING FILES
+
+  :e [file]            Examine a new file.
+  ^X^V                 Same as :e.
+  :n                *  Examine the (N-th) next file from the command line.
+  :p                *  Examine the (N-th) previous file from the command line.
+  :x                *  Examine the first (or N-th) file from the command line.
+  :d                   Delete the current file from the command line list.
+  =  ^G  :f            Print current file name.
+ ---------------------------------------------------------------------------
+
+                    MISCELLANEOUS COMMANDS
+
+...skipping...
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MOVING
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Right one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SEARCHING
+
+  /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+  n                 *  Repeat previous search (for N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  ESC-n             *  Repeat previous search, spanning files.
+  ESC-N             *  Repeat previous search, reverse dir. & spanning files.
+  ESC-u                Undo (toggle) search highlighting.
+  &pattern          *  Display only matching lines
+        ---------------------------------------------------
+        A search pattern may begin with one or more of:
+        ^N or !  Search for NON-matching lines.
+        ^E or *  Search multiple files (pass thru END OF FILE).
+        ^F or @  Start search at FIRST file (for /) or last file (for ?).
+        ^K       Highlight matches, but don't move (KEEP position).
+        ^R       Don't use REGULAR EXPRESSIONS.
+ ---------------------------------------------------------------------------
+
+                           JUMPING
+
+  g  <  ESC-<       *  Go to first line in file (or line N).
+  G  >  ESC->       *  Go to last line in file (or line N).
+  p  %              *  Go to beginning of file (or N percent into file).
+  t                 *  Go to the (N-th) next tag.
+  T                 *  Go to the (N-th) previous tag.
+  {  (  [           *  Find close bracket } ) ].
+  }  )  ]           *  Find open bracket { ( [.
+  ESC-^F <c1> <c2>  *  Find close bracket <c2>.
+  ESC-^B <c1> <c2>  *  Find open bracket <c1>
+        ---------------------------------------------------
+        Each "find close bracket" command goes forward to the close bracket
+          matching the (N-th) open bracket in the top line.
+        Each "find open bracket" command goes backward to the open bracket
+          matching the (N-th) close bracket in the bottom line.
+
+  m<letter>            Mark the current top line with <letter>.
+  M<letter>            Mark the current bottom line with <letter>.
+  '<letter>            Go to a previously marked position.
+  ''                   Go to the previous position.
+  ^X^X                 Same as '.
+  ESC-M<letter>        Clear a mark.
+        ---------------------------------------------------
+        A mark is any upper-case or lower-case letter.
+        Certain marks are predefined:
+             ^  means  beginning of the file
+             $  means  end of the file
+ ---------------------------------------------------------------------------
+
+                        CHANGING FILES
+
+  :e [file]            Examine a new file.
+  ^X^V                 Same as :e.
+  :n                *  Examine the (N-th) next file from the command line.
+  :p                *  Examine the (N-th) previous file from the command line.
+  :x                *  Examine the first (or N-th) file from the command line.
+  :d                   Delete the current file from the command line list.
+  =  ^G  :f            Print current file name.
+ ---------------------------------------------------------------------------
+
+                    MISCELLANEOUS COMMANDS
+
+  -<flag>              Toggle a command line option [see OPTIONS below].
+  --<name>             Toggle a command line option, by name.
+  _<flag>              Display the setting of a command line option.
+  __<name>             Display the setting of an option, by name.
+  +cmd                 Execute the less cmd each time a new file is examined.
+
+  !command             Execute the shell command with $SHELL.
+  |Xcommand            Pipe file between current pos & mark X to shell command.
+  s file               Save input to a file.
+  v                    Edit the current file with $VISUAL or $EDITOR.
+  V                    Print version number of "less".
+ ---------------------------------------------------------------------------
+
+                           OPTIONS
+
+        Most options may be changed either on the command line,
+        or from within less by using the - or -- command.
+        Options may be given in one of two forms: either a single
+        character preceded by a -, or a name preceded by --.
+
+  -?  ........  --help
+                  Display help (from command line).
+  -a  ........  --search-skip-screen
+                  Search skips current screen.
+  -A  ........  --SEARCH-SKIP-SCREEN
+                  Search starts just after target line.
+  -b [N]  ....  --buffers=[N]
+                  Number of buffers.
+  -B  ........  --auto-buffers
+                  Don't automatically allocate buffers for pipes.
+  -c  ........  --clear-screen
+                  Repaint by clearing rather than scrolling.
+  -d  ........  --dumb
+                  Dumb terminal.
+  -D [xn.n]  .  --color=xn.n
+                  Set screen colors. (MS-DOS only)
+  -e  -E  ....  --quit-at-eof  --QUIT-AT-EOF
+                  Quit at end of file.
+  -f  ........  --force
+                  Force open non-regular files.
+  -F  ........  --quit-if-one-screen
+                  Quit if entire file fits on first screen.
+  -g  ........  --hilite-search
+                  Highlight only last match for searches.
+  -G  ........  --HILITE-SEARCH
+                  Don't highlight any matches for searches.
+  -h [N]  ....  --max-back-scroll=[N]
+                  Backward scroll limit.
+  -i  ........  --ignore-case
+                  Ignore case in searches that do not contain uppercase.
+  -I  ........  --IGNORE-CASE
+                  Ignore case in all searches.
+  -j [N]  ....  --jump-target=[N]
+                  Screen position of target lines.
+  -J  ........  --status-column
+                  Display a status column at left edge of screen.
+  -k [file]  .  --lesskey-file=[file]
+                  Use a lesskey file.
+  -K  ........  --quit-on-intr
+                  Exit less in response to ctrl-C.
+  -L  ........  --no-lessopen
+                  Ignore the LESSOPEN environment variable.
+  -m  -M  ....  --long-prompt  --LONG-PROMPT
+                  Set prompt style.
+  -n  -N  ....  --line-numbers  --LINE-NUMBERS
+                  Don't use line numbers.
+  -o [file]  .  --log-file=[file]
+                  Copy to log file (standard input only).
+  -O [file]  .  --LOG-FILE=[file]
+                  Copy to log file (unconditionally overwrite).
+  -p [pattern]  --pattern=[pattern]
+                  Start at pattern (from command line).
+  -P [prompt]   --prompt=[prompt]
+                  Define new prompt.
+  -q  -Q  ....  --quiet  --QUIET  --silent --SILENT
+                  Quiet the terminal bell.
+  -r  -R  ....  --raw-control-chars  --RAW-CONTROL-CHARS
+                  Output "raw" control characters.
+  -s  ........  --squeeze-blank-lines
+                  Squeeze multiple blank lines.
+  -S  ........  --chop-long-lines
+                  Chop (truncate) long lines rather than wrapping.
+  -t [tag]  ..  --tag=[tag]
+                  Find a tag.
+  -T [tagsfile] --tag-file=[tagsfile]
+                  Use an alternate tags file.
+  -u  -U  ....  --underline-special  --UNDERLINE-SPECIAL
+                  Change handling of backspaces.
+  -V  ........  --version
+                  Display the version number of "less".
+  -w  ........  --hilite-unread
+                  Highlight first new line after forward-screen.
+  -W  ........  --HILITE-UNREAD
+                  Highlight first new line after any forward movement.
+  -x [N[,...]]  --tabs=[N[,...]]
+                  Set tab stops.
+  -X  ........  --no-init
+                  Don't use termcap init/deinit strings.
+  -y [N]  ....  --max-forw-scroll=[N]
+                  Forward scroll limit.
+  -z [N]  ....  --window=[N]
+                  Set size of window.
+  -" [c[c]]  .  --quotes=[c[c]]
+                  Set shell quote characters.
+  -~  ........  --tilde
+                  Don't display tildes after end of file.
+  -# [N]  ....  --shift=[N]
+                  Horizontal scroll amount (0 = one half screen width)
+                --follow-name
+                  The F command changes files if the input file is renamed.
+                --mouse
+                  Enable mouse input.
+                --no-keypad
+                  Don't send termcap keypad init/deinit strings.
+                --no-histdups
+                  Remove duplicates from command history.
+                --rscroll=C
+                  Set the character used to mark truncated lines.
+                --save-marks
+                  Retain marks across invocations of less.
+                --use-backslash
+                  Subsequent options use backslash as escape char.
+                --wheel-lines=N
+                  Each click of the mouse wheel moves N lines.
+
+
+ ---------------------------------------------------------------------------
+
+                          LINE EDITING
+
+        These keys can be used to edit text being entered
+        on the "command line" at the bottom of the screen.
+
+ RightArrow ..................... ESC-l ... Move cursor right one character.
+ LeftArrow ...................... ESC-h ... Move cursor left one character.
+ ctrl-RightArrow  ESC-RightArrow  ESC-w ... Move cursor right one word.
+ ctrl-LeftArrow   ESC-LeftArrow   ESC-b ... Move cursor left one word.
+ HOME ........................... ESC-0 ... Move cursor to start of line.
+ END ............................ ESC-$ ... Move cursor to end of line.
+ BACKSPACE ................................ Delete char to left of cursor.
+ DELETE ......................... ESC-x ... Delete char under cursor.
+ ctrl-BACKSPACE   ESC-BACKSPACE ........... Delete word to left of cursor.
+ ctrl-DELETE .... ESC-DELETE .... ESC-X ... Delete word under cursor.
+ ctrl-U ......... ESC (MS-DOS only) ....... Delete entire line.
+ UpArrow ........................ ESC-k ... Retrieve previous command line.
+systemd [OPTIONS...]
+
+Starts up and maintains the system or user services.
+
+  -h --help                      Show this help
+     --version                   Show version
+     --test                      Determine initial transaction, dump it and exit
+     --system                    In combination with --test: operate as system ser>     --user                      In combination with --test: operate as per-user s>     --no-pager                  Do not pipe output into a pager
+     --dump-configuration-items  Dump understood unit configuration items
+     --dump-bus-properties       Dump exposed bus properties
+     --unit=UNIT                 Set default unit
+     --dump-core[=BOOL]          Dump core on crash
+     --crash-vt=NR               Change to specified VT on crash                        --crash-reboot[=BOOL]       Reboot on crash                                        --crash-shell[=BOOL]        Run shell on crash
+     --confirm-spawn[=BOOL]      Ask for confirmation when spawning processes
+     --show-status[=BOOL]        Show status updates on the console during bootup
+     --log-target=TARGET         Set log target (console, journal, kmsg, journal-o>     --log-level=LEVEL           Set log level (debug, info, notice, warning, err,>     --log-color[=BOOL]          Highlight important log messages
+     --log-location[=BOOL]       Include code location in log messages
+     --default-standard-output=  Set default standard output for services
+     --default-standard-error=   Set default standard error output for services
+
+See the systemd(1) man page for details.                                           ~                                                                                  ~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+dblock@localhost:~$ systemd --user
+Trying to run as user instance, but the system has not been booted with systemd.
+dblock@localhost:~$ usbmux --help
+-bash: usbmux: command not found
+dblock@localhost:~$ systemd login
+Excess arguments.
+dblock@localhost:~$ systemd --login
+systemd: unrecognized option '--login'
+dblock@localhost:~$ systemd(1) man
+-bash: syntax error near unexpected token `1'
+dblock@localhost:~$ devpts --help
+-bash: devpts: command not found
+dblock@localhost:~$ bpf --help
+-bash: bpf: command not found
+dblock@localhost:~$
