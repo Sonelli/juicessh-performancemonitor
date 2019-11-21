@@ -1,393 +1,122 @@
 SSH Session Transcript
 
 Host: localhost
-Date: Saturday, November 16, 2019
+Date: Wednesday, November 20, 2019
 ---------------------------------
-dblock@localhost:~$ kallsys
--bash: kallsys: command not found
-dblock@localhost:~$ plugin --help
--bash: plugin: command not found
-dblock@localhost:~$ $PATH
--bash: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games: No such file or directory
-dblock@localhost:~$ /usr/local/sbin who
--bash: /usr/local/sbin: Is a directory
-dblock@localhost:~$ info
--bash: info: command not found
-dblock@localhost:~$ $path -info
--bash: -info: command not found
-dblock@localhost:~$ $PATH -info
--bash: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games: No such file or directory
-dblock@localhost:~$ ls /usr/local/sbin
-dblock@localhost:~$ ls -info
-total 44
-320263 -rw-------. 1 2000 0 Nov 9 09:47 popd
-320264 -rw-------. 1 2000 0 Nov 9 09:50 umask
-319452 drwxr-xr-x. 2 2000 4096 Nov 16 11:47 .
-287815 drwxr-xr-x. 3 2000 4096 Oct 28 23:21 ..
-320362 -rw-------. 1 2000 44 Nov 10 05:04 .sh_history
-320254 -rw-------. 1 2000 0 Nov 9 09:31 source
-319453 -rw-r--r--. 1 2000 807 Apr 18 2019 .profile
-319454 -rw-r--r--. 1 2000 3526 Apr 18 2019 .bashrc
-321820 -rw-------. 1 2000 17675 Nov 16 11:47 .bash_history
-319455 -rw-r--r--. 1 2000 220 Apr 18 2019 .bash_logout
-dblock@localhost:~$ ls -logger
-ls: invalid option -- 'e'
-Try 'ls --help' for more information.
-dblock@localhost:~$ ls --e
-popd source umask
-dblock@localhost:~$ ls source
-source
-dblock@localhost:~$ ls --source
-ls: unrecognized option '--source'
-Try 'ls --help' for more information.
-dblock@localhost:~$ ls -data
+dblock@localhost:~$ ftinger
+-bash: ftinger: command not found
+dblock@localhost:~$ getent
+getent: wrong number of arguments
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ getent --help
+Usage: getent [OPTION...] database [key ...]
+Get entries from administrative database.
+
+-i, --no-idn disable IDN encoding
+-s, --service=CONFIG Service configuration to be used
+-?, --help Give this help list
+--usage Give a short usage message
+-V, --version Print program version
+
+Mandatory or optional arguments to long options are also mandatory or optional
+for any corresponding short options.
+
+Supported databases:
+ahosts ahostsv4 ahostsv6 aliases ethers group gshadow hosts initgroups
+netgroup networks passwd protocols rpc services shadow
+
+For bug reporting instructions, please see:
 .
-dblock@localhost:~$ +x
--bash: +x: command not found
-dblock@localhost:~$ ls --show -data
-.
-dblock@localhost:~$ ls -show
-ls: option requires an argument -- 'w'
-Try 'ls --help' for more information.
-dblock@localhost:~$ ls -show -user
-ls: invalid line width: '-user'
-dblock@localhost:~$ ls -show $PATH
-ls: invalid line width: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games'
-dblock@localhost:~$ fn
--bash: fn: command not found
-dblock@localhost:~$ ent
--bash: ent: command not found
-dblock@localhost:~$ lsblk
-lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
-dblock@localhost:~$ lsblk --help
-
-Usage:
-lsblk [options] [ ...]
-
-List information about block devices.
-
-Options:
--D, --discard print discard capabilities
--E, --dedup de-duplicate output by 
--I, --include show only devices with specified major numbers
--J, --json use JSON output format
--O, --output-all output all columns
--P, --pairs use key="value" output format
--S, --scsi output info about SCSI devices
--T, --tree[=] use tree format output
--a, --all print all devices
--b, --bytes print SIZE in bytes rather than in human readable format
--d, --nodeps don't print slaves or holders
--e, --exclude exclude devices by major number (default: RAM disks)
--f, --fs output info about filesystems
--i, --ascii use ascii characters only
--l, --list use list format output
--M, --merge group parents of sub-trees (usable for RAIDs, Multi-path)
--m, --perms output info about permissions
--n, --noheadings don't print headings
--o, --output output columns
--p, --paths print complete device path
--r, --raw use raw output format
--s, --inverse inverse dependencies
--t, --topology output info about topology
--z, --zoned print zone model
--x, --sort sort output by 
---sysroot use specified directory as system root
-
--h, --help display this help
--V, --version display version
-
-Available output columns:
-NAME device name
-KNAME internal kernel device name
-PATH path to the device node
-MAJ:MIN major:minor device number
-FSAVAIL filesystem size available
-FSSIZE filesystem size
-FSTYPE filesystem type
-FSUSED filesystem size used
-FSUSE% filesystem use percentage
-MOUNTPOINT where the device is mounted
-LABEL filesystem LABEL
-UUID filesystem UUID
-PTUUID partition table identifier (usually UUID)
-PTTYPE partition table type
-PARTTYPE partition type UUID
-PARTLABEL partition LABEL
-PARTUUID partition UUID
-PARTFLAGS partition flags
-RA read-ahead of the device
-RO read-only device
-RM removable device
-HOTPLUG removable or hotplug device (usb, pcmcia, ...)
-MODEL device identifier
-SERIAL disk serial number
-SIZE size of the device
-STATE state of the device
-OWNER user name
-GROUP group name
-MODE device node permissions
-ALIGNMENT alignment offset
-MIN-IO minimum I/O size
-OPT-IO optimal I/O size
-PHY-SEC physical sector size
-LOG-SEC logical sector size
-ROTA rotational device
-SCHED I/O scheduler name
-RQ-SIZE request queue size
-TYPE device type
-DISC-ALN discard alignment offset
-DISC-GRAN discard granularity
-DISC-MAX discard max bytes
-DISC-ZERO discard zeroes data
-WSAME write same max bytes
-WWN unique storage identifier
-RAND adds randomness
-PKNAME internal parent kernel device name
-HCTL Host:Channel:Target:Lun for SCSI
-TRAN device transport type
-SUBSYSTEMS de-duplicated chain of subsystems
-REV device revision
-VENDOR device vendor
-ZONED zone model
-
-For more details see lsblk(8).
-dblock@localhost:~$ lsblk --tree
-lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
-dblock@localhost:~$ lsblk --perms
-lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
-dblock@localhost:~$ /sys/dev/block -discard
--bash: /sys/dev/block: Is a directory
-dblock@localhost:~$ ls /sys/dev/block
-ls: cannot open directory '/sys/dev/block': Permission denied
-dblock@localhost:~$ who --hostname
-who: unrecognized option '--hostname'
-Try 'who --help' for more information.
-dblock@localhost:~$ uname --host
-uname: unrecognized option '--host'
-Try 'uname --help' for more information.
-dblock@localhost:~$ lsblk --scsi
-lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
-dblock@localhost:~$ lsblk --all
-lsblk: failed to access sysfs directory: /sys/dev/block: Permission denied
-dblock@localhost:~$ apt --unblock dblock
-E: Command line option --unblock is not understood in combination with the other options
-dblock@localhost:~$ unblock
--bash: unblock: command not found
-dblock@localhost:~$ block
--bash: block: command not found
-dblock@localhost:~$ size
--bash: size: command not found
-dblock@localhost:~$ txty
--bash: txty: command not found
-dblock@localhost:~$ qual-comm
--bash: qual-comm: command not found
-dblock@localhost:~$ help
-GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
-These shell commands are defined internally. Type `help' to see this list.
-Type `help name' to find out more about the function `name'.
-Use `info bash' to find out more about the shell in general.
-Use `man -k' or `info' to find out more about commands not in this list.
-
-A star (*) next to a name means that the command is disabled.
-
-job_spec [&] history [-c] [-d offset] [n] or histo>
-(( expression )) if COMMANDS; then COMMANDS; [ elif CO>
-. filename [arguments] jobs [-lnprs] [jobspec ...] or jobs ->
-: kill [-s sigspec | -n signum | -sigsp>
-[ arg... ] let arg [arg ...]
-[[ expression ]] local [option] name[=value] ...
-alias [-p] [name[=value] ... ] logout [n]
-bg [job_spec ...] mapfile [-d delim] [-n count] [-O ori>
-bind [-lpsvPSVX] [-m keymap] [-f filen> popd [-n] [+N | -N]
-break [n] printf [-v var] format [arguments]
-builtin [shell-builtin [arg ...]] pushd [-n] [+N | -N | dir]
-caller [expr] pwd [-LP]
-case WORD in [PATTERN [| PATTERN]...) > read [-ers] [-a array] [-d delim] [-i>
-cd [-L|[-P [-e]] [-@]] [dir] readarray [-d delim] [-n count] [-O o>
-command [-pVv] command [arg ...] readonly [-aAf] [name[=value] ...] or>
-compgen [-abcdefgjksuv] [-o option] [-> return [n]
-complete [-abcdefgjksuv] [-pr] [-DEI] > select NAME [in WORDS ... ;] do COMMA>
-compopt [-o|+o option] [-DEI] [name ..> set [-abefhkmnptuvxBCHP] [-o option-n>
-continue [n] shift [n]
-coproc [NAME] command [redirections] shopt [-pqsu] [-o] [optname ...]
-declare [-aAfFgilnrtux] [-p] [name[=va> source filename [arguments]
-dirs [-clpv] [+N] [-N] suspend [-f]
-disown [-h] [-ar] [jobspec ... | pid .> test [expr]
-echo [-neE] [arg ...] time [-p] pipeline
-enable [-a] [-dnps] [-f filename] [nam> times
-eval [arg ...] trap [-lp] [[arg] signal_spec ...]
-exec [-cl] [-a name] [command [argumen> true
-exit [n] type [-afptP] name [name ...]
-export [-fn] [name[=value] ...] or exp> typeset [-aAfFgilnrtux] [-p] name[=va>
-false ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
-fc [-e ename] [-lnr] [first] [last] or> umask [-p] [-S] [mode]
-fg [job_spec] unalias [-a] name [name ...]
-for NAME [in WORDS ... ] ; do COMMANDS> unset [-f] [-v] [-n] [name ...]
-for (( exp1; exp2; exp3 )); do COMMAND> until COMMANDS; do COMMANDS; done
-function name { COMMANDS ; } or name (> variables - Names and meanings of som>
-getopts optstring name [arg] wait [-fn] [id ...]
-hash [-lr] [-p pathname] [-dt] [name .> while COMMANDS; do COMMANDS; done
-help [-dms] [pattern ...] { COMMANDS ; }
-dblock@localhost:~$ list
--bash: list: command not found
-dblock@localhost:~$ keys
--bash: keys: command not found
-dblock@localhost:~$ 'helpname'
--bash: helpname: command not found
-dblock@localhost:~$ bash --alias
-bash: --alias: invalid option
-Usage: bash [GNU long option] [option] ...
-bash [GNU long option] [option] script-file ...
-GNU long options:
---debug
---debugger
---dump-po-strings
---dump-strings
---help
---init-file
---login
---noediting
---noprofile
---norc
---posix
---pretty-print
---rcfile
---restricted
---verbose
---version
-Shell options:
--ilrsD or -c command or -O shopt_option (invocation only)
--abefhkmnptuvxBCHP or -o option
-dblock@localhost:~$ help command help
-command: command [-pVv] command [arg ...]
-Execute a simple command or display information about commands.
-
-Runs COMMAND with ARGS suppressing shell function lookup, or display
-information about the specified COMMANDs. Can be used to invoke commands
-on disk when a function with the same name exists.
-
-Options:
--p use a default value for PATH that is guaranteed to find all of
-the standard utilities
--v print a description of COMMAND similar to the `type' builtin
--V print a more verbose description of each COMMAND
-
-Exit Status:
-Returns exit status of COMMAND, or failure if COMMAND is not found.
-help: help [-dms] [pattern ...]
-Display information about builtin commands.
-
-Displays brief summaries of builtin commands. If PATTERN is
-specified, gives detailed help on all commands matching PATTERN,
-otherwise the list of help topics is printed.
-
-Options:
--d output short description for each topic
--m display usage in pseudo-manpage format
--s output only a short usage synopsis for each topic matching
-PATTERN
-
-Arguments:
-PATTERN Pattern specifying a help topic
-
-Exit Status:
-Returns success unless PATTERN is not found or an invalid option is given.
-dblock@localhost:~$ command -v
-dblock@localhost:~$ command -d
--bash: command: -d: invalid option
-command: usage: command [-pVv] command [arg ...]
-dblock@localhost:~$ command -pvv
-dblock@localhost:~$ help -dms
-GNU bash, version 5.0.3(1)-release (aarch64-unknown-linux-gnu)
-These shell commands are defined internally. Type `help' to see this list.
-Type `help name' to find out more about the function `name'.
-Use `info bash' to find out more about the shell in general.
-Use `man -k' or `info' to find out more about commands not in this list.
-
-A star (*) next to a name means that the command is disabled.
-
-job_spec [&] history [-c] [-d offset] [n] or histo>
-(( expression )) if COMMANDS; then COMMANDS; [ elif CO>
-. filename [arguments] jobs [-lnprs] [jobspec ...] or jobs ->
-: kill [-s sigspec | -n signum | -sigsp>
-[ arg... ] let arg [arg ...]
-[[ expression ]] local [option] name[=value] ...
-alias [-p] [name[=value] ... ] logout [n]
-bg [job_spec ...] mapfile [-d delim] [-n count] [-O ori>
-bind [-lpsvPSVX] [-m keymap] [-f filen> popd [-n] [+N | -N]
-break [n] printf [-v var] format [arguments]
-builtin [shell-builtin [arg ...]] pushd [-n] [+N | -N | dir]
-caller [expr] pwd [-LP]
-case WORD in [PATTERN [| PATTERN]...) > read [-ers] [-a array] [-d delim] [-i>
-cd [-L|[-P [-e]] [-@]] [dir] readarray [-d delim] [-n count] [-O o>
-command [-pVv] command [arg ...] readonly [-aAf] [name[=value] ...] or>
-compgen [-abcdefgjksuv] [-o option] [-> return [n]
-complete [-abcdefgjksuv] [-pr] [-DEI] > select NAME [in WORDS ... ;] do COMMA>
-compopt [-o|+o option] [-DEI] [name ..> set [-abefhkmnptuvxBCHP] [-o option-n>
-continue [n] shift [n]
-coproc [NAME] command [redirections] shopt [-pqsu] [-o] [optname ...]
-declare [-aAfFgilnrtux] [-p] [name[=va> source filename [arguments]
-dirs [-clpv] [+N] [-N] suspend [-f]
-disown [-h] [-ar] [jobspec ... | pid .> test [expr]
-echo [-neE] [arg ...] time [-p] pipeline
-enable [-a] [-dnps] [-f filename] [nam> times
-eval [arg ...] trap [-lp] [[arg] signal_spec ...]
-exec [-cl] [-a name] [command [argumen> true
-exit [n] type [-afptP] name [name ...]
-export [-fn] [name[=value] ...] or exp> typeset [-aAfFgilnrtux] [-p] name[=va>
-false ulimit [-SHabcdefiklmnpqrstuvxPT] [li>
-fc [-e ename] [-lnr] [first] [last] or> umask [-p] [-S] [mode]
-fg [job_spec] unalias [-a] name [name ...]
-for NAME [in WORDS ... ] ; do COMMANDS> unset [-f] [-v] [-n] [name ...]
-for (( exp1; exp2; exp3 )); do COMMAND> until COMMANDS; do COMMANDS; done
-function name { COMMANDS ; } or name (> variables - Names and meanings of som>
-getopts optstring name [arg] wait [-fn] [id ...]
-hash [-lr] [-p pathname] [-dt] [name .> while COMMANDS; do COMMANDS; done
-help [-dms] [pattern ...] { COMMANDS ; }
-dblock@localhost:~$ read -array
--d
-dblock@localhost:~$ trap -lp
-1) SIGHUP 2) SIGINT 3) SIGQUIT 4) SIGILL 5) SIGTRAP
-6) SIGABRT 7) SIGBUS 8) SIGFPE 9) SIGKILL 10) SIGUSR1
-11) SIGSEGV 12) SIGUSR2 13) SIGPIPE 14) SIGALRM 15) SIGTERM
-16) SIGSTKFLT 17) SIGCHLD 18) SIGCONT 19) SIGSTOP 20) SIGTSTP
-21) SIGTTIN 22) SIGTTOU 23) SIGURG 24) SIGXCPU 25) SIGXFSZ
-26) SIGVTALRM 27) SIGPROF 28) SIGWINCH 29) SIGIO 30) SIGPWR
-31) SIGSYS 34) SIGRTMIN 35) SIGRTMIN+1 36) SIGRTMIN+2 37) SIGRTMIN+3
-38) SIGRTMIN+4 39) SIGRTMIN+5 40) SIGRTMIN+6 41) SIGRTMIN+7 42) SIGRTMIN+8
-43) SIGRTMIN+9 44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
-48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
-53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9 56) SIGRTMAX-8 57) SIGRTMAX-7
-58) SIGRTMAX-6 59) SIGRTMAX-5 60) SIGRTMAX-4 61) SIGRTMAX-3 62) SIGRTMAX-2
-63) SIGRTMAX-1 64) SIGRTMAX
-dblock@localhost:~$ exec command
--bash: exec: command: not found
-dblock@localhost:~$ fc -ename
--bash: name: command not found
-dblock@localhost:~$ compopt -DEI
--bash: compopt: _DefaultCmD_: no completion specification
-dblock@localhost:~$ pushd -dir
--bash: pushd: -dir: invalid number
-pushd: usage: pushd [-n] [+N | -N | dir]
-dblock@localhost:~$ hash -dt
--bash: hash: -t: option requires an argument
-dblock@localhost:~$ eval
-dblock@localhost:~$ wait -id
--bash: wait: -i: invalid option
-wait: usage: wait [-fn] [id ...]
-dblock@localhost:~$ pwd
-/home/dblock
-dblock@localhost:~$ test -pipeline
-dblock@localhost:~$ hash -p
--bash: hash: -p: option requires an argument
-hash: usage: hash [-lr] [-p pathname] [-dt] [name ...]
-dblock@localhost:~$ pushd -N
--bash: pushd: -N: invalid number
-pushd: usage: pushd [-n] [+N | -N | dir]
-dblock@localhost:~$ pushd -n
-dblock@localhost:~$ shopt -pqsu
--bash: shopt: cannot set and unset shell options simultaneously
+dblock@localhost:~$ getent --service=CONFIG
+getent: wrong number of arguments
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ getent --usage
+Usage: getent [-i?V] [-s CONFIG] [--no-idn] [--service=CONFIG] [--help]
+[--usage] [--version] database [key ...]
+dblock@localhost:~$ getent -s
+getent: option requires an argument -- 's'
+Try `getent --help' or `getent --usage' for more information.
+dblock@localhost:~$ arguments
+-bash: arguments: command not found
+dblock@localhost:~$ getent passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+dblock:x:2000:2000::/home/dblock:/bin/bash
+systemd-timesync:x:101:103:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:104:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:105:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:106::/nonexistent:/usr/sbin/nologin
+usbmux:x:105:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+rtkit:x:106:110:RealtimeKit,,,:/proc:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+pulse:x:108:112:PulseAudio daemon,,,:/var/run/pulse:/usr/sbin/nologin
+avahi:x:109:114:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/usr/sbin/nologin
+geoclue:x:110:115::/var/lib/geoclue:/usr/sbin/nologin
+lightdm:x:111:116:Light Display Manager:/var/lib/lightdm:/bin/false
+dblock@localhost:~$ finger [user]
+-bash: finger: command not found
+dblock@localhost:~$ man ascii
+No manual entry for ascii
+dblock@localhost:~$ mount | column -t
+/dev/root on / type ext4 (ro,relatime,seclabel,block_validity,delalloc,barrier,user_xattr)
+tmpfs on /dev type tmpfs (rw,nosuid,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755)
+devpts on /dev/pts type devpts (rw,relatime,seclabel,mode=600,ptmxmode=000)
+none on /dev/stune type cgroup (rw,nosuid,nodev,noexec,relatime,schedtune)
+none on /dev/cpuctl type cgroup (rw,nosuid,nodev,noexec,relatime,cpu)
+none on /dev/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset,noprefix,release_agent=/sbin/cpuset_release_agent)
+cg2_bpf on /dev/cg2_bpf type cgroup2 (rw,nosuid,nodev,noexec,relatime)
+adb on /dev/usb-ffs/adb type functionfs (rw,relatime)
+proc on /proc type proc (rw,relatime,gid=3009,hidepid=2)
+sysfs on /sys type sysfs (rw,relatime,seclabel)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,relatime,seclabel)
+tracefs on /sys/kernel/debug/tracing type tracefs (rw,relatime,seclabel)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime,seclabel)
+tmpfs on /mnt type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+/dev/block/bootdevice/by-name/persist on /mnt/vendor/persist type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/drm on /mnt/vendor/persist-lg type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/sns on /mnt/vendor/sns type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/power on /mnt/vendor/power type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/fota on /mnt/product/fota type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/p_persist_lg on /mnt/product/persist-lg type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/mpt on /mnt/product/mpt type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/srtc on /mnt/product/srtc type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/els on /mnt/product/els type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/carrier on /mnt/product/carrier type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/operatorlogging on /mnt/product/quality type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/dev/block/bootdevice/by-name/eri on /mnt/product/eri type ext4 (rw,nosuid,nodev,noatime,seclabel,noauto_da_alloc,data=ordered)
+/data/media on /mnt/runtime/default/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal)
+/data/media on /mnt/runtime/read/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=23,derive_gid,default_normal)
+/data/media on /mnt/runtime/write/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal)
+/dev/block/dm-1 on /product type ext4 (ro,relatime,seclabel,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/dm-3 on /product/OP type ext4 (ro,nosuid,nodev,noatime,context=u:object_r:system_file:s0,noauto_da_alloc,data=ordered)
+/dev/block/dm-2 on /vendor type ext4 (ro,relatime,seclabel,block_validity,discard,delalloc,barrier,user_xattr)
+/dev/block/bootdevice/by-name/dsp_b on /vendor/dsp type ext4 (ro,nosuid,nodev,relatime,seclabel,data=ordered)
+/dev/block/bootdevice/by-name/modem_b on /vendor/firmware_mnt type vfat (ro,relatime,context=u:object_r:firmware_file:s0,gid=1000,fmask=0337,dmask=0227,codepage=437,iocharset=iso8859-1,shortname=lower,errors=remount-ro)
+none on /acct type cgroup (rw,nosuid,nodev,noexec,relatime,cpuacct)
+none on /config type configfs (rw,nosuid,nodev,noexec,relatime)
+/dev/block/bootdevice/by-name/userdata on /data type ext4 (rw,nosuid,nodev,noatime,seclabel,discard,noauto_da_alloc,resgid=1065,data=ordered)
+tmpfs on /storage type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
+/data/media on /storage/emulated type sdcardfs (rw,nosuid,nodev,noexec,noatime,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal)
+tmpfs on /storage/self type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=1429140k,nr_inodes=357285,mode=755,gid=1000)
 dblock@localhost:~$
 ---------------------------------
 
