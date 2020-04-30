@@ -3,7 +3,7 @@ JuiceSSH Plugin: Performance Monitor
 
 A JuiceSSH plugin for monitoring linux servers using the JuiceSSH Plugin SDK.
 
-![screenshot](http://i.imgur.com/uDSJRIr.png?1)
+![screenshot](https://i.imgur.com/TjXofuR.jpg)
 
 This plugin will connect to your choice of JuiceSSH connection and execute commands to monitor the performance of the server.
 
@@ -12,6 +12,8 @@ For details of how the various stats are discovered check out the following clas
 [CPU checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/CpuUsageController.java)
 
 [RAM checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/FreeRamController.java)
+
+[Temperature checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/TemperatureController.java)
 
 [Load Avg checks](Plugin/src/main/java/com/sonelli/juicessh/performancemonitor/controllers/LoadAverageController.java)
 
