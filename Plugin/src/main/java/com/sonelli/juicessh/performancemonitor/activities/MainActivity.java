@@ -117,6 +117,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
             @Override
             public void onClick(View view) {
 
+                final int type = spinnerAdapter.getConnectionType(getSupportActionBar().getSelectedNavigationIndex());
+                if(type != PluginContract.Connections.TYPE_SSH) {
+                    Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.only_ssh_connections_are_supported), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 final UUID id = spinnerAdapter.getConnectionId(getSupportActionBar().getSelectedNavigationIndex());
                 if (id != null) {
                     if (isClientStarted) {
