@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JuiceSSH 性能監控套件</string>
+    <string name="title_activity_about">關於</string>
+    <string name="app_about">此套件 Sonelli/juicessh-performancemonitor 的改良版，採用全新的 Material Design 設計風格，並改進些許細節以提升使用體驗。\n\n該 JuiceSSH 套件用于監控 Linux 系統的性能數據。通過後台開啟一個 SSH 視窗並執行特定的命令，套件能夠取得對應的參數並加以處理後顯示。各項功能已經在與 RedHat 以及 Ubuntu 等系統的SSH連接中測試通過。這是一個開源軟體，您可以透過 GitHub 來獲取源代碼並為項目做出貢獻。\n\nhttps://github.com/hwding/juicessh-performancemonitor\n\nhttps://github.com/Sonelli/juicessh-performancemonitor\n\nContributors:\n\n感謝hwding將UI更新至Material風格</string>
+    <string name="app_url">https://github.com/hwding/juicessh-performancemonitor</string>
+    <string name="app_package">com.sonelli.juicessh.performancemonitor</string>
+    <string name="connect">連 接</string>
+    <string name="please_wait">請稍等…</string>
+    <string name="disconnect">斷 開</string>
+    <string name="load_average">平均負載</string>
+    <string name="unknown">未知</string>
+    <string name="about">關於</string>
+    <string name="error">錯誤</string>
+    <string name="cpu_usage">CPU使用率</string>
+    <string name="free_memory">剩餘記憶體</string>
+    <string name="network">網路速度</string>
+    <string name="disk">硬碟使用率</string>
+    <string name="connecting">正在連接…</string>
+    <string name="disconnecting">正在中斷連線…</string>
+    <string name="fork_me_on_github">Fork me on GitHub!</string>
+    <string name="open_address">打開連接地址</string>
+    <string name="rate_this_plugin">給我們評分</string>
+    <string name="google_play_not_installed">錯誤: Google Play 商店未安裝</string>
+    <string name="only_ssh_connections_are_supported">僅支持 SSH 連接</string>
+    <string name="keep_screen_on">保持螢幕恆亮</string>
+
+    <!-- SettingActivity Strings -->
+    <string name="appearance">外觀</string>
+    <string name="display">顯示</string>
+    <string name="use_dark_theme">使用深色主题</string>
+    <string name="use_byte">使用byte作為網速基本單位</string>
+    <string name="temperature">" 溫度"</string>
+    <string name="plugin_permissions_request">" 此套件需要訪問列表JuiceSSH連接，並連接到它們"</string>
+</resources>
