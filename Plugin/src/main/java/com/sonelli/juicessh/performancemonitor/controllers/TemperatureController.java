@@ -27,7 +27,6 @@ public class TemperatureController extends BaseController {
 
         // assuming 'sensors' has been setup properly on the system, checks CPU0's package temp
         // Tested on an Intel i5-4460, Kubuntu
-        //final Pattern tempPattern = Pattern.compile("(Package id 0:[\\s]+\\+[0-9]+.[0-9]+°C[A-z\\s=+°,().0-9]+)");
         final Pattern tempPattern = Pattern.compile("(Package id 0:[\\s]+\\+[0-9]+.[0-9]+°C)");
 
         final Handler handler = new Handler();
