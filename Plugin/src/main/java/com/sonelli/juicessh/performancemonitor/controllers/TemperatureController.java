@@ -25,7 +25,9 @@ public class TemperatureController extends BaseController {
 
         // Work out the temperature of the device
 
-        final Pattern tempPattern = Pattern.compile("temp=(\\S+)");
+        // assuming 'sensors' has been setup properly on the system, checks CPU0's package temp
+        // Tested on an Intel i5-4460, Kubuntu
+        final Pattern tempPattern = Pattern.compile("(Package id 0:[\\s]+\\+[0-9]+.[0-9]+°C)");
 
         final Handler handler = new Handler();
         handler.post(new Runnable() {
@@ -34,7 +36,7 @@ public class TemperatureController extends BaseController {
 
                 try {
 
-                    getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), "/opt/vc/bin/vcgencmd measure_temp", new OnSessionExecuteListener() {
+                    getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), "sensors", new OnSessionExecuteListener() {
                         @Override
                         public void onCompleted(int exitCode) {
                             switch(exitCode){
@@ -48,7 +50,10 @@ public class TemperatureController extends BaseController {
                         public void onOutputLine(String line) {
                             Matcher tempMatcher = tempPattern.matcher(line);
                             if(tempMatcher.find()){
-                                setText(tempMatcher.group(1));
+                                // String has this format "Package id 0:  +28.0°C"
+                                String temperatureString = tempMatcher.group(0);
+
+                                setText(temperatureString.substring(temperatureString.indexOf('+')));// only keep the temp value, add a +1 to also remove the '+'
                             }
                         }
 
