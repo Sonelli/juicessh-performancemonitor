@@ -29,6 +29,7 @@ import com.sonelli.juicessh.performancemonitor.controllers.FreeRamController;
 import com.sonelli.juicessh.performancemonitor.controllers.LoadAverageController;
 import com.sonelli.juicessh.performancemonitor.controllers.NetworkUsageController;
 import com.sonelli.juicessh.performancemonitor.controllers.TemperatureController;
+import com.sonelli.juicessh.performancemonitor.controllers.piholeController;
 import com.sonelli.juicessh.performancemonitor.helpers.PreferenceHelper;
 import com.sonelli.juicessh.performancemonitor.loaders.ConnectionListLoader;
 import com.sonelli.juicessh.performancemonitor.views.AutoResizeTextView;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
     private BaseController cpuUsageController;
     private BaseController diskUsageController;
     private BaseController networkUsageController;
+   // private BaseController piholeController;
 
     // Text displays
     private AutoResizeTextView temperatureTextView;
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
     private AutoResizeTextView cpuUsageTextView;
     private AutoResizeTextView networkUsageTextView;
     private AutoResizeTextView diskUsageTextView;
+   // private AutoResizeTextView piholeTextView;
 
     // State
     private volatile int sessionId;
@@ -105,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         this.cpuUsageTextView = (AutoResizeTextView) findViewById(R.id.cpu_usage);
         this.networkUsageTextView = (AutoResizeTextView) findViewById(R.id.network_usage);
         this.diskUsageTextView = (AutoResizeTextView) findViewById(R.id.disk_usage);
+     //   this.piholeTextView = (AutoResizeTextView) findViewById(R.id.pihole);
 
         this.connectButton = (Button) findViewById(R.id.connect_button);
         Drawable drawable = getDrawable(R.drawable.login);
@@ -320,6 +324,13 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
                 .setTextview(networkUsageTextView)
                 .start();
 
+//        this.piholeController = new piholeController(this)
+//                .setSessionId(sessionId)
+//                .setSessionKey(sessionKey)
+//                .setPluginClient(client)
+//                .setTextview(piholeTextView)
+//                .start();
+
     }
 
     @Override
@@ -358,6 +369,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         if (networkUsageController != null) {
             networkUsageController.stop();
         }
+//        if(piholeController != null){
+//            piholeController.stop();
+   //     }
 
         temperatureTextView.setText("-");
         loadAverageTextView.setText("-");
@@ -365,6 +379,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         cpuUsageTextView.setText("-");
         networkUsageTextView.setText("-");
         diskUsageTextView.setText("-");
+     //   piholeTextView.setText('-');
 
         disconnectButton.setVisibility(View.GONE);
         disconnectButton.setEnabled(false);

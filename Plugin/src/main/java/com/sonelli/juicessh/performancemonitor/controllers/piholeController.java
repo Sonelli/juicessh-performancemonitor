@@ -11,11 +11,11 @@ import com.sonelli.juicessh.pluginlibrary.listeners.OnSessionExecuteListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TemperatureController extends BaseController {
+public class piholeController extends BaseController {
 
     public static final String TAG = "TemperatureController";
 
-    public TemperatureController(Context context) {
+    public piholeController(Context context) {
         super(context);
     }
 
@@ -25,7 +25,7 @@ public class TemperatureController extends BaseController {
 
         // Work out the temperature of the device
 
-        final Pattern tempPattern = Pattern.compile("temp=(\\S+)");
+       // final Pattern tempPattern = Pattern.compile("temp=(\\S+)");
 
         final Handler handler = new Handler();
         handler.post(new Runnable() {
@@ -34,7 +34,7 @@ public class TemperatureController extends BaseController {
 
                 try {
 
-                    getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), "vcgencmd measure_temp", new OnSessionExecuteListener() {
+                    getPluginClient().executeCommandOnSession(getSessionId(), getSessionKey(), "pihole -c", new OnSessionExecuteListener() {
                         @Override
                         public void onCompleted(int exitCode) {
                             switch(exitCode){
@@ -46,10 +46,10 @@ public class TemperatureController extends BaseController {
                         }
                         @Override
                         public void onOutputLine(String line) {
-                            Matcher tempMatcher = tempPattern.matcher(line);
-                            if(tempMatcher.find()){
-                                setText(tempMatcher.group(1));
-                            }
+Log.d("mylog",line);
+
+                                setText(line);
+
                         }
 
                         @Override
